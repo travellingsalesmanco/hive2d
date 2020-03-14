@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B4241CB048002C004F /* AppDelegate.swift */; };
+		F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B6241CB048002C004F /* SceneDelegate.swift */; };
+		F969C2B9241CB048002C004F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B8241CB048002C004F /* ViewController.swift */; };
+		F969C2BC241CB048002C004F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F969C2BA241CB048002C004F /* Main.storyboard */; };
+		F969C2BE241CB04A002C004F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F969C2BD241CB04A002C004F /* Assets.xcassets */; };
+		F969C2C1241CB04A002C004F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */; };
+		F969C2CC241CB04A002C004F /* Hive2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2CB241CB04A002C004F /* Hive2DTests.swift */; };
+		F969C2D7241CB04A002C004F /* Hive2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2D6241CB04A002C004F /* Hive2DUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F969C2C8241CB04A002C004F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F969C2A9241CB048002C004F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F969C2B0241CB048002C004F;
+			remoteInfo = Hive2D;
+		};
+		F969C2D3241CB04A002C004F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F969C2A9241CB048002C004F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F969C2B0241CB048002C004F;
+			remoteInfo = Hive2D;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F969C2B1241CB048002C004F /* Hive2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F969C2B4241CB048002C004F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F969C2B6241CB048002C004F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F969C2B8241CB048002C004F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F969C2BB241CB048002C004F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F969C2BD241CB04A002C004F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F969C2C0241CB04A002C004F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F969C2C2241CB04A002C004F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F969C2C7241CB04A002C004F /* Hive2DTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hive2DTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F969C2CB241CB04A002C004F /* Hive2DTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive2DTests.swift; sourceTree = "<group>"; };
+		F969C2CD241CB04A002C004F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F969C2D2241CB04A002C004F /* Hive2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hive2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F969C2D6241CB04A002C004F /* Hive2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive2DUITests.swift; sourceTree = "<group>"; };
+		F969C2D8241CB04A002C004F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F969C2AE241CB048002C004F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2C4241CB04A002C004F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2CF241CB04A002C004F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F969C2A8241CB048002C004F = {
+			isa = PBXGroup;
+			children = (
+				F969C2B3241CB048002C004F /* Hive2D */,
+				F969C2CA241CB04A002C004F /* Hive2DTests */,
+				F969C2D5241CB04A002C004F /* Hive2DUITests */,
+				F969C2B2241CB048002C004F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F969C2B2241CB048002C004F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2B1241CB048002C004F /* Hive2D.app */,
+				F969C2C7241CB04A002C004F /* Hive2DTests.xctest */,
+				F969C2D2241CB04A002C004F /* Hive2DUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F969C2B3241CB048002C004F /* Hive2D */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2B4241CB048002C004F /* AppDelegate.swift */,
+				F969C2B6241CB048002C004F /* SceneDelegate.swift */,
+				F969C2B8241CB048002C004F /* ViewController.swift */,
+				F969C2BA241CB048002C004F /* Main.storyboard */,
+				F969C2BD241CB04A002C004F /* Assets.xcassets */,
+				F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */,
+				F969C2C2241CB04A002C004F /* Info.plist */,
+			);
+			path = Hive2D;
+			sourceTree = "<group>";
+		};
+		F969C2CA241CB04A002C004F /* Hive2DTests */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2CB241CB04A002C004F /* Hive2DTests.swift */,
+				F969C2CD241CB04A002C004F /* Info.plist */,
+			);
+			path = Hive2DTests;
+			sourceTree = "<group>";
+		};
+		F969C2D5241CB04A002C004F /* Hive2DUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2D6241CB04A002C004F /* Hive2DUITests.swift */,
+				F969C2D8241CB04A002C004F /* Info.plist */,
+			);
+			path = Hive2DUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F969C2B0241CB048002C004F /* Hive2D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F969C2DB241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2D" */;
+			buildPhases = (
+				F969C2AD241CB048002C004F /* Sources */,
+				F969C2AE241CB048002C004F /* Frameworks */,
+				F969C2AF241CB048002C004F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hive2D;
+			productName = Hive2D;
+			productReference = F969C2B1241CB048002C004F /* Hive2D.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F969C2C6241CB04A002C004F /* Hive2DTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F969C2DE241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2DTests" */;
+			buildPhases = (
+				F969C2C3241CB04A002C004F /* Sources */,
+				F969C2C4241CB04A002C004F /* Frameworks */,
+				F969C2C5241CB04A002C004F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F969C2C9241CB04A002C004F /* PBXTargetDependency */,
+			);
+			name = Hive2DTests;
+			productName = Hive2DTests;
+			productReference = F969C2C7241CB04A002C004F /* Hive2DTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F969C2D1241CB04A002C004F /* Hive2DUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F969C2E1241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2DUITests" */;
+			buildPhases = (
+				F969C2CE241CB04A002C004F /* Sources */,
+				F969C2CF241CB04A002C004F /* Frameworks */,
+				F969C2D0241CB04A002C004F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F969C2D4241CB04A002C004F /* PBXTargetDependency */,
+			);
+			name = Hive2DUITests;
+			productName = Hive2DUITests;
+			productReference = F969C2D2241CB04A002C004F /* Hive2DUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F969C2A9241CB048002C004F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = TSCO;
+				TargetAttributes = {
+					F969C2B0241CB048002C004F = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					F969C2C6241CB04A002C004F = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F969C2B0241CB048002C004F;
+					};
+					F969C2D1241CB04A002C004F = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F969C2B0241CB048002C004F;
+					};
+				};
+			};
+			buildConfigurationList = F969C2AC241CB048002C004F /* Build configuration list for PBXProject "Hive2D" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F969C2A8241CB048002C004F;
+			productRefGroup = F969C2B2241CB048002C004F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F969C2B0241CB048002C004F /* Hive2D */,
+				F969C2C6241CB04A002C004F /* Hive2DTests */,
+				F969C2D1241CB04A002C004F /* Hive2DUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F969C2AF241CB048002C004F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F969C2C1241CB04A002C004F /* LaunchScreen.storyboard in Resources */,
+				F969C2BE241CB04A002C004F /* Assets.xcassets in Resources */,
+				F969C2BC241CB048002C004F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2C5241CB04A002C004F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2D0241CB04A002C004F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F969C2AD241CB048002C004F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
+				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
+				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2C3241CB04A002C004F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F969C2CC241CB04A002C004F /* Hive2DTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F969C2CE241CB04A002C004F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F969C2D7241CB04A002C004F /* Hive2DUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F969C2C9241CB04A002C004F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F969C2B0241CB048002C004F /* Hive2D */;
+			targetProxy = F969C2C8241CB04A002C004F /* PBXContainerItemProxy */;
+		};
+		F969C2D4241CB04A002C004F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F969C2B0241CB048002C004F /* Hive2D */;
+			targetProxy = F969C2D3241CB04A002C004F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F969C2BA241CB048002C004F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F969C2BB241CB048002C004F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F969C2C0241CB04A002C004F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F969C2D9241CB04A002C004F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F969C2DA241CB04A002C004F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F969C2DC241CB04A002C004F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2D;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F969C2DD241CB04A002C004F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2D;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F969C2DF241CB04A002C004F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2DTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2DTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive2D.app/Hive2D";
+			};
+			name = Debug;
+		};
+		F969C2E0241CB04A002C004F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2DTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2DTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hive2D.app/Hive2D";
+			};
+			name = Release;
+		};
+		F969C2E2241CB04A002C004F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2DUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2DUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Hive2D;
+			};
+			name = Debug;
+		};
+		F969C2E3241CB04A002C004F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Hive2DUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2DUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Hive2D;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F969C2AC241CB048002C004F /* Build configuration list for PBXProject "Hive2D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F969C2D9241CB04A002C004F /* Debug */,
+				F969C2DA241CB04A002C004F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F969C2DB241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F969C2DC241CB04A002C004F /* Debug */,
+				F969C2DD241CB04A002C004F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F969C2DE241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2DTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F969C2DF241CB04A002C004F /* Debug */,
+				F969C2E0241CB04A002C004F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F969C2E1241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2DUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F969C2E2241CB04A002C004F /* Debug */,
+				F969C2E3241CB04A002C004F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F969C2A9241CB048002C004F /* Project object */;
+}
