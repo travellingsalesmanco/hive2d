@@ -1,0 +1,3 @@
+target 'Hive2D' do
+  pod 'Firebase/Database'
+end

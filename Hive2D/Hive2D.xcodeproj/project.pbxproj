@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */; };
+		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
+		A97F489E241CE2A500BF5429 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489D241CE2A500BF5429 /* Lobby.swift */; };
+		A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489F241CE9AB00BF5429 /* GameNetworking.swift */; };
+		A97F48A3241E172500BF5429 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A2241E172500BF5429 /* GameAction.swift */; };
+		A97F48A5241E201700BF5429 /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A4241E201700BF5429 /* FirebaseCodable.swift */; };
+		A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */; };
+		A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */; };
+		A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */; };
+		A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AC241E310D00BF5429 /* QuitGameAction.swift */; };
+		A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AE241E316900BF5429 /* StartGameAction.swift */; };
+		EB637EB6147AB3DDA15C1528 /* libPods-Hive2D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */; };
 		F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B4241CB048002C004F /* AppDelegate.swift */; };
 		F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B6241CB048002C004F /* SceneDelegate.swift */; };
 		F969C2B9241CB048002C004F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B8241CB048002C004F /* ViewController.swift */; };
@@ -35,6 +47,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hive2D.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		834D919299602A78AE9F07DD /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
+		A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworking.swift; sourceTree = "<group>"; };
+		A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworkingDelegate.swift; sourceTree = "<group>"; };
+		A97F489D241CE2A500BF5429 /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
+		A97F489F241CE9AB00BF5429 /* GameNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetworking.swift; sourceTree = "<group>"; };
+		A97F48A2241E172500BF5429 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
+		A97F48A4241E201700BF5429 /* FirebaseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
+		A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
+		A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyNodeAction.swift; sourceTree = "<group>"; };
+		A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNodeAction.swift; sourceTree = "<group>"; };
+		A97F48AC241E310D00BF5429 /* QuitGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitGameAction.swift; sourceTree = "<group>"; };
+		A97F48AE241E316900BF5429 /* StartGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameAction.swift; sourceTree = "<group>"; };
+		AAE11CC20E0E339AF735B04D /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		F969C2B1241CB048002C004F /* Hive2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969C2B4241CB048002C004F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969C2B6241CB048002C004F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB637EB6147AB3DDA15C1528 /* libPods-Hive2D.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +103,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		293A82F552E715D055B23AFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAE11CC20E0E339AF735B04D /* Pods-Hive2D.debug.xcconfig */,
+				834D919299602A78AE9F07DD /* Pods-Hive2D.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8D306B5D7DF75E1883903F88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A97F4898241CE07400BF5429 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */,
+				A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */,
+				A97F489F241CE9AB00BF5429 /* GameNetworking.swift */,
+				A97F48A4241E201700BF5429 /* FirebaseCodable.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A97F48A1241E171B00BF5429 /* GameActions */ = {
+			isa = PBXGroup;
+			children = (
+				A97F48A2241E172500BF5429 /* GameAction.swift */,
+				A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */,
+				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
+				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
+				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
+				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
+			);
+			path = GameActions;
+			sourceTree = "<group>";
+		};
 		F969C2A8241CB048002C004F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +151,8 @@
 				F969C2CA241CB04A002C004F /* Hive2DTests */,
 				F969C2D5241CB04A002C004F /* Hive2DUITests */,
 				F969C2B2241CB048002C004F /* Products */,
+				293A82F552E715D055B23AFF /* Pods */,
+				8D306B5D7DF75E1883903F88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +169,8 @@
 		F969C2B3241CB048002C004F /* Hive2D */ = {
 			isa = PBXGroup;
 			children = (
+				A97F48A1241E171B00BF5429 /* GameActions */,
+				A97F4898241CE07400BF5429 /* Networking */,
 				F969C2B4241CB048002C004F /* AppDelegate.swift */,
 				F969C2B6241CB048002C004F /* SceneDelegate.swift */,
 				F969C2B8241CB048002C004F /* ViewController.swift */,
@@ -106,6 +178,7 @@
 				F969C2BD241CB04A002C004F /* Assets.xcassets */,
 				F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */,
 				F969C2C2241CB04A002C004F /* Info.plist */,
+				A97F489D241CE2A500BF5429 /* Lobby.swift */,
 			);
 			path = Hive2D;
 			sourceTree = "<group>";
@@ -135,6 +208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F969C2DB241CB04A002C004F /* Build configuration list for PBXNativeTarget "Hive2D" */;
 			buildPhases = (
+				045812A9A080EBE9939A4BAC /* [CP] Check Pods Manifest.lock */,
 				F969C2AD241CB048002C004F /* Sources */,
 				F969C2AE241CB048002C004F /* Frameworks */,
 				F969C2AF241CB048002C004F /* Resources */,
@@ -254,12 +328,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		045812A9A080EBE9939A4BAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hive2D-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F969C2AD241CB048002C004F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
+				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
+				A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */,
+				A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */,
+				A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */,
+				A97F48A5241E201700BF5429 /* FirebaseCodable.swift in Sources */,
+				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
+				A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */,
+				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
+				A97F489E241CE2A500BF5429 /* Lobby.swift in Sources */,
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
+				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
 			);
@@ -373,6 +483,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -426,15 +537,18 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		F969C2DC241CB04A002C004F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAE11CC20E0E339AF735B04D /* Pods-Hive2D.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = Hive2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,15 +557,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		F969C2DD241CB04A002C004F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834D919299602A78AE9F07DD /* Pods-Hive2D.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W76H98A34A;
 				INFOPLIST_FILE = Hive2D/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,7 +576,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tsco.Hive2D;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
