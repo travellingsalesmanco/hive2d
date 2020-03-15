@@ -1,24 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C9S-WI-Dha">
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="sL8-z0-8Xu">
+            <objects>
+                <navigationController id="C9S-WI-Dha" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wpj-Lf-0GM">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lTd-X8-hnl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5uN-oR-8ur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-902" y="94"/>
+        </scene>
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xvq-bm-pI0">
+                                <rect key="frame" x="0.0" y="271" width="1366" height="512"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hive2d" translatesAutoresizingMaskIntoConstraints="NO" id="nqZ-O5-VQF" userLabel="hive2d icon">
+                                        <rect key="frame" x="0.0" y="0.0" width="1366" height="239.00000000000006"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSM-N9-NPE" userLabel="Create Lobby">
+                                        <rect key="frame" x="0.0" y="239" width="1366" height="91"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ka-Gc-zVj">
+                                                <rect key="frame" x="596.5" y="21.5" width="173" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Create Lobby"/>
+                                                <connections>
+                                                    <segue destination="Doc-CK-fOP" kind="show" id="Hst-Su-bdd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="3ka-Gc-zVj" firstAttribute="centerX" secondItem="oSM-N9-NPE" secondAttribute="centerX" id="hPE-kz-CNB"/>
+                                            <constraint firstItem="3ka-Gc-zVj" firstAttribute="centerY" secondItem="oSM-N9-NPE" secondAttribute="centerY" id="reM-ZO-R2k"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OqI-w4-CeP" userLabel="Join Game">
+                                        <rect key="frame" x="0.0" y="330" width="1366" height="91"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-N3-jwz">
+                                                <rect key="frame" x="614" y="21.5" width="138" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Join Game"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="CcT-N3-jwz" firstAttribute="centerX" secondItem="OqI-w4-CeP" secondAttribute="centerX" id="Fl9-gq-OKm"/>
+                                            <constraint firstItem="CcT-N3-jwz" firstAttribute="centerY" secondItem="OqI-w4-CeP" secondAttribute="centerY" id="rFf-dP-gqP"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="quJ-5s-pX8" userLabel="Settings">
+                                        <rect key="frame" x="0.0" y="421" width="1366" height="91"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7f-Bo-tw1">
+                                                <rect key="frame" x="629.5" y="21.5" width="107" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Settings"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="z7f-Bo-tw1" firstAttribute="centerX" secondItem="quJ-5s-pX8" secondAttribute="centerX" id="fHn-J3-ep5"/>
+                                            <constraint firstItem="z7f-Bo-tw1" firstAttribute="centerY" secondItem="quJ-5s-pX8" secondAttribute="centerY" id="pUf-oW-MH2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oSM-N9-NPE" firstAttribute="width" secondItem="Xvq-bm-pI0" secondAttribute="width" id="Kj9-nm-6ME"/>
+                                    <constraint firstItem="oSM-N9-NPE" firstAttribute="height" secondItem="OqI-w4-CeP" secondAttribute="height" id="Rna-To-Oye"/>
+                                    <constraint firstItem="quJ-5s-pX8" firstAttribute="height" secondItem="oSM-N9-NPE" secondAttribute="height" id="h3w-20-A3b"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xvq-bm-pI0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4JY-5G-N92"/>
+                            <constraint firstItem="Xvq-bm-pI0" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="aAo-JI-TVe"/>
+                            <constraint firstItem="Xvq-bm-pI0" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="hQc-0O-rAi"/>
+                            <constraint firstItem="Xvq-bm-pI0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="oLZ-ea-N8S"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oZz-DZ-eUY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-120.35139092240117" y="93.75"/>
+        </scene>
+        <!--Lobby View Controller-->
+        <scene sceneID="XHh-eK-LWO">
+            <objects>
+                <viewController id="Doc-CK-fOP" customClass="LobbyViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E9z-aa-bfy">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOBBY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWC-w8-VhE">
+                                <rect key="frame" x="627" y="505.5" width="112" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HWC-w8-VhE" firstAttribute="centerX" secondItem="L3U-K1-8av" secondAttribute="centerX" id="5PH-XD-Qz4"/>
+                            <constraint firstItem="HWC-w8-VhE" firstAttribute="centerY" secondItem="L3U-K1-8av" secondAttribute="centerY" id="fns-Y0-69D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L3U-K1-8av"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="55M-kg-5wo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PM3-mP-7SU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="671" y="94"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hive2d" width="208" height="239"/>
+    </resources>
 </document>
