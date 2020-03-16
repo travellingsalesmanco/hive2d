@@ -494,6 +494,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMz-Lg-HBC" userLabel="Game Area">
+                                <rect key="frame" x="0.0" y="15" width="1366" height="1024"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-N9-T7p">
                                 <rect key="frame" x="634.5" y="506" width="97" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
@@ -503,12 +506,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Pkr-N9-T7p" firstAttribute="centerX" secondItem="OsK-e6-r12" secondAttribute="centerX" id="9bk-6J-l3G"/>
-                            <constraint firstItem="Pkr-N9-T7p" firstAttribute="centerY" secondItem="OsK-e6-r12" secondAttribute="centerY" id="b1u-2A-tbb"/>
+                            <constraint firstItem="Pkr-N9-T7p" firstAttribute="centerX" secondItem="OsK-e6-r12" secondAttribute="centerX" id="2sk-Dn-c0V"/>
+                            <constraint firstItem="eMz-Lg-HBC" firstAttribute="width" secondItem="AqU-GV-WnQ" secondAttribute="width" id="R8f-Zm-may"/>
+                            <constraint firstItem="Pkr-N9-T7p" firstAttribute="centerY" secondItem="OsK-e6-r12" secondAttribute="centerY" id="U96-Lw-OKJ"/>
+                            <constraint firstItem="eMz-Lg-HBC" firstAttribute="height" secondItem="AqU-GV-WnQ" secondAttribute="height" id="idr-VG-hAp"/>
+                            <constraint firstItem="eMz-Lg-HBC" firstAttribute="centerY" secondItem="OsK-e6-r12" secondAttribute="centerY" id="t0t-Lr-bdO"/>
+                            <constraint firstItem="eMz-Lg-HBC" firstAttribute="centerX" secondItem="OsK-e6-r12" secondAttribute="centerX" id="wDr-GA-TRm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OsK-e6-r12"/>
                     </view>
                     <navigationItem key="navigationItem" id="3E2-aN-Htx"/>
+                    <connections>
+                        <outlet property="gameArea" destination="eMz-Lg-HBC" id="2da-Ka-4j7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qC-wx-fQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
