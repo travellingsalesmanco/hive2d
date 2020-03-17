@@ -6,5 +6,6 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct DestroyNodeAction {
+struct DestroyNodeAction: GameAction {
+    let type: GameActionType = .DestroyNode
 }

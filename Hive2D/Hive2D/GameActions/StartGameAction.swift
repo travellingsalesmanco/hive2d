@@ -6,5 +6,6 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct StartGameAction {
+struct StartGameAction: GameAction {
+    let type: GameActionType = .StartGame
 }

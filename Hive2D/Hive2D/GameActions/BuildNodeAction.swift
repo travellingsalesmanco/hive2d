@@ -6,5 +6,6 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct BuildNodeAction {
+struct BuildNodeAction: GameAction {
+    let type: GameActionType = .BuildNode
 }

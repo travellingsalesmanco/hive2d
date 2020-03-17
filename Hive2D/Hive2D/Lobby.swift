@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct Lobby {
-    var id: UUID
+struct Lobby: Codable {
+    var id: UUID?
     // Code to join game
-    var code: String
+    var code: String?
     // TODO: TBC on host structure
-    var host: String
-    var players: [String]
+    var host: String?
+    var players: [String]?
     // TODO: implement actual settings
-    var settings: String
+    var settings: String?
+    var started: Bool = false
 }
