@@ -24,7 +24,10 @@ class FirebaseLobby: LobbyNetworking {
         // TODO: handle unique code gen
         let newLobby = Lobby(id: key, code: "12345", host: host)
         let dataDict = FirebaseCodable<Lobby>.toDict(newLobby)
-        lobbyRef?.setValue(dataDict, withCompletionBlock: { (error, ref) in
+        lobbyRef?.setValue(dataDict, withCompletionBlock: { [weak self] (error, ref) in
+            guard let self = self else {
+                return
+            }
             if error != nil {
                 self.lobbyDelegate?.lobbyCreationFailed()
             } else {
@@ -41,7 +44,10 @@ class FirebaseLobby: LobbyNetworking {
         }
         
         let dataDict = FirebaseCodable<Lobby>.toDict(updatedLobby)
-        lobbyRef?.setValue(dataDict, withCompletionBlock: { (error , ref) in
+        lobbyRef?.setValue(dataDict, withCompletionBlock: { [weak self] (error , ref) in
+            guard let self = self else {
+                return
+            }
             if error != nil {
                 self.lobbyDelegate?.lobbyUpdateFailed()
             }
@@ -57,7 +63,10 @@ class FirebaseLobby: LobbyNetworking {
     
     func joinLobby(id: String) {
         lobbyRef = FirebaseLobby.ref.child(id)
-        lobbyRef?.observeSingleEvent(of: .value, with: { (lobbySnapshot) in
+        lobbyRef?.observeSingleEvent(of: .value, with: { [weak self] (lobbySnapshot) in
+            guard let self = self else {
+                return
+            }
             let lobbyDict = lobbySnapshot.value as Any
             guard let lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
                 self.lobbyDelegate?.lobbyJoinFailed()
