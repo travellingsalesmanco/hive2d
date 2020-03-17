@@ -6,11 +6,6 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-// TODO: Add associated values to enum cases
-enum GameAction {
-    case QuitGame
-    case StartGame
-    case BuildNode
-    case DestroyNode
-    case ChangeNode
+protocol GameAction: Codable {
+    var type: GameActionType { get }
 }

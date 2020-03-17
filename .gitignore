@@ -55,6 +55,9 @@ playground.xcworkspace
 #
 # Pods/
 Hive2D/Pods
+Hive2D/Hive2D/GoogleService-Info.plist
+Hive2D/Hive2D.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Hive2D/.DS_Store
 
 # Carthage
 #

@@ -10,8 +10,8 @@ import Foundation
 
 protocol LobbyNetworking {
     var lobbyDelegate: LobbyNetworkingDelegate? { get set }
-    func createLobby() -> UUID
-    func setSettings(newSettings: [String])
+    func createLobby() -> Lobby?
+    func updateLobby(_: Lobby)
     func start()
-    func joinLobby(id: UUID) -> UUID
+    func joinLobby(id: String) -> Lobby?
 }
