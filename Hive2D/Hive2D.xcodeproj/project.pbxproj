@@ -49,6 +49,7 @@
 		F969C2F6242073C6002C004F /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F5242073C6002C004F /* Hive.swift */; };
 		F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F72420CEDC002C004F /* CombatNode.swift */; };
 		F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F92420D0EB002C004F /* GameScene.swift */; };
+		F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FB2420D4FA002C004F /* GameConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		F969C2F5242073C6002C004F /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
 		F969C2F72420CEDC002C004F /* CombatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatNode.swift; sourceTree = "<group>"; };
 		F969C2F92420D0EB002C004F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		F969C2FB2420D4FA002C004F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 				F969C2EB24204FC9002C004F /* Entities */,
 				F969C2EC24204FDA002C004F /* Components */,
 				F969C2E5241F9153002C004F /* Game.swift */,
+				F969C2FB2420D4FA002C004F /* GameConfig.swift */,
 				F969C2F92420D0EB002C004F /* GameScene.swift */,
 			);
 			path = Game;
@@ -500,6 +503,7 @@
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
+				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,

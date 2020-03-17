@@ -12,7 +12,7 @@ class Game {
     var entities: [GKEntity] = [:]
     var scene: SKScene
 
-    init(scene: SKScene) {
+    init(scene: SKScene, config: GameConfig) {
         self.scene = scene
     }
 

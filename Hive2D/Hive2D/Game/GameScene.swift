@@ -11,8 +11,13 @@ import SpriteKit
 class GameScene: SKScene {
     let game: Game
 
-    init() {
-        self.game = Game(scene: self)
+    /// Called once when the scene is presented to the view
+    override func didMove(to view: SKView) {
+        game = Game(scene: self)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        <#code#>
     }
 
     override func update(_ currentTime: TimeInterval) {
