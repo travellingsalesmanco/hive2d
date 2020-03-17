@@ -60,11 +60,11 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         present(joinGameModal, animated: true, completion: nil)
     }
 
-    private func pushLobbyViewController(lobby: Lobby) {
+    private func pushLobbyViewController(lobby: Lobby, lobbyNetworking: LobbyNetworking) {
         guard let lobbyViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.lobbyViewController) as? LobbyViewController else {
             return
         }
-        lobbyViewController.initLobby(lobby: lobby)
+        lobbyViewController.initLobby(lobby: lobby, lobbyNetworking: lobbyNetworking)
         self.navigationController?.pushViewController(lobbyViewController, animated: true)
     }
 }
@@ -99,7 +99,7 @@ extension MainViewController: JoinGameModalDelegate {
 extension MainViewController: LobbyNetworkingDelegate {
     func lobbyCreated(lobby: Lobby) {
         stopAnimating()
-        pushLobbyViewController(lobby: lobby)
+        pushLobbyViewController(lobby: lobby, lobbyNetworking: lobbyNetworking)
     }
 
     func lobbyCreationFailed() {
@@ -108,7 +108,7 @@ extension MainViewController: LobbyNetworkingDelegate {
 
     func lobbyJoined(lobby: Lobby) {
         stopAnimating()
-        pushLobbyViewController(lobby: lobby)
+        pushLobbyViewController(lobby: lobby, lobbyNetworking: lobbyNetworking)
     }
 
     func lobbyJoinFailed() {

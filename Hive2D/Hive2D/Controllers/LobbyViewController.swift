@@ -31,8 +31,10 @@ class LobbyViewController: UIViewController {
         refreshLobby()
     }
 
-    func initLobby(lobby: Lobby) {
+    func initLobby(lobby: Lobby, lobbyNetworking: LobbyNetworking) {
         self.lobby = lobby
+        self.lobbyNetworking = lobbyNetworking
+        self.lobbyNetworking.lobbyDelegate = self
     }
 
     @IBAction func returnToMainView(_ sender: UIButton) {

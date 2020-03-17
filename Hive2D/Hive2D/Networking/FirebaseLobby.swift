@@ -10,8 +10,8 @@ import Firebase
 
 class FirebaseLobby: LobbyNetworking {
     weak var lobbyDelegate: LobbyNetworkingDelegate?
-    var lobbyHandle: DatabaseHandle?
-    var lobbyRef: DatabaseReference?
+    private var lobbyHandle: DatabaseHandle?
+    private var lobbyRef: DatabaseReference?
     private static let ref = Database.database().reference().child("games")
     
     func createLobby(host: LobbyPlayer) {
@@ -40,6 +40,7 @@ class FirebaseLobby: LobbyNetworking {
     func updateLobby(_ updatedLobby: Lobby) {
         // Check that lobby is same as current lobby ref
         if lobbyRef?.key != updatedLobby.id {
+            self.lobbyDelegate?.lobbyUpdateFailed()
             return
         }
         
@@ -51,7 +52,6 @@ class FirebaseLobby: LobbyNetworking {
             if error != nil {
                 self.lobbyDelegate?.lobbyUpdateFailed()
             }
-            // TODO: call delegate?.lobbyDidUpdate()
         })
     }
     
@@ -60,7 +60,6 @@ class FirebaseLobby: LobbyNetworking {
             return
         }
         lobbyRef.child("started").setValue(true)
-        // TODO: call delegate?.gameStarted()
     }
     
     func joinLobby(id: String, player: LobbyPlayer) {
@@ -71,7 +70,7 @@ class FirebaseLobby: LobbyNetworking {
                 return
             }
             let lobbyDict = lobbySnapshot.value as Any
-            guard let lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
+            guard var lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
                 self.lobbyDelegate?.lobbyJoinFailed()
                 return
             }
@@ -81,8 +80,21 @@ class FirebaseLobby: LobbyNetworking {
                 return
             }
             
-            self.lobbyDelegate?.lobbyJoined(lobby: lobby)
-            self.lobbyHandle = self.lobbyRef?.observe(.value, with: self.handleLobbyUpdate(lobbySnapshot:))
+            lobby.players.append(player)
+            let dataDict = FirebaseCodable<Lobby>.toDict(lobby)
+            self.lobbyRef?.setValue(dataDict, withCompletionBlock: { [weak self] (error, ref) in
+                guard let self = self else {
+                    return
+                }
+                if error != nil {
+                    self.lobbyDelegate?.lobbyJoinFailed()
+                } else {
+                    self.lobbyDelegate?.lobbyJoined(lobby: lobby)
+                    self.lobbyHandle = self.lobbyRef?.observe(.value, with: self.handleLobbyUpdate(lobbySnapshot:))
+                }
+            })
+            
+
         })
     }
     
@@ -97,6 +109,8 @@ class FirebaseLobby: LobbyNetworking {
             lobbyDelegate?.gameStarted()
         }
         else {
+            print("UPDATE THE DODE")
+            print(lobbyDelegate)
             lobbyDelegate?.lobbyDidUpdate(lobby: lobby)
         }
     }
