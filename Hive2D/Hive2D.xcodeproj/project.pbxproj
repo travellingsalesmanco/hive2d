@@ -32,6 +32,16 @@
 		F969C2C1241CB04A002C004F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */; };
 		F969C2CC241CB04A002C004F /* Hive2DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2CB241CB04A002C004F /* Hive2DTests.swift */; };
 		F969C2D7241CB04A002C004F /* Hive2DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2D6241CB04A002C004F /* Hive2DUITests.swift */; };
+		F969C2E6241F9153002C004F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2E5241F9153002C004F /* Game.swift */; };
+		F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2E7241F915E002C004F /* ResourceNode.swift */; };
+		F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2E9241F9163002C004F /* SpriteComponent.swift */; };
+		F969C2EE24205018002C004F /* NodeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2ED24205018002C004F /* NodeComponent.swift */; };
+		F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2EF24205022002C004F /* ResourceConsumerComponent.swift */; };
+		F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F124205032002C004F /* ResourceCollectorComponent.swift */; };
+		F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F32420503F002C004F /* PlayerComponent.swift */; };
+		F969C2F6242073C6002C004F /* Hive.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F5242073C6002C004F /* Hive.swift */; };
+		F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F72420CEDC002C004F /* CombatNode.swift */; };
+		F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F92420D0EB002C004F /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +95,16 @@
 		F969C2D2241CB04A002C004F /* Hive2DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Hive2DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969C2D6241CB04A002C004F /* Hive2DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive2DUITests.swift; sourceTree = "<group>"; };
 		F969C2D8241CB04A002C004F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F969C2E5241F9153002C004F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		F969C2E7241F915E002C004F /* ResourceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceNode.swift; sourceTree = "<group>"; };
+		F969C2E9241F9163002C004F /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		F969C2ED24205018002C004F /* NodeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeComponent.swift; sourceTree = "<group>"; };
+		F969C2EF24205022002C004F /* ResourceConsumerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceConsumerComponent.swift; sourceTree = "<group>"; };
+		F969C2F124205032002C004F /* ResourceCollectorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCollectorComponent.swift; sourceTree = "<group>"; };
+		F969C2F32420503F002C004F /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
+		F969C2F5242073C6002C004F /* Hive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hive.swift; sourceTree = "<group>"; };
+		F969C2F72420CEDC002C004F /* CombatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatNode.swift; sourceTree = "<group>"; };
+		F969C2F92420D0EB002C004F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +211,7 @@
 		F969C2B3241CB048002C004F /* Hive2D */ = {
 			isa = PBXGroup;
 			children = (
+				F969C2E4241F9147002C004F /* Game */,
 				BEB648FA241E5B5C002814D4 /* Controllers */,
 				A97F48A1241E171B00BF5429 /* GameActions */,
 				A97F4898241CE07400BF5429 /* Networking */,
@@ -222,6 +243,39 @@
 				F969C2D8241CB04A002C004F /* Info.plist */,
 			);
 			path = Hive2DUITests;
+			sourceTree = "<group>";
+		};
+		F969C2E4241F9147002C004F /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2EB24204FC9002C004F /* Entities */,
+				F969C2EC24204FDA002C004F /* Components */,
+				F969C2E5241F9153002C004F /* Game.swift */,
+				F969C2F92420D0EB002C004F /* GameScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		F969C2EB24204FC9002C004F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2E7241F915E002C004F /* ResourceNode.swift */,
+				F969C2F72420CEDC002C004F /* CombatNode.swift */,
+				F969C2F5242073C6002C004F /* Hive.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		F969C2EC24204FDA002C004F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F969C2E9241F9163002C004F /* SpriteComponent.swift */,
+				F969C2ED24205018002C004F /* NodeComponent.swift */,
+				F969C2EF24205022002C004F /* ResourceConsumerComponent.swift */,
+				F969C2F124205032002C004F /* ResourceCollectorComponent.swift */,
+				F969C2F32420503F002C004F /* PlayerComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,22 +437,32 @@
 			files = (
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
+				F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */,
+				F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */,
+				F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */,
 				A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */,
 				A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */,
 				A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */,
+				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
 				A97F48A5241E201700BF5429 /* FirebaseCodable.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
 				BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */,
+				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				A97F489E241CE2A500BF5429 /* Lobby.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,
+				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
+				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
+				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
+				F969C2EE24205018002C004F /* NodeComponent.swift in Sources */,
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
+				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
