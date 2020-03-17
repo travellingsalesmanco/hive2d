@@ -9,32 +9,43 @@
 import Firebase
 
 class FirebaseLobby: LobbyNetworking {
-    
     var lobbyDelegate: LobbyNetworkingDelegate?
     var lobbyHandle: DatabaseHandle?
     var lobbyRef: DatabaseReference?
-    private var ref = Database.database().reference().child("games")
-    private var encoder = JSONEncoder()
-    private var decoder = JSONDecoder()
+    private static let ref = Database.database().reference().child("games")
     
-    func createLobby(host: LobbyPlayer) -> Lobby? {
-        let newLobbyRef = ref.childByAutoId()
-        let newLobby = Lobby(id: "0", code: "corona", host: host)
-        guard let data = try? encoder.encode(newLobby) else {
-            return nil
+    func createLobby(host: LobbyPlayer) {
+        lobbyRef = FirebaseLobby.ref.childByAutoId()
+        guard let key = lobbyRef?.key else {
+            lobbyDelegate?.lobbyCreationFailed()
+            return
         }
-        guard let dataDict = try? JSONSerialization.jsonObject(with: data, options: []) else {
-            return nil
-        }
-        newLobbyRef.setValue(dataDict)
-        lobbyRef = newLobbyRef
-        lobbyHandle = lobbyRef?.observe(.value, with: handleLobbyUpdate(lobbySnapshot:))
-        return newLobby
+        
+        // TODO: handle unique code gen
+        let newLobby = Lobby(id: key, code: "12345", host: host)
+        let dataDict = FirebaseCodable<Lobby>.toDict(newLobby)
+        lobbyRef?.setValue(dataDict, withCompletionBlock: { (error, ref) in
+            if error != nil {
+                self.lobbyDelegate?.lobbyCreationFailed()
+            } else {
+                self.lobbyDelegate?.lobbyCreated(lobby: newLobby)
+                self.lobbyHandle = self.lobbyRef?.observe(.value, with: self.handleLobbyUpdate(lobbySnapshot:))
+            }
+        })
     }
     
-    
-    func updateLobby(_: Lobby) {
-        // TODO: update lobby
+    func updateLobby(_ updatedLobby: Lobby) {
+        // Check that lobby is same as current lobby ref
+        if lobbyRef?.key != updatedLobby.id {
+            return
+        }
+        
+        let dataDict = FirebaseCodable<Lobby>.toDict(updatedLobby)
+        lobbyRef?.setValue(dataDict, withCompletionBlock: { (error , ref) in
+            if error != nil {
+                self.lobbyDelegate?.lobbyUpdateFailed()
+            }
+        })
     }
     
     func start() {
@@ -44,19 +55,29 @@ class FirebaseLobby: LobbyNetworking {
         lobbyRef.child("started").setValue(true)
     }
     
-    func joinLobby(id: String) -> Lobby? {
-        // TODO: handle joining
-        return nil
+    func joinLobby(id: String) {
+        lobbyRef = FirebaseLobby.ref.child(id)
+        lobbyRef?.observeSingleEvent(of: .value, with: { (lobbySnapshot) in
+            let lobbyDict = lobbySnapshot.value as Any
+            guard let lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
+                self.lobbyDelegate?.lobbyJoinFailed()
+                return
+            }
+            
+            if lobby.started {
+                self.lobbyDelegate?.lobbyJoinFailed()
+                return
+            }
+            
+            self.lobbyDelegate?.lobbyJoined(lobby: lobby)
+            self.lobbyHandle = self.lobbyRef?.observe(.value, with: self.handleLobbyUpdate(lobbySnapshot:))
+        })
     }
     
 
     private func handleLobbyUpdate(lobbySnapshot: DataSnapshot) {
         let lobbyDict = lobbySnapshot.value as Any
-        guard let lobbyData = try? JSONSerialization.data(withJSONObject: lobbyDict, options: []) else {
-            return
-        }
-        
-        guard let lobby = try? decoder.decode(Lobby.self, from: lobbyData) else {
+        guard let lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
             return
         }
         

@@ -9,6 +9,11 @@
 import Foundation
 
 protocol LobbyNetworkingDelegate {
+    func lobbyCreated(lobby: Lobby)
+    func lobbyCreationFailed()
+    func lobbyJoined(lobby: Lobby)
+    func lobbyJoinFailed()
     func lobbyDidUpdate(lobby: Lobby)
+    func lobbyUpdateFailed()
     func gameStarted()
 }

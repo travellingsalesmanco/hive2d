@@ -8,7 +8,19 @@
 
 import Firebase
 
-protocol FirebaseCodable {
-    init?(from: DataSnapshot)
-    func toDict() -> [String: Any]
+struct FirebaseCodable<T: Codable> {
+    static func toDict(_ obj: T) -> Any? {
+        guard let data = try? JSONEncoder().encode(obj) else {
+            return nil
+        }
+        return try? JSONSerialization.jsonObject(with: data, options: [])
+    }
+    
+    static func fromDict(_ data: Any) -> T? {
+        guard let lobbyData = try? JSONSerialization.data(withJSONObject: data, options: []) else {
+            return nil
+        }
+        
+        return try? JSONDecoder().decode(T.self, from: lobbyData)
+    }
 }
