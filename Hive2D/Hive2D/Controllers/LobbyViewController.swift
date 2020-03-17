@@ -28,9 +28,11 @@ class LobbyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshLobby()
+    }
 
-        roomCode.text = lobby?.code
-        refreshPlayerList()
+    func initLobby(lobby: Lobby) {
+        self.lobby = lobby
     }
 
     @IBAction func returnToMainView(_ sender: UIButton) {
@@ -38,24 +40,43 @@ class LobbyViewController: UIViewController {
     }
 
     @IBAction func selectMapSize(_ sender: UISegmentedControl) {
+        guard var lobby = lobby else {
+            return
+        }
+
         switch mapSizeSelector.selectedSegmentIndex {
-        case 0: mapSize = .small
-        case 1: mapSize = .medium
-        case 2: mapSize = .large
+        case 0: lobby.settings.mapSize = .small
+        case 1: lobby.settings.mapSize = .medium
+        case 2: lobby.settings.mapSize = .large
         default: break
         }
+
+        lobbyNetworking.updateLobby(lobby)
     }
 
     @IBAction func selectResourceRate(_ sender: UISegmentedControl) {
+        guard var lobby = lobby else {
+            return
+        }
+
         switch resourceRateSelector.selectedSegmentIndex {
-        case 0: resourceRate = .normal
-        case 1: resourceRate = .fast
+        case 0: lobby.settings.resourceRate = .normal
+        case 1: lobby.settings.resourceRate = .fast
         default: break
         }
+
+        lobbyNetworking.updateLobby(lobby)
     }
 
-    func initLobby(lobby: Lobby) {
-        self.lobby = lobby
+    private func refreshLobby() {
+        guard let lobby = lobby else {
+            return
+        }
+
+        roomCode.text = lobby.code
+        mapSizeSelector.selectedSegmentIndex = lobby.settings.mapSize.rawValue
+        resourceRateSelector.selectedSegmentIndex = lobby.settings.resourceRate.rawValue
+        refreshPlayerList()
     }
 
     private func refreshPlayerList() {
@@ -70,7 +91,12 @@ class LobbyViewController: UIViewController {
     }
 
     @IBAction func startGame(_ sender: UIButton) {
-        // Validation for min. number of players
+        // TODO: convert magic number to minPlayers constant
+        guard let lobby = lobby, lobby.players.count > 1 else {
+            return
+        }
+
+        lobbyNetworking.start()
     }
 }
 
@@ -93,7 +119,7 @@ extension LobbyViewController: LobbyNetworkingDelegate {
 
     func lobbyDidUpdate(lobby: Lobby) {
         self.lobby = lobby
-        refreshPlayerList()
+        refreshLobby()
     }
 
     func lobbyUpdateFailed() {
@@ -101,6 +127,9 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     }
 
     func gameStarted() {
-        return
+        guard let gameViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameViewController) as? GameViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 }

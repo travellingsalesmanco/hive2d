@@ -51,6 +51,7 @@ class FirebaseLobby: LobbyNetworking {
             if error != nil {
                 self.lobbyDelegate?.lobbyUpdateFailed()
             }
+            // TODO: call delegate?.lobbyDidUpdate()
         })
     }
     
@@ -59,6 +60,7 @@ class FirebaseLobby: LobbyNetworking {
             return
         }
         lobbyRef.child("started").setValue(true)
+        // TODO: call delegate?.gameStarted()
     }
     
     func joinLobby(id: String, player: LobbyPlayer) {

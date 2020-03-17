@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum MapSize: String, Codable {
-    case small
-    case medium
-    case large
+enum MapSize: Int, Codable {
+    case small = 0
+    case medium = 1
+    case large = 2
 }
 
-enum ResourceRate: String, Codable {
-    case normal
-    case fast
+enum ResourceRate: Int, Codable {
+    case normal = 0
+    case fast = 1
 }
 
 struct LobbySettings: Codable {
