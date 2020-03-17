@@ -9,14 +9,15 @@
 import GameplayKit
 
 class CombatNode: GKEntity {
-    let node: NodeComponent
-    let player: PlayerComponent
-    let resourceConsumer: ResourceConsumerComponent
 
     init(node: NodeComponent, player: PlayerComponent, resourceConsumer: ResourceConsumerComponent) {
         super.init()
         addComponent(node)
         addComponent(player)
         addComponent(resourceConsumer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

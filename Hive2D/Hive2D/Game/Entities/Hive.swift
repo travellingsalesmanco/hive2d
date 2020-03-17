@@ -9,12 +9,14 @@
 import GameplayKit
 
 class Hive: GKEntity {
-    let node: NodeComponent
-    let player: PlayerComponent
 
     init(node: NodeComponent, player: PlayerComponent) {
         super.init()
         addComponent(node)
         addComponent(player)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

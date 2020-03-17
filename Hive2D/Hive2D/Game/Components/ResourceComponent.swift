@@ -13,5 +13,10 @@ class ResourceComponent: GKComponent {
 
     init(resources: Int) {
         self.resources = resources
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

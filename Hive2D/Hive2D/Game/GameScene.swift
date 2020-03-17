@@ -9,15 +9,12 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    let game: Game
-    let gameConfig: GameConfig
-    let gameNetworking: GameNetworking
+    let game: Game!
+    let gameConfig: GameConfig!
+    let gameNetworking: GameNetworking!
 
-    init(gameConfig: GameConfig, gameNetworking: GameNetworking) {
-        self.game = Game(scene: self)
-        self.gameConfig = gameConfig
-        self.gameNetworking = gameNetworking
-        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     /// Called once when the scene is presented to the view
@@ -31,7 +28,8 @@ class GameScene: SKScene {
             return
         }
         let location = touch.location(in: self)
-        if let firstNode = atPoint(location) {
+        let firstNode = atPoint(location)
+        if firstNode != self {
             // Do stuff based on SKSpriteNode that was touched
             return
         } else {

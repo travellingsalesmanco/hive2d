@@ -23,14 +23,14 @@ class Game {
 
     func add(entity: GKEntity) {
         entities.insert(entity)
-        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.node else {
+        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode else {
             return
         }
         scene.addChild(spriteNode)
     }
 
     func remove(entity: GKEntity) {
-        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.node else {
+        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode else {
             return
         }
         spriteNode.removeFromParent()
