@@ -22,6 +22,9 @@
 		A97F48B4241E89FB00BF5429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */; };
 		A97F48B5241E89FB00BF5429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */; };
 		A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */; };
+		A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B82420ECA900BF5429 /* GameActionQueue.swift */; };
+		A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48BB2420F3B600BF5429 /* Queue.swift */; };
+		A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48BD2420F46C00BF5429 /* FirebaseGame.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -93,6 +96,9 @@
 		A97F48B0241E87AC00BF5429 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
 		A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobby.swift; sourceTree = "<group>"; };
+		A97F48B82420ECA900BF5429 /* GameActionQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueue.swift; sourceTree = "<group>"; };
+		A97F48BB2420F3B600BF5429 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		A97F48BD2420F46C00BF5429 /* FirebaseGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGame.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +190,8 @@
 				A97F489F241CE9AB00BF5429 /* GameNetworking.swift */,
 				A97F48A4241E201700BF5429 /* FirebaseCodable.swift */,
 				A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */,
+				A97F48B82420ECA900BF5429 /* GameActionQueue.swift */,
+				A97F48BD2420F46C00BF5429 /* FirebaseGame.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -200,6 +208,14 @@
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
 			);
 			path = GameActions;
+			sourceTree = "<group>";
+		};
+		A97F48BA2420F3A900BF5429 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A97F48BB2420F3B600BF5429 /* Queue.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		BEB648FA241E5B5C002814D4 /* Controllers */ = {
@@ -257,6 +273,7 @@
 		F969C2B3241CB048002C004F /* Hive2D */ = {
 			isa = PBXGroup;
 			children = (
+				A97F48BA2420F3A900BF5429 /* Utilities */,
 				F969C2E4241F9147002C004F /* Game */,
 				BED086062420CAAF00AA9441 /* Models */,
 				BEB648FA241E5B5C002814D4 /* Controllers */,
@@ -491,6 +508,7 @@
 				A97F48B1241E87AC00BF5429 /* GameActionType.swift in Sources */,
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
+				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
 				F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */,
 				F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */,
 				F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */,
@@ -511,6 +529,7 @@
 				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
+				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
 				BED086082420CAC700AA9441 /* Lobby.swift in Sources */,
 				BED0860C2420CB2B00AA9441 /* LobbyPlayer.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
@@ -520,6 +539,7 @@
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
 				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
+				A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,

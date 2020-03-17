@@ -8,9 +8,10 @@
 
 protocol GameNetworking {
     var gameId: String { get set }
-    func sendGameAction(_: GameAction) -> String
-    func getActionsFrom(id: String) -> [GameAction]
-    func getActionsFrom(id: String, limit: Int) -> [GameAction]
-    func getActionsAfter(id: String) -> [GameAction]
-    func getActionsAfter(id: String, limit: Int) -> [GameAction]
+    var gameActionQueue: GameActionQueue { get }
+    func sendGameAction(_: GameAction)
+//    func getActionsFrom(id: String) -> [GameAction]
+//    func getActionsFrom(id: String, limit: Int) -> [GameAction]
+//    func getActionsAfter(id: String) -> [GameAction]
+//    func getActionsAfter(id: String, limit: Int) -> [GameAction]
 }
