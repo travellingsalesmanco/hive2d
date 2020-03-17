@@ -9,7 +9,7 @@
 import Firebase
 
 class FirebaseLobby: LobbyNetworking {
-    var lobbyDelegate: LobbyNetworkingDelegate?
+    weak var lobbyDelegate: LobbyNetworkingDelegate?
     var lobbyHandle: DatabaseHandle?
     var lobbyRef: DatabaseReference?
     private static let ref = Database.database().reference().child("games")

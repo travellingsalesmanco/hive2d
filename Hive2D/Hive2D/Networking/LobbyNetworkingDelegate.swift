@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LobbyNetworkingDelegate {
+protocol LobbyNetworkingDelegate: AnyObject {
     func lobbyCreated(lobby: Lobby)
     func lobbyCreationFailed()
     func lobbyJoined(lobby: Lobby)
