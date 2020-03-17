@@ -33,11 +33,6 @@ class LobbyViewController: UIViewController {
         refreshPlayerList()
     }
 
-    func createLobby() {
-        let host = LobbyPlayer(name: "Adam the host")
-        lobby = lobbyNetworking.createLobby(host: host)
-    }
-
     @IBAction func returnToMainView(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
@@ -59,6 +54,10 @@ class LobbyViewController: UIViewController {
         }
     }
 
+    func initLobby(lobby: Lobby) {
+        self.lobby = lobby
+    }
+
     private func refreshPlayerList() {
         lobby?.players.enumerated().forEach { (arg) in
             let (index, element) = arg
@@ -66,7 +65,7 @@ class LobbyViewController: UIViewController {
         }
 
         for index in (lobby?.players.count ?? 0) ..< playerList.count {
-            playerList[index].text = "Nobody :("
+            playerList[index].text = Constants.LobbyMessages.noPlayer
         }
     }
 
@@ -76,7 +75,28 @@ class LobbyViewController: UIViewController {
 }
 
 extension LobbyViewController: LobbyNetworkingDelegate {
+    func lobbyCreated(lobby: Lobby) {
+        return
+    }
+
+    func lobbyCreationFailed() {
+        return
+    }
+
+    func lobbyJoined(lobby: Lobby) {
+        return
+    }
+
+    func lobbyJoinFailed() {
+        return
+    }
+
     func lobbyDidUpdate(lobby: Lobby) {
+        self.lobby = lobby
+        refreshPlayerList()
+    }
+
+    func lobbyUpdateFailed() {
         return
     }
 

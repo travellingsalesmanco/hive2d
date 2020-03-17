@@ -13,5 +13,5 @@ protocol LobbyNetworking {
     func createLobby(host: LobbyPlayer)
     func updateLobby(_: Lobby)
     func start()
-    func joinLobby(id: String)
+    func joinLobby(id: String, player: LobbyPlayer)
 }

@@ -61,7 +61,8 @@ class FirebaseLobby: LobbyNetworking {
         lobbyRef.child("started").setValue(true)
     }
     
-    func joinLobby(id: String) {
+    func joinLobby(id: String, player: LobbyPlayer) {
+        // TODO: add new player to lobby
         lobbyRef = FirebaseLobby.ref.child(id)
         lobbyRef?.observeSingleEvent(of: .value, with: { [weak self] (lobbySnapshot) in
             guard let self = self else {

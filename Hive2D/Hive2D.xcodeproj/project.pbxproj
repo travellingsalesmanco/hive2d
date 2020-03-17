@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */; };
 		A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */; };
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
 		A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489F241CE9AB00BF5429 /* GameNetworking.swift */; };
@@ -18,9 +19,6 @@
 		A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AC241E310D00BF5429 /* QuitGameAction.swift */; };
 		A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AE241E316900BF5429 /* StartGameAction.swift */; };
 		A97F48B1241E87AC00BF5429 /* GameActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B0241E87AC00BF5429 /* GameActionType.swift */; };
-		A97F48B3241E89FB00BF5429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */; };
-		A97F48B4241E89FB00BF5429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */; };
-		A97F48B5241E89FB00BF5429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */; };
 		A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */; };
 		A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B82420ECA900BF5429 /* GameActionQueue.swift */; };
 		A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48BB2420F3B600BF5429 /* Queue.swift */; };
@@ -33,7 +31,8 @@
 		BED086082420CAC700AA9441 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489D241CE2A500BF5429 /* Lobby.swift */; };
 		BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED086092420CAEA00AA9441 /* LobbySettings.swift */; };
 		BED0860C2420CB2B00AA9441 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860B2420CB2B00AA9441 /* LobbyPlayer.swift */; };
-		EB637EB6147AB3DDA15C1528 /* libPods-Hive2D.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */; };
+		BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */; };
+		BED08610242118D900AA9441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860F242118D900AA9441 /* Constants.swift */; };
 		F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B4241CB048002C004F /* AppDelegate.swift */; };
 		F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B6241CB048002C004F /* SceneDelegate.swift */; };
 		F969C2B9241CB048002C004F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B8241CB048002C004F /* ViewController.swift */; };
@@ -79,8 +78,8 @@
 
 /* Begin PBXFileReference section */
 		17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
-		17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hive2D.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
+		84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworking.swift; sourceTree = "<group>"; };
 		A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworkingDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +93,6 @@
 		A97F48AC241E310D00BF5429 /* QuitGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitGameAction.swift; sourceTree = "<group>"; };
 		A97F48AE241E316900BF5429 /* StartGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameAction.swift; sourceTree = "<group>"; };
 		A97F48B0241E87AC00BF5429 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
-		A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobby.swift; sourceTree = "<group>"; };
 		A97F48B82420ECA900BF5429 /* GameActionQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueue.swift; sourceTree = "<group>"; };
 		A97F48BB2420F3B600BF5429 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -107,6 +105,8 @@
 		BEB648FD241E8221002814D4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BED086092420CAEA00AA9441 /* LobbySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettings.swift; sourceTree = "<group>"; };
 		BED0860B2420CB2B00AA9441 /* LobbyPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
+		BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameModalViewController.swift; sourceTree = "<group>"; };
+		BED0860F242118D900AA9441 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F969C2B1241CB048002C004F /* Hive2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969C2B4241CB048002C004F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969C2B6241CB048002C004F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB637EB6147AB3DDA15C1528 /* libPods-Hive2D.a in Frameworks */,
+				4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 		8D306B5D7DF75E1883903F88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */,
+				84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +226,7 @@
 				BEB648FD241E8221002814D4 /* GameViewController.swift */,
 				BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */,
 				BE706852241F7D390060CC59 /* SettingsModalViewController.swift */,
+				BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,12 +278,12 @@
 				F969C2E4241F9147002C004F /* Game */,
 				BED086062420CAAF00AA9441 /* Models */,
 				BEB648FA241E5B5C002814D4 /* Controllers */,
-				A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */,
 				A97F48A1241E171B00BF5429 /* GameActions */,
 				A97F4898241CE07400BF5429 /* Networking */,
 				F969C2B4241CB048002C004F /* AppDelegate.swift */,
 				F969C2B6241CB048002C004F /* SceneDelegate.swift */,
 				F969C2B8241CB048002C004F /* ViewController.swift */,
+				BED0860F242118D900AA9441 /* Constants.swift */,
 				F969C2BA241CB048002C004F /* Main.storyboard */,
 				F969C2BD241CB04A002C004F /* Assets.xcassets */,
 				F969C2BF241CB04A002C004F /* LaunchScreen.storyboard */,
@@ -357,6 +358,7 @@
 				F969C2AD241CB048002C004F /* Sources */,
 				F969C2AE241CB048002C004F /* Frameworks */,
 				F969C2AF241CB048002C004F /* Resources */,
+				795916B9CB2F66B84F39F399 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -452,7 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F969C2C1241CB04A002C004F /* LaunchScreen.storyboard in Resources */,
-				A97F48B3241E89FB00BF5429 /* GoogleService-Info.plist in Resources */,
 				F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */,
 				F969C2BE241CB04A002C004F /* Assets.xcassets in Resources */,
 				F969C2BC241CB048002C004F /* Main.storyboard in Resources */,
@@ -463,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97F48B4241E89FB00BF5429 /* GoogleService-Info.plist in Resources */,
 				F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,7 +472,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97F48B5241E89FB00BF5429 /* GoogleService-Info.plist in Resources */,
 				F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +495,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		795916B9CB2F66B84F39F399 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hive2D/Pods-Hive2D-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hive2D/Pods-Hive2D-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hive2D/Pods-Hive2D-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -529,6 +545,7 @@
 				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
+				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
 				BED086082420CAC700AA9441 /* Lobby.swift in Sources */,
 				BED0860C2420CB2B00AA9441 /* LobbyPlayer.swift in Sources */,
@@ -541,6 +558,7 @@
 				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
 				A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
+				BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,

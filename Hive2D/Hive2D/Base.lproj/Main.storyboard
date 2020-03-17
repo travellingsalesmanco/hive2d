@@ -47,7 +47,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Doc-CK-fOP" kind="show" identifier="mainToLobby" id="Hst-Su-bdd"/>
+                                                    <action selector="createLobby:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k7o-X9-bUB"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -66,7 +66,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="par-ZQ-ESB" kind="presentation" modalPresentationStyle="overCurrentContext" id="9cw-1e-RuO"/>
+                                                    <action selector="joinGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HN1-ZX-iMS"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -120,7 +120,7 @@
         <!--Join Game Modal View Controller-->
         <scene sceneID="sUC-HC-oMt">
             <objects>
-                <viewController id="par-ZQ-ESB" customClass="JoinGameModalViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinGameModal" id="par-ZQ-ESB" customClass="JoinGameModalViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BUo-61-jUg">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,18 +219,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOU-MQ-0dT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-581" y="870"/>
+            <point key="canvasLocation" x="-423" y="870"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="XHh-eK-LWO">
             <objects>
-                <viewController id="Doc-CK-fOP" userLabel="Lobby View Controller" customClass="LobbyViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LobbyViewController" id="Doc-CK-fOP" userLabel="Lobby View Controller" customClass="LobbyViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E9z-aa-bfy">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-j8-tIa">
-                                <rect key="frame" x="68.5" y="66" width="1229" height="922"/>
+                                <rect key="frame" x="68.5" y="41" width="1229" height="922"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AAc-PQ-EaH" userLabel="Settings">
                                         <rect key="frame" x="0.0" y="184.5" width="614.5" height="553"/>
@@ -555,7 +555,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZn-D7-jNq" userLabel="Back button">
-                                <rect key="frame" x="17" y="66" width="51.5" height="51.5"/>
+                                <rect key="frame" x="17" y="41" width="51.5" height="51.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FZn-D7-jNq" secondAttribute="height" multiplier="1:1" id="TZ6-gx-j8w"/>
                                 </constraints>
@@ -723,14 +723,14 @@
             <objects>
                 <viewController id="g04-pG-JMP" customClass="GameViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AqU-GV-WnQ">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMz-Lg-HBC" userLabel="Game Area">
-                                <rect key="frame" x="0.0" y="15" width="1366" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-N9-T7p">
-                                <rect key="frame" x="634.5" y="506" width="97" height="42"/>
+                                <rect key="frame" x="307.5" y="471" width="97" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -755,6 +755,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qC-wx-fQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1427" y="94"/>
+        </scene>
+        <!--Choose Name Modal View Controller-->
+        <scene sceneID="fbR-L9-gkH">
+            <objects>
+                <viewController storyboardIdentifier="ChooseNameModal" id="Tus-Op-DPV" customClass="ChooseNameModalViewController" customModule="Hive2D" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HpU-D5-QAO">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJZ-Kg-cNa" userLabel="ModalContainer">
+                                <rect key="frame" x="478" y="399.5" width="410" height="205"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0J-XY-HFq" userLabel="Title">
+                                        <rect key="frame" x="10.5" y="0.0" width="389" height="61.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your player name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LS-wb-e8B">
+                                                <rect key="frame" x="0.0" y="13" width="389" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="9LS-wb-e8B" firstAttribute="centerY" secondItem="J0J-XY-HFq" secondAttribute="centerY" id="P6M-bp-KQ7"/>
+                                            <constraint firstItem="9LS-wb-e8B" firstAttribute="centerX" secondItem="J0J-XY-HFq" secondAttribute="centerX" id="upF-1X-IZT"/>
+                                            <constraint firstItem="9LS-wb-e8B" firstAttribute="width" secondItem="J0J-XY-HFq" secondAttribute="width" id="ypl-2Z-VkZ"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAu-yJ-c5H" userLabel="BackButton">
+                                        <rect key="frame" x="367.5" y="15" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lAu-yJ-c5H" secondAttribute="height" multiplier="1:1" id="Ra1-kw-9cv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="xmark.circle" catalog="system">
+                                            <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleDismiss:" destination="Tus-Op-DPV" eventType="touchUpInside" id="S6O-mp-CSu"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUc-tv-pt2" userLabel="User Input">
+                                        <rect key="frame" x="0.0" y="61.5" width="410" height="82"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your preferred name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gph-X6-YlX">
+                                                <rect key="frame" x="20.5" y="8" width="369" height="66"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gph-X6-YlX" firstAttribute="centerY" secondItem="LUc-tv-pt2" secondAttribute="centerY" id="7qH-IA-1KR"/>
+                                            <constraint firstItem="gph-X6-YlX" firstAttribute="centerX" secondItem="LUc-tv-pt2" secondAttribute="centerX" id="Ls0-wL-uDW"/>
+                                            <constraint firstItem="gph-X6-YlX" firstAttribute="width" secondItem="LUc-tv-pt2" secondAttribute="width" multiplier="0.9" id="TSX-u0-SIZ"/>
+                                            <constraint firstItem="gph-X6-YlX" firstAttribute="height" secondItem="LUc-tv-pt2" secondAttribute="height" multiplier="0.8" id="ecV-aK-ndx"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9d-f3-gfq" userLabel="GoButton">
+                                        <rect key="frame" x="123" y="143.5" width="164" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="GO">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleSubmit:" destination="Tus-Op-DPV" eventType="touchUpInside" id="YwB-qN-9cV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="J0J-XY-HFq" firstAttribute="top" secondItem="bJZ-Kg-cNa" secondAttribute="top" id="0MQ-cy-y9n"/>
+                                    <constraint firstItem="C9d-f3-gfq" firstAttribute="centerX" secondItem="bJZ-Kg-cNa" secondAttribute="centerX" id="19y-da-Wyc"/>
+                                    <constraint firstItem="LUc-tv-pt2" firstAttribute="centerY" secondItem="bJZ-Kg-cNa" secondAttribute="centerY" id="4xi-fl-QU9"/>
+                                    <constraint firstItem="J0J-XY-HFq" firstAttribute="centerX" secondItem="bJZ-Kg-cNa" secondAttribute="centerX" id="6C0-tk-2b2"/>
+                                    <constraint firstItem="lAu-yJ-c5H" firstAttribute="centerY" secondItem="J0J-XY-HFq" secondAttribute="centerY" id="8g4-Pg-n9g"/>
+                                    <constraint firstItem="J0J-XY-HFq" firstAttribute="width" secondItem="bJZ-Kg-cNa" secondAttribute="width" multiplier="0.95" id="D26-zu-gzu"/>
+                                    <constraint firstItem="LUc-tv-pt2" firstAttribute="height" secondItem="bJZ-Kg-cNa" secondAttribute="height" multiplier="0.4" id="PhI-Fs-w93"/>
+                                    <constraint firstItem="C9d-f3-gfq" firstAttribute="width" secondItem="bJZ-Kg-cNa" secondAttribute="width" multiplier="0.4" id="hza-Kt-YK0"/>
+                                    <constraint firstItem="J0J-XY-HFq" firstAttribute="height" secondItem="bJZ-Kg-cNa" secondAttribute="height" multiplier="0.3" id="jBa-So-Qp6"/>
+                                    <constraint firstItem="LUc-tv-pt2" firstAttribute="top" secondItem="J0J-XY-HFq" secondAttribute="bottom" id="jIh-cj-CxC"/>
+                                    <constraint firstItem="C9d-f3-gfq" firstAttribute="top" secondItem="LUc-tv-pt2" secondAttribute="bottom" id="ka0-Ai-g8B"/>
+                                    <constraint firstItem="lAu-yJ-c5H" firstAttribute="trailing" secondItem="J0J-XY-HFq" secondAttribute="trailing" id="uEy-7v-2fG"/>
+                                    <constraint firstItem="LUc-tv-pt2" firstAttribute="width" secondItem="bJZ-Kg-cNa" secondAttribute="width" id="wPM-P7-UTo"/>
+                                    <constraint firstItem="LUc-tv-pt2" firstAttribute="centerX" secondItem="bJZ-Kg-cNa" secondAttribute="centerX" id="xNK-gE-f60"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bJZ-Kg-cNa" firstAttribute="centerX" secondItem="CWH-lZ-QeG" secondAttribute="centerX" id="2Zj-3T-4sq"/>
+                            <constraint firstItem="bJZ-Kg-cNa" firstAttribute="width" secondItem="HpU-D5-QAO" secondAttribute="width" multiplier="0.3" id="9DF-Ka-GQz"/>
+                            <constraint firstItem="bJZ-Kg-cNa" firstAttribute="centerY" secondItem="CWH-lZ-QeG" secondAttribute="centerY" id="FIs-xI-94b"/>
+                            <constraint firstItem="bJZ-Kg-cNa" firstAttribute="height" secondItem="HpU-D5-QAO" secondAttribute="height" multiplier="0.2" id="qEI-aV-E7C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CWH-lZ-QeG"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerName" destination="gph-X6-YlX" id="Pow-lc-ym2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VMH-Ke-jGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1088.4333821376281" y="869.53125"/>
         </scene>
     </scenes>
     <resources>

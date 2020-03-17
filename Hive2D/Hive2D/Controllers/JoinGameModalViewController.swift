@@ -9,6 +9,7 @@
 import UIKit
 
 class JoinGameModalViewController: UIViewController {
+    weak var delegate: JoinGameModalDelegate?
     @IBOutlet weak var roomCode: UITextField!
 
     @IBAction func handleDismiss(_ sender: UIButton) {
@@ -16,6 +17,14 @@ class JoinGameModalViewController: UIViewController {
     }
 
     @IBAction func joinGame(_ sender: UIButton) {
+        guard let code = roomCode.text else {
+            return
+        }
         dismiss(animated: true, completion: nil)
+        delegate?.didJoinGame(roomCode: code)
     }
+}
+
+protocol JoinGameModalDelegate: AnyObject {
+    func didJoinGame(roomCode: String)
 }
