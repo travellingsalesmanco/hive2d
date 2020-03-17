@@ -14,4 +14,16 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "mainToLobby":
+            guard let lobbyVC = segue.destination as? LobbyViewController else {
+                return
+            }
+            lobbyVC.createLobby()
+        default:
+            break
+        }
+    }
 }

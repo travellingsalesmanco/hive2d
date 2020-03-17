@@ -17,9 +17,9 @@ class FirebaseLobby: LobbyNetworking {
     private var encoder = JSONEncoder()
     private var decoder = JSONDecoder()
     
-    func createLobby() -> Lobby? {
+    func createLobby(host: LobbyPlayer) -> Lobby? {
         let newLobbyRef = ref.childByAutoId()
-        let newLobby = Lobby()
+        let newLobby = Lobby(id: "0", code: "corona", host: host)
         guard let data = try? encoder.encode(newLobby) else {
             return nil
         }
@@ -29,7 +29,7 @@ class FirebaseLobby: LobbyNetworking {
         newLobbyRef.setValue(dataDict)
         lobbyRef = newLobbyRef
         lobbyHandle = lobbyRef?.observe(.value, with: handleLobbyUpdate(lobbySnapshot:))
-        return Lobby()
+        return newLobby
     }
     
     

@@ -9,17 +9,6 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-    enum MapSize {
-        case small
-        case medium
-        case large
-    }
-
-    enum ResourceRate {
-        case normal
-        case fast
-    }
-
     @IBOutlet weak var mapSizeSelector: UISegmentedControl!
     @IBOutlet weak var resourceRateSelector: UISegmentedControl!
     @IBOutlet weak var roomCode: UILabel!
@@ -27,15 +16,26 @@ class LobbyViewController: UIViewController {
 
     private var mapSize = MapSize.small
     private var resourceRate = ResourceRate.normal
-    // TODO: Player struct for other details e.g. isHost?
-    private var players = [String]()
+
+    private var lobbyNetworking: LobbyNetworking
+    private var lobby: Lobby?
+
+    required init?(coder aDecoder: NSCoder) {
+        lobbyNetworking = FirebaseLobby()
+        super.init(coder: aDecoder)
+        lobbyNetworking.lobbyDelegate = self
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: Replace when integrating
-        roomCode.text = "Corona"
-        players.append("Adam")
+
+        roomCode.text = lobby?.code
         refreshPlayerList()
+    }
+
+    func createLobby() {
+        let host = LobbyPlayer(name: "Adam the host")
+        lobby = lobbyNetworking.createLobby(host: host)
     }
 
     @IBAction func returnToMainView(_ sender: UIButton) {
@@ -60,17 +60,27 @@ class LobbyViewController: UIViewController {
     }
 
     private func refreshPlayerList() {
-        players.enumerated().forEach { (arg) in
+        lobby?.players.enumerated().forEach { (arg) in
             let (index, element) = arg
-            playerList[index].text = element
+            playerList[index].text = element.name
         }
 
-        for index in players.count ..< playerList.count {
+        for index in (lobby?.players.count ?? 0) ..< playerList.count {
             playerList[index].text = "Nobody :("
         }
     }
 
     @IBAction func startGame(_ sender: UIButton) {
         // Validation for min. number of players
+    }
+}
+
+extension LobbyViewController: LobbyNetworkingDelegate {
+    func lobbyDidUpdate(lobby: Lobby) {
+        return
+    }
+
+    func gameStarted() {
+        return
     }
 }
