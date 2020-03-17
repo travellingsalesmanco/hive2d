@@ -34,9 +34,13 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
 
 DEPENDENCIES:
   - Firebase/Database
+  - NVActivityIndicatorView
 
 SPEC REPOS:
   trunk:
@@ -51,6 +55,7 @@ SPEC REPOS:
     - GoogleUtilities
     - leveldb-library
     - nanopb
+    - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Firebase: d55ddb0e0bb3207166cddc028647833d8a1b5b6f
@@ -64,7 +69,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06eb53bb579efe7099152735900dd04bf09e7275
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
 
-PODFILE CHECKSUM: e6c4a813f61e14134566f84881954b9020a6e354
+PODFILE CHECKSUM: 8c4dd92d94473a81ce9d2c07103e9dbe9d8af8b2
 
 COCOAPODS: 1.9.0
