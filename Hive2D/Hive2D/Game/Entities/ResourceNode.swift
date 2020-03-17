@@ -14,8 +14,9 @@ class ResourceNode: GKEntity {
     let resourceCollector: ResourceCollectorComponent
 
     init(node: NodeComponent, player: PlayerComponent, resourceCollector: ResourceCollectorComponent) {
-        self.node = node
-        self.player = player
-        self.resourceCollector = resourceCollector
+        super.init()
+        addComponent(node)
+        addComponent(player)
+        addComponent(resourceCollector)
     }
 }

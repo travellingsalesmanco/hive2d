@@ -14,8 +14,9 @@ class CombatNode: GKEntity {
     let resourceConsumer: ResourceConsumerComponent
 
     init(node: NodeComponent, player: PlayerComponent, resourceConsumer: ResourceConsumerComponent) {
-        self.node = node
-        self.player = player
-        self.resourceConsumer = resourceConsumer
+        super.init()
+        addComponent(node)
+        addComponent(player)
+        addComponent(resourceConsumer)
     }
 }

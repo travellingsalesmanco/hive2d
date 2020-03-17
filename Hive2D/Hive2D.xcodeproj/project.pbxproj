@@ -50,6 +50,8 @@
 		F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F72420CEDC002C004F /* CombatNode.swift */; };
 		F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2F92420D0EB002C004F /* GameScene.swift */; };
 		F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FB2420D4FA002C004F /* GameConfig.swift */; };
+		F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FD2420D935002C004F /* ResourceComponent.swift */; };
+		F969C3002420D96F002C004F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FF2420D96F002C004F /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		17ECA08303F4B1F0AF8595DA /* libPods-Hive2D.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hive2D.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		A97F48B0241E87AC00BF5429 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
 		A97F48B2241E89FB00BF5429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobby.swift; sourceTree = "<group>"; };
+		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
 		BEB648F8241E5783002814D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		F969C2F72420CEDC002C004F /* CombatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatNode.swift; sourceTree = "<group>"; };
 		F969C2F92420D0EB002C004F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F969C2FB2420D4FA002C004F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		F969C2FD2420D935002C004F /* ResourceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceComponent.swift; sourceTree = "<group>"; };
+		F969C2FF2420D96F002C004F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,8 @@
 			children = (
 				A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */,
 				2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */,
+				17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */,
+				AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 				F969C2E7241F915E002C004F /* ResourceNode.swift */,
 				F969C2F72420CEDC002C004F /* CombatNode.swift */,
 				F969C2F5242073C6002C004F /* Hive.swift */,
+				F969C2FF2420D96F002C004F /* Player.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 				F969C2EF24205022002C004F /* ResourceConsumerComponent.swift */,
 				F969C2F124205032002C004F /* ResourceCollectorComponent.swift */,
 				F969C2F32420503F002C004F /* PlayerComponent.swift */,
+				F969C2FD2420D935002C004F /* ResourceComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -450,15 +460,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Hive2D-checkManifestLockResult.txt",
 			);
@@ -490,6 +496,7 @@
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
+				F969C3002420D96F002C004F /* Player.swift in Sources */,
 				BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */,
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,
@@ -504,6 +511,7 @@
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
+				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
@@ -680,7 +688,7 @@
 		};
 		F969C2DC241CB04A002C004F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */;
+			baseConfigurationReference = 17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -699,7 +707,7 @@
 		};
 		F969C2DD241CB04A002C004F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */;
+			baseConfigurationReference = AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,5 +1,5 @@
 //
-//  Hive.swift
+//  Player.swift
 //  Hive2D
 //
 //  Created by Adam Chew Yong Soon on 17/3/20.
@@ -8,13 +8,13 @@
 
 import GameplayKit
 
-class Hive: GKEntity {
-    let node: NodeComponent
+class Player: GKEntity {
     let player: PlayerComponent
+    let resource: ResourceComponent
 
-    init(node: NodeComponent, player: PlayerComponent) {
+    init(player: PlayerComponent, resource: ResourceComponent) {
         super.init()
-        addComponent(node)
         addComponent(player)
+        addComponent(resource)
     }
 }

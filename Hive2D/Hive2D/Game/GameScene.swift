@@ -10,14 +10,35 @@ import SpriteKit
 
 class GameScene: SKScene {
     let game: Game
+    let gameConfig: GameConfig
+    let gameNetworking: GameNetworking
+
+    init(gameConfig: GameConfig, gameNetworking: GameNetworking) {
+        self.game = Game(scene: self)
+        self.gameConfig = gameConfig
+        self.gameNetworking = gameNetworking
+        
+    }
 
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
-        game = Game(scene: self)
+        self.isUserInteractionEnabled = true
     }
 
+    /// Send game actions based on user interaction touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        <#code#>
+        guard let touch = touches.first else {
+            return
+        }
+        let location = touch.location(in: self)
+        if let firstNode = atPoint(location) {
+            // Do stuff based on SKSpriteNode that was touched
+            return
+        } else {
+            // Touched empty space, emit a build node action
+            // TODO: Provide Player and Location argument to BuildNodeAction
+            gameNetworking.sendGameAction(BuildNodeAction())
+        }
     }
 
     override func update(_ currentTime: TimeInterval) {

@@ -7,9 +7,10 @@
 //
 
 import GameplayKit
+import SpriteKit
 
 class Game {
-    var entities: [GKEntity] = [:]
+    var entities = Set<GKEntity>()
     var scene: SKScene
 
     init(scene: SKScene, config: GameConfig) {
@@ -22,5 +23,17 @@ class Game {
 
     func add(entity: GKEntity) {
         entities.insert(entity)
+        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.node else {
+            return
+        }
+        scene.addChild(spriteNode)
+    }
+
+    func remove(entity: GKEntity) {
+        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.node else {
+            return
+        }
+        spriteNode.removeFromParent()
+        entities.remove(entity)
     }
 }
