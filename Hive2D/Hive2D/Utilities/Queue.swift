@@ -54,6 +54,21 @@ class Queue<T> {
         }
         return targetNode?.val
     }
+    
+    /// Removes up to n elements from the head of the queue and return them.
+    /// - Returns: item at the head of the queue
+    func dequeue(upTo num: Int) -> [T] {
+        
+        var items: [T] = []
+        
+        for _ in 0..<num {
+            guard let nextItem = dequeue() else {
+                break
+            }
+            items.append(nextItem)
+        }
+        return items
+    }
 
     /// Returns, but does not remove, the element at the head of the queue.
     /// - Returns: item at the head of the queue

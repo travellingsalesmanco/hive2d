@@ -34,6 +34,12 @@ class GameActionQueue {
         }
     }
     
+    func dequeue(upTo num: Int) -> [GameAction] {
+        queue.sync {
+            self.actions.dequeue(upTo: num)
+        }
+    }
+    
     var count: Int {
         queue.sync {
             return self.actions.count
