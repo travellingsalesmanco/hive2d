@@ -102,10 +102,10 @@ class LobbyViewController: UIViewController {
     }
 
     @IBAction func startGame(_ sender: UIButton) {
-        // TODO: convert magic number to minPlayers constant
-        guard let lobby = lobby, lobby.players.count > 1 else {
-            return
-        }
+        // TODO: Uncomment to block 1 player games
+//        guard let lobby = lobby, lobby.players.count >= Constants.GameConfig.minPlayers else {
+//            return
+//        }
 
         lobbyNetworking?.start()
     }
@@ -124,6 +124,12 @@ extension LobbyViewController: LobbyNetworkingDelegate {
         guard let gameViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameViewController) as? GameViewController else {
             return
         }
+
+        guard let lobby = self.lobby else {
+            return
+        }
+
+        gameViewController.setGameConfig(lobby: lobby, gameNetworking: networking)
         self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 }

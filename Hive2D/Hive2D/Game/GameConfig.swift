@@ -6,7 +6,37 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
+import CoreGraphics
+
 struct GameConfig {
-    let resourceCollectionRate: Float
-    let resourceConsumptionRate: Float
+    let id: String
+    let host: GamePlayer
+    let players: [GamePlayer]
+    let mapSize: CGSize
+    let resourceCollectionRate: CGFloat
+    let resourceConsumptionRate: CGFloat
+
+    init(lobby: Lobby) {
+        self.id = lobby.id
+        self.host = lobby.host
+        self.players = lobby.players
+
+        switch lobby.settings.mapSize {
+        case .small:
+            self.mapSize = Constants.GameConfig.smallMapSize
+        case .medium:
+            self.mapSize = Constants.GameConfig.mediumMapSize
+        case .large:
+            self.mapSize = Constants.GameConfig.largeMapSize
+        }
+
+        switch lobby.settings.resourceRate {
+        case .normal:
+            self.resourceCollectionRate = Constants.GameConfig.normalResourceCollectionRate
+            self.resourceConsumptionRate = Constants.GameConfig.normalResourceConsumptionRate
+        case .fast:
+            self.resourceCollectionRate = Constants.GameConfig.fastResourceCollectionRate
+            self.resourceConsumptionRate = Constants.GameConfig.fastResourceConsumptionRate
+        }
+    }
 }

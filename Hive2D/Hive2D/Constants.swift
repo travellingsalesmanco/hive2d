@@ -23,6 +23,18 @@ struct Constants {
         static let noPlayer = "Nobody :("
     }
 
+    struct GameConfig {
+        static let minPlayers = 2
+        // TODO: Set values for all these configs
+        static let smallMapSize = CGSize.zero
+        static let mediumMapSize = CGSize.zero
+        static let largeMapSize = CGSize.zero
+        static let normalResourceCollectionRate = CGFloat.zero
+        static let normalResourceConsumptionRate = CGFloat.zero
+        static let fastResourceCollectionRate = CGFloat.zero
+        static let fastResourceConsumptionRate = CGFloat.zero
+    }
+
     struct GameBounds {
         static let gameBoundHeight = CGFloat(768)
         static let gameBoundWidth = CGFloat(1_024)
