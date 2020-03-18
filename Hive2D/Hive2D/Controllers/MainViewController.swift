@@ -10,19 +10,19 @@ import UIKit
 import NVActivityIndicatorView
 
 class MainViewController: UIViewController, NVActivityIndicatorViewable {
-    enum LobbyAction {
+    private enum LobbyAction {
         case create
         case join
     }
 
-    private var lobbyNetworking: LobbyFinder
+    private var lobbyFinder: LobbyFinder
     private var lobbyAction: LobbyAction = .create
     private var roomCode: String?
 
     required init?(coder aDecoder: NSCoder) {
-        lobbyNetworking = FirebaseLobbyFinder()
+        lobbyFinder = FirebaseLobbyFinder()
         super.init(coder: aDecoder)
-        lobbyNetworking.delegate = self
+        lobbyFinder.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,14 +77,14 @@ extension MainViewController: ChooseNameModalDelegate {
             startAnimating(message: Constants.LobbyMessages.createLobby,
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)
-            lobbyNetworking.createLobby(host: player)
+            lobbyFinder.createLobby(host: player)
         case .join:
             guard let roomCode = roomCode else { return }
             startAnimating(message: Constants.LobbyMessages.joinLobby,
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)
 
-            lobbyNetworking.joinLobby(id: roomCode, player: player)
+            lobbyFinder.joinLobby(id: roomCode, player: player)
         }
     }
 }
