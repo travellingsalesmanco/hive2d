@@ -15,14 +15,14 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         case join
     }
 
-    private var lobbyNetworking: LobbyNetworking
+    private var lobbyNetworking: LobbyFinder
     private var lobbyAction: LobbyAction = .create
     private var roomCode: String?
 
     required init?(coder aDecoder: NSCoder) {
-        lobbyNetworking = FirebaseLobby()
+        lobbyNetworking = FirebaseLobbyFinder()
         super.init(coder: aDecoder)
-        lobbyNetworking.lobbyDelegate = self
+        lobbyNetworking.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -96,34 +96,22 @@ extension MainViewController: JoinGameModalDelegate {
     }
 }
 
-extension MainViewController: LobbyNetworkingDelegate {
-    func lobbyCreated(lobby: Lobby) {
+extension MainViewController: LobbyFinderDelegate {
+    func lobbyCreated(lobby: Lobby, networking: LobbyNetworking) {
         stopAnimating()
-        pushLobbyViewController(lobby: lobby, lobbyNetworking: lobbyNetworking)
+        pushLobbyViewController(lobby: lobby, lobbyNetworking: networking)
     }
 
     func lobbyCreationFailed() {
         stopAnimating()
     }
 
-    func lobbyJoined(lobby: Lobby) {
+    func lobbyJoined(lobby: Lobby, networking: LobbyNetworking) {
         stopAnimating()
-        pushLobbyViewController(lobby: lobby, lobbyNetworking: lobbyNetworking)
+        pushLobbyViewController(lobby: lobby, lobbyNetworking: networking)
     }
 
     func lobbyJoinFailed() {
         stopAnimating()
-    }
-
-    func lobbyDidUpdate(lobby: Lobby) {
-        return
-    }
-
-    func lobbyUpdateFailed() {
-        return
-    }
-
-    func gameStarted() {
-        return
     }
 }

@@ -6,12 +6,8 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-import Foundation
-
 protocol LobbyNetworking {
-    var lobbyDelegate: LobbyNetworkingDelegate? { get set }
-    func createLobby(host: LobbyPlayer)
+    var delegate: LobbyNetworkingDelegate? { get set }
     func updateLobby(_: Lobby)
     func start()
-    func joinLobby(id: String, player: LobbyPlayer)
 }

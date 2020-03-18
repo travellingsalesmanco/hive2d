@@ -17,24 +17,28 @@ class LobbyViewController: UIViewController {
     private var mapSize = MapSize.small
     private var resourceRate = ResourceRate.normal
 
-    private var lobbyNetworking: LobbyNetworking
+    private var lobbyNetworking: LobbyNetworking?
     private var lobby: Lobby?
 
     required init?(coder aDecoder: NSCoder) {
-        lobbyNetworking = FirebaseLobby()
         super.init(coder: aDecoder)
-        lobbyNetworking.lobbyDelegate = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshLobby()
     }
+    
+    // Remove reference for lobby objects when out of view
+    override func viewDidDisappear(_ animated: Bool) {
+        lobbyNetworking = nil
+        lobby = nil
+    }
 
     func initLobby(lobby: Lobby, lobbyNetworking: LobbyNetworking) {
         self.lobby = lobby
         self.lobbyNetworking = lobbyNetworking
-        self.lobbyNetworking.lobbyDelegate = self
+        self.lobbyNetworking?.delegate = self
     }
 
     @IBAction func returnToMainView(_ sender: UIButton) {
@@ -53,7 +57,7 @@ class LobbyViewController: UIViewController {
         default: break
         }
 
-        lobbyNetworking.updateLobby(lobby)
+        lobbyNetworking?.updateLobby(lobby)
     }
 
     @IBAction func selectResourceRate(_ sender: UISegmentedControl) {
@@ -67,7 +71,7 @@ class LobbyViewController: UIViewController {
         default: break
         }
 
-        lobbyNetworking.updateLobby(lobby)
+        lobbyNetworking?.updateLobby(lobby)
     }
 
     private func refreshLobby() {
@@ -98,27 +102,11 @@ class LobbyViewController: UIViewController {
             return
         }
 
-        lobbyNetworking.start()
+        lobbyNetworking?.start()
     }
 }
 
 extension LobbyViewController: LobbyNetworkingDelegate {
-    func lobbyCreated(lobby: Lobby) {
-        return
-    }
-
-    func lobbyCreationFailed() {
-        return
-    }
-
-    func lobbyJoined(lobby: Lobby) {
-        return
-    }
-
-    func lobbyJoinFailed() {
-        return
-    }
-
     func lobbyDidUpdate(lobby: Lobby) {
         self.lobby = lobby
         refreshLobby()
