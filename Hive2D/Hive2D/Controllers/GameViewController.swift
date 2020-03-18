@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet weak var gameArea: UIView!
+    @IBOutlet private var gameArea: UIView!
     var gameConfig: GameConfig!
     var gameNetworking: GameNetworking!
 
@@ -24,7 +24,10 @@ class GameViewController: UIViewController {
         let scene = GameScene(gameConfig: gameConfig,
                               gameNetworking: gameNetworking,
                               size: CGSize(width: boundWidth, height: boundHeight))
-        let skView = self.gameArea as! SKView
+        guard let skView = self.gameArea as? SKView else {
+            return
+        }
+
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true

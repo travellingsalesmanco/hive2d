@@ -10,13 +10,13 @@ import UIKit
 
 class ChooseNameModalViewController: UIViewController {
     weak var delegate: ChooseNameModalDelegate?
-    @IBOutlet weak var playerName: UITextField!
+    @IBOutlet private var playerName: UITextField!
 
-    @IBAction func handleDismiss(_ sender: UIButton) {
+    @IBAction private func handleDismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func handleSubmit(_ sender: UIButton) {
+    @IBAction private func handleSubmit(_ sender: UIButton) {
         guard let name = playerName.text else {
             return
         }

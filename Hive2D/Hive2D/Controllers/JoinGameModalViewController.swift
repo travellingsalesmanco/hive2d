@@ -10,13 +10,13 @@ import UIKit
 
 class JoinGameModalViewController: UIViewController {
     weak var delegate: JoinGameModalDelegate?
-    @IBOutlet weak var roomCode: UITextField!
+    @IBOutlet private var roomCode: UITextField!
 
-    @IBAction func handleDismiss(_ sender: UIButton) {
+    @IBAction private func handleDismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func joinGame(_ sender: UIButton) {
+    @IBAction private func joinGame(_ sender: UIButton) {
         guard let code = roomCode.text else {
             return
         }

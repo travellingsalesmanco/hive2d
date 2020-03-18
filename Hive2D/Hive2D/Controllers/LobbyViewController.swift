@@ -9,10 +9,10 @@
 import UIKit
 
 class LobbyViewController: UIViewController {
-    @IBOutlet weak var mapSizeSelector: UISegmentedControl!
-    @IBOutlet weak var resourceRateSelector: UISegmentedControl!
-    @IBOutlet weak var roomCode: UILabel!
-    @IBOutlet var playerList: [UILabel]!
+    @IBOutlet private var mapSizeSelector: UISegmentedControl!
+    @IBOutlet private var resourceRateSelector: UISegmentedControl!
+    @IBOutlet private var roomCode: UILabel!
+    @IBOutlet private var playerList: [UILabel]!
 
     private var mapSize = MapSize.small
     private var resourceRate = ResourceRate.normal
@@ -31,6 +31,7 @@ class LobbyViewController: UIViewController {
 
     // Remove reference for lobby objects when out of view
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         lobbyNetworking = nil
         lobby = nil
     }
@@ -41,34 +42,41 @@ class LobbyViewController: UIViewController {
         self.lobbyNetworking?.delegate = self
     }
 
-    @IBAction func returnToMainView(_ sender: UIButton) {
+    @IBAction private func returnToMainView(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
 
-    @IBAction func selectMapSize(_ sender: UISegmentedControl) {
+    @IBAction private func selectMapSize(_ sender: UISegmentedControl) {
         guard var lobby = lobby else {
             return
         }
 
         switch mapSizeSelector.selectedSegmentIndex {
-        case 0: lobby.settings.mapSize = .small
-        case 1: lobby.settings.mapSize = .medium
-        case 2: lobby.settings.mapSize = .large
-        default: break
+        case 0:
+            lobby.settings.mapSize = .small
+        case 1:
+            lobby.settings.mapSize = .medium
+        case 2:
+            lobby.settings.mapSize = .large
+        default:
+            break
         }
 
         lobbyNetworking?.updateLobby(lobby)
     }
 
-    @IBAction func selectResourceRate(_ sender: UISegmentedControl) {
+    @IBAction private func selectResourceRate(_ sender: UISegmentedControl) {
         guard var lobby = lobby else {
             return
         }
 
         switch resourceRateSelector.selectedSegmentIndex {
-        case 0: lobby.settings.resourceRate = .normal
-        case 1: lobby.settings.resourceRate = .fast
-        default: break
+        case 0:
+            lobby.settings.resourceRate = .normal
+        case 1:
+            lobby.settings.resourceRate = .fast
+        default:
+            break
         }
 
         lobbyNetworking?.updateLobby(lobby)
@@ -101,7 +109,7 @@ class LobbyViewController: UIViewController {
         }
     }
 
-    @IBAction func startGame(_ sender: UIButton) {
+    @IBAction private func startGame(_ sender: UIButton) {
         // TODO: Uncomment to block 1 player games
 //        guard let lobby = lobby, lobby.players.count >= Constants.GameConfig.minPlayers else {
 //            return
@@ -121,7 +129,8 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     }
 
     func gameStarted(lobby: Lobby, networking: GameNetworking) {
-        guard let gameViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameViewController) as? GameViewController else {
+        let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameVC)
+        guard let gameViewController = viewController as? GameViewController else {
             return
         }
 

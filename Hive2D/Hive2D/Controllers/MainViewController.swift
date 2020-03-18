@@ -30,18 +30,19 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    @IBAction func createLobby(_ sender: UIButton) {
+    @IBAction private func createLobby(_ sender: UIButton) {
         lobbyAction = .create
         presentChooseNameModal()
     }
 
-    @IBAction func joinGame(_ sender: UIButton) {
+    @IBAction private func joinGame(_ sender: UIButton) {
         lobbyAction = .join
         presentJoinGameModal()
     }
 
     private func presentChooseNameModal() {
-        guard let chooseNameModal = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.chooseNameModal) as? ChooseNameModalViewController else {
+        let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.chooseNameModal)
+        guard let chooseNameModal = viewController as? ChooseNameModalViewController else {
             return
         }
 
@@ -51,7 +52,8 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
     }
 
     private func presentJoinGameModal() {
-        guard let joinGameModal = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.joinGameModal) as? JoinGameModalViewController else {
+        let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.joinGameModal)
+        guard let joinGameModal = viewController as? JoinGameModalViewController else {
             return
         }
 
@@ -61,7 +63,8 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
     }
 
     private func pushLobbyViewController(lobby: Lobby, lobbyNetworking: LobbyNetworking) {
-        guard let lobbyViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.lobbyViewController) as? LobbyViewController else {
+        let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.lobbyVC)
+        guard let lobbyViewController = viewController as? LobbyViewController else {
             return
         }
         lobbyViewController.initLobby(lobby: lobby, lobbyNetworking: lobbyNetworking)
@@ -79,7 +82,9 @@ extension MainViewController: ChooseNameModalDelegate {
                            type: .ballClipRotateMultiple)
             lobbyFinder.createLobby(host: player)
         case .join:
-            guard let roomCode = roomCode else { return }
+            guard let roomCode = roomCode else {
+                return
+            }
             startAnimating(message: Constants.LobbyMessages.joinLobby,
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)

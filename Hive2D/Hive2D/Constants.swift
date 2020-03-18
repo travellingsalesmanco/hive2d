@@ -12,8 +12,8 @@ struct Constants {
     struct StoryBoardIds {
         static let chooseNameModal = "ChooseNameModal"
         static let joinGameModal = "JoinGameModal"
-        static let lobbyViewController = "LobbyViewController"
-        static let gameViewController = "GameViewController"
+        static let lobbyVC = "LobbyViewController"
+        static let gameVC = "GameViewController"
     }
 
     struct LobbyMessages {
