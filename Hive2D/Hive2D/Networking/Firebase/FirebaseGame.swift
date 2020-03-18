@@ -9,12 +9,10 @@
 import Firebase
 
 class FirebaseGame: GameNetworking {
-    var gameId: String
     private(set) var gameActionQueue: GameActionQueue
     private let gameRef: DatabaseReference
     private var gameHandle: DatabaseHandle?
     init(gameId: String) {
-        self.gameId = gameId
         gameActionQueue = GameActionQueue(gameId: gameId)
         gameRef = FirebaseConstants.gameRef.child(gameId)
         gameHandle = gameRef.observe(.childAdded, with: { [weak self] snapshot in

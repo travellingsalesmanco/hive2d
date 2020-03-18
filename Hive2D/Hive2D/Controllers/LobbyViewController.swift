@@ -120,7 +120,7 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     func lobbyUpdateFailed() {
     }
 
-    func gameStarted() {
+    func gameStarted(lobby: Lobby, networking: GameNetworking) {
         guard let gameViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameViewController) as? GameViewController else {
             return
         }

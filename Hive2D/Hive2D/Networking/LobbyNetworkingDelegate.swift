@@ -9,5 +9,5 @@
 protocol LobbyNetworkingDelegate: AnyObject {
     func lobbyDidUpdate(lobby: Lobby)
     func lobbyUpdateFailed()
-    func gameStarted()
+    func gameStarted(lobby: Lobby, networking: GameNetworking)
 }

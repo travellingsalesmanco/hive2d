@@ -59,7 +59,8 @@ class FirebaseLobby: LobbyNetworking {
         }
 
         if lobby.started {
-            delegate?.gameStarted()
+            let gameNetworking = FirebaseGame(gameId: lobby.id)
+            delegate?.gameStarted(lobby: lobby, networking: gameNetworking)
         } else {
             delegate?.lobbyDidUpdate(lobby: lobby)
         }
