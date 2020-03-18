@@ -11,8 +11,8 @@ import Firebase
 
 class GameActionQueue {
     private let queue = DispatchQueue(label: "tsco.Hive2D.gameActionQueue", attributes: .concurrent)
-    var gameId: String
-    var actions: Queue<GameAction>
+    private(set) var gameId: String
+    private var actions: Queue<GameAction>
 
     init(gameId: String) {
         self.gameId = gameId
