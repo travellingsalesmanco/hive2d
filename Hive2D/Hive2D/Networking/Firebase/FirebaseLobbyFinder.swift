@@ -19,7 +19,7 @@ class FirebaseLobbyFinder: LobbyFinder {
         }
 
         // TODO: handle unique code gen
-        let newLobby = Lobby(id: key, code: "12345", host: host)
+        let newLobby = Lobby(id: key, host: host)
         let dataDict = FirebaseCodable<Lobby>.toDict(newLobby)
         newLobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
             guard let self = self else {
@@ -30,13 +30,14 @@ class FirebaseLobbyFinder: LobbyFinder {
             } else {
                 let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: host.id.uuidString)
                 self.delegate?.lobbyCreated(lobby: newLobby, networking: lobbyNetworking)
+                FirebaseHelper.setLobbyCode(for: newLobbyRef)
             }
         })
     }
 
-    func joinLobby(id: String, player: GamePlayer) {
-        let lobbyRef = FirebaseConstants.lobbyRef.child(id)
-        lobbyRef.observeSingleEvent(of: .value, with: { [weak self] lobbySnapshot in
+    func joinLobby(code: String, player: GamePlayer) {
+        let lobbyRef = FirebaseConstants.queryLobbyByCode(code: code)
+        lobbyRef.observeSingleEvent(of: .childAdded, with: { [weak self] lobbySnapshot in
             guard let self = self else {
                 return
             }
@@ -45,7 +46,7 @@ class FirebaseLobbyFinder: LobbyFinder {
                 return
             }
             let dataDict = FirebaseCodable<Lobby>.toDict(joinedLobby)
-            let lobbyRef = FirebaseConstants.lobbyRef.child(id)
+            let lobbyRef = FirebaseConstants.lobbyRef.child(joinedLobby.id)
             lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
                 guard let self = self else {
                     return

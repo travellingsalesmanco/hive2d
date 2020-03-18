@@ -11,15 +11,14 @@ import Foundation
 struct Lobby: Codable {
     var id: String
     // Code to join room
-    var code: String
+    var code: String = "????"
     var host: GamePlayer
     var players: [String: GamePlayer]
     var settings: LobbySettings
     var started: Bool = false
 
-    init(id: String, code: String, host: GamePlayer) {
+    init(id: String, host: GamePlayer) {
         self.id = id
-        self.code = code
         self.host = host
         self.players = [host.id.uuidString: host]
         self.settings = LobbySettings()

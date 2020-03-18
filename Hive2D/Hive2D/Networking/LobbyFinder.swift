@@ -9,5 +9,5 @@
 protocol LobbyFinder {
     var delegate: LobbyFinderDelegate? { get set }
     func createLobby(host: GamePlayer)
-    func joinLobby(id: String, player: GamePlayer)
+    func joinLobby(code: String, player: GamePlayer)
 }

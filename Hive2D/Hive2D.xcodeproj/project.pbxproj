@@ -27,6 +27,7 @@
 		A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C12422206100BF5429 /* LobbyFinderDelegate.swift */; };
 		A97F48C52422213D00BF5429 /* FirebaseLobbyFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C42422213D00BF5429 /* FirebaseLobbyFinder.swift */; };
 		A97F48C72422218700BF5429 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C62422218700BF5429 /* FirebaseConstants.swift */; };
+		A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C8242299B700BF5429 /* FirebaseHelper.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -105,6 +106,7 @@
 		A97F48C12422206100BF5429 /* LobbyFinderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyFinderDelegate.swift; sourceTree = "<group>"; };
 		A97F48C42422213D00BF5429 /* FirebaseLobbyFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobbyFinder.swift; sourceTree = "<group>"; };
 		A97F48C62422218700BF5429 /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
+		A97F48C8242299B700BF5429 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				A97F48BD2420F46C00BF5429 /* FirebaseGame.swift */,
 				A97F48A4241E201700BF5429 /* FirebaseCodable.swift */,
 				A97F48C62422218700BF5429 /* FirebaseConstants.swift */,
+				A97F48C8242299B700BF5429 /* FirebaseHelper.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
+				A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */,
 				F969C3002420D96F002C004F /* Player.swift in Sources */,
 				BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */,
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,

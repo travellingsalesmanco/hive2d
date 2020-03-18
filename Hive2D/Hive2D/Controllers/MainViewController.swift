@@ -89,7 +89,7 @@ extension MainViewController: ChooseNameModalDelegate {
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)
 
-            lobbyFinder.joinLobby(id: roomCode, player: player)
+            lobbyFinder.joinLobby(code: roomCode, player: player)
         }
     }
 }

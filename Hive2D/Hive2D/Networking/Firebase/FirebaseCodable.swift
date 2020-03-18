@@ -20,7 +20,6 @@ struct FirebaseCodable<T: Codable> {
         guard let lobbyData = try? JSONSerialization.data(withJSONObject: data, options: []) else {
             return nil
         }
-
         return try? JSONDecoder().decode(T.self, from: lobbyData)
     }
 }
