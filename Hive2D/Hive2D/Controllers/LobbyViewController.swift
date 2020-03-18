@@ -78,6 +78,11 @@ class LobbyViewController: UIViewController {
         guard let lobby = lobby else {
             return
         }
+        
+        // Checks that view is loaded before attempting to refresh
+        if !isViewLoaded {
+            return
+        }
 
         roomCode.text = lobby.code
         mapSizeSelector.selectedSegmentIndex = lobby.settings.mapSize.rawValue
