@@ -22,7 +22,10 @@ struct Constants {
         static let joinLobby = "Joining game lobby..."
         static let noPlayer = "Nobody :("
     }
+
+    struct GameBounds {
+        static let gameBoundHeight = CGFloat(768)
+        static let gameBoundWidth = CGFloat(1024)
+    }
 }
 
-    static let gameBoundHeight = CGFloat(768)
-    static let gameBoundWidth = CGFloat(1024)
