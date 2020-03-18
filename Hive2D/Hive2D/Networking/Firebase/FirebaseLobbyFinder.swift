@@ -41,6 +41,12 @@ class FirebaseLobbyFinder: LobbyFinder {
             guard let self = self else {
                 return
             }
+            
+            if !lobbySnapshot.exists() {
+                self.delegate?.lobbyJoinFailed()
+                return
+            }
+            
             let lobbyDict = lobbySnapshot.value as Any
             guard var lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
                 self.delegate?.lobbyJoinFailed()
