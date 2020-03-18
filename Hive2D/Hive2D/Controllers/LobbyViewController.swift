@@ -99,7 +99,7 @@ class LobbyViewController: UIViewController {
     }
 
     private func refreshPlayerList() {
-        lobby?.players.enumerated().forEach { arg in
+        lobby?.players.values.enumerated().forEach { arg in
             let (index, element) = arg
             playerList[index].text = element.name
         }

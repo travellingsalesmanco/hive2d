@@ -12,9 +12,13 @@ class FirebaseLobby: LobbyNetworking {
     weak var delegate: LobbyNetworkingDelegate?
     private var lobbyHandle: DatabaseHandle?
     private var lobbyRef: DatabaseReference
+    // Used to handle presence in lobby
+    private var playerLobbyRef: DatabaseReference
 
-    init(lobbyRef: DatabaseReference) {
+    init(lobbyRef: DatabaseReference, playerId: String) {
         self.lobbyRef = lobbyRef
+        playerLobbyRef = FirebaseConstants.playerLobbyRef(ofLobby: lobbyRef, for: playerId)
+        playerLobbyRef.onDisconnectRemoveValue()
         lobbyHandle = lobbyRef.observe(.value, with: { [weak self] snapshot in
             guard let self = self else {
                 return
@@ -28,6 +32,8 @@ class FirebaseLobby: LobbyNetworking {
             return
         }
         lobbyRef.removeObserver(withHandle: lobbyHandle)
+        playerLobbyRef.cancelDisconnectOperations()
+        playerLobbyRef.removeValue()
     }
 
     func updateLobby(_ updatedLobby: Lobby) {

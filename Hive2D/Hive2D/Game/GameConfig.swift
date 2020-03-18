@@ -19,7 +19,7 @@ struct GameConfig {
     init(lobby: Lobby) {
         self.id = lobby.id
         self.host = lobby.host
-        self.players = lobby.players
+        self.players = Array(lobby.players.values)
 
         switch lobby.settings.mapSize {
         case .small:

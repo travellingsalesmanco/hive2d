@@ -13,7 +13,7 @@ struct Lobby: Codable {
     // Code to join room
     var code: String
     var host: GamePlayer
-    var players: [GamePlayer]
+    var players: [String: GamePlayer]
     var settings: LobbySettings
     var started: Bool = false
 
@@ -21,7 +21,7 @@ struct Lobby: Codable {
         self.id = id
         self.code = code
         self.host = host
-        self.players = [host]
+        self.players = [host.id.uuidString: host]
         self.settings = LobbySettings()
     }
 }

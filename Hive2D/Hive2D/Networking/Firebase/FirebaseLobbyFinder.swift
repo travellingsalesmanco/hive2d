@@ -28,38 +28,24 @@ class FirebaseLobbyFinder: LobbyFinder {
             if error != nil {
                 self.delegate?.lobbyCreationFailed()
             } else {
-                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef)
+                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: host.id.uuidString)
                 self.delegate?.lobbyCreated(lobby: newLobby, networking: lobbyNetworking)
             }
         })
     }
 
     func joinLobby(id: String, player: GamePlayer) {
-        // TODO: add new player to lobby
         let lobbyRef = FirebaseConstants.lobbyRef.child(id)
         lobbyRef.observeSingleEvent(of: .value, with: { [weak self] lobbySnapshot in
             guard let self = self else {
                 return
             }
-            
-            if !lobbySnapshot.exists() {
+            guard let joinedLobby = self.joinLobby(lobbySnapshot: lobbySnapshot, player: player) else {
                 self.delegate?.lobbyJoinFailed()
                 return
             }
-            
-            let lobbyDict = lobbySnapshot.value as Any
-            guard var lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
-                self.delegate?.lobbyJoinFailed()
-                return
-            }
-
-            if lobby.started {
-                self.delegate?.lobbyJoinFailed()
-                return
-            }
-
-            lobby.players.append(player)
-            let dataDict = FirebaseCodable<Lobby>.toDict(lobby)
+            let dataDict = FirebaseCodable<Lobby>.toDict(joinedLobby)
+            let lobbyRef = FirebaseConstants.lobbyRef.child(id)
             lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
                 guard let self = self else {
                     return
@@ -67,11 +53,30 @@ class FirebaseLobbyFinder: LobbyFinder {
                 if error != nil {
                     self.delegate?.lobbyJoinFailed()
                 } else {
-                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef)
-                    self.delegate?.lobbyJoined(lobby: lobby, networking: lobbyNetworking)
+                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: player.id.uuidString)
+                    self.delegate?.lobbyJoined(lobby: joinedLobby, networking: lobbyNetworking)
                 }
             })
-
         })
+    }
+
+    private func joinLobby(lobbySnapshot: DataSnapshot, player: GamePlayer) -> Lobby? {
+        if !lobbySnapshot.exists() {
+            delegate?.lobbyJoinFailed()
+            return nil
+        }
+
+        let lobbyDict = lobbySnapshot.value as Any
+        guard var lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
+            return nil
+        }
+
+        if lobby.started {
+            return nil
+        }
+
+        // TODO: possibly make this a method on Lobby
+        lobby.players[player.id.uuidString] = player
+        return lobby
     }
 }
