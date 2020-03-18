@@ -15,15 +15,18 @@ class FirebaseLobby: LobbyNetworking {
     
     init(lobbyRef: DatabaseReference) {
         self.lobbyRef = lobbyRef
-        lobbyHandle = lobbyRef.observe(.value, with: handleLobbyUpdate(lobbySnapshot:))
-        print("CREATE")
+        lobbyHandle = lobbyRef.observe(.value, with: { [weak self] snapshot in
+            guard let self = self else {
+                return
+            }
+            self.handleLobbyUpdate(lobbySnapshot: snapshot)
+        })
     }
     
     deinit {
         guard let lobbyHandle = lobbyHandle else {
             return
         }
-        print("DEINIT PREV")
         lobbyRef.removeObserver(withHandle: lobbyHandle)
     }
     
