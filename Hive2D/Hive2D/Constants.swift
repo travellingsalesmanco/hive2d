@@ -23,3 +23,6 @@ struct Constants {
         static let noPlayer = "Nobody :("
     }
 }
+
+    static let gameBoundHeight = CGFloat(768)
+    static let gameBoundWidth = CGFloat(1024)

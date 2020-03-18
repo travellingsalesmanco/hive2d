@@ -9,9 +9,15 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    let game: Game!
-    let gameConfig: GameConfig!
+    var game: Game!
+    let gameConfig: GameConfig
     let gameNetworking: GameNetworking!
+
+    init(gameConfig: GameConfig, gameNetworking: GameNetworking, size: CGSize) {
+        self.gameConfig = gameConfig
+        self.gameNetworking = gameNetworking
+        super.init(size: size)
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -19,6 +25,7 @@ class GameScene: SKScene {
 
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
+        self.game = Game(scene: self, config: gameConfig)
         self.isUserInteractionEnabled = true
     }
 
