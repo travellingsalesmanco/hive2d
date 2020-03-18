@@ -6,6 +6,5 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct QuitGameAction: GameAction {
-    let type: GameActionType = .QuitGame
+struct QuitGameAction: Codable {
 }

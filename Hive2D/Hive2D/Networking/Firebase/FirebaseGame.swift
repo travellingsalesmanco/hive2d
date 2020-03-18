@@ -10,18 +10,44 @@ import Firebase
 
 class FirebaseGame: GameNetworking {
     var gameId: String
-
     private(set) var gameActionQueue: GameActionQueue
-//    private let gameRef: DatabaseReference
-
+    private let gameRef: DatabaseReference
+    private var gameHandle: DatabaseHandle?
     init(gameId: String) {
         self.gameId = gameId
         gameActionQueue = GameActionQueue(gameId: gameId)
-        // TODO: add firebase listener to grab actions
+        gameRef = FirebaseConstants.gameRef.child(gameId)
+        gameHandle = gameRef.observe(.childAdded, with: { [weak self] snapshot in
+            guard let self = self else {
+                return
+            }
+            self.handleAddAction(actionSnapshot: snapshot)
+        })
     }
 
-    func sendGameAction(_: GameAction) {
-        // TODO: send to firebase
-        return
+    deinit {
+        guard let gameHandle = gameHandle else {
+            return
+        }
+        gameRef.removeObserver(withHandle: gameHandle)
+    }
+
+    func sendGameAction(_ action: GameAction) {
+
+        let newActionRef = gameRef.childByAutoId()
+
+        let dataDict = FirebaseCodable<GameAction>.toDict(action)
+        newActionRef.setValue(dataDict)
+    }
+
+    private func handleAddAction(actionSnapshot: DataSnapshot) {
+        let actionDict = actionSnapshot.value as Any
+
+        // Add to queue if action is successfully decoded
+        guard let action = FirebaseCodable<GameAction>.fromDict(actionDict) else {
+            return
+        }
+
+        self.gameActionQueue.enqueue(action: action)
     }
 }

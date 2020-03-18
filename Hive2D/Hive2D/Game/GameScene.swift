@@ -42,7 +42,7 @@ class GameScene: SKScene {
         } else {
             // Touched empty space, emit a build node action
             // TODO: Provide Player and Location argument to BuildNodeAction
-            gameNetworking.sendGameAction(BuildNodeAction())
+            gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction()))
         }
     }
 

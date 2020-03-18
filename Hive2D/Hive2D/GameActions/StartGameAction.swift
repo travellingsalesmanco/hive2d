@@ -6,6 +6,5 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct StartGameAction: GameAction {
-    let type: GameActionType = .StartGame
+struct StartGameAction: Codable {
 }

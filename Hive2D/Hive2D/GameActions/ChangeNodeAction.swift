@@ -6,6 +6,5 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct ChangeNodeAction: GameAction {
-    let type: GameActionType = .ChangeNode
+struct ChangeNodeAction: Codable {
 }
