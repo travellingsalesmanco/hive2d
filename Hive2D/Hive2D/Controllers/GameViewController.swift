@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let boundHeight = view.bounds.size.height
-        let scaleFactor = boundHeight / Constants.gameBoundHeight
+        let scaleFactor = boundHeight / Constants.GameBounds.gameBoundHeight
         let boundWidth = view.bounds.size.width * scaleFactor
 
         let scene = GameScene(gameConfig: gameConfig,
