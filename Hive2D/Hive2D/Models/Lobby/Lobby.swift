@@ -12,12 +12,12 @@ struct Lobby: Codable {
     var id: String
     // Code to join room
     var code: String
-    var host: LobbyPlayer
-    var players: [LobbyPlayer]
+    var host: GamePlayer
+    var players: [GamePlayer]
     var settings: LobbySettings
     var started: Bool = false
 
-    init(id: String, code: String, host: LobbyPlayer) {
+    init(id: String, code: String, host: GamePlayer) {
         self.id = id
         self.code = code
         self.host = host

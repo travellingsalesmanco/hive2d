@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LobbyPlayer: Codable {
+struct GamePlayer: Codable {
     var id: UUID
     // Display name of player
     var name: String

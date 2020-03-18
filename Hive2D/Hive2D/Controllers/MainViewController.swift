@@ -71,7 +71,7 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
 
 extension MainViewController: ChooseNameModalDelegate {
     func didSubmit(name: String) {
-        let player = LobbyPlayer(name: name)
+        let player = GamePlayer(name: name)
         switch lobbyAction {
         case .create:
             startAnimating(message: Constants.LobbyMessages.createLobby,

@@ -34,7 +34,7 @@
 		BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648FD241E8221002814D4 /* GameViewController.swift */; };
 		BED086082420CAC700AA9441 /* Lobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489D241CE2A500BF5429 /* Lobby.swift */; };
 		BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED086092420CAEA00AA9441 /* LobbySettings.swift */; };
-		BED0860C2420CB2B00AA9441 /* LobbyPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860B2420CB2B00AA9441 /* LobbyPlayer.swift */; };
+		BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860B2420CB2B00AA9441 /* GamePlayer.swift */; };
 		BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */; };
 		BED08610242118D900AA9441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860F242118D900AA9441 /* Constants.swift */; };
 		F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B4241CB048002C004F /* AppDelegate.swift */; };
@@ -112,7 +112,7 @@
 		BEB648FB241E5BF3002814D4 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		BEB648FD241E8221002814D4 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		BED086092420CAEA00AA9441 /* LobbySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbySettings.swift; sourceTree = "<group>"; };
-		BED0860B2420CB2B00AA9441 /* LobbyPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyPlayer.swift; sourceTree = "<group>"; };
+		BED0860B2420CB2B00AA9441 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameModalViewController.swift; sourceTree = "<group>"; };
 		BED0860F242118D900AA9441 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F969C2B1241CB048002C004F /* Hive2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,7 +264,7 @@
 			children = (
 				A97F489D241CE2A500BF5429 /* Lobby.swift */,
 				BED086092420CAEA00AA9441 /* LobbySettings.swift */,
-				BED0860B2420CB2B00AA9441 /* LobbyPlayer.swift */,
+				BED0860B2420CB2B00AA9441 /* GamePlayer.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -571,7 +571,7 @@
 				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
 				BED086082420CAC700AA9441 /* Lobby.swift in Sources */,
-				BED0860C2420CB2B00AA9441 /* LobbyPlayer.swift in Sources */,
+				BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
 				F969C2EE24205018002C004F /* NodeComponent.swift in Sources */,
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,

@@ -11,7 +11,7 @@ import Firebase
 class FirebaseLobbyFinder: LobbyFinder {
     weak var delegate: LobbyFinderDelegate?
 
-    func createLobby(host: LobbyPlayer) {
+    func createLobby(host: GamePlayer) {
         let newLobbyRef = FirebaseConstants.lobbyRef.childByAutoId()
         guard let key = newLobbyRef.key else {
             delegate?.lobbyCreationFailed()
@@ -34,7 +34,7 @@ class FirebaseLobbyFinder: LobbyFinder {
         })
     }
 
-    func joinLobby(id: String, player: LobbyPlayer) {
+    func joinLobby(id: String, player: GamePlayer) {
         // TODO: add new player to lobby
         let lobbyRef = FirebaseConstants.lobbyRef.child(id)
         lobbyRef.observeSingleEvent(of: .value, with: { [weak self] lobbySnapshot in
