@@ -10,18 +10,18 @@ import Firebase
 
 class FirebaseLobbyFinder: LobbyFinder {
     weak var delegate: LobbyFinderDelegate?
-    
+
     func createLobby(host: LobbyPlayer) {
         let newLobbyRef = FirebaseConstants.lobbyRef.childByAutoId()
         guard let key = newLobbyRef.key else {
             delegate?.lobbyCreationFailed()
             return
         }
-        
+
         // TODO: handle unique code gen
         let newLobby = Lobby(id: key, code: "12345", host: host)
         let dataDict = FirebaseCodable<Lobby>.toDict(newLobby)
-        newLobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] (error, ref) in
+        newLobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
             guard let self = self else {
                 return
             }
@@ -33,11 +33,11 @@ class FirebaseLobbyFinder: LobbyFinder {
             }
         })
     }
-    
+
     func joinLobby(id: String, player: LobbyPlayer) {
         // TODO: add new player to lobby
         let lobbyRef = FirebaseConstants.lobbyRef.child(id)
-        lobbyRef.observeSingleEvent(of: .value, with: { [weak self] (lobbySnapshot) in
+        lobbyRef.observeSingleEvent(of: .value, with: { [weak self] lobbySnapshot in
             guard let self = self else {
                 return
             }
@@ -46,15 +46,15 @@ class FirebaseLobbyFinder: LobbyFinder {
                 self.delegate?.lobbyJoinFailed()
                 return
             }
-            
+
             if lobby.started {
                 self.delegate?.lobbyJoinFailed()
                 return
             }
-            
+
             lobby.players.append(player)
             let dataDict = FirebaseCodable<Lobby>.toDict(lobby)
-            lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] (error, ref) in
+            lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
                 guard let self = self else {
                     return
                 }
@@ -65,7 +65,6 @@ class FirebaseLobbyFinder: LobbyFinder {
                     self.delegate?.lobbyJoined(lobby: lobby, networking: lobbyNetworking)
                 }
             })
-            
 
         })
     }

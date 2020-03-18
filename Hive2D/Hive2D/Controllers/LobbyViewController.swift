@@ -28,7 +28,7 @@ class LobbyViewController: UIViewController {
         super.viewDidLoad()
         refreshLobby()
     }
-    
+
     // Remove reference for lobby objects when out of view
     override func viewDidDisappear(_ animated: Bool) {
         lobbyNetworking = nil
@@ -78,7 +78,7 @@ class LobbyViewController: UIViewController {
         guard let lobby = lobby else {
             return
         }
-        
+
         // Checks that view is loaded before attempting to refresh
         if !isViewLoaded {
             return
@@ -91,7 +91,7 @@ class LobbyViewController: UIViewController {
     }
 
     private func refreshPlayerList() {
-        lobby?.players.enumerated().forEach { (arg) in
+        lobby?.players.enumerated().forEach { arg in
             let (index, element) = arg
             playerList[index].text = element.name
         }
@@ -118,8 +118,7 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     }
 
     func lobbyUpdateFailed() {
-        return
-    }
+        }
 
     func gameStarted() {
         guard let gameViewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameViewController) as? GameViewController else {

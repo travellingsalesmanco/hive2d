@@ -16,7 +16,7 @@ class CombatNode: GKEntity {
         addComponent(player)
         addComponent(resourceConsumer)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -12,7 +12,7 @@ class FirebaseLobby: LobbyNetworking {
     weak var delegate: LobbyNetworkingDelegate?
     private var lobbyHandle: DatabaseHandle?
     private var lobbyRef: DatabaseReference
-    
+
     init(lobbyRef: DatabaseReference) {
         self.lobbyRef = lobbyRef
         lobbyHandle = lobbyRef.observe(.value, with: { [weak self] snapshot in
@@ -22,23 +22,23 @@ class FirebaseLobby: LobbyNetworking {
             self.handleLobbyUpdate(lobbySnapshot: snapshot)
         })
     }
-    
+
     deinit {
         guard let lobbyHandle = lobbyHandle else {
             return
         }
         lobbyRef.removeObserver(withHandle: lobbyHandle)
     }
-    
+
     func updateLobby(_ updatedLobby: Lobby) {
         // Check that lobby is same as current lobby ref
         if lobbyRef.key != updatedLobby.id {
             delegate?.lobbyUpdateFailed()
             return
         }
-        
+
         let dataDict = FirebaseCodable<Lobby>.toDict(updatedLobby)
-        lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] (error , ref) in
+        lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
             guard let self = self else {
                 return
             }
@@ -47,21 +47,20 @@ class FirebaseLobby: LobbyNetworking {
             }
         })
     }
-    
+
     func start() {
         FirebaseConstants.startRef(ofLobby: lobbyRef).setValue(true)
     }
-    
+
     private func handleLobbyUpdate(lobbySnapshot: DataSnapshot) {
         let lobbyDict = lobbySnapshot.value as Any
         guard let lobby = FirebaseCodable<Lobby>.fromDict(lobbyDict) else {
             return
         }
-        
+
         if lobby.started {
             delegate?.gameStarted()
-        }
-        else {
+        } else {
             delegate?.lobbyDidUpdate(lobby: lobby)
         }
     }

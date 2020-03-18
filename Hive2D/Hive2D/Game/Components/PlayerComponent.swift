@@ -15,7 +15,7 @@ class PlayerComponent: GKComponent {
         self.id = id
         super.init()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -25,7 +25,6 @@ struct Constants {
 
     struct GameBounds {
         static let gameBoundHeight = CGFloat(768)
-        static let gameBoundWidth = CGFloat(1024)
+        static let gameBoundWidth = CGFloat(1_024)
     }
 }
-

@@ -13,6 +13,6 @@ struct FirebaseConstants {
     static let gameRef = Database.database().reference().child("game")
     // Depends on how Lobby struct is defined
     static func startRef(ofLobby: DatabaseReference) -> DatabaseReference {
-        return lobbyRef.child("started")
+        lobbyRef.child("started")
     }
 }

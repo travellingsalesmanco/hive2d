@@ -9,5 +9,5 @@
 import GameplayKit
 
 class ResourceCollectorComponent: GKComponent {
-    
+
 }

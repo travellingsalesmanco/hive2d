@@ -15,12 +15,12 @@ struct FirebaseCodable<T: Codable> {
         }
         return try? JSONSerialization.jsonObject(with: data, options: [])
     }
-    
+
     static func fromDict(_ data: Any) -> T? {
         guard let lobbyData = try? JSONSerialization.data(withJSONObject: data, options: []) else {
             return nil
         }
-        
+
         return try? JSONDecoder().decode(T.self, from: lobbyData)
     }
 }

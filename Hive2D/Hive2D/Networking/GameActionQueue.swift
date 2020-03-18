@@ -13,12 +13,12 @@ class GameActionQueue {
     private let queue = DispatchQueue(label: "tsco.Hive2D.gameActionQueue", attributes: .concurrent)
     var gameId: String
     var actions: Queue<GameAction>
-    
+
     init(gameId: String) {
         self.gameId = gameId
         actions = Queue<GameAction>()
     }
-    
+
     func enqueue(action: GameAction) {
         queue.async(flags: .barrier) { [weak self] in
             guard let self = self else {
@@ -27,24 +27,23 @@ class GameActionQueue {
             self.actions.enqueue(action)
         }
     }
-    
+
     func dequeue() -> GameAction? {
         queue.sync {
-            return self.actions.dequeue()
+            self.actions.dequeue()
         }
     }
-    
+
     func dequeue(upTo num: Int) -> [GameAction] {
         queue.sync {
             self.actions.dequeue(upTo: num)
         }
     }
-    
+
     var count: Int {
         queue.sync {
-            return self.actions.count
+            self.actions.count
         }
     }
-    
-    
+
 }
