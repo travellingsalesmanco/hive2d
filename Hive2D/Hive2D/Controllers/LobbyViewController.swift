@@ -100,6 +100,9 @@ class LobbyViewController: UIViewController {
             return
         }
 
+        startGameButton.isEnabled = lobby.gameCanStart()
+        startGameButton.alpha = startGameButton.isEnabled
+            ? Constants.UI.buttonEnabledAlpha : Constants.UI.buttonDisabledAlpha
         roomCode.text = lobby.code
         mapSizeSelector.selectedSegmentIndex = lobby.settings.mapSize.rawValue
         resourceRateSelector.selectedSegmentIndex = lobby.settings.resourceRate.rawValue
@@ -118,10 +121,9 @@ class LobbyViewController: UIViewController {
     }
 
     @IBAction private func startGame(_ sender: UIButton) {
-        // TODO: Uncomment to block 1 player games
-//        guard let lobby = lobby, lobby.players.count >= Constants.GameConfig.minPlayers else {
-//            return
-//        }
+        guard let lobby = lobby, lobby.gameCanStart() else {
+            return
+        }
 
         lobbyNetworking?.start()
     }
@@ -137,7 +139,6 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     }
 
     func gameStarted(lobby: Lobby, networking: GameNetworking) {
-        print("I AM CALLED")
         let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameVC)
         guard let gameViewController = viewController as? GameViewController else {
             return

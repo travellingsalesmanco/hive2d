@@ -28,6 +28,10 @@ struct Lobby: Codable {
         return host.id == playerId
     }
 
+    func gameCanStart() -> Bool {
+        return players.count >= Constants.GameConfig.minPlayers
+    }
+
     mutating func addPlayer(player: GamePlayer) {
         guard players[player.id] == nil else {
             return

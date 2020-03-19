@@ -16,6 +16,11 @@ struct Constants {
         static let gameVC = "GameViewController"
     }
 
+    struct UI {
+        static let buttonEnabledAlpha = CGFloat(1.0)
+        static let buttonDisabledAlpha = CGFloat(0.5)
+    }
+
     struct LobbyMessages {
         static let fontSize = UIFont.systemFont(ofSize: 30)
         static let createLobby = "Creating game lobby..."
