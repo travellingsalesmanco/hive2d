@@ -16,6 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install SwiftLint
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+      run: brew install swiftlint
     - name: Cache dependencies
       uses: actions/cache@v1
       with:
@@ -39,5 +43,7 @@ jobs:
         xcodebuild clean test -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
-    - name: SwiftLint
-      uses: norio-nomura/action-swiftlint@3.1.0
+   - name: Run SwiftLint
+      run: |
+        cd Hive2D
+        swiftlint lint --reporter github-actions-logging
