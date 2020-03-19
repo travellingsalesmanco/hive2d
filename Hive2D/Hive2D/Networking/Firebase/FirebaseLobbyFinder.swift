@@ -37,11 +37,11 @@ class FirebaseLobbyFinder: LobbyFinder {
 
     func joinLobby(code: String, player: GamePlayer) {
         let lobbyRef = FirebaseConstants.queryLobbyByCode(code: code)
-        lobbyRef.observeSingleEvent(of: .childAdded, with: { [weak self] lobbySnapshot in
+        lobbyRef.observeSingleEvent(of: .value, with: { [weak self] resultsSnapshot in
             guard let self = self else {
                 return
             }
-            guard let joinedLobby = self.joinLobby(lobbySnapshot: lobbySnapshot, player: player) else {
+            guard let joinedLobby = self.joinLobby(snapshot: resultsSnapshot, player: player) else {
                 self.delegate?.lobbyJoinFailed()
                 return
             }
@@ -61,10 +61,10 @@ class FirebaseLobbyFinder: LobbyFinder {
         })
     }
 
-    private func joinLobby(lobbySnapshot: DataSnapshot, player: GamePlayer) -> Lobby? {
-        if !lobbySnapshot.exists() {
-            delegate?.lobbyJoinFailed()
-            return nil
+    private func joinLobby(snapshot: DataSnapshot, player: GamePlayer) -> Lobby? {
+
+        guard let lobbySnapshot = snapshot.children.nextObject() as? DataSnapshot else {
+             return nil
         }
 
         let lobbyDict = lobbySnapshot.value as Any
