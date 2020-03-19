@@ -34,8 +34,8 @@ class GameScene: SKScene {
         guard let touch = touches.first else {
             return
         }
-        let location = touch.location(in: self)
-        let firstNode = atPoint(location)
+        let position = touch.location(in: self)
+        let firstNode = atPoint(position)
         if firstNode != self {
             // Do stuff based on SKSpriteNode that was touched
             return
@@ -43,6 +43,8 @@ class GameScene: SKScene {
             // Touched empty space, emit a build node action
             // TODO: Provide Player and Location argument to BuildNodeAction
             gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction(playerId: 1, position: CGPoint())))
+//            gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction()))
+            game.buildResourceNode(position: position)
         }
     }
 

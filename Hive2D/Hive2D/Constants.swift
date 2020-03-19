@@ -44,4 +44,24 @@ struct Constants {
         static let gameBoundHeight = CGFloat(768)
         static let gameBoundWidth = CGFloat(1_024)
     }
+
+    struct GamePlay {
+        static let initialPlayerResource = 100
+
+        struct NodeImages {
+            struct Player1 {
+                static let node = "peg-blue"
+                static let hive = "peg-blue-glow"
+            }
+            struct Player2 {
+
+            }
+            struct Player3 {
+
+            }
+            struct Player4 {
+
+            }
+        }
+    }
 }

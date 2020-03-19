@@ -9,5 +9,14 @@
 import GameplayKit
 
 class ResourceCollectorComponent: GKComponent {
+    var resourceCollectionRate: CGFloat
 
+    init(resourceCollectionRate: CGFloat) {
+        self.resourceCollectionRate = resourceCollectionRate
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

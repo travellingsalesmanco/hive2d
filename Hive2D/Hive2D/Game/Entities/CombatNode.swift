@@ -10,8 +10,10 @@ import GameplayKit
 
 class CombatNode: GKEntity {
 
-    init(node: NodeComponent, player: PlayerComponent, resourceConsumer: ResourceConsumerComponent) {
+    init(sprite: SpriteComponent, node: NodeComponent,
+         player: PlayerComponent, resourceConsumer: ResourceConsumerComponent) {
         super.init()
+        addComponent(sprite)
         addComponent(node)
         addComponent(player)
         addComponent(resourceConsumer)

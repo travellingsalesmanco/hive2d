@@ -12,7 +12,9 @@ class ResourceNode: GKEntity {
 
     init(node: NodeComponent, player: PlayerComponent, resourceCollector: ResourceCollectorComponent,
          network: NetworkComponent) {
+    init(sprite: SpriteComponent, node: NodeComponent, player: PlayerComponent, resourceCollector: ResourceCollectorComponent) {
         super.init()
+        addComponent(sprite)
         addComponent(node)
         addComponent(player)
         addComponent(resourceCollector)
