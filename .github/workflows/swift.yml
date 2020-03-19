@@ -43,7 +43,7 @@ jobs:
         xcodebuild clean test -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
-   - name: Run SwiftLint
+    - name: Run SwiftLint
       run: |
         cd Hive2D
         swiftlint lint --reporter github-actions-logging
