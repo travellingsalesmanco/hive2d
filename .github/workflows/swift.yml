@@ -34,13 +34,13 @@ jobs:
     - name: Build
       run: |
         cd Hive2D
-        xcodebuild clean build -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
+        xcodebuild build-for-testing -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
     - name: Run tests
       run: |
         cd Hive2D
-        xcodebuild clean test -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
+        xcodebuild test-without-building -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
     - name: Run SwiftLint
