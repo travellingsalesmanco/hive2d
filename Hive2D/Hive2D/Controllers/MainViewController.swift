@@ -15,14 +15,18 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         case join
     }
 
+    private var userAuth: UserAuth
     private var lobbyFinder: LobbyFinder
     private var lobbyAction: LobbyAction = .create
     private var roomCode: String?
 
     required init?(coder aDecoder: NSCoder) {
         lobbyFinder = FirebaseLobbyFinder()
+        userAuth = FirebaseUserAuth()
         super.init(coder: aDecoder)
+
         lobbyFinder.delegate = self
+        userAuth.logIn()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +78,11 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
 
 extension MainViewController: ChooseNameModalDelegate {
     func didSubmit(name: String) {
-        let player = GamePlayer(name: name)
+        guard let playerId = UserAuthState.shared.get() else {
+            return
+        }
+
+        let player = GamePlayer(name: name, id: playerId)
         switch lobbyAction {
         case .create:
             startAnimating(message: Constants.LobbyMessages.createLobby,

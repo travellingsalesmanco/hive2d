@@ -585,6 +585,7 @@
                         <outlet property="mapSizeSelector" destination="X0Y-fE-ecD" id="Gyf-Q5-ARs"/>
                         <outlet property="resourceRateSelector" destination="STk-tC-f0l" id="pbq-zS-hAI"/>
                         <outlet property="roomCode" destination="SUQ-0j-xn5" id="aC4-kb-6Pa"/>
+                        <outlet property="startGameButton" destination="saD-Dc-Wdo" id="xNg-uq-AKQ"/>
                         <outletCollection property="playerList" destination="sPC-SH-TQG" collectionClass="NSMutableArray" id="6Jq-dx-I9K"/>
                         <outletCollection property="playerList" destination="YOR-Vc-ylN" collectionClass="NSMutableArray" id="wJN-o1-pdG"/>
                         <outletCollection property="playerList" destination="V8F-sI-7XZ" collectionClass="NSMutableArray" id="7Ii-3L-8pS"/>

@@ -20,7 +20,25 @@ struct Lobby: Codable {
     init(id: String, host: GamePlayer) {
         self.id = id
         self.host = host
-        self.players = [host.id.uuidString: host]
+        self.players = [host.id: host]
         self.settings = LobbySettings()
+    }
+
+    func isHost(playerId: String) -> Bool {
+        return host.id == playerId
+    }
+
+    mutating func addPlayer(player: GamePlayer) {
+        guard players[player.id] == nil else {
+            return
+        }
+        self.players[player.id] = player
+    }
+
+    mutating func removePlayer(player: GamePlayer) {
+        guard players[player.id] != nil else {
+            return
+        }
+        self.players.removeValue(forKey: player.id)
     }
 }

@@ -28,7 +28,7 @@ class FirebaseLobbyFinder: LobbyFinder {
             if error != nil {
                 self.delegate?.lobbyCreationFailed()
             } else {
-                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: host.id.uuidString)
+                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: host.id)
                 self.delegate?.lobbyCreated(lobby: newLobby, networking: lobbyNetworking)
                 FirebaseHelper.setLobbyCode(for: newLobbyRef)
             }
@@ -54,7 +54,7 @@ class FirebaseLobbyFinder: LobbyFinder {
                 if error != nil {
                     self.delegate?.lobbyJoinFailed()
                 } else {
-                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: player.id.uuidString)
+                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: player.id)
                     self.delegate?.lobbyJoined(lobby: joinedLobby, networking: lobbyNetworking)
                 }
             })
@@ -76,8 +76,7 @@ class FirebaseLobbyFinder: LobbyFinder {
             return nil
         }
 
-        // TODO: possibly make this a method on Lobby
-        lobby.players[player.id.uuidString] = player
+        lobby.addPlayer(player: player)
         return lobby
     }
 }

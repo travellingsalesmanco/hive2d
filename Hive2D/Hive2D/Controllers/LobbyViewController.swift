@@ -13,19 +13,27 @@ class LobbyViewController: UIViewController {
     @IBOutlet private var resourceRateSelector: UISegmentedControl!
     @IBOutlet private var roomCode: UILabel!
     @IBOutlet private var playerList: [UILabel]!
+    @IBOutlet private var startGameButton: UIButton!
 
     private var mapSize = MapSize.small
     private var resourceRate = ResourceRate.normal
 
     private var lobbyNetworking: LobbyNetworking?
     private var lobby: Lobby?
+    private var ownId: String?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.ownId = UserAuthState.shared.get()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let ownId = self.ownId else {
+            return
+        }
+        let isHost = lobby?.isHost(playerId: ownId) ?? false
+        startGameButton.isHidden = !isHost
         refreshLobby()
     }
 
@@ -129,6 +137,7 @@ extension LobbyViewController: LobbyNetworkingDelegate {
     }
 
     func gameStarted(lobby: Lobby, networking: GameNetworking) {
+        print("I AM CALLED")
         let viewController = storyboard?.instantiateViewController(identifier: Constants.StoryBoardIds.gameVC)
         guard let gameViewController = viewController as? GameViewController else {
             return

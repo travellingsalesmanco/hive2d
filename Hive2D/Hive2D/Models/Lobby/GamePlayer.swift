@@ -9,12 +9,12 @@
 import Foundation
 
 struct GamePlayer: Codable {
-    var id: UUID
+    var id: String
     // Display name of player
     var name: String
 
-    init(name: String) {
-        self.id = UUID()
+    init(name: String, id: String) {
+        self.id = id
         self.name = name
     }
 }
