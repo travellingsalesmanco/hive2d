@@ -11,8 +11,6 @@ import FirebaseAuth
 class FirebaseUserAuth: UserAuth {
     weak var delegate: UserAuthDelegate?
 
-    static var userId: String?
-
     func logIn() {
         Auth.auth().signInAnonymously { [weak self] authResult, _ in
             guard let self = self else {

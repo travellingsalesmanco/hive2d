@@ -8,8 +8,6 @@
 
 protocol UserAuth {
     var delegate: UserAuthDelegate? { get set }
-    // Only associates user with an id for now
-    static var userId: String? { get }
     // Currently needs no parameters as we are signing in anonymously
     // Communicates result through delegate
     func logIn()
