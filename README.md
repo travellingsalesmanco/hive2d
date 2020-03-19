@@ -11,7 +11,9 @@
 ## Installation
 
 **CocoaPods**
+
 Run the following command to install dependencies.
+
 ```
 pod install
 ```
