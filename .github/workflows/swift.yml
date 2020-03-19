@@ -22,6 +22,7 @@ jobs:
         pod install
     - name: Build
       run: |
+        cd Hive2D
         xcodebuild clean build -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
