@@ -110,12 +110,15 @@ class LobbyViewController: UIViewController {
     }
 
     private func refreshPlayerList() {
-        lobby?.players.values.enumerated().forEach { arg in
-            let (index, element) = arg
-            playerList[index].text = element.name
+        guard let lobby = lobby else {
+            return
+        }
+        let sortedPlayers = lobby.players.values.sorted(by: { $0.joinTime < $1.joinTime })
+        for (index, player) in sortedPlayers.enumerated() {
+            playerList[index].text = player.name
         }
 
-        for index in (lobby?.players.count ?? 0) ..< playerList.count {
+        for index in lobby.players.count ..< playerList.count {
             playerList[index].text = Constants.LobbyMessages.noPlayer
         }
     }

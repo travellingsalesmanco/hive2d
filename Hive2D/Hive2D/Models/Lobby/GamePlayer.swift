@@ -9,12 +9,14 @@
 import Foundation
 
 struct GamePlayer: Codable {
-    var id: String
+    let id: String
     // Display name of player
     var name: String
+    let joinTime: Date
 
     init(name: String, id: String) {
         self.id = id
         self.name = name
+        self.joinTime = Date()
     }
 }
