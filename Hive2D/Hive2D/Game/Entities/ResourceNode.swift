@@ -14,7 +14,7 @@ class ResourceNode: GKEntity {
          node: NodeComponent,
          player: PlayerComponent,
          resourceCollector: ResourceCollectorComponent,
-         resourceConsumer: ResourceConsumerComponent) {
+         resourceConsumer: ResourceConsumerComponent,
          network: NetworkComponent) {
         super.init()
         addComponent(sprite)

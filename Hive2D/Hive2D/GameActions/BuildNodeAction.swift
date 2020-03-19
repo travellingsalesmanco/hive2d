@@ -9,6 +9,7 @@
 import CoreGraphics
 
 struct BuildNodeAction: Codable {
-    let playerId: Int
+    let playerId: String
+    let playerName: String
     let position: CGPoint
 }

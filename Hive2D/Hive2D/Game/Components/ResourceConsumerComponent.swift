@@ -12,7 +12,6 @@ class ResourceConsumerComponent: GKComponent {
     var resourceConsumptionRate: CGFloat
 
     init(resourceConsumptionRate: CGFloat) {
-        print(resourceConsumptionRate)
         self.resourceConsumptionRate = resourceConsumptionRate
         super.init()
     }

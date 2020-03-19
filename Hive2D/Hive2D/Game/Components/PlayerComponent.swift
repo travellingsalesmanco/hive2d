@@ -9,10 +9,10 @@
 import GameplayKit
 
 class PlayerComponent: GKComponent {
-    let id: UUID
+    let id: String
     let name: String
 
-    init(id: UUID, name: String) {
+    init(id: String, name: String) {
         self.id = id
         self.name = name
         super.init()

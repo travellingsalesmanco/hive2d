@@ -13,6 +13,8 @@ import NotificationCenter
 class Game {
     var entities = Set<GKEntity>()
     var networkedEntities = [UUID: GKEntity]()
+    let scene: SKScene
+    let config: GameConfig
 
     init(scene: SKScene, config: GameConfig) {
         self.scene = scene
@@ -47,7 +49,8 @@ class Game {
     func addPlayer(player: GamePlayer) {
         let playerComponent = PlayerComponent(id: player.id, name: player.name)
         let resourceComponent = ResourceComponent(resources: Constants.GamePlay.initialPlayerResource)
-        let playerEntity = Player(player: playerComponent, resource: resourceComponent)
+        let networkComponent = NetworkComponent()
+        let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
         add(entity: playerEntity)
     }
 
@@ -60,7 +63,8 @@ class Game {
         let nodeComponent = NodeComponent(position: position)
         syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
         let playerComponent = PlayerComponent(id: player.id, name: player.name)
-        let hive = Hive(sprite: spriteComponent, node: nodeComponent, player: playerComponent)
+        let networkComponent = NetworkComponent()
+        let hive = Hive(sprite: spriteComponent, node: nodeComponent, player: playerComponent, network: networkComponent)
         add(entity: hive)
     }
 
@@ -68,38 +72,6 @@ class Game {
     func syncSpriteWithNode(spriteComponent: SpriteComponent, nodeComponent: NodeComponent) {
         spriteComponent.spriteNode.position = nodeComponent.position
         spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
-    }
-
-    func buildResourceNode(position: CGPoint) {
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.node)
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let nodeComponent = NodeComponent(position: position)
-        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
-        // TODO: test with UserAuthState using multiple devices
-//        let id = UUID(uuidString: UserAuthState.shared.get()!)!
-        // DEBUG: use host ID as placeholder
-        let id = config.host.id
-
-        let playerComponent = PlayerComponent(id: id,
-                                              name: config.players.first(where: { player -> Bool in
-                                                player.id == id
-                                              })!.name)
-        let resourceCollectorComponent =
-            ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
-        let resourceConsumerComponent =
-            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
-        let resourceNode = ResourceNode(sprite: spriteComponent,
-                                        node: nodeComponent,
-                                        player: playerComponent,
-                                        resourceCollector: resourceCollectorComponent,
-                                        resourceConsumer: resourceConsumerComponent)
-        guard checkOverlapping(node: nodeComponent) else {
-            return
-        }
-        guard hasSufficientResources(for: resourceNode) else {
-            return
-        }
-        add(entity: resourceNode)
     }
 
     func hasSufficientResources(for resourceNode: ResourceNode) -> Bool {
@@ -161,6 +133,41 @@ class Game {
         }
     }
 
+
+    func buildResourceNode(position: CGPoint) {
+        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.node)
+        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
+        let nodeComponent = NodeComponent(position: position)
+        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
+        // TODO: test with UserAuthState using multiple devices
+//        let id = UUID(uuidString: UserAuthState.shared.get()!)!
+        // DEBUG: use host ID as placeholder
+        let id = config.host.id
+
+        let playerComponent = PlayerComponent(id: id,
+                                              name: config.players.first(where: { player -> Bool in
+                                                player.id == id
+                                              })!.name)
+        let resourceCollectorComponent =
+            ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
+        let resourceConsumerComponent =
+            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
+        let networkComponent = NetworkComponent()
+        let resourceNode = ResourceNode(sprite: spriteComponent,
+                                        node: nodeComponent,
+                                        player: playerComponent,
+                                        resourceCollector: resourceCollectorComponent,
+                                        resourceConsumer: resourceConsumerComponent,
+                                        network: networkComponent)
+        guard checkOverlapping(node: nodeComponent) else {
+            return
+        }
+        guard hasSufficientResources(for: resourceNode) else {
+            return
+        }
+        add(entity: resourceNode)
+    }
+
     func handleStartGame(_ action: StartGameAction) {
         // Start the game when numPlayer StartGameActions seen
     }
@@ -169,15 +176,30 @@ class Game {
     }
 
     func handleBuildNode(_ action: BuildNodeAction) {
+        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.node)
+        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let nodeComponent = NodeComponent(position: action.position)
-        let playerComponent = PlayerComponent(id: action.playerId)
-        let nodeEntity = ResourceNode(
-            node: nodeComponent,
-            player: playerComponent,
-            resourceCollector: ResourceCollectorComponent(),
-            network: NetworkComponent()
-        )
-        add(entity: nodeEntity)
+        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
+
+        let playerComponent = PlayerComponent(id: action.playerId, name: action.playerName)
+        let resourceCollectorComponent =
+            ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
+        let resourceConsumerComponent =
+            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
+        let networkComponent = NetworkComponent()
+        let resourceNode = ResourceNode(sprite: spriteComponent,
+                                        node: nodeComponent,
+                                        player: playerComponent,
+                                        resourceCollector: resourceCollectorComponent,
+                                        resourceConsumer: resourceConsumerComponent,
+                                        network: networkComponent)
+        guard checkOverlapping(node: nodeComponent) else {
+            return
+        }
+        guard hasSufficientResources(for: resourceNode) else {
+            return
+        }
+        add(entity: resourceNode)
     }
     func handleDestroyNode(_ action: DestroyNodeAction) {
         guard let node = networkedEntities[action.nodeNetId] else {
