@@ -28,6 +28,10 @@
 		A97F48C52422213D00BF5429 /* FirebaseLobbyFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C42422213D00BF5429 /* FirebaseLobbyFinder.swift */; };
 		A97F48C72422218700BF5429 /* FirebaseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C62422218700BF5429 /* FirebaseConstants.swift */; };
 		A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48C8242299B700BF5429 /* FirebaseHelper.swift */; };
+		A97F48CD242322ED00BF5429 /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48CC242322ED00BF5429 /* UserAuth.swift */; };
+		A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48CE2423236E00BF5429 /* UserAuthDelegate.swift */; };
+		A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */; };
+		A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D3242328AA00BF5429 /* UserAuthState.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -107,6 +111,10 @@
 		A97F48C42422213D00BF5429 /* FirebaseLobbyFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobbyFinder.swift; sourceTree = "<group>"; };
 		A97F48C62422218700BF5429 /* FirebaseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstants.swift; sourceTree = "<group>"; };
 		A97F48C8242299B700BF5429 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		A97F48CC242322ED00BF5429 /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		A97F48CE2423236E00BF5429 /* UserAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthDelegate.swift; sourceTree = "<group>"; };
+		A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuth.swift; sourceTree = "<group>"; };
+		A97F48D3242328AA00BF5429 /* UserAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthState.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +249,25 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		A97F48CB242322BF00BF5429 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A97F48D0242323CA00BF5429 /* Firebase */,
+				A97F48CC242322ED00BF5429 /* UserAuth.swift */,
+				A97F48CE2423236E00BF5429 /* UserAuthDelegate.swift */,
+				A97F48D3242328AA00BF5429 /* UserAuthState.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A97F48D0242323CA00BF5429 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		BEB648FA241E5B5C002814D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +330,7 @@
 				BEB648FA241E5B5C002814D4 /* Controllers */,
 				A97F48A1241E171B00BF5429 /* GameActions */,
 				A97F4898241CE07400BF5429 /* Networking */,
+				A97F48CB242322BF00BF5429 /* Auth */,
 				F969C2B4241CB048002C004F /* AppDelegate.swift */,
 				F969C2B6241CB048002C004F /* SceneDelegate.swift */,
 				F969C2B8241CB048002C004F /* ViewController.swift */,
@@ -565,6 +593,7 @@
 			files = (
 				A97F48B1241E87AC00BF5429 /* GameActionType.swift in Sources */,
 				A97F48C52422213D00BF5429 /* FirebaseLobbyFinder.swift in Sources */,
+				A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */,
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
 				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
@@ -589,7 +618,9 @@
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,
 				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
+				A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */,
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
+				A97F48CD242322ED00BF5429 /* UserAuth.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
 				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
@@ -601,6 +632,7 @@
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
+				A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */,
 				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
 				A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */,
 				A97F48C02422200000BF5429 /* LobbyFinder.swift in Sources */,

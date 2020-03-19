@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 class GameActionQueue {
     private let queue = DispatchQueue(label: "tsco.Hive2D.gameActionQueue", attributes: .concurrent)
