@@ -1,6 +1,7 @@
 use_frameworks!
 
 target 'Hive2D' do
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'NVActivityIndicatorView'
 end
