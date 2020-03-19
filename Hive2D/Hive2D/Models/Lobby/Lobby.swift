@@ -25,11 +25,11 @@ struct Lobby: Codable {
     }
 
     func isHost(playerId: String) -> Bool {
-        return host.id == playerId
+        host.id == playerId
     }
 
     func gameCanStart() -> Bool {
-        return players.count >= Constants.GameConfig.minPlayers
+        players.count >= Constants.GameConfig.minPlayers
     }
 
     mutating func addPlayer(player: GamePlayer) {
