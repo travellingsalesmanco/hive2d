@@ -10,9 +10,11 @@ import GameplayKit
 
 class NodeComponent: GKComponent {
     var position: CGPoint
+    var radius: CGFloat
 
-    init(position: CGPoint) {
+    init(position: CGPoint, radius: CGFloat = Constants.GamePlay.nodeRadius) {
         self.position = position
+        self.radius = radius
         super.init()
     }
 

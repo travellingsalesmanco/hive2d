@@ -14,15 +14,27 @@ class Game {
     var entities = Set<GKEntity>()
     var networkedEntities = [UUID: GKEntity]()
 
-
     init(scene: SKScene, config: GameConfig) {
         self.scene = scene
         self.config = config
         initPlayerAndHives(config: config)
     }
 
-    func update() {
-
+    func update(_ dt: TimeInterval) {
+        let resourceConsumers = query(includes: ResourceConsumerComponent.self)
+        let resourceCollectors = query(includes: ResourceCollectorComponent.self)
+        for consumer in resourceConsumers {
+            let player = getPlayer(for: consumer)
+            let resource = player?.component(ofType: ResourceComponent.self)!
+            let cost = consumer.component(ofType: ResourceConsumerComponent.self)!
+            resource?.resources -= Float(cost.resourceConsumptionRate)
+        }
+        for collector in resourceCollectors {
+            let player = getPlayer(for: collector)
+            let resource = player?.component(ofType: ResourceComponent.self)!
+            let gain = collector.component(ofType: ResourceCollectorComponent.self)!
+            resource?.resources += Float(gain.resourceCollectionRate)
+        }
     }
 
     func initPlayerAndHives(config: GameConfig) {
@@ -52,8 +64,10 @@ class Game {
         add(entity: hive)
     }
 
+    /// Ensures sprite position is same as node position
     func syncSpriteWithNode(spriteComponent: SpriteComponent, nodeComponent: NodeComponent) {
         spriteComponent.spriteNode.position = nodeComponent.position
+        spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
     }
 
     func buildResourceNode(position: CGPoint) {
@@ -72,11 +86,47 @@ class Game {
                                               })!.name)
         let resourceCollectorComponent =
             ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
+        let resourceConsumerComponent =
+            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
                                         player: playerComponent,
-                                        resourceCollector: resourceCollectorComponent)
+                                        resourceCollector: resourceCollectorComponent,
+                                        resourceConsumer: resourceConsumerComponent)
+        guard checkOverlapping(node: nodeComponent) else {
+            return
+        }
+        guard hasSufficientResources(for: resourceNode) else {
+            return
+        }
         add(entity: resourceNode)
+    }
+
+    func hasSufficientResources(for resourceNode: ResourceNode) -> Bool {
+        let player = getPlayer(for: resourceNode)
+        let resources = player!.component(ofType: ResourceComponent.self)!.resources
+        let cost = resourceNode.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
+        return resources > Float(cost)
+    }
+
+    func checkOverlapping(node toCheck: NodeComponent) -> Bool {
+        let nodes = query(includes: NodeComponent.self)
+        for node in nodes {
+            let nodeComponent = node.component(ofType: NodeComponent.self)!
+            let distanceX = pow(nodeComponent.position.x - toCheck.position.x, 2)
+            let distanceY = pow(nodeComponent.position.y - toCheck.position.y, 2)
+            let distance = sqrt(distanceX + distanceY)
+            if distance <= nodeComponent.radius + toCheck.radius {
+                return false
+            }
+        }
+        return true
+    }
+
+    func getPlayer(for entity: GKEntity) -> Player? {
+        let playerComponent = entity.component(ofType: PlayerComponent.self)!
+        let players = query(includes: ResourceComponent.self)
+        return players.first { $0.component(ofType: PlayerComponent.self)!.id == playerComponent.id } as? Player
     }
 
     func add(entity: GKEntity) {
@@ -97,6 +147,18 @@ class Game {
             networkedEntities.removeValue(forKey: netId)
         }
         entities.remove(entity)
+    }
+
+    // TODO: Fix query not able to accept multiple component types as input
+    func query<ComponentType>(includes types: ComponentType.Type...) -> [GKEntity] where ComponentType: GKComponent {
+        return entities.filter { entity in
+            for type in types {
+                if entity.component(ofType: type) == nil {
+                    return false
+                }
+            }
+            return true
+        }
     }
 
     func handleStartGame(_ action: StartGameAction) {

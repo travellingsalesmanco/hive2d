@@ -13,6 +13,9 @@ class GameScene: SKScene {
     let gameConfig: GameConfig
     let gameNetworking: GameNetworking!
 
+    // Update time
+    var lastUpdateTimeInterval: TimeInterval = 0
+
     init(gameConfig: GameConfig, gameNetworking: GameNetworking, size: CGSize) {
         self.gameConfig = gameConfig
         self.gameNetworking = gameNetworking
@@ -49,6 +52,9 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
+        let deltaTime = currentTime - lastUpdateTimeInterval
+        lastUpdateTimeInterval = currentTime
 
+        game.update(deltaTime)
     }
 }
