@@ -8,14 +8,21 @@ on:
 
 jobs:
   build:
-
+    name: Build, Test, Lint
     runs-on: macos-latest
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,name=iPad Pro (12.9-inch),OS=13.2']
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: swift build -v
+      run: xcodebuild clean build -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
+      env: 
+         destination: ${{ matrix.destination }}
     - name: Run tests
-      run: swift test -v
+      run: xcodebuild clean test -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
+      env: 
+         destination: ${{ matrix.destination }}
     - name: SwiftLint
       uses: norio-nomura/action-swiftlint@3.1.0
