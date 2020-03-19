@@ -17,11 +17,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: xcodebuild clean build -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
+      run: |
+        cd Hive2D
+        xcodebuild clean build -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
     - name: Run tests
-      run: xcodebuild clean test -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
+      run: |
+        cd Hive2D
+        xcodebuild clean test -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
     - name: SwiftLint
