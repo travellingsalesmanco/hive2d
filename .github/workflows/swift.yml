@@ -12,14 +12,14 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        destination: ['platform=iOS Simulator, name=iPad Pro (12.9-inch) (3rd generation), iOS=13.3']
+        destination: ["platform=iOS Simulator,name=iPad Pro (12.9-inch) (3rd generation),OS=13.3"]
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: |
         cd Hive2D
-        xcodebuild clean build -project Hive2D.xcodeproj -scheme Hive2D -destination "${destination}"
+        xcodebuild clean build -workspace Hive2D.xcworkspace -scheme Hive2D -destination "${destination}"
       env: 
          destination: ${{ matrix.destination }}
     - name: Run tests
