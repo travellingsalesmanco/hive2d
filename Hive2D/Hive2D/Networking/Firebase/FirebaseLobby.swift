@@ -14,6 +14,8 @@ class FirebaseLobby: LobbyNetworking {
     private var lobbyRef: DatabaseReference
     // Used to handle presence in lobby
     private var playerLobbyRef: DatabaseReference
+    // Game started should only be sent once
+    private var starting = false
 
     init(lobbyRef: DatabaseReference, playerId: String) {
         self.lobbyRef = lobbyRef
@@ -64,7 +66,8 @@ class FirebaseLobby: LobbyNetworking {
             return
         }
 
-        if lobby.started {
+        if lobby.started && !starting {
+            starting = true
             let gameNetworking = FirebaseGame(gameId: lobby.id)
             delegate?.gameStarted(lobby: lobby, networking: gameNetworking)
         } else {
