@@ -8,9 +8,11 @@
 
 import GameplayKit
 import SpriteKit
+import NotificationCenter
 
 class Game {
     var entities = Set<GKEntity>()
+    var networkedEntities = [UUID: GKEntity]()
     var scene: SKScene
 
     init(scene: SKScene, config: GameConfig) {
@@ -23,17 +25,52 @@ class Game {
 
     func add(entity: GKEntity) {
         entities.insert(entity)
-        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode else {
-            return
+        if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
+            scene.addChild(spriteNode)
         }
-        scene.addChild(spriteNode)
+        if let netId = entity.component(ofType: NetworkComponent.self)?.id {
+            networkedEntities[netId] = entity
+        }
     }
 
     func remove(entity: GKEntity) {
-        guard let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode else {
+        if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
+            spriteNode.removeFromParent()
+        }
+        if let netId = entity.component(ofType: NetworkComponent.self)?.id {
+            networkedEntities.removeValue(forKey: netId)
+        }
+        entities.remove(entity)
+    }
+
+    func handleStartGame(_ action: StartGameAction) {
+        // Start the game when numPlayer StartGameActions seen
+    }
+    func handleQuitGame(_ action: QuitGameAction) {
+        // TODO
+    }
+
+    func handleBuildNode(_ action: BuildNodeAction) {
+        let nodeComponent = NodeComponent(position: action.position)
+        let playerComponent = PlayerComponent(id: action.playerId)
+        let nodeEntity = ResourceNode(
+            node: nodeComponent,
+            player: playerComponent,
+            resourceCollector: ResourceCollectorComponent(),
+            network: NetworkComponent()
+        )
+        add(entity: nodeEntity)
+    }
+    func handleDestroyNode(_ action: DestroyNodeAction) {
+        guard let node = networkedEntities[action.nodeNetId] else {
             return
         }
-        spriteNode.removeFromParent()
-        entities.remove(entity)
+        remove(entity: node)
+    }
+    func handleChangeNode(_ action: ChangeNodeAction) {
+        guard let node = networkedEntities[action.nodeNetId] else {
+            return
+        }
+        // Change stuff
     }
 }

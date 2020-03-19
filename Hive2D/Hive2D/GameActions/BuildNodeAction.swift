@@ -6,5 +6,9 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
+import CoreGraphics
+
 struct BuildNodeAction: Codable {
+    let playerId: Int
+    let position: CGPoint
 }

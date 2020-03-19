@@ -6,5 +6,8 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
+import Foundation
+
 struct ChangeNodeAction: Codable {
+    let nodeNetId: UUID
 }

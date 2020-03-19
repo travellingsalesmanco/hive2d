@@ -10,10 +10,11 @@ import GameplayKit
 
 class Hive: GKEntity {
 
-    init(node: NodeComponent, player: PlayerComponent) {
+    init(node: NodeComponent, player: PlayerComponent, network: NetworkComponent) {
         super.init()
         addComponent(node)
         addComponent(player)
+        addComponent(network)
     }
 
     required init?(coder: NSCoder) {

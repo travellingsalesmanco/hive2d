@@ -10,10 +10,11 @@ import GameplayKit
 
 class Player: GKEntity {
 
-    init(player: PlayerComponent, resource: ResourceComponent) {
+    init(player: PlayerComponent, resource: ResourceComponent, network: NetworkComponent) {
         super.init()
         addComponent(player)
         addComponent(resource)
+        addComponent(network)
     }
 
     required init?(coder: NSCoder) {

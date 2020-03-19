@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03225D582423AEB6002C022F /* NetworkComponent.swift */; };
 		4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */; };
 		A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */; };
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03225D582423AEB6002C022F /* NetworkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkComponent.swift; sourceTree = "<group>"; };
 		17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -394,6 +396,7 @@
 				F969C2F124205032002C004F /* ResourceCollectorComponent.swift */,
 				F969C2F32420503F002C004F /* PlayerComponent.swift */,
 				F969C2FD2420D935002C004F /* ResourceComponent.swift */,
+				03225D582423AEB6002C022F /* NetworkComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
+				03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
