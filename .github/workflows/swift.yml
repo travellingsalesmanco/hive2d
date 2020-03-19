@@ -16,6 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Cache dependencies
+      uses: actions/cache@v1
+      with:
+        path: Hive2D/Pods
+        key: ${{ runner.OS }}-pods-cache-${{ hashFiles('**/Hive2D/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.OS }}-pods-cache-
     - name: Install dependencies
       run: |
         cd Hive2D
