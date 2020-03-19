@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>848705212558-p7jlacmpoe36kpbphoongnme291uolqf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.848705212558-p7jlacmpoe36kpbphoongnme291uolqf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGu_iNwFt_BZG_hFb36RkYf9EtwNHAp2w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>848705212558</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>tsco.Hive2D</string>
+	<key>PROJECT_ID</key>
+	<string>hive2d-strategy</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hive2d-strategy.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:848705212558:ios:e60f840e551edd2514f9df</string>
+	<key>DATABASE_URL</key>
+	<string>https://hive2d-strategy.firebaseio.com</string>
+</dict>
+</plist>
