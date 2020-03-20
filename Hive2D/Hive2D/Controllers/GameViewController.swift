@@ -11,9 +11,9 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    @IBOutlet private var gameArea: UIView!
-    var gameConfig: GameConfig!
-    var gameNetworking: GameNetworking!
+    @IBOutlet private var gameArea: SKView!
+    private var gameConfig: GameConfig!
+    private var gameNetworking: GameNetworking!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
         let scene = GameScene(gameConfig: gameConfig,
                               gameNetworking: gameNetworking,
                               size: CGSize(width: boundWidth, height: boundHeight))
-        guard let skView = self.gameArea as? SKView else {
+        guard let skView = self.gameArea else {
             return
         }
 
