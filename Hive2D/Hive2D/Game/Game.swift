@@ -23,19 +23,8 @@ class Game {
     }
 
     func update(_ dt: TimeInterval) {
-        let resourceConsumers = query(includes: ResourceConsumerComponent.self)
-        let resourceCollectors = query(includes: ResourceCollectorComponent.self)
-        for consumer in resourceConsumers {
-            let player = getPlayer(for: consumer)
-            let resource = player?.component(ofType: ResourceComponent.self)!
-            let cost = consumer.component(ofType: ResourceConsumerComponent.self)!
-            resource?.resources -= Float(cost.resourceConsumptionRate)
-        }
-        for collector in resourceCollectors {
-            let player = getPlayer(for: collector)
-            let resource = player?.component(ofType: ResourceComponent.self)!
-            let gain = collector.component(ofType: ResourceCollectorComponent.self)!
-            resource?.resources += Float(gain.resourceCollectionRate)
+        entities.forEach {
+            $0.update(deltaTime: dt)
         }
     }
 
@@ -78,7 +67,7 @@ class Game {
         let player = getPlayer(for: resourceNode)
         let resources = player!.component(ofType: ResourceComponent.self)!.resources
         let cost = resourceNode.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
-        return resources > Float(cost)
+        return resources > cost
     }
 
     func checkOverlapping(node toCheck: NodeComponent) -> Bool {

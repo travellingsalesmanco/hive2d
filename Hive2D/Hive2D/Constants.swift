@@ -46,7 +46,7 @@ struct Constants {
     }
 
     struct GamePlay {
-        static let initialPlayerResource = Float(100)
+        static let initialPlayerResource = CGFloat(100)
         static let nodeRadius = CGFloat(30)
 
         struct NodeImages {

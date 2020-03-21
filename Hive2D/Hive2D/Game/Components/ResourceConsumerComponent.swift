@@ -19,4 +19,10 @@ class ResourceConsumerComponent: GKComponent {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func update(deltaTime seconds: TimeInterval) {
+        guard let resourceStore = entity?.component(ofType: ResourceComponent.self) else {
+            return
+        }
+        resourceStore.resources -= resourceConsumptionRate * CGFloat(seconds)
+    }
 }

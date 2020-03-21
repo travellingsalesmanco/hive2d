@@ -9,9 +9,9 @@
 import GameplayKit
 
 class ResourceComponent: GKComponent {
-    var resources: Float
+    var resources: CGFloat
 
-    init(resources: Float) {
+    init(resources: CGFloat) {
         self.resources = resources
         super.init()
     }
