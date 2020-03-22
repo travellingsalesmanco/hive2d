@@ -47,8 +47,29 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         let deltaTime = currentTime - lastUpdateTimeInterval
         lastUpdateTimeInterval = currentTime
+        handleGameActionsInQueue()
 
         game.update(deltaTime)
+    }
+
+    private func handleGameActionsInQueue() {
+        let actionQueue = gameNetworking.gameActionQueue
+        while let action = actionQueue.dequeue() {
+            switch action {
+            case let .SetupGame(action: value):
+                game.handleSetupGame(value)
+            case let .StartGame(action: value):
+                game.handleStartGame(value)
+            case let .QuitGame(action: value):
+                game.handleQuitGame(value)
+            case let .BuildNode(action: value):
+                game.handleBuildNode(value)
+            case let .ChangeNode(action: value):
+                game.handleChangeNode(value)
+            case let .DestroyNode(action: value):
+                game.handleDestroyNode(value)
+            }
+        }
     }
 
     private func setUpGestureRecognizers() {
@@ -75,7 +96,7 @@ class GameScene: SKScene {
             gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction(playerId: gameConfig.host.id,
                                                                              playerName: gameConfig.host.name,
                                                                              position: CGPoint())))
-            game.buildResourceNode(position: scenePoint)
+//            game.buildResourceNode(position: scenePoint)
         }
     }
 

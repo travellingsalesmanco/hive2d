@@ -62,6 +62,7 @@ class Game {
         let player = getPlayer(for: resourceNode)
         let resources = player!.component(ofType: ResourceComponent.self)!.resources
         let cost = resourceNode.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
+        print(resources)
         return resources > cost
     }
 
@@ -201,6 +202,8 @@ class Game {
                                         resourceCollector: resourceCollectorComponent,
                                         resourceConsumer: resourceConsumerComponent,
                                         network: networkComponent)
+
+        print("handling build node")
         guard checkOverlapping(node: nodeComponent) else {
             return
         }
