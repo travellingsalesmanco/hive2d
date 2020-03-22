@@ -120,7 +120,7 @@ class Game {
     }
 
     // TODO: Fix query not able to accept multiple component types as input
-    func query<ComponentType>(includes types: ComponentType.Type...) -> [GKEntity] where ComponentType: GKComponent {
+    func query(includes types: GKComponent.Type...) -> [GKEntity] {
         return entities.filter { entity in
             for type in types {
                 if entity.component(ofType: type) == nil {
