@@ -70,11 +70,7 @@ class GameScene: SKScene {
             return
         } else {
             // Touched empty space, emit a build node action
-            // TODO: Provide player id and name based on UserAuthState.shared.get() to BuildNodeAction
-            gameNetworking.sendGameAction(.BuildNode(BuildNodeAction(playerId: gameConfig.host.id,
-                                                                             playerName: gameConfig.host.name,
-                                                                             position: scenePoint)))
-//            game.buildResourceNode(position: scenePoint)
+            game.buildNode(at: scenePoint)
         }
     }
 

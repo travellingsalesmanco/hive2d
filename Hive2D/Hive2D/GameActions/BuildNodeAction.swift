@@ -7,9 +7,11 @@
 //
 
 import CoreGraphics
+import Foundation
 
 struct BuildNodeAction: Codable {
     let playerId: String
     let playerName: String
     let position: CGPoint
+    let netId: UUID
 }

@@ -52,9 +52,18 @@ class Game {
         }
         gameNetworking.sendGameAction(
             .SetupGame(SetupGameAction(playerNetworkingIds: playerNetworkingIds,
-                                               hiveStartingLocations: hiveStartingLocations,
-                                               hiveNetworkingIds: hiveNetworkingIds)
-        ))
+                                       hiveStartingLocations: hiveStartingLocations,
+                                       hiveNetworkingIds: hiveNetworkingIds))
+        )
+    }
+
+    func buildNode(at point: CGPoint) {
+        gameNetworking.sendGameAction(
+            .BuildNode(BuildNodeAction(playerId: config.me.id,
+                                       playerName: config.me.name,
+                                       position: point,
+                                       netId: UUID()))
+        )
     }
 
     /// Ensures sprite position is same as node position
@@ -186,7 +195,7 @@ class Game {
             ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
         let resourceConsumerComponent =
             ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
-        let networkComponent = NetworkComponent()
+        let networkComponent = NetworkComponent(id: action.netId)
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
                                         player: playerComponent,
