@@ -1,0 +1,15 @@
+start
+
+:Start application;
+
+if (Create or Join?) then (Create Lobby)
+:Type player name;
+else (Join Game)
+:Type room code;
+:Type player name;
+endif
+
+:Enter lobby;
+:Wait for other players;
+:Start game;
+stop

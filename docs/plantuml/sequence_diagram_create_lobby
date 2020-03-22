@@ -1,0 +1,14 @@
+activate MainVC
+MainVC -> MainVC : present()
+MainVC -> ChooseNameModalVC --: init()
+
+ChooseNameModalVC -> MainVC : didSubmit(String)
+activate MainVC
+MainVC -> LobbyFinder --: createLobby(GamePlayer)
+
+LobbyFinder -> MainVC: lobbyCreated(Lobby, LobbyNetworking)
+activate MainVC
+MainVC -> LobbyVC : initLobby(Lobby, GamePlayer, LobbyNetworking)
+MainVC -> MainVC: navigationController?.pushVC(LobbyVC)
+
+deactivate MainVC

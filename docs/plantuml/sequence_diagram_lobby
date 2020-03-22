@@ -1,0 +1,14 @@
+loop
+LobbyVC -> LobbyNetworking : updateLobby(Lobby)
+
+LobbyNetworking -> LobbyVC : lobbyDidUpdate(Lobby)
+activate LobbyVC
+LobbyVC -> LobbyVC --: refreshLobby()
+end
+
+LobbyVC -> LobbyNetworking: start()
+
+LobbyNetworking -> LobbyVC: gameStarted(Lobby, GameNetworking)
+activate LobbyVC
+LobbyVC -> GameVC: setGameConfig(Lobby, GamePlayer, GameNetworking)
+LobbyVC -> LobbyVC --: navigationController?.pushVC(GameVC)

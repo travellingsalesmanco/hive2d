@@ -1,0 +1,24 @@
+activate GameVC
+GameVC -> GameScene : init(GameConfig, GameNetworking, CGSize)
+GameVC -> GameVC --: SKView.presentScene(GameScene)
+
+GameScene -> Game : init(SKScene, GameConfig, GameNetworking)
+alt player is host
+Game ++
+Game -> Game : setupGame()
+Game -> GameNetworking : sendGameAction(GameAction)
+Game --
+end
+
+loop
+GameScene -> Game: update(TimeInterval)
+activate Game
+Game -> Game: handleGameActionsInQueue()
+loop
+Game -> GameNetworking: GameNetworking.gameActionQueue.dequeue()
+activate GameNetworking
+GameNetworking --> Game --: GameAction
+Game -> Game: handleGameAction(GameAction)
+end
+end
+
