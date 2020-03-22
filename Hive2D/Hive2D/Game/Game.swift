@@ -141,40 +141,6 @@ class Game {
         }
     }
 
-    func buildResourceNode(position: CGPoint) {
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let nodeComponent = NodeComponent(position: position)
-        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
-        // TODO: test with UserAuthState using multiple devices
-//        let id = UUID(uuidString: UserAuthState.shared.get()!)!
-        // DEBUG: use host ID as placeholder
-        let id = config.host.id
-
-        let playerComponent = PlayerComponent(id: id,
-                                              name: config.players.first(where: { player -> Bool in
-                                                player.id == id
-                                              })!.name)
-        let resourceCollectorComponent =
-            ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
-        let resourceConsumerComponent =
-            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
-        let networkComponent = NetworkComponent()
-        let resourceNode = ResourceNode(sprite: spriteComponent,
-                                        node: nodeComponent,
-                                        player: playerComponent,
-                                        resourceCollector: resourceCollectorComponent,
-                                        resourceConsumer: resourceConsumerComponent,
-                                        network: networkComponent)
-        guard checkOverlapping(node: nodeComponent) else {
-            return
-        }
-        guard hasSufficientResources(for: resourceNode) else {
-            return
-        }
-        add(entity: resourceNode)
-    }
-
     func handleSetupGame(_ action: SetupGameAction) {
         for (idx, gamePlayer) in config.players.enumerated() {
             let playerComponent = PlayerComponent(id: gamePlayer.id, name: gamePlayer.name)
