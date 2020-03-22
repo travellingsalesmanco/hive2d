@@ -45,7 +45,7 @@ class Game {
         }
         let hiveStartingLocations = config.players.map { _ in
             CGPoint(x: CGFloat.random(in: scene.size.width / 4 ... scene.size.width * 3 / 4),
-                    y: CGFloat.random(in: scene.size.width / 4 ... scene.size.width * 3 / 4))
+                    y: CGFloat.random(in: scene.size.height / 4 ... scene.size.height * 3 / 4))
         }
         let hiveNetworkingIds = hiveStartingLocations.map { _ in
             UUID()
