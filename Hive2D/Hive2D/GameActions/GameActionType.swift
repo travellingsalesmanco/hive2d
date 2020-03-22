@@ -12,6 +12,7 @@ enum GameActionType: String {
     case ChangeNode = "CHANGE_NODE"
     case QuitGame = "QUIT_GAME"
     case StartGame = "START_GAME"
+    case SetupGame = "SETUP_GAME"
 }
 
 extension GameActionType: Codable {

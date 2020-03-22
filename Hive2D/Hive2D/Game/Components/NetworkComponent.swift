@@ -9,10 +9,10 @@
 import GameplayKit
 
 class NetworkComponent: GKComponent {
-    var id: UUID
+    let id: UUID
 
-    override init() {
-        self.id = UUID()
+    init(id: UUID = UUID()) {
+        self.id = id
         super.init()
     }
 

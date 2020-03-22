@@ -32,7 +32,7 @@ class GameScene: SKScene {
 
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
-        self.game = Game(scene: self, config: gameConfig)
+        self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
         let cameraNode = SKCameraNode()
         cameraNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)

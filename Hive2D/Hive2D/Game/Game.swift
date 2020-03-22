@@ -15,11 +15,17 @@ class Game {
     var networkedEntities = [UUID: GKEntity]()
     let scene: SKScene
     let config: GameConfig
+    let gameNetworking: GameNetworking
+    var connectedPlayersCount: Int = 0
+    var gameStarted: Bool = false
 
-    init(scene: SKScene, config: GameConfig) {
+    init(scene: SKScene, config: GameConfig, gameNetworking: GameNetworking) {
         self.scene = scene
         self.config = config
-        initPlayerAndHives(config: config)
+        self.gameNetworking = gameNetworking
+        if config.host.id == config.me.id {
+            setupGame()
+        }
     }
 
     func update(_ dt: TimeInterval) {
@@ -28,33 +34,22 @@ class Game {
         }
     }
 
-    func initPlayerAndHives(config: GameConfig) {
-        for player in config.players {
-            addPlayer(player: player)
-            addHive(player: player)
+    func setupGame() {
+        let playerNetworkingIds = config.players.map { _ in
+            UUID()
         }
-    }
-
-    func addPlayer(player: GamePlayer) {
-        let playerComponent = PlayerComponent(id: player.id, name: player.name)
-        let resourceComponent = ResourceComponent(resources: Constants.GamePlay.initialPlayerResource)
-        let networkComponent = NetworkComponent()
-        let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
-        add(entity: playerEntity)
-    }
-
-    func addHive(player: GamePlayer) {
-        let positionX = CGFloat.random(in: scene.size.width / 4 ... scene.size.width * 3 / 4)
-        let positionY = CGFloat.random(in: scene.size.height / 4 ... scene.size.height * 3 / 4)
-        let position = CGPoint(x: positionX, y: positionY)
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.hive)
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let nodeComponent = NodeComponent(position: position)
-        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
-        let playerComponent = PlayerComponent(id: player.id, name: player.name)
-        let networkComponent = NetworkComponent()
-        let hive = Hive(sprite: spriteComponent, node: nodeComponent, player: playerComponent, network: networkComponent)
-        add(entity: hive)
+        let hiveStartingLocations = config.players.map { _ in
+            CGPoint(x: CGFloat.random(in: scene.size.width / 4 ... scene.size.width * 3 / 4),
+                    y: CGFloat.random(in: scene.size.width / 4 ... scene.size.width * 3 / 4))
+        }
+        let hiveNetworkingIds = hiveStartingLocations.map { _ in
+            UUID()
+        }
+        gameNetworking.sendGameAction(
+            .SetupGame(action: SetupGameAction(playerNetworkingIds: playerNetworkingIds,
+                            hiveStartingLocations: hiveStartingLocations,
+                            hiveNetworkingIds: hiveNetworkingIds)
+        ))
     }
 
     /// Ensures sprite position is same as node position
@@ -157,8 +152,32 @@ class Game {
         add(entity: resourceNode)
     }
 
+    func handleSetupGame(_ action: SetupGameAction) {
+        for (idx, gamePlayer) in config.players.enumerated() {
+            let playerComponent = PlayerComponent(id: gamePlayer.id, name: gamePlayer.name)
+            let resourceComponent = ResourceComponent(resources: Constants.GamePlay.initialPlayerResource)
+            let networkComponent = NetworkComponent(id: action.playerNetworkingIds[idx])
+            let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
+            add(entity: playerEntity)
+
+            let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.hive)
+            let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
+            let hiveNodeComponent = NodeComponent(position: action.hiveStartingLocations[idx])
+            syncSpriteWithNode(spriteComponent: hiveSpriteComponent, nodeComponent: hiveNodeComponent)
+            let hiveNetworkComponent = NetworkComponent(id: action.hiveNetworkingIds[idx])
+            let hive = Hive(sprite: hiveSpriteComponent, node: hiveNodeComponent, player: playerComponent, network: hiveNetworkComponent)
+            add(entity: hive)
+            // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
+        }
+        // Broadcast acknowledgement
+        gameNetworking.sendGameAction(.StartGame(action: StartGameAction()))
+    }
     func handleStartGame(_ action: StartGameAction) {
-        // Start the game when numPlayer StartGameActions seen
+        // Start the game when everyone acknowledges game setup
+        connectedPlayersCount += 1
+        if connectedPlayersCount == config.players.count {
+            gameStarted = true
+        }
     }
     func handleQuitGame(_ action: QuitGameAction) {
         // TODO

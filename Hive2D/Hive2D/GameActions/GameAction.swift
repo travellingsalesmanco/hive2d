@@ -12,11 +12,12 @@ enum GameAction {
     case ChangeNode(action: ChangeNodeAction)
     case QuitGame(action: QuitGameAction)
     case StartGame(action: StartGameAction)
+    case SetupGame(action: SetupGameAction)
 }
 
 extension GameAction: Codable {
     enum CodingKeys: String, CodingKey {
-        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame
+        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame
     }
 
     init(from decoder: Decoder) throws {
@@ -30,8 +31,10 @@ extension GameAction: Codable {
 
         } else if let quitGame = try container.decodeIfPresent(QuitGameAction.self, forKey: .QuitGame) {
             self = .QuitGame(action: quitGame)
+        } else if let startGame = try container.decodeIfPresent(StartGameAction.self, forKey: .StartGame) {
+            self = .StartGame(action: startGame)
         } else {
-            self = .StartGame(action: try container.decode(StartGameAction.self, forKey: .StartGame))
+            self = .SetupGame(action: try container.decode(SetupGameAction.self, forKey: .SetupGame))
         }
     }
 
@@ -48,6 +51,8 @@ extension GameAction: Codable {
             try container.encode(value, forKey: .QuitGame)
         case let .StartGame(action: value):
             try container.encode(value, forKey: .StartGame)
+        case let .SetupGame(action: value):
+            try container.encode(value, forKey: .SetupGame)
         }
     }
 }
