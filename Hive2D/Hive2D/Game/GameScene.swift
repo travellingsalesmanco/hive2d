@@ -95,7 +95,7 @@ class GameScene: SKScene {
             // TODO: Provide player id and name based on UserAuthState.shared.get() to BuildNodeAction
             gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction(playerId: gameConfig.host.id,
                                                                              playerName: gameConfig.host.name,
-                                                                             position: CGPoint())))
+                                                                             position: scenePoint)))
 //            game.buildResourceNode(position: scenePoint)
         }
     }
