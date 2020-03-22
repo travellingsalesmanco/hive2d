@@ -7,12 +7,12 @@
 //
 
 enum GameAction {
-    case BuildNode(action: BuildNodeAction)
-    case DestroyNode(action: DestroyNodeAction)
-    case ChangeNode(action: ChangeNodeAction)
-    case QuitGame(action: QuitGameAction)
-    case StartGame(action: StartGameAction)
-    case SetupGame(action: SetupGameAction)
+    case BuildNode(BuildNodeAction)
+    case DestroyNode(DestroyNodeAction)
+    case ChangeNode(ChangeNodeAction)
+    case QuitGame(QuitGameAction)
+    case StartGame(StartGameAction)
+    case SetupGame(SetupGameAction)
 }
 
 extension GameAction: Codable {
@@ -23,36 +23,36 @@ extension GameAction: Codable {
     init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
         if let buildNode = try container.decodeIfPresent(BuildNodeAction.self, forKey: .BuildNode) {
-            self = .BuildNode(action: buildNode)
+            self = .BuildNode(buildNode)
         } else if let destroyNode = try container.decodeIfPresent(DestroyNodeAction.self, forKey: .DestroyNode) {
-            self = .DestroyNode(action: destroyNode)
+            self = .DestroyNode(destroyNode)
         } else if let changeNode = try container.decodeIfPresent(ChangeNodeAction.self, forKey: .ChangeNode) {
-            self = .ChangeNode(action: changeNode)
+            self = .ChangeNode(changeNode)
 
         } else if let quitGame = try container.decodeIfPresent(QuitGameAction.self, forKey: .QuitGame) {
-            self = .QuitGame(action: quitGame)
+            self = .QuitGame(quitGame)
         } else if let startGame = try container.decodeIfPresent(StartGameAction.self, forKey: .StartGame) {
-            self = .StartGame(action: startGame)
+            self = .StartGame(startGame)
         } else {
-            self = .SetupGame(action: try container.decode(SetupGameAction.self, forKey: .SetupGame))
+            self = .SetupGame(try container.decode(SetupGameAction.self, forKey: .SetupGame))
         }
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
-        case let .BuildNode(action: value):
-            try container.encode(value, forKey: .BuildNode)
-        case let .DestroyNode(action: value):
-            try container.encode(value, forKey: .DestroyNode)
-        case let .ChangeNode(action: value):
-            try container.encode(value, forKey: .ChangeNode)
-        case let .QuitGame(action: value):
-            try container.encode(value, forKey: .QuitGame)
-        case let .StartGame(action: value):
-            try container.encode(value, forKey: .StartGame)
-        case let .SetupGame(action: value):
-            try container.encode(value, forKey: .SetupGame)
+        case let .BuildNode(action):
+            try container.encode(action, forKey: .BuildNode)
+        case let .DestroyNode(action):
+            try container.encode(action, forKey: .DestroyNode)
+        case let .ChangeNode(action):
+            try container.encode(action, forKey: .ChangeNode)
+        case let .QuitGame(action):
+            try container.encode(action, forKey: .QuitGame)
+        case let .StartGame(action):
+            try container.encode(action, forKey: .StartGame)
+        case let .SetupGame(action):
+            try container.encode(action, forKey: .SetupGame)
         }
     }
 }

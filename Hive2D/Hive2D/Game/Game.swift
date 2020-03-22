@@ -51,7 +51,7 @@ class Game {
             UUID()
         }
         gameNetworking.sendGameAction(
-            .SetupGame(action: SetupGameAction(playerNetworkingIds: playerNetworkingIds,
+            .SetupGame(SetupGameAction(playerNetworkingIds: playerNetworkingIds,
                                                hiveStartingLocations: hiveStartingLocations,
                                                hiveNetworkingIds: hiveNetworkingIds)
         ))
@@ -125,18 +125,18 @@ class Game {
         let actions = gameNetworking.gameActionQueue.dequeueAll()
         for action in actions {
             switch action {
-            case let .SetupGame(action: value):
-                handleSetupGame(value)
-            case let .StartGame(action: value):
-                handleStartGame(value)
-            case let .QuitGame(action: value):
-                handleQuitGame(value)
-            case let .BuildNode(action: value):
-                handleBuildNode(value)
-            case let .ChangeNode(action: value):
-                handleChangeNode(value)
-            case let .DestroyNode(action: value):
-                handleDestroyNode(value)
+            case let .SetupGame(action):
+                handleSetupGame(action)
+            case let .StartGame(action):
+                handleStartGame(action)
+            case let .QuitGame(action):
+                handleQuitGame(action)
+            case let .BuildNode(action):
+                handleBuildNode(action)
+            case let .ChangeNode(action):
+                handleChangeNode(action)
+            case let .DestroyNode(action):
+                handleDestroyNode(action)
             }
         }
     }
@@ -162,7 +162,7 @@ class Game {
             // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
         }
         // Broadcast acknowledgement
-        gameNetworking.sendGameAction(.StartGame(action: StartGameAction()))
+        gameNetworking.sendGameAction(.StartGame(StartGameAction()))
     }
     func handleStartGame(_ action: StartGameAction) {
         // Start the game when everyone acknowledges game setup
