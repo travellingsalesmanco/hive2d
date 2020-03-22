@@ -20,8 +20,8 @@ class GameActionQueueTests: XCTestCase {
     func testInputSerial() {
         let queue = GameActionQueue(gameId: "dummy")
         let firstId = UUID()
-        queue.enqueue(action: .DestroyNode(action: DestroyNodeAction(nodeNetId: firstId)))
-        queue.enqueue(action: .DestroyNode(action: DestroyNodeAction(nodeNetId: UUID())))
+        queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: firstId)))
+        queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: UUID())))
         XCTAssertEqual(queue.count, 2, "Items not added")
         guard case let .DestroyNode(action) = queue.dequeue() else {
             XCTFail("Did not get back action")
@@ -41,7 +41,7 @@ class GameActionQueueTests: XCTestCase {
         for id in ids {
             group.enter()
             DispatchQueue.global().async {
-                queue.enqueue(action: .DestroyNode(action: DestroyNodeAction(nodeNetId: id)))
+                queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: id)))
                 group.leave()
             }
         }
