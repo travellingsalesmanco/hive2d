@@ -50,21 +50,10 @@ struct Constants {
         static let nodeRadius = CGFloat(30)
         static let maxCameraScale = CGFloat(1.5)
         static let minCameraScale = CGFloat(0.5)
+    }
 
-        struct NodeImages {
-            struct Player1 {
-                static let node = "peg-blue"
-                static let hive = "peg-blue-glow"
-            }
-            struct Player2 {
-
-            }
-            struct Player3 {
-
-            }
-            struct Player4 {
-
-            }
-        }
+    struct GameAssets {
+        static let node = "peg-blue"
+        static let hive = "peg-blue-glow"
     }
 }

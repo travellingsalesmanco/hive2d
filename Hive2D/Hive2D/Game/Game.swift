@@ -47,8 +47,8 @@ class Game {
         }
         gameNetworking.sendGameAction(
             .SetupGame(action: SetupGameAction(playerNetworkingIds: playerNetworkingIds,
-                            hiveStartingLocations: hiveStartingLocations,
-                            hiveNetworkingIds: hiveNetworkingIds)
+                                               hiveStartingLocations: hiveStartingLocations,
+                                               hiveNetworkingIds: hiveNetworkingIds)
         ))
     }
 
@@ -118,9 +118,8 @@ class Game {
         }
     }
 
-
     func buildResourceNode(position: CGPoint) {
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.node)
+        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let nodeComponent = NodeComponent(position: position)
         syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
@@ -161,12 +160,15 @@ class Game {
             let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
             add(entity: playerEntity)
 
-            let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.hive)
+            let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.hive)
             let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
             let hiveNodeComponent = NodeComponent(position: action.hiveStartingLocations[idx])
             syncSpriteWithNode(spriteComponent: hiveSpriteComponent, nodeComponent: hiveNodeComponent)
             let hiveNetworkComponent = NetworkComponent(id: action.hiveNetworkingIds[idx])
-            let hive = Hive(sprite: hiveSpriteComponent, node: hiveNodeComponent, player: playerComponent, network: hiveNetworkComponent)
+            let hive = Hive(sprite: hiveSpriteComponent,
+                            node: hiveNodeComponent,
+                            player: playerComponent,
+                            network: hiveNetworkComponent)
             add(entity: hive)
             // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
         }
@@ -185,7 +187,7 @@ class Game {
     }
 
     func handleBuildNode(_ action: BuildNodeAction) {
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GamePlay.NodeImages.Player1.node)
+        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let nodeComponent = NodeComponent(position: action.position)
         syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
@@ -219,9 +221,9 @@ class Game {
         remove(entity: node)
     }
     func handleChangeNode(_ action: ChangeNodeAction) {
-        guard let node = networkedEntities[action.nodeNetId] else {
-            return
-        }
+//        guard let node = networkedEntities[action.nodeNetId] else {
+//            return
+//        }
         // Change stuff
     }
 }
