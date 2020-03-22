@@ -19,6 +19,7 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
     private var lobbyFinder: LobbyFinder
     private var lobbyAction: LobbyAction = .create
     private var roomCode: String?
+    private var player: GamePlayer!
 
     required init?(coder aDecoder: NSCoder) {
         lobbyFinder = FirebaseLobbyFinder()
@@ -71,7 +72,7 @@ class MainViewController: UIViewController, NVActivityIndicatorViewable {
         guard let lobbyViewController = viewController as? LobbyViewController else {
             return
         }
-        lobbyViewController.initLobby(lobby: lobby, lobbyNetworking: lobbyNetworking)
+        lobbyViewController.initLobby(lobby: lobby, me: player, lobbyNetworking: lobbyNetworking)
         self.navigationController?.pushViewController(lobbyViewController, animated: true)
     }
 }
@@ -82,13 +83,13 @@ extension MainViewController: ChooseNameModalDelegate {
             return
         }
 
-        let player = GamePlayer(name: name, id: playerId)
+        player = GamePlayer(name: name, id: playerId)
         switch lobbyAction {
         case .create:
             startAnimating(message: Constants.LobbyMessages.createLobby,
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)
-            lobbyFinder.createLobby(host: player)
+            lobbyFinder.createLobby(me: player)
         case .join:
             guard let roomCode = roomCode else {
                 return
@@ -97,7 +98,7 @@ extension MainViewController: ChooseNameModalDelegate {
                            messageFont: Constants.LobbyMessages.fontSize,
                            type: .ballClipRotateMultiple)
 
-            lobbyFinder.joinLobby(code: roomCode, player: player)
+            lobbyFinder.joinLobby(code: roomCode, me: player)
         }
     }
 }

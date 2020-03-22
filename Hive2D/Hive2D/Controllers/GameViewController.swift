@@ -35,8 +35,8 @@ class GameViewController: UIViewController {
         skView.presentScene(scene)
     }
 
-    func setGameConfig(lobby: Lobby, gameNetworking: GameNetworking) {
-        self.gameConfig = GameConfig(lobby: lobby)
+    func setGameConfig(lobby: Lobby, me: GamePlayer, gameNetworking: GameNetworking) {
+        self.gameConfig = GameConfig(lobby: lobby, me: me)
         self.gameNetworking = gameNetworking
     }
 }

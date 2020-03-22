@@ -20,19 +20,15 @@ class LobbyViewController: UIViewController {
 
     private var lobbyNetworking: LobbyNetworking?
     private var lobby: Lobby?
-    private var ownId: String?
+    private var me: GamePlayer!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.ownId = UserAuthState.shared.get()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let ownId = self.ownId else {
-            return
-        }
-        let isHost = lobby?.isHost(playerId: ownId) ?? false
+        let isHost = lobby?.isHost(playerId: me.id) ?? false
         startGameButton.isHidden = !isHost
         refreshLobby()
     }
@@ -44,8 +40,9 @@ class LobbyViewController: UIViewController {
         lobby = nil
     }
 
-    func initLobby(lobby: Lobby, lobbyNetworking: LobbyNetworking) {
+    func initLobby(lobby: Lobby, me: GamePlayer, lobbyNetworking: LobbyNetworking) {
         self.lobby = lobby
+        self.me = me
         self.lobbyNetworking = lobbyNetworking
         self.lobbyNetworking?.delegate = self
     }
@@ -151,7 +148,7 @@ extension LobbyViewController: LobbyNetworkingDelegate {
             return
         }
 
-        gameViewController.setGameConfig(lobby: lobby, gameNetworking: networking)
+        gameViewController.setGameConfig(lobby: lobby, me: me, gameNetworking: networking)
         self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 }

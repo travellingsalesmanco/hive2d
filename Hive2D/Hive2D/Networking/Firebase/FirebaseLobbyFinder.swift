@@ -11,7 +11,7 @@ import Firebase
 class FirebaseLobbyFinder: LobbyFinder {
     weak var delegate: LobbyFinderDelegate?
 
-    func createLobby(host: GamePlayer) {
+    func createLobby(me: GamePlayer) {
         let newLobbyRef = FirebaseConstants.lobbyRef.childByAutoId()
         guard let key = newLobbyRef.key else {
             delegate?.lobbyCreationFailed()
@@ -19,7 +19,7 @@ class FirebaseLobbyFinder: LobbyFinder {
         }
 
         // TODO: handle unique code gen
-        let newLobby = Lobby(id: key, host: host)
+        let newLobby = Lobby(id: key, host: me)
         let dataDict = FirebaseCodable<Lobby>.toDict(newLobby)
         newLobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
             guard let self = self else {
@@ -28,20 +28,20 @@ class FirebaseLobbyFinder: LobbyFinder {
             if error != nil {
                 self.delegate?.lobbyCreationFailed()
             } else {
-                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: host.id)
+                let lobbyNetworking = FirebaseLobby(lobbyRef: newLobbyRef, playerId: me.id)
                 self.delegate?.lobbyCreated(lobby: newLobby, networking: lobbyNetworking)
                 FirebaseHelper.setLobbyCode(for: newLobbyRef)
             }
         })
     }
 
-    func joinLobby(code: String, player: GamePlayer) {
+    func joinLobby(code: String, me: GamePlayer) {
         let lobbyRef = FirebaseConstants.queryLobbyByCode(code: code)
         lobbyRef.observeSingleEvent(of: .value, with: { [weak self] resultsSnapshot in
             guard let self = self else {
                 return
             }
-            guard let joinedLobby = self.joinLobby(snapshot: resultsSnapshot, player: player) else {
+            guard let joinedLobby = self.joinLobby(snapshot: resultsSnapshot, player: me) else {
                 self.delegate?.lobbyJoinFailed()
                 return
             }
@@ -54,7 +54,7 @@ class FirebaseLobbyFinder: LobbyFinder {
                 if error != nil {
                     self.delegate?.lobbyJoinFailed()
                 } else {
-                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: player.id)
+                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: me.id)
                     self.delegate?.lobbyJoined(lobby: joinedLobby, networking: lobbyNetworking)
                 }
             })

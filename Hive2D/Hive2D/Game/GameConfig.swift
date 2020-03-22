@@ -11,13 +11,15 @@ import CoreGraphics
 struct GameConfig {
     let id: String
     let host: GamePlayer
+    let me: GamePlayer
     let players: [GamePlayer]
     let mapSize: CGSize
     let resourceCollectionRate: CGFloat
     let resourceConsumptionRate: CGFloat
 
-    init(lobby: Lobby) {
+    init(lobby: Lobby, me: GamePlayer) {
         self.id = lobby.id
+        self.me = me
         self.host = lobby.host
         self.players = Array(lobby.players.values)
 
