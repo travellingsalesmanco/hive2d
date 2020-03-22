@@ -16,12 +16,16 @@ class GameScene: SKScene {
     // Update time
     var lastUpdateTimeInterval: TimeInterval = 0
 
+    private var prevCameraPosition = CGPoint.zero
+    private var prevCameraScale = CGFloat.zero
+
     init(gameConfig: GameConfig, gameNetworking: GameNetworking, size: CGSize) {
         self.gameConfig = gameConfig
         self.gameNetworking = gameNetworking
         super.init(size: size)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,16 +33,39 @@ class GameScene: SKScene {
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
         self.game = Game(scene: self, config: gameConfig)
+
+        let cameraNode = SKCameraNode()
+        cameraNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        prevCameraPosition = cameraNode.position
+        prevCameraScale = cameraNode.xScale
+        self.addChild(cameraNode)
+        self.camera = cameraNode
+
+        setUpGestureRecognizers()
+    }
+
+    override func update(_ currentTime: TimeInterval) {
+        let deltaTime = currentTime - lastUpdateTimeInterval
+        lastUpdateTimeInterval = currentTime
+
+        game.update(deltaTime)
+    }
+
+    private func setUpGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        view?.addGestureRecognizer(tapGesture)
+        view?.addGestureRecognizer(panGesture)
+        view?.addGestureRecognizer(pinchGesture)
         self.isUserInteractionEnabled = true
     }
 
-    /// Send game actions based on user interaction touches
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-        let position = touch.location(in: self)
-        let firstNode = atPoint(position)
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        let viewPoint = sender.location(in: self.view)
+        let scenePoint = convertPoint(fromView: viewPoint)
+        let firstNode = atPoint(scenePoint)
+
         if firstNode != self {
             // Do stuff based on SKSpriteNode that was touched
             return
@@ -48,14 +75,39 @@ class GameScene: SKScene {
             gameNetworking.sendGameAction(.BuildNode(action: BuildNodeAction(playerId: gameConfig.host.id,
                                                                              playerName: gameConfig.host.name,
                                                                              position: CGPoint())))
-            game.buildResourceNode(position: position)
+            game.buildResourceNode(position: scenePoint)
         }
     }
 
-    override func update(_ currentTime: TimeInterval) {
-        let deltaTime = currentTime - lastUpdateTimeInterval
-        lastUpdateTimeInterval = currentTime
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        guard let camera = self.camera else {
+            return
+        }
 
-        game.update(deltaTime)
+        if sender.state == .began {
+            self.prevCameraPosition = camera.position
+        }
+
+        let translation = sender.translation(in: self.view)
+        let newPosition = CGPoint(x: self.prevCameraPosition.x + translation.x * -1,
+                                  y: self.prevCameraPosition.y + translation.y)
+        camera.position = newPosition
+    }
+
+    @objc func handlePinchGesture(_ sender: UIPinchGestureRecognizer) {
+        guard let camera = self.camera else {
+            return
+        }
+
+        if sender.state == .began {
+            self.prevCameraScale = camera.xScale
+        }
+
+        let newScale = self.prevCameraScale * 1 / sender.scale
+        guard newScale <= Constants.GamePlay.maxCameraScale, newScale >= Constants.GamePlay.minCameraScale else {
+            return
+        }
+
+        camera.setScale(newScale)
     }
 }

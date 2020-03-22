@@ -48,6 +48,8 @@ struct Constants {
     struct GamePlay {
         static let initialPlayerResource = CGFloat(100)
         static let nodeRadius = CGFloat(30)
+        static let maxCameraScale = CGFloat(1.5)
+        static let minCameraScale = CGFloat(0.5)
 
         struct NodeImages {
             struct Player1 {
