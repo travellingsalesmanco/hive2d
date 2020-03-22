@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F969C2C6241CB04A002C004F"
+               BuildableName = "Hive2DTests.xctest"
+               BlueprintName = "Hive2DTests"
+               ReferencedContainer = "container:Hive2D.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F969C2D1241CB04A002C004F"
+               BuildableName = "Hive2DUITests.xctest"
+               BlueprintName = "Hive2DUITests"
+               ReferencedContainer = "container:Hive2D.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
