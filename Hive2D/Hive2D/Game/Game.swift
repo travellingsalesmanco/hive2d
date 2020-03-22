@@ -29,6 +29,11 @@ class Game {
     }
 
     func update(_ dt: TimeInterval) {
+        handleGameActionsInQueue()
+
+        guard gameStarted else {
+            return
+        }
         entities.forEach {
             $0.update(deltaTime: dt)
         }
@@ -115,6 +120,25 @@ class Game {
                 }
             }
             return true
+        }
+    }
+    private func handleGameActionsInQueue() {
+        let actions = gameNetworking.gameActionQueue.dequeueAll()
+        for action in actions {
+            switch action {
+            case let .SetupGame(action: value):
+                handleSetupGame(value)
+            case let .StartGame(action: value):
+                handleStartGame(value)
+            case let .QuitGame(action: value):
+                handleQuitGame(value)
+            case let .BuildNode(action: value):
+                handleBuildNode(value)
+            case let .ChangeNode(action: value):
+                handleChangeNode(value)
+            case let .DestroyNode(action: value):
+                handleDestroyNode(value)
+            }
         }
     }
 
