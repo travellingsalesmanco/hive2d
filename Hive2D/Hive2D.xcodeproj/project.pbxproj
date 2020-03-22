@@ -34,6 +34,7 @@
 		A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48CE2423236E00BF5429 /* UserAuthDelegate.swift */; };
 		A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */; };
 		A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D3242328AA00BF5429 /* UserAuthState.swift */; };
+		A9D80B8D242790BA00951824 /* GameActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -119,6 +120,7 @@
 		A97F48CE2423236E00BF5429 /* UserAuthDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthDelegate.swift; sourceTree = "<group>"; };
 		A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuth.swift; sourceTree = "<group>"; };
 		A97F48D3242328AA00BF5429 /* UserAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthState.swift; sourceTree = "<group>"; };
+		A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueueTests.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				F969C2CB241CB04A002C004F /* Hive2DTests.swift */,
+				A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */,
 				F969C2CD241CB04A002C004F /* Info.plist */,
 			);
 			path = Hive2DTests;
@@ -657,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F969C2CC241CB04A002C004F /* Hive2DTests.swift in Sources */,
+				A9D80B8D242790BA00951824 /* GameActionQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
