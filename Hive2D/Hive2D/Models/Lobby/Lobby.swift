@@ -29,8 +29,7 @@ struct Lobby: Codable {
     }
 
     func gameCanStart() -> Bool {
-//        players.count >= Constants.GameConfig.minPlayers
-        return true
+        players.count >= Constants.GameConfig.minPlayers
     }
 
     mutating func addPlayer(player: GamePlayer) {
