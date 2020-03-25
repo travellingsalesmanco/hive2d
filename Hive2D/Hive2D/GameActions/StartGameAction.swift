@@ -6,5 +6,11 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct StartGameAction: Codable {
+struct StartGameAction: GameAction {
+    func handle(game: Game) {
+        game.connectedPlayersCount += 1
+        if game.connectedPlayersCount == game.config.players.count {
+            game.gameStarted = true
+        }
+    }
 }

@@ -8,6 +8,10 @@
 
 import Foundation
 
-struct ChangeNodeAction: Codable {
+struct ChangeNodeAction: GameAction {
     let nodeNetId: UUID
+
+    func handle(game: Game) {
+        // TODO
+    }
 }

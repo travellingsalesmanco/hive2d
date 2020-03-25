@@ -6,5 +6,8 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-struct QuitGameAction: Codable {
+struct QuitGameAction: GameAction {
+    func handle(game: Game) {
+        // TODO
+    }
 }

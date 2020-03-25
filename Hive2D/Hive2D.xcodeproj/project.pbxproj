@@ -14,13 +14,11 @@
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
 		A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489F241CE9AB00BF5429 /* GameNetworking.swift */; };
 		A97F48A3241E172500BF5429 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A2241E172500BF5429 /* GameAction.swift */; };
-		A97F48A5241E201700BF5429 /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A4241E201700BF5429 /* FirebaseCodable.swift */; };
 		A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */; };
 		A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */; };
 		A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */; };
 		A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AC241E310D00BF5429 /* QuitGameAction.swift */; };
 		A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AE241E316900BF5429 /* StartGameAction.swift */; };
-		A97F48B1241E87AC00BF5429 /* GameActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B0241E87AC00BF5429 /* GameActionType.swift */; };
 		A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */; };
 		A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B82420ECA900BF5429 /* GameActionQueue.swift */; };
 		A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48BB2420F3B600BF5429 /* Queue.swift */; };
@@ -35,6 +33,8 @@
 		A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */; };
 		A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48D3242328AA00BF5429 /* UserAuthState.swift */; };
 		A9D80B8D242790BA00951824 /* GameActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */; };
+		A9D80B91242B3C7500951824 /* CodableGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B90242B3C7500951824 /* CodableGameAction.swift */; };
+		A9D80B97242B6E6C00951824 /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B96242B6E6B00951824 /* FirebaseCodable.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -100,13 +100,11 @@
 		A97F489D241CE2A500BF5429 /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		A97F489F241CE9AB00BF5429 /* GameNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetworking.swift; sourceTree = "<group>"; };
 		A97F48A2241E172500BF5429 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
-		A97F48A4241E201700BF5429 /* FirebaseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
 		A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyNodeAction.swift; sourceTree = "<group>"; };
 		A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNodeAction.swift; sourceTree = "<group>"; };
 		A97F48AC241E310D00BF5429 /* QuitGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitGameAction.swift; sourceTree = "<group>"; };
 		A97F48AE241E316900BF5429 /* StartGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameAction.swift; sourceTree = "<group>"; };
-		A97F48B0241E87AC00BF5429 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
 		A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobby.swift; sourceTree = "<group>"; };
 		A97F48B82420ECA900BF5429 /* GameActionQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueue.swift; sourceTree = "<group>"; };
 		A97F48BB2420F3B600BF5429 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -121,6 +119,8 @@
 		A97F48D1242323FF00BF5429 /* FirebaseUserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuth.swift; sourceTree = "<group>"; };
 		A97F48D3242328AA00BF5429 /* UserAuthState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthState.swift; sourceTree = "<group>"; };
 		A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueueTests.swift; sourceTree = "<group>"; };
+		A9D80B90242B3C7500951824 /* CodableGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableGameAction.swift; sourceTree = "<group>"; };
+		A9D80B96242B6E6B00951824 /* FirebaseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				A97F48A2241E172500BF5429 /* GameAction.swift */,
-				A97F48B0241E87AC00BF5429 /* GameActionType.swift */,
+				A9D80B90242B3C7500951824 /* CodableGameAction.swift */,
 				A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */,
 				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
 				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
@@ -248,8 +248,8 @@
 			children = (
 				A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */,
 				A97F48C42422213D00BF5429 /* FirebaseLobbyFinder.swift */,
+				A9D80B96242B6E6B00951824 /* FirebaseCodable.swift */,
 				A97F48BD2420F46C00BF5429 /* FirebaseGame.swift */,
-				A97F48A4241E201700BF5429 /* FirebaseCodable.swift */,
 				A97F48C62422218700BF5429 /* FirebaseConstants.swift */,
 				A97F48C8242299B700BF5429 /* FirebaseHelper.swift */,
 			);
@@ -600,9 +600,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97F48B1241E87AC00BF5429 /* GameActionType.swift in Sources */,
+				A9D80B91242B3C7500951824 /* CodableGameAction.swift in Sources */,
 				A97F48C52422213D00BF5429 /* FirebaseLobbyFinder.swift in Sources */,
 				A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */,
+				A9D80B97242B6E6C00951824 /* FirebaseCodable.swift in Sources */,
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
 				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
@@ -616,7 +617,6 @@
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
 				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
 				A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */,
-				A97F48A5241E201700BF5429 /* FirebaseCodable.swift in Sources */,
 				BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,

@@ -33,8 +33,10 @@ class FirebaseGame: GameNetworking {
     func sendGameAction(_ action: GameAction) {
 
         let newActionRef = gameRef.childByAutoId()
-
-        let dataDict = FirebaseCodable<GameAction>.toDict(action)
+        guard let codableAction = CodableGameAction(action) else {
+            return
+        }
+        let dataDict = FirebaseCodable<CodableGameAction>.toDict(codableAction)
         newActionRef.setValue(dataDict)
     }
 
@@ -42,10 +44,9 @@ class FirebaseGame: GameNetworking {
         let actionDict = actionSnapshot.value as Any
 
         // Add to queue if action is successfully decoded
-        guard let action = FirebaseCodable<GameAction>.fromDict(actionDict) else {
+        guard let action = FirebaseCodable<CodableGameAction>.fromDict(actionDict) else {
             return
         }
-
-        self.gameActionQueue.enqueue(action: action)
+        self.gameActionQueue.enqueue(action: action.gameAction)
     }
 }

@@ -8,6 +8,13 @@
 
 import Foundation
 
-struct DestroyNodeAction: Codable {
+struct DestroyNodeAction: GameAction {
     let nodeNetId: UUID
+
+    func handle(game: Game) {
+        guard let node = game.networkedEntities[nodeNetId] else {
+            return
+        }
+        game.remove(entity: node)
+    }
 }

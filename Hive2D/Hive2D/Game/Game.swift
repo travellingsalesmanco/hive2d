@@ -51,18 +51,18 @@ class Game {
             UUID()
         }
         gameNetworking.sendGameAction(
-            .SetupGame(SetupGameAction(playerNetworkingIds: playerNetworkingIds,
-                                       hiveStartingLocations: hiveStartingLocations,
-                                       hiveNetworkingIds: hiveNetworkingIds))
+            SetupGameAction(playerNetworkingIds: playerNetworkingIds,
+                            hiveStartingLocations: hiveStartingLocations,
+                            hiveNetworkingIds: hiveNetworkingIds)
         )
     }
 
     func buildNode(at point: CGPoint) {
         gameNetworking.sendGameAction(
-            .BuildNode(BuildNodeAction(playerId: config.me.id,
-                                       playerName: config.me.name,
-                                       position: point,
-                                       netId: UUID()))
+            BuildNodeAction(playerId: config.me.id,
+                            playerName: config.me.name,
+                            position: point,
+                            netId: UUID())
         )
     }
 
@@ -121,7 +121,7 @@ class Game {
 
     // TODO: Fix query not able to accept multiple component types as input
     func query(includes types: GKComponent.Type...) -> [GKEntity] {
-        return entities.filter { entity in
+        entities.filter { entity in
             for type in types {
                 if entity.component(ofType: type) == nil {
                     return false
@@ -130,7 +130,6 @@ class Game {
             return true
         }
     }
-
 
     func connectNodeToNearest(from: NodeComponent) {
         let nodes = query(includes: NodeComponent.self)
@@ -164,95 +163,7 @@ class Game {
     private func handleGameActionsInQueue() {
         let actions = gameNetworking.gameActionQueue.dequeueAll()
         for action in actions {
-            switch action {
-            case let .SetupGame(action):
-                handleSetupGame(action)
-            case let .StartGame(action):
-                handleStartGame(action)
-            case let .QuitGame(action):
-                handleQuitGame(action)
-            case let .BuildNode(action):
-                handleBuildNode(action)
-            case let .ChangeNode(action):
-                handleChangeNode(action)
-            case let .DestroyNode(action):
-                handleDestroyNode(action)
-            }
+            action.handle(game: self)
         }
-    }
-
-    func handleSetupGame(_ action: SetupGameAction) {
-        for (idx, gamePlayer) in config.players.enumerated() {
-            let playerComponent = PlayerComponent(id: gamePlayer.id, name: gamePlayer.name)
-            let resourceComponent = ResourceComponent(resources: Constants.GamePlay.initialPlayerResource)
-            let networkComponent = NetworkComponent(id: action.playerNetworkingIds[idx])
-            let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
-            add(entity: playerEntity)
-
-            let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.hive)
-            let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
-            let hiveNodeComponent = NodeComponent(position: action.hiveStartingLocations[idx])
-            syncSpriteWithNode(spriteComponent: hiveSpriteComponent, nodeComponent: hiveNodeComponent)
-            let hiveNetworkComponent = NetworkComponent(id: action.hiveNetworkingIds[idx])
-            let hive = Hive(sprite: hiveSpriteComponent,
-                            node: hiveNodeComponent,
-                            player: playerComponent,
-                            network: hiveNetworkComponent)
-            add(entity: hive)
-            // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
-        }
-        // Broadcast acknowledgement
-        gameNetworking.sendGameAction(.StartGame(StartGameAction()))
-    }
-    func handleStartGame(_ action: StartGameAction) {
-        // Start the game when everyone acknowledges game setup
-        connectedPlayersCount += 1
-        if connectedPlayersCount == config.players.count {
-            gameStarted = true
-        }
-    }
-    func handleQuitGame(_ action: QuitGameAction) {
-        // TODO
-    }
-
-    func handleBuildNode(_ action: BuildNodeAction) {
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let nodeComponent = NodeComponent(position: action.position)
-        syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
-
-        let playerComponent = PlayerComponent(id: action.playerId, name: action.playerName)
-        let resourceCollectorComponent =
-            ResourceCollectorComponent(resourceCollectionRate: config.resourceCollectionRate)
-        let resourceConsumerComponent =
-            ResourceConsumerComponent(resourceConsumptionRate: config.resourceConsumptionRate)
-        let networkComponent = NetworkComponent(id: action.netId)
-        let resourceNode = ResourceNode(sprite: spriteComponent,
-                                        node: nodeComponent,
-                                        player: playerComponent,
-                                        resourceCollector: resourceCollectorComponent,
-                                        resourceConsumer: resourceConsumerComponent,
-                                        network: networkComponent)
-
-        guard checkOverlapping(node: nodeComponent) else {
-            return
-        }
-        guard hasSufficientResources(for: resourceNode) else {
-            return
-        }
-        add(entity: resourceNode)
-        connectNodeToNearest(from: nodeComponent)
-    }
-    func handleDestroyNode(_ action: DestroyNodeAction) {
-        guard let node = networkedEntities[action.nodeNetId] else {
-            return
-        }
-        remove(entity: node)
-    }
-    func handleChangeNode(_ action: ChangeNodeAction) {
-//        guard let node = networkedEntities[action.nodeNetId] else {
-//            return
-//        }
-        // Change stuff
     }
 }
