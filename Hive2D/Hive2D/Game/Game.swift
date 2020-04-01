@@ -57,13 +57,13 @@ class Game {
         )
     }
 
-    func buildResourceNode(at point: CGPoint, resourceType: ResourceType) {
+    func buildNode(at point: CGPoint, nodeType: NodeType) {
         gameNetworking.sendGameAction(
-            BuildResourceNodeAction(playerId: config.me.id,
-                                    playerName: config.me.name,
-                                    position: point,
-                                    netId: UUID(),
-                                    resourceType: resourceType)
+            BuildNodeAction(playerId: config.me.id,
+                            playerName: config.me.name,
+                            position: point,
+                            netId: UUID(),
+                            nodeType: nodeType)
         )
     }
 
@@ -73,13 +73,13 @@ class Game {
         spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
     }
 
-    func hasSufficientResources(for resourceNode: ResourceNode, resourceType: ResourceType) -> Bool {
-        let player = getPlayer(for: resourceNode)
+    func hasSufficientResources(for node: Node, resourceType: ResourceType) -> Bool {
+        let player = getPlayer(for: node)
         guard let resourceCount = player?.component(ofType: ResourceComponent.self)?.resources[resourceType] else {
             return false
         }
         // TODO: Consumption rate != cost lol
-        let cost = resourceNode.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
+        let cost = node.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
         return resourceCount > cost
     }
 

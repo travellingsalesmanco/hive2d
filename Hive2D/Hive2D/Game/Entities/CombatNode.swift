@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class CombatNode: GKEntity {
+class CombatNode: Node {
 
     init(sprite: SpriteComponent,
          node: NodeComponent,

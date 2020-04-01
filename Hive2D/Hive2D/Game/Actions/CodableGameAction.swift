@@ -9,7 +9,7 @@
 import Foundation
 
 enum CodableGameAction {
-    case BuildResourceNode(BuildResourceNodeAction)
+    case BuildNode(BuildNodeAction)
     case DestroyNode(DestroyNodeAction)
     case ChangeNode(ChangeNodeAction)
     case QuitGame(QuitGameAction)
@@ -18,7 +18,7 @@ enum CodableGameAction {
 
     var gameAction: GameAction {
         switch self {
-        case let .BuildResourceNode(action):
+        case let .BuildNode(action):
             return action
         case let .DestroyNode(action):
             return action
@@ -36,13 +36,13 @@ enum CodableGameAction {
 
 extension CodableGameAction: Codable {
     private enum CodingKeys: String, CodingKey {
-        case BuildResourceNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame
+        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame
     }
 
     init?(_ action: GameAction) {
         switch action {
-        case let action as BuildResourceNodeAction:
-            self = .BuildResourceNode(action)
+        case let action as BuildNodeAction:
+            self = .BuildNode(action)
         case let action as DestroyNodeAction:
             self = .DestroyNode(action)
         case let action as ChangeNodeAction:
@@ -60,8 +60,8 @@ extension CodableGameAction: Codable {
 
     init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
-        if let buildNode = try container.decodeIfPresent(BuildResourceNodeAction.self, forKey: .BuildResourceNode) {
-            self = .BuildResourceNode(buildNode)
+        if let buildNode = try container.decodeIfPresent(BuildNodeAction.self, forKey: .BuildNode) {
+            self = .BuildNode(buildNode)
         } else if let destroyNode = try container.decodeIfPresent(DestroyNodeAction.self, forKey: .DestroyNode) {
             self = .DestroyNode(destroyNode)
         } else if let changeNode = try container.decodeIfPresent(ChangeNodeAction.self, forKey: .ChangeNode) {
@@ -79,8 +79,8 @@ extension CodableGameAction: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
-        case let .BuildResourceNode(action):
-            try container.encode(action, forKey: .BuildResourceNode)
+        case let .BuildNode(action):
+            try container.encode(action, forKey: .BuildNode)
         case let .DestroyNode(action):
             try container.encode(action, forKey: .DestroyNode)
         case let .ChangeNode(action):
