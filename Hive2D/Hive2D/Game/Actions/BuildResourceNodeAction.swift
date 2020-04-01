@@ -11,11 +11,12 @@ import CoreGraphics
 import GameplayKit
 import SpriteKit
 
-struct BuildNodeAction: GameAction {
+struct BuildResourceNodeAction: GameAction {
     let playerId: String
     let playerName: String
     let position: CGPoint
     let netId: UUID
+    let resourceType: ResourceType
 
     func handle(game: Game) {
         let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
@@ -25,11 +26,12 @@ struct BuildNodeAction: GameAction {
 
         let playerComponent = PlayerComponent(id: playerId, name: playerName)
         let resourceCollectorComponent =
-            ResourceCollectorComponent(resourceCollectionRate:
+            ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate:
                 game.config.resourceCollectionRate)
-        let resourceConsumerComponent = ResourceConsumerComponent(resourceConsumptionRate:
+        let resourceConsumerComponent = ResourceConsumerComponent(resourceType: resourceType, resourceConsumptionRate:
                 game.config.resourceConsumptionRate)
         let networkComponent = NetworkComponent(id: netId)
+
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
                                         player: playerComponent,
@@ -40,9 +42,11 @@ struct BuildNodeAction: GameAction {
         guard game.checkOverlapping(node: nodeComponent) else {
               return
         }
-        guard game.hasSufficientResources(for: resourceNode) else {
+
+        guard game.hasSufficientResources(for: resourceNode, resourceType: resourceType) else {
               return
         }
+
         game.add(entity: resourceNode)
         game.connectNodeToNearest(from: nodeComponent)
     }

@@ -9,9 +9,11 @@
 import GameplayKit
 
 class ResourceCollectorComponent: GKComponent {
+    var resourceType: ResourceType
     var resourceCollectionRate: CGFloat
 
-    init(resourceCollectionRate: CGFloat) {
+    init(resourceType: ResourceType, resourceCollectionRate: CGFloat) {
+        self.resourceType = resourceType
         self.resourceCollectionRate = resourceCollectionRate
         super.init()
     }
@@ -25,6 +27,11 @@ class ResourceCollectorComponent: GKComponent {
         guard let resourceStore = entity?.component(ofType: ResourceComponent.self) else {
             return
         }
-        resourceStore.resources += resourceCollectionRate * CGFloat(seconds)
+
+        guard let oldResourceCount = resourceStore.resources[resourceType] else {
+            return
+        }
+
+        resourceStore.resources[resourceType] = oldResourceCount + resourceCollectionRate * CGFloat(seconds)
     }
 }

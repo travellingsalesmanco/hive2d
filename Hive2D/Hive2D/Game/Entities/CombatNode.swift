@@ -10,13 +10,17 @@ import GameplayKit
 
 class CombatNode: GKEntity {
 
-    init(sprite: SpriteComponent, node: NodeComponent,
-         player: PlayerComponent, resourceConsumer: ResourceConsumerComponent) {
+    init(sprite: SpriteComponent,
+         node: NodeComponent,
+         player: PlayerComponent,
+         resourceConsumer: ResourceConsumerComponent,
+         network: NetworkComponent) {
         super.init()
         addComponent(sprite)
         addComponent(node)
         addComponent(player)
         addComponent(resourceConsumer)
+        addComponent(network)
     }
 
     @available(*, unavailable)

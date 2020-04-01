@@ -19,7 +19,7 @@ struct SetupGameAction: GameAction {
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
             let playerComponent = PlayerComponent(id: gamePlayer.id, name: gamePlayer.name)
-            let resourceComponent = ResourceComponent(resources: Constants.GamePlay.initialPlayerResource)
+            let resourceComponent = ResourceComponent(alpha: Constants.GamePlay.initialPlayerResource)
             let networkComponent = NetworkComponent(id: playerNetworkingIds[idx])
             let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
             game.add(entity: playerEntity)

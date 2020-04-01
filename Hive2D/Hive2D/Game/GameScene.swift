@@ -70,7 +70,7 @@ class GameScene: SKScene {
             return
         } else {
             // Touched empty space, emit a build node action
-            game.buildNode(at: scenePoint)
+            game.buildResourceNode(at: scenePoint, resourceType: .Alpha)
         }
     }
 

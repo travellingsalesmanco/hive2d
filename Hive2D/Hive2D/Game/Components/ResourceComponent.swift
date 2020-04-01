@@ -9,10 +9,21 @@
 import GameplayKit
 
 class ResourceComponent: GKComponent {
-    var resources: CGFloat
+    var resources = [ResourceType: CGFloat]()
 
-    init(resources: CGFloat) {
-        self.resources = resources
+    init(alpha: CGFloat = 0,
+         beta: CGFloat = 0,
+         gamma: CGFloat = 0,
+         delta: CGFloat = 0,
+         epsilon: CGFloat = 0,
+         zeta: CGFloat = 0) {
+
+        self.resources[.Alpha] = alpha
+        self.resources[.Beta] = beta
+        self.resources[.Gamma] = gamma
+        self.resources[.Delta] = delta
+        self.resources[.Epsilon] = epsilon
+        self.resources[.Zeta] = zeta
         super.init()
     }
 

@@ -57,12 +57,13 @@ class Game {
         )
     }
 
-    func buildNode(at point: CGPoint) {
+    func buildResourceNode(at point: CGPoint, resourceType: ResourceType) {
         gameNetworking.sendGameAction(
-            BuildNodeAction(playerId: config.me.id,
-                            playerName: config.me.name,
-                            position: point,
-                            netId: UUID())
+            BuildResourceNodeAction(playerId: config.me.id,
+                                    playerName: config.me.name,
+                                    position: point,
+                                    netId: UUID(),
+                                    resourceType: resourceType)
         )
     }
 
@@ -72,11 +73,14 @@ class Game {
         spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
     }
 
-    func hasSufficientResources(for resourceNode: ResourceNode) -> Bool {
+    func hasSufficientResources(for resourceNode: ResourceNode, resourceType: ResourceType) -> Bool {
         let player = getPlayer(for: resourceNode)
-        let resources = player!.component(ofType: ResourceComponent.self)!.resources
+        guard let resourceCount = player?.component(ofType: ResourceComponent.self)?.resources[resourceType] else {
+            return false
+        }
+        // TODO: Consumption rate != cost lol
         let cost = resourceNode.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
-        return resources > cost
+        return resourceCount > cost
     }
 
     func checkOverlapping(node toCheck: NodeComponent) -> Bool {

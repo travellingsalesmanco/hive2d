@@ -14,7 +14,6 @@
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
 		A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489F241CE9AB00BF5429 /* GameNetworking.swift */; };
 		A97F48A3241E172500BF5429 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A2241E172500BF5429 /* GameAction.swift */; };
-		A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */; };
 		A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */; };
 		A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */; };
 		A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AC241E310D00BF5429 /* QuitGameAction.swift */; };
@@ -45,6 +44,8 @@
 		BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860B2420CB2B00AA9441 /* GamePlayer.swift */; };
 		BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */; };
 		BED08610242118D900AA9441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860F242118D900AA9441 /* Constants.swift */; };
+		BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EB24346DFB00A0928D /* ResourceType.swift */; };
+		BEF8B8EE24347C8F00A0928D /* BuildResourceNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8ED24347C8F00A0928D /* BuildResourceNodeAction.swift */; };
 		F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B4241CB048002C004F /* AppDelegate.swift */; };
 		F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B6241CB048002C004F /* SceneDelegate.swift */; };
 		F969C2B9241CB048002C004F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2B8241CB048002C004F /* ViewController.swift */; };
@@ -100,7 +101,6 @@
 		A97F489D241CE2A500BF5429 /* Lobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lobby.swift; sourceTree = "<group>"; };
 		A97F489F241CE9AB00BF5429 /* GameNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetworking.swift; sourceTree = "<group>"; };
 		A97F48A2241E172500BF5429 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
-		A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyNodeAction.swift; sourceTree = "<group>"; };
 		A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNodeAction.swift; sourceTree = "<group>"; };
 		A97F48AC241E310D00BF5429 /* QuitGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitGameAction.swift; sourceTree = "<group>"; };
@@ -131,6 +131,8 @@
 		BED0860B2420CB2B00AA9441 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameModalViewController.swift; sourceTree = "<group>"; };
 		BED0860F242118D900AA9441 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BEF8B8EB24346DFB00A0928D /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
+		BEF8B8ED24347C8F00A0928D /* BuildResourceNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildResourceNodeAction.swift; sourceTree = "<group>"; };
 		F969C2B1241CB048002C004F /* Hive2D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hive2D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F969C2B4241CB048002C004F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F969C2B6241CB048002C004F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,19 +222,19 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		A97F48A1241E171B00BF5429 /* GameActions */ = {
+		A97F48A1241E171B00BF5429 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
 				A97F48A2241E172500BF5429 /* GameAction.swift */,
 				A9D80B90242B3C7500951824 /* CodableGameAction.swift */,
-				A97F48A6241E30C200BF5429 /* BuildNodeAction.swift */,
+				BEF8B8ED24347C8F00A0928D /* BuildResourceNodeAction.swift */,
 				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
 				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
 				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
 				03A0F39F24275A8B0091F95E /* SetupGameAction.swift */,
 			);
-			path = GameActions;
+			path = Actions;
 			sourceTree = "<group>";
 		};
 		A97F48BA2420F3A900BF5429 /* Utilities */ = {
@@ -335,7 +337,6 @@
 				F969C2E4241F9147002C004F /* Game */,
 				BED086062420CAAF00AA9441 /* Models */,
 				BEB648FA241E5B5C002814D4 /* Controllers */,
-				A97F48A1241E171B00BF5429 /* GameActions */,
 				A97F4898241CE07400BF5429 /* Networking */,
 				A97F48CB242322BF00BF5429 /* Auth */,
 				F969C2B4241CB048002C004F /* AppDelegate.swift */,
@@ -375,9 +376,11 @@
 			children = (
 				F969C2EB24204FC9002C004F /* Entities */,
 				F969C2EC24204FDA002C004F /* Components */,
+				A97F48A1241E171B00BF5429 /* Actions */,
 				F969C2E5241F9153002C004F /* Game.swift */,
 				F969C2FB2420D4FA002C004F /* GameConfig.swift */,
 				F969C2F92420D0EB002C004F /* GameScene.swift */,
+				BEF8B8EB24346DFB00A0928D /* ResourceType.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -614,13 +617,13 @@
 				A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */,
 				A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */,
 				A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */,
+				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
 				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
 				A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */,
 				BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
-				A97F48A7241E30C200BF5429 /* BuildNodeAction.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
 				A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */,
 				F969C3002420D96F002C004F /* Player.swift in Sources */,
@@ -641,6 +644,7 @@
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
+				BEF8B8EE24347C8F00A0928D /* BuildResourceNodeAction.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
 				A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */,
 				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
