@@ -1,5 +1,5 @@
 //
-//  Node.swift
+//  AttackComponent.swift
 //  Hive2D
 //
 //  Created by Yu Jia Tay on 1/4/20.
@@ -8,16 +8,14 @@
 
 import GameplayKit
 
-class Node: GKEntity {
-    init(sprite: SpriteComponent,
-         node: NodeComponent,
-         player: PlayerComponent,
-         network: NetworkComponent) {
+class AttackComponent: GKComponent {
+    var attack: CGFloat
+    var range: CGFloat
+
+    init(attack: CGFloat, range: CGFloat) {
+        self.attack = attack
+        self.range = range
         super.init()
-        addComponent(sprite)
-        addComponent(node)
-        addComponent(player)
-        addComponent(network)
     }
 
     @available(*, unavailable)

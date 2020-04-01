@@ -39,12 +39,18 @@ struct BuildNodeAction: GameAction {
         let networkComponent = NetworkComponent(id: netId)
         let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta, resourceConsumptionRate:
                 game.config.resourceConsumptionRate)
+        let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
+                                                healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)
+        let attackComponent = AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
+                                              range: Constants.GamePlay.combatNodeRange)
 
         let combatNode = CombatNode(sprite: spriteComponent,
                                     node: nodeComponent,
                                     player: playerComponent,
                                     resourceConsumer: resourceConsumerComponent,
-                                    network: networkComponent)
+                                    network: networkComponent,
+                                    defence: defenceComponent,
+                                    attack: attackComponent)
         guard game.hasSufficientResources(for: combatNode, resourceType: .Zeta) else {
               return
         }
@@ -73,13 +79,16 @@ struct BuildNodeAction: GameAction {
                 game.config.resourceCollectionRate)
         let resourceConsumerComponent = ResourceConsumerComponent(resourceType: resourceType, resourceConsumptionRate:
                 game.config.resourceConsumptionRate)
+        let defenceComponent = DefenceComponent(health: Constants.GamePlay.resourceNodeHealth,
+                                                healthRecoveryRate: Constants.GamePlay.resourceNodeHealthRecoveryRate)
 
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
                                         player: playerComponent,
                                         resourceCollector: resourceCollectorComponent,
                                         resourceConsumer: resourceConsumerComponent,
-                                        network: networkComponent)
+                                        network: networkComponent,
+                                        defence: defenceComponent)
         guard game.hasSufficientResources(for: resourceNode, resourceType: resourceType) else {
               return
         }

@@ -14,18 +14,12 @@ class ResourceNode: Node {
          player: PlayerComponent,
          resourceCollector: ResourceCollectorComponent,
          resourceConsumer: ResourceConsumerComponent,
-         network: NetworkComponent) {
-        super.init()
-        addComponent(sprite)
-        addComponent(node)
-        addComponent(player)
+         network: NetworkComponent,
+         defence: DefenceComponent) {
+        super.init(sprite: sprite, node: node, player: player, network: network)
         addComponent(resourceCollector)
         addComponent(resourceConsumer)
-        addComponent(network)
+        addComponent(defence)
     }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
