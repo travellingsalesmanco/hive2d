@@ -61,7 +61,8 @@ struct Constants {
     }
 
     struct GameAssets {
-        static let node = "peg-blue"
-        static let hive = "peg-blue-glow"
+        static let resourceNode = "peg-grey"
+        static let combatNode = "peg-grey-triangle"
+        static let hive = "peg-grey-glow"
     }
 }

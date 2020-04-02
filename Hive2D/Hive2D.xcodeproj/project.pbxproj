@@ -290,6 +290,17 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		A9A543F62435D9E900189159 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				A9A543FB2435DB1F00189159 /* PlayerColor.swift */,
+				A9A543F92435DAA200189159 /* HiveSprite.swift */,
+				A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */,
+				A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */,
+			);
+			path = Sprites;
+			sourceTree = "<group>";
+		};
 		BEB648FA241E5B5C002814D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
