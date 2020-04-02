@@ -44,6 +44,7 @@
 		BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860B2420CB2B00AA9441 /* GamePlayer.swift */; };
 		BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */; };
 		BED08610242118D900AA9441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860F242118D900AA9441 /* Constants.swift */; };
+		BED12FF7243596140030D58D /* GameTickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED12FF6243596140030D58D /* GameTickAction.swift */; };
 		BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EB24346DFB00A0928D /* ResourceType.swift */; };
 		BEF8B8F02434C07000A0928D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EF2434C07000A0928D /* Node.swift */; };
 		BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8F12434C26000A0928D /* NodeType.swift */; };
@@ -135,6 +136,7 @@
 		BED0860B2420CB2B00AA9441 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameModalViewController.swift; sourceTree = "<group>"; };
 		BED0860F242118D900AA9441 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BED12FF6243596140030D58D /* GameTickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTickAction.swift; sourceTree = "<group>"; };
 		BEF8B8EB24346DFB00A0928D /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 		BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		BEF8B8EF2434C07000A0928D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
 				03A0F39F24275A8B0091F95E /* SetupGameAction.swift */,
+				BED12FF6243596140030D58D /* GameTickAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
 				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
+				BED12FF7243596140030D58D /* GameTickAction.swift in Sources */,
 				A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */,
 				BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,

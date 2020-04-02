@@ -15,6 +15,7 @@ enum CodableGameAction {
     case QuitGame(QuitGameAction)
     case StartGame(StartGameAction)
     case SetupGame(SetupGameAction)
+    case GameTick(GameTickAction)
 
     var gameAction: GameAction {
         switch self {
@@ -30,13 +31,15 @@ enum CodableGameAction {
             return action
         case let .SetupGame(action):
             return action
+        case let .GameTick(action):
+            return action
         }
     }
 }
 
 extension CodableGameAction: Codable {
     private enum CodingKeys: String, CodingKey {
-        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame
+        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame, GameTick
     }
 
     init?(_ action: GameAction) {
@@ -53,6 +56,8 @@ extension CodableGameAction: Codable {
             self = .StartGame(action)
         case let action as SetupGameAction:
             self = .SetupGame(action)
+        case let action as GameTickAction:
+            self = .GameTick(action)
         default:
             return nil
         }
@@ -71,8 +76,10 @@ extension CodableGameAction: Codable {
             self = .QuitGame(quitGame)
         } else if let startGame = try container.decodeIfPresent(StartGameAction.self, forKey: .StartGame) {
             self = .StartGame(startGame)
+        } else if let setupGame = try container.decodeIfPresent(SetupGameAction.self, forKey: .SetupGame) {
+            self = .SetupGame(setupGame)
         } else {
-            self = .SetupGame(try container.decode(SetupGameAction.self, forKey: .SetupGame))
+            self = .GameTick(try container.decode(GameTickAction.self, forKey: .GameTick))
         }
     }
 
@@ -91,6 +98,8 @@ extension CodableGameAction: Codable {
             try container.encode(action, forKey: .StartGame)
         case let .SetupGame(action):
             try container.encode(action, forKey: .SetupGame)
+        case let.GameTick(action):
+            try container.encode(action, forKey: .GameTick)
         }
     }
 }

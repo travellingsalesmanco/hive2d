@@ -17,25 +17,32 @@ class Game {
     let config: GameConfig
     let gameNetworking: GameNetworking
     var connectedPlayersCount: Int = 0
+    var isHost: Bool
     var gameStarted: Bool = false
+    // Time at which last game tick action was called
+    var lastGameTick: TimeInterval = 0
+    // Time elapsed since game started
+    var timeElapsed: TimeInterval = 0
 
     init(scene: SKScene, config: GameConfig, gameNetworking: GameNetworking) {
         self.scene = scene
         self.config = config
         self.gameNetworking = gameNetworking
-        if config.host.id == config.me.id {
+        self.isHost = config.host.id == config.me.id
+        if self.isHost {
             setupGame()
         }
     }
 
     func update(_ dt: TimeInterval) {
+        if gameStarted {
+            timeElapsed += dt
+        }
+
         handleGameActionsInQueue()
 
-        guard gameStarted else {
-            return
-        }
-        entities.forEach {
-            $0.update(deltaTime: dt)
+        if isHost {
+            sendGameTick()
         }
     }
 
@@ -58,6 +65,10 @@ class Game {
     }
 
     func buildNode(at point: CGPoint, nodeType: NodeType) {
+        guard gameStarted else {
+            return
+        }
+
         gameNetworking.sendGameAction(
             BuildNodeAction(playerId: config.me.id,
                             playerName: config.me.name,
@@ -65,6 +76,12 @@ class Game {
                             netId: UUID(),
                             nodeType: nodeType)
         )
+    }
+
+    func sendGameTick() {
+        let duration = timeElapsed - lastGameTick
+        gameNetworking.sendGameAction(GameTickAction(duration: duration))
+        lastGameTick += duration
     }
 
     /// Ensures sprite position is same as node position
