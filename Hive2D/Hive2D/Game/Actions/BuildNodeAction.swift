@@ -12,8 +12,7 @@ import GameplayKit
 import SpriteKit
 
 struct BuildNodeAction: GameAction {
-    let playerId: String
-    let playerName: String
+    let playerNetId: UUID
     let position: CGPoint
     let netId: UUID
     let nodeType: NodeType
@@ -33,9 +32,13 @@ struct BuildNodeAction: GameAction {
               return
         }
 
+        guard let player = game.getPlayer(id: playerNetId) else {
+            return
+        }
+
         let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let playerComponent = PlayerComponent(id: playerId, name: playerName)
+        let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
         let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta, resourceConsumptionRate:
                 game.config.resourceConsumptionRate)
@@ -69,10 +72,13 @@ struct BuildNodeAction: GameAction {
         guard game.checkOverlapping(node: nodeComponent) else {
               return
         }
+        guard let player = game.getPlayer(id: playerNetId) else {
+            return
+        }
 
         let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let playerComponent = PlayerComponent(id: playerId, name: playerName)
+        let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
         let resourceCollectorComponent =
             ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate:

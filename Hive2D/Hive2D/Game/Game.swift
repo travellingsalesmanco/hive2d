@@ -13,6 +13,8 @@ import NotificationCenter
 class Game {
     var entities = Set<GKEntity>()
     var networkedEntities = [UUID: GKEntity]()
+    var playerEntities = [UUID: Player]()
+    var player: Player?
     let scene: SKScene
     let config: GameConfig
     let gameNetworking: GameNetworking
@@ -69,9 +71,12 @@ class Game {
             return
         }
 
+        guard let player = player else {
+            return
+        }
+
         gameNetworking.sendGameAction(
-            BuildNodeAction(playerId: config.me.id,
-                            playerName: config.me.name,
+            BuildNodeAction(playerNetId: player.getId(),
                             position: point,
                             netId: UUID(),
                             nodeType: nodeType)
@@ -114,10 +119,19 @@ class Game {
         return true
     }
 
+    func addPlayer(id: UUID, player: Player) {
+        playerEntities[id] = player
+    }
+
+    func getPlayer(id: UUID) -> Player? {
+        playerEntities[id]
+    }
+
     func getPlayer(for entity: GKEntity) -> Player? {
-        let playerComponent = entity.component(ofType: PlayerComponent.self)!
-        let players = query(includes: ResourceComponent.self)
-        return players.first { $0.component(ofType: PlayerComponent.self)!.id == playerComponent.id } as? Player
+        guard let player = entity.component(ofType: PlayerComponent.self)?.player else {
+            return nil
+        }
+        return player
     }
 
     func add(entity: GKEntity) {

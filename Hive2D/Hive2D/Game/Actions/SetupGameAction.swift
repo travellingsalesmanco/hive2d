@@ -18,12 +18,23 @@ struct SetupGameAction: GameAction {
 
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
-            let playerComponent = PlayerComponent(id: gamePlayer.id, name: gamePlayer.name)
+            // Construct player info component
+            let playerInfoComponent = PlayerInfoComponent(id: gamePlayer.id, name: gamePlayer.name)
+            // Add player entities
             let resourceComponent = ResourceComponent(alpha: Constants.GamePlay.initialPlayerResource)
-            let networkComponent = NetworkComponent(id: playerNetworkingIds[idx])
-            let playerEntity = Player(player: playerComponent, resource: resourceComponent, network: networkComponent)
-            game.add(entity: playerEntity)
+            let playerNetworkingComponent = NetworkComponent(id: playerNetworkingIds[idx])
+            let playerEntity = Player(player: playerInfoComponent,
+                                      resource: resourceComponent,
+                                      network: playerNetworkingComponent)
 
+            game.addPlayer(id: playerNetworkingIds[idx], player: playerEntity)
+            if game.config.me.id == gamePlayer.id {
+                game.player = playerEntity
+            }
+
+            // Create player component from player entity
+            let playerComponent = PlayerComponent(player: playerEntity)
+            // Create hive node
             let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.hive)
             let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
             let hiveNodeComponent = NodeComponent(position: hiveStartingLocations[idx])

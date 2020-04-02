@@ -7,6 +7,7 @@
 //
 
 struct StartGameAction: GameAction {
+    let action = "START"
     func handle(game: Game) {
         game.connectedPlayersCount += 1
         if game.connectedPlayersCount == game.config.players.count {

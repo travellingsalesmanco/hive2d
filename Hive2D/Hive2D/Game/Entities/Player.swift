@@ -9,12 +9,15 @@
 import GameplayKit
 
 class Player: GKEntity {
-
-    init(player: PlayerComponent, resource: ResourceComponent, network: NetworkComponent) {
+    init(player: PlayerInfoComponent, resource: ResourceComponent, network: NetworkComponent) {
         super.init()
-        addComponent(player)
         addComponent(resource)
+        addComponent(player)
         addComponent(network)
+    }
+
+    func getId() -> UUID {
+        self.component(ofType: NetworkComponent.self)!.id
     }
 
     @available(*, unavailable)
