@@ -36,7 +36,7 @@ struct BuildNodeAction: GameAction {
             return
         }
 
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
+        let spriteNode = CombatNodeSprite(playerColor: player.getColor())
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
@@ -76,7 +76,7 @@ struct BuildNodeAction: GameAction {
             return
         }
 
-        let spriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.node)
+        let spriteNode = ResourceNodeSprite(playerColor: player.getColor())
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)

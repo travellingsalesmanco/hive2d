@@ -13,13 +13,16 @@ import SpriteKit
 
 struct SetupGameAction: GameAction {
     let playerNetworkingIds: [UUID]
+    let playerColors: [PlayerColor]
     let hiveStartingLocations: [CGPoint]
     let hiveNetworkingIds: [UUID]
 
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
             // Construct player info component
-            let playerInfoComponent = PlayerInfoComponent(id: gamePlayer.id, name: gamePlayer.name)
+            let playerInfoComponent = PlayerInfoComponent(id: gamePlayer.id,
+                                                          name: gamePlayer.name,
+                                                          color: playerColors[idx])
             // Add player entities
             let resourceComponent = ResourceComponent(alpha: Constants.GamePlay.initialPlayerResource)
             let playerNetworkingComponent = NetworkComponent(id: playerNetworkingIds[idx])
@@ -35,7 +38,7 @@ struct SetupGameAction: GameAction {
             // Create player component from player entity
             let playerComponent = PlayerComponent(player: playerEntity)
             // Create hive node
-            let hiveSpriteNode = SKSpriteNode(imageNamed: Constants.GameAssets.hive)
+            let hiveSpriteNode = HiveSprite(playerColor: playerEntity.getColor())
             let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
             let hiveNodeComponent = NodeComponent(position: hiveStartingLocations[idx])
             game.syncSpriteWithNode(spriteComponent: hiveSpriteComponent, nodeComponent: hiveNodeComponent)

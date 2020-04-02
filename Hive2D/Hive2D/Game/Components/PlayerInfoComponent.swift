@@ -11,10 +11,12 @@ import GameplayKit
 class PlayerInfoComponent: GKComponent {
     let id: String
     let name: String
+    let color: PlayerColor
 
-    init(id: String, name: String) {
+    init(id: String, name: String, color: PlayerColor) {
         self.id = id
         self.name = name
+        self.color = color
         super.init()
     }
 

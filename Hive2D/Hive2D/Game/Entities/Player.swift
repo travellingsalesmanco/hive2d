@@ -20,6 +20,10 @@ class Player: GKEntity {
         self.component(ofType: NetworkComponent.self)!.id
     }
 
+    func getColor() -> PlayerColor {
+        self.component(ofType: PlayerInfoComponent.self)!.color
+    }
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -59,8 +59,10 @@ class Game {
         let hiveNetworkingIds = hiveStartingLocations.map { _ in
             UUID()
         }
+        let playerColors = PlayerColor.pickColors(count: config.players.count)
         gameNetworking.sendGameAction(
             SetupGameAction(playerNetworkingIds: playerNetworkingIds,
+                            playerColors: playerColors,
                             hiveStartingLocations: hiveStartingLocations,
                             hiveNetworkingIds: hiveNetworkingIds)
         )
