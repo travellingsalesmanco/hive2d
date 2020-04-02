@@ -15,10 +15,9 @@ struct GameTickAction: GameAction {
         guard duration > 0 else {
             return
         }
-
-        // TODO: only update required components
         game.entities.forEach {
             $0.update(deltaTime: duration)
         }
+        game.resolveCombat(duration: duration)
     }
 }
