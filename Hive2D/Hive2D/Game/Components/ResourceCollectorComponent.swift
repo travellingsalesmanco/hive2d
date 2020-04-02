@@ -24,7 +24,8 @@ class ResourceCollectorComponent: GKComponent {
     }
 
     override func update(deltaTime seconds: TimeInterval) {
-        guard let resourceStore = entity?.component(ofType: ResourceComponent.self) else {
+        guard let player = entity?.component(ofType: PlayerComponent.self)?.player,
+            let resourceStore = player.component(ofType: ResourceComponent.self) else {
             return
         }
 
