@@ -19,7 +19,7 @@ struct DestroyNodeAction: GameAction {
             return
         }
         let edges = game.query(includes: PathComponent.self)
-        edges.filter { edge in
+        let connectedEdges = edges.filter { edge in
             guard let path = edge.component(ofType: PathComponent.self) else {
                 return false
             }
@@ -28,7 +28,7 @@ struct DestroyNodeAction: GameAction {
             }
             return false
         }
-        edges.forEach { game.remove(entity: $0) }
+        connectedEdges.forEach { game.remove(entity: $0) }
         game.remove(entity: node)
     }
 }

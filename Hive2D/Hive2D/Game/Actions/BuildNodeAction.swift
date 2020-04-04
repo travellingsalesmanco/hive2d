@@ -181,6 +181,7 @@ struct BuildNodeAction: GameAction {
                 return nil
             }
             shapeNode.strokeColor = player.getColor().getColor()
+            shapeNode.glowWidth = Constants.GamePlay.linkGlowWidth
             // not sure about using a new SKView to extract texture from line
             guard let texture = SKView().texture(from: shapeNode) else {
                 return nil
