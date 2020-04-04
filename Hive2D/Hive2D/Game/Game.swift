@@ -76,7 +76,6 @@ class Game {
         guard let player = player else {
             return
         }
-
         gameNetworking.sendGameAction(
             BuildNodeAction(playerNetId: player.getId(),
                             position: point,
@@ -166,45 +165,6 @@ class Game {
             }
             return true
         }
-    }
-
-    func connectNodeToNearest(from: NodeComponent) {
-        let nodes = query(includes: NodeComponent.self)
-            .map { $0.component(ofType: NodeComponent.self) }
-        var closestNode: NodeComponent?
-        var closestDistance = CGFloat.infinity
-        nodes.forEach { node in
-            guard node != nil && node != from else {
-                return
-            }
-            let distanceX = pow(node!.position.x - from.position.x, 2)
-            let distanceY = pow(node!.position.y - from.position.y, 2)
-            let distanceSquared = distanceX + distanceY
-            if distanceSquared < closestDistance {
-                closestNode = node
-                closestDistance = distanceSquared
-            }
-        }
-        connectNode(from: from, to: closestNode!)
-    }
-
-    func connectNode(from: NodeComponent, to: NodeComponent) {
-        let path = CGMutablePath()
-        path.move(to: from.position)
-        path.addLine(to: to.position)
-        let edge = SKShapeNode(path: path)
-        edge.strokeColor = .red
-        scene.addChild(edge)
-    }
-
-    func getOwnNodesWithinRange(from node: NodeComponent) {
-        let nodes = query(includes: NodeComponent.self)
-        let ownNodes = nodes.filter { $0.component(ofType: PlayerComponent.self) == player }
-        let ownNodesWithinRange = ownNodes.filter { node in
-            let nodeComponent = node.component(ofType: NodeComponent.self)
-
-        }
-
     }
 
     private func handleGameActionsInQueue() {

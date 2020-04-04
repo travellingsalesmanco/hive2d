@@ -27,6 +27,12 @@ struct BuildNodeAction: GameAction {
     }
 
     private func buildCombatNode(game: Game) {
+        // Check that node is within range of some other node that player owns
+        let nodesWithinRange = getNodesWithinRange(game: game)
+        guard !nodesWithinRange.isEmpty else {
+            return
+        }
+        
         let nodeComponent = NodeComponent(position: position)
         guard game.checkOverlapping(node: nodeComponent) else {
               return
@@ -60,10 +66,18 @@ struct BuildNodeAction: GameAction {
 
         game.syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
         game.add(entity: combatNode)
-        game.connectNodeToNearest(from: nodeComponent)
+
+        let edges = getEdges(to: nodesWithinRange)
+        edges.forEach { game.add(entity: $0) }
     }
 
     private func buildResourceNode(resourceNodeType: NodeType, game: Game) {
+        // Check that node is within range of some other node that player owns
+        let nodesWithinRange = getNodesWithinRange(game: game)
+        guard !nodesWithinRange.isEmpty else {
+            return
+        }
+
         guard let resourceType = convertToResourceType(from: resourceNodeType) else {
             return
         }
@@ -101,7 +115,9 @@ struct BuildNodeAction: GameAction {
 
         game.syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
         game.add(entity: resourceNode)
-        game.connectNodeToNearest(from: nodeComponent)
+
+        let edges = getEdges(to: nodesWithinRange)
+        edges.forEach { game.add(entity: $0) }
     }
 
     private func convertToResourceType(from resourceNodeType: NodeType) -> ResourceType? {
@@ -123,13 +139,15 @@ struct BuildNodeAction: GameAction {
         }
     }
 
-    private func getNodesWithinRange(game: Game) -> [GKEntity] {
+    /// Returns an array of nodes within range of node to be built excluding itself
+    private func getNodesWithinRange(game: Game,
+                                     range: CGFloat = Constants.GamePlay.nodeConnectRange) -> [GKEntity] {
         let nodes = game.query(includes: NodeComponent.self)
         guard let player = game.getPlayer(id: playerNetId) else {
             return []
         }
         let nodesWithinRange = nodes.filter { node in
-            guard node.component(ofType: PlayerComponent.self) == player else {
+            guard node.component(ofType: PlayerComponent.self)?.player == player else {
                 return false
             }
             guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
@@ -137,34 +155,47 @@ struct BuildNodeAction: GameAction {
             }
             let distanceSquared = pow(nodeComponent.position.x - position.x, 2) +
                 pow(nodeComponent.position.y - position.y, 2)
-            let rangeSquared = pow(Constants.GamePlay.nodeConnectRange, 2)
+            // If distance squared is 0, it means its the same node, which we don't want
+            guard distanceSquared != 0 else {
+                return false
+            }
+            let rangeSquared = pow(range, 2)
             return distanceSquared < rangeSquared
         }
         return nodesWithinRange
     }
 
-    private func connectNode(game: Game) {
-        let nodesWithinRange = getNodesWithinRange(game: game)
-        for node in nodesWithinRange {
+    /// Returns edges that connect the node to be added to the other nodes that are within range
+    private func getEdges(to nodesWithinRange: [GKEntity]) -> [GKEntity] {
+        let edges = nodesWithinRange.compactMap { node -> GKEntity? in
             guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
-                continue
+                return nil
             }
             let pathComponent = PathComponent(start: position, end: nodeComponent.position)
 
             let path = CGMutablePath()
             path.move(to: position)
             path.addLine(to: nodeComponent.position)
-            let sprite = SKShapeNode(path: path)
-            guard let player = game.getPlayer(id: playerNetId) else {
-                continue
+            let shapeNode = SKShapeNode(path: path)
+            guard let player = node.component(ofType: PlayerComponent.self)?.player else {
+                return nil
             }
-            sprite.strokeColor = player.getColor().getColor()
-            let spriteComponent = SpriteComponent(spriteNode: sprite)
+            shapeNode.strokeColor = player.getColor().getColor()
+            // not sure about using a new SKView to extract texture from line
+            guard let texture = SKView().texture(from: shapeNode) else {
+                return nil
+            }
+            let spriteNode = SKSpriteNode(texture: texture)
+            spriteNode.position = CGPoint(x: (position.x + nodeComponent.position.x) / 2,
+                                          y: (position.y + nodeComponent.position.y) / 2)
+
+            let spriteComponent = SpriteComponent(spriteNode: spriteNode)
 
             let playerComponent = PlayerComponent(player: player)
 
             let edge = Edge(sprite: spriteComponent, path: pathComponent, player: playerComponent)
-            game.add(entity: edge)
+            return edge
         }
+        return edges
     }
 }
