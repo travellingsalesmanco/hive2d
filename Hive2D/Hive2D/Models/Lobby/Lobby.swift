@@ -17,7 +17,7 @@ struct Lobby: Codable {
     var settings: LobbySettings
     var started: Bool = false
     var players: [GamePlayer] {
-        playerDict.values.sorted(by: {$0.joinTime < $1.joinTime} )
+        playerDict.values.sorted(by: { $0.joinTime < $1.joinTime })
     }
 
     init(id: String, host: GamePlayer) {

@@ -32,7 +32,7 @@ struct BuildNodeAction: GameAction {
         guard !nodesWithinRange.isEmpty else {
             return
         }
-        
+
         let nodeComponent = NodeComponent(position: position)
         guard game.checkOverlapping(node: nodeComponent) else {
               return
