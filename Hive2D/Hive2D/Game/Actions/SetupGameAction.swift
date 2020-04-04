@@ -52,5 +52,10 @@ struct SetupGameAction: GameAction {
         }
         // Broadcast acknowledgement
         game.gameNetworking.sendGameAction(StartGameAction())
+        // Set up disconnect message
+        guard let player = game.player else {
+            return
+        }
+        game.gameNetworking.onDisconnectSend(QuitGameAction(playerNetId: player.getId(), disconnected: true))
     }
 }

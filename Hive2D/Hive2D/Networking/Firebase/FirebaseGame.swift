@@ -11,6 +11,7 @@ import Firebase
 class FirebaseGame: GameNetworking {
     private(set) var gameActionQueue: GameActionQueue
     private let gameRef: DatabaseReference
+    private var disconnectRef: DatabaseReference?
     private var gameHandle: DatabaseHandle?
     init(gameId: String) {
         gameActionQueue = GameActionQueue(gameId: gameId)
@@ -28,6 +29,7 @@ class FirebaseGame: GameNetworking {
             return
         }
         gameRef.removeObserver(withHandle: gameHandle)
+        disconnectRef?.cancelDisconnectOperations()
     }
 
     func sendGameAction(_ action: GameAction) {
@@ -49,4 +51,14 @@ class FirebaseGame: GameNetworking {
         }
         self.gameActionQueue.enqueue(action: action.gameAction)
     }
+
+    func onDisconnectSend(_ action: GameAction) {
+        disconnectRef = gameRef.childByAutoId()
+        guard let codableAction = CodableGameAction(action) else {
+            return
+        }
+        let dataDict = FirebaseCodable<CodableGameAction>.toDict(codableAction)
+        disconnectRef?.onDisconnectSetValue(dataDict)
+    }
+
 }

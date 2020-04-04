@@ -9,4 +9,5 @@
 protocol GameNetworking {
     var gameActionQueue: GameActionQueue { get }
     func sendGameAction(_: GameAction)
+    func onDisconnectSend(_: GameAction)
 }
