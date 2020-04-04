@@ -13,14 +13,17 @@ struct Lobby: Codable {
     // Code to join room
     var code: String = "????"
     var host: GamePlayer
-    var players: [String: GamePlayer]
+    private var playerDict: [String: GamePlayer]
     var settings: LobbySettings
     var started: Bool = false
+    var players: [GamePlayer] {
+        playerDict.values.sorted(by: {$0.joinTime < $1.joinTime} )
+    }
 
     init(id: String, host: GamePlayer) {
         self.id = id
         self.host = host
-        self.players = [host.id: host]
+        self.playerDict = [host.id: host]
         self.settings = LobbySettings()
     }
 
@@ -29,20 +32,20 @@ struct Lobby: Codable {
     }
 
     func gameCanStart() -> Bool {
-        players.count >= Constants.GameConfig.minPlayers
+        playerDict.count >= Constants.GameConfig.minPlayers
     }
 
     mutating func addPlayer(player: GamePlayer) {
-        guard players[player.id] == nil else {
+        guard playerDict[player.id] == nil else {
             return
         }
-        self.players[player.id] = player
+        self.playerDict[player.id] = player
     }
 
     mutating func removePlayer(player: GamePlayer) {
-        guard players[player.id] != nil else {
+        guard playerDict[player.id] != nil else {
             return
         }
-        self.players.removeValue(forKey: player.id)
+        self.playerDict.removeValue(forKey: player.id)
     }
 }

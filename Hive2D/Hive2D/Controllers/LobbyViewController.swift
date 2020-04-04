@@ -110,8 +110,7 @@ class LobbyViewController: UIViewController {
         guard let lobby = lobby else {
             return
         }
-        let sortedPlayers = lobby.players.values.sorted(by: { $0.joinTime < $1.joinTime })
-        for (index, player) in sortedPlayers.enumerated() {
+        for (index, player) in lobby.players.enumerated() {
             playerList[index].text = player.name
         }
 

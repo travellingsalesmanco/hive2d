@@ -18,7 +18,7 @@ struct FirebaseConstants {
         lobby.child("started")
     }
     static func playerLobbyRef(ofLobby lobby: DatabaseReference, for player: String) -> DatabaseReference {
-        lobby.child("players").child(player)
+        lobby.child("playerDict").child(player)
     }
     static func codeRef(ofLobby lobby: DatabaseReference) -> DatabaseReference {
         lobby.child("code")
