@@ -68,4 +68,20 @@ struct Constants {
         static let combatNode = "peg-grey-triangle"
         static let hive = "peg-grey-glow"
     }
+
+    struct BuildNodePalette {
+        static let size = CGSize(width: 300, height: 75)
+        static let margin = CGFloat(20)
+        static let padding = CGFloat(12.5)
+
+        static let nodeSize = CGSize(width: 50, height: 50)
+        static let nodeSpacing = CGFloat(1.5)
+        static let nodePadding = CGFloat(5)
+
+        static let nodes = ["Alpha", "Beta", "Zeta", "Combat"]
+        static let resourceAlpha = "Alpha"
+        static let resourceBeta = "Beta"
+        static let resourceZeta = "Zeta"
+        static let combat = "Combat"
+    }
 }

@@ -12,6 +12,8 @@ class GameScene: SKScene {
     var game: Game!
     let gameConfig: GameConfig
     let gameNetworking: GameNetworking!
+    let hud = HUD()
+    private var selectedNodeType: NodeType = .ResourceAlpha
 
     // Update time
     var lastUpdateTimeInterval: TimeInterval = 0
@@ -35,12 +37,14 @@ class GameScene: SKScene {
         self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
         let cameraNode = SKCameraNode()
-        cameraNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         prevCameraPosition = cameraNode.position
         prevCameraScale = cameraNode.xScale
         self.addChild(cameraNode)
         self.camera = cameraNode
+        self.camera?.zPosition = 50
 
+        hud.createHudNodes(size: self.size)
+        self.camera?.addChild(hud)
         setUpGestureRecognizers()
     }
 
@@ -63,14 +67,19 @@ class GameScene: SKScene {
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
-        let firstNode = atPoint(scenePoint)
+        let node = atPoint(scenePoint)
 
-        if firstNode != self {
-            // Do stuff based on SKSpriteNode that was touched
-            return
-        } else {
+        guard let nodeLabel = node.name else {
             // Touched empty space, emit a build node action
-            game.buildNode(at: scenePoint, nodeType: .ResourceAlpha)
+            game.buildNode(at: scenePoint, nodeType: selectedNodeType)
+            return
+        }
+
+        switch nodeLabel {
+        case "Alpha", "Beta", "Zeta", "Combat":
+            selectedNodeType = convertLabelToNodeType(label: nodeLabel)
+        default:
+            return
         }
     }
 
@@ -104,5 +113,17 @@ class GameScene: SKScene {
         }
 
         camera.setScale(newScale)
+    }
+
+    private func convertLabelToNodeType(label: String) -> NodeType {
+        if label == Constants.BuildNodePalette.resourceAlpha {
+            return .ResourceAlpha
+        } else if label == Constants.BuildNodePalette.resourceBeta {
+            return .ResourceBeta
+        } else if label == Constants.BuildNodePalette.resourceZeta {
+            return .ResourceZeta
+        } else {
+            return .Combat
+        }
     }
 }

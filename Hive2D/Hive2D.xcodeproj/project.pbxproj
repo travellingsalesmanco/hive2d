@@ -52,6 +52,8 @@
 		BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */; };
 		BED08610242118D900AA9441 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED0860F242118D900AA9441 /* Constants.swift */; };
 		BED12FF7243596140030D58D /* GameTickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED12FF6243596140030D58D /* GameTickAction.swift */; };
+		BEE561562438C8BB003630DE /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE561552438C8BB003630DE /* HUD.swift */; };
+		BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617B2438E581003630DE /* BuildNodePalette.swift */; };
 		BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EB24346DFB00A0928D /* ResourceType.swift */; };
 		BEF8B8F02434C07000A0928D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EF2434C07000A0928D /* Node.swift */; };
 		BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8F12434C26000A0928D /* NodeType.swift */; };
@@ -154,6 +156,8 @@
 		BED0860D242106FB00AA9441 /* ChooseNameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseNameModalViewController.swift; sourceTree = "<group>"; };
 		BED0860F242118D900AA9441 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BED12FF6243596140030D58D /* GameTickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTickAction.swift; sourceTree = "<group>"; };
+		BEE561552438C8BB003630DE /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		BEE5617B2438E581003630DE /* BuildNodePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodePalette.swift; sourceTree = "<group>"; };
 		BEF8B8EB24346DFB00A0928D /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 		BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		BEF8B8EF2434C07000A0928D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */,
 				A9A544012438C90700189159 /* CompositeSprite.swift */,
 				A9A544032438D23900189159 /* ResourceBarSprite.swift */,
+				BEE5617B2438E581003630DE /* BuildNodePalette.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 				F969C2F92420D0EB002C004F /* GameScene.swift */,
 				BEF8B8EB24346DFB00A0928D /* ResourceType.swift */,
 				BEF8B8F12434C26000A0928D /* NodeType.swift */,
+				BEE561552438C8BB003630DE /* HUD.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */,
 				BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
+				BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */,
 				BEF8B8F32434C2C700A0928D /* BuildNodeAction.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				BEF8B8F02434C07000A0928D /* Node.swift in Sources */,
@@ -696,6 +703,7 @@
 				A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */,
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
 				A97F48CD242322ED00BF5429 /* UserAuth.swift in Sources */,
+				BEE561562438C8BB003630DE /* HUD.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
 				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
