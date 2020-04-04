@@ -82,6 +82,7 @@
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9F03D59243873E5006B93E1 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D58243873E5006B93E1 /* Edge.swift */; };
 		F9F03D5B24387400006B93E1 /* PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D5A24387400006B93E1 /* PathComponent.swift */; };
+		F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,7 @@
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
+		F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSprite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 				A9A543F92435DAA200189159 /* HiveSprite.swift */,
 				A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */,
 				A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */,
+				F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */,
+				F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */,
 				BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
 			);

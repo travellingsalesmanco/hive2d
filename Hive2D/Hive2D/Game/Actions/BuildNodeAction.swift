@@ -173,23 +173,10 @@ struct BuildNodeAction: GameAction {
             }
             let pathComponent = PathComponent(start: position, end: nodeComponent.position)
 
-            let path = CGMutablePath()
-            path.move(to: position)
-            path.addLine(to: nodeComponent.position)
-            let shapeNode = SKShapeNode(path: path)
             guard let player = node.component(ofType: PlayerComponent.self)?.player else {
                 return nil
             }
-            shapeNode.strokeColor = player.getColor().getColor()
-            shapeNode.glowWidth = Constants.GamePlay.linkGlowWidth
-            // not sure about using a new SKView to extract texture from line
-            guard let texture = SKView().texture(from: shapeNode) else {
-                return nil
-            }
-            let spriteNode = SKSpriteNode(texture: texture)
-            spriteNode.position = CGPoint(x: (position.x + nodeComponent.position.x) / 2,
-                                          y: (position.y + nodeComponent.position.y) / 2)
-
+            let spriteNode = EdgeSprite(from: position, to: nodeComponent.position, playerColor: player.getColor())
             let spriteComponent = SpriteComponent(spriteNode: spriteNode)
 
             let playerComponent = PlayerComponent(player: player)
