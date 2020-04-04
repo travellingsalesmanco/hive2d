@@ -43,6 +43,8 @@ struct BuildNodeAction: GameAction {
         }
 
         let spriteNode = CombatNodeSprite(playerColor: player.getColor())
+        let healthBar = ResourceBarSprite(color: UIColor.green)
+        spriteNode.addSprite(sprite: healthBar, xOffset: 0, yOffset: 0.2, xRatio: 0.5)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
@@ -50,6 +52,7 @@ struct BuildNodeAction: GameAction {
                 game.config.resourceConsumptionRate)
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)
+        defenceComponent.healthBarSprite = healthBar
         let attackComponent = AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
                                               range: Constants.GamePlay.combatNodeRange)
 
@@ -92,6 +95,8 @@ struct BuildNodeAction: GameAction {
 
         let spriteNode = ResourceNodeSprite(playerColor: player.getColor())
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
+        let healthBar = ResourceBarSprite(color: UIColor.green)
+        spriteNode.addSprite(sprite: healthBar, xOffset: -0.25, yOffset: 0.2, xRatio: 0.5)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
         let resourceCollectorComponent =
@@ -101,6 +106,7 @@ struct BuildNodeAction: GameAction {
                 game.config.resourceConsumptionRate)
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.resourceNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.resourceNodeHealthRecoveryRate)
+        defenceComponent.healthBarSprite = healthBar
 
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
