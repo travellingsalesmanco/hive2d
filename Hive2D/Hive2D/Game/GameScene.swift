@@ -22,10 +22,10 @@ class GameScene: SKScene {
     private var prevCameraPosition = CGPoint.zero
     private var prevCameraScale = CGFloat.zero
 
-    init(gameConfig: GameConfig, gameNetworking: GameNetworking, size: CGSize) {
+    init(gameConfig: GameConfig, gameNetworking: GameNetworking, viewSize: CGSize) {
         self.gameConfig = gameConfig
         self.gameNetworking = gameNetworking
-        super.init(size: size)
+        super.init(size: CGSize(width: gameConfig.mapSize, height: gameConfig.mapSize))
     }
 
     @available(*, unavailable)

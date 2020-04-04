@@ -17,13 +17,10 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let boundHeight = view.bounds.size.height
-        let scaleFactor = boundHeight / Constants.GameBounds.gameBoundHeight
-        let boundWidth = view.bounds.size.width * scaleFactor
 
         let scene = GameScene(gameConfig: gameConfig,
                               gameNetworking: gameNetworking,
-                              size: CGSize(width: boundWidth, height: boundHeight))
+                              viewSize: view.bounds.size)
         guard let skView = self.gameArea else {
             return
         }

@@ -30,10 +30,12 @@ struct Constants {
 
     struct GameConfig {
         static let minPlayers = 2
-        // TODO: Set values for all these configs
-        static let smallMapSize = CGSize.zero
-        static let mediumMapSize = CGSize.zero
-        static let largeMapSize = CGSize.zero
+        // Map is an N*N square, where N is the map size
+        // TODO: Review map size increments
+        static let smallMapSize = CGFloat(1)
+        static let mediumMapSize = CGFloat(2) // Map size quadruples
+        static let largeMapSize = CGFloat(3) // Map size * 9/4
+
         static let normalResourceCollectionRate = CGFloat(100 / 60)
         static let normalResourceConsumptionRate = CGFloat(20 / 60)
         static let fastResourceCollectionRate = CGFloat(500 / 60)
@@ -43,6 +45,11 @@ struct Constants {
     struct GameBounds {
         static let gameBoundHeight = CGFloat(768)
         static let gameBoundWidth = CGFloat(1_024)
+    }
+    struct GameCamera {
+        // Size constrained by height only to accomodate different aspect ratios
+        static let viewableHeightRange = CGFloat(0.1)...CGFloat(0.5)
+        static let defaultHeight = GameCamera.viewableHeightRange.lowerBound
     }
 
     struct GamePlay {

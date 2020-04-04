@@ -38,7 +38,7 @@ struct GameConfig {
     let host: GamePlayer
     let me: GamePlayer
     let players: [GamePlayer]
-    let mapSize: CGSize
+    let mapSize: CGFloat
     let resourceCollectionRate: CGFloat
     let resourceConsumptionRate: CGFloat
     let nodeCostMap = NodeCostMap()
