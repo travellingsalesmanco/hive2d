@@ -15,6 +15,20 @@ struct DestroyNodeAction: GameAction {
         guard let node = game.networkedEntities[nodeNetId] else {
             return
         }
+        guard let position = node.component(ofType: NodeComponent.self)?.position else {
+            return
+        }
+        let edges = game.query(includes: PathComponent.self)
+        edges.filter { edge in
+            guard let path = edge.component(ofType: PathComponent.self) else {
+                return false
+            }
+            if path.start == position || path.end == position {
+                return true
+            }
+            return false
+        }
+        edges.forEach { game.remove(entity: $0) }
         game.remove(entity: node)
     }
 }
