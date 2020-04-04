@@ -197,6 +197,16 @@ class Game {
         scene.addChild(edge)
     }
 
+    func getOwnNodesWithinRange(from node: NodeComponent) {
+        let nodes = query(includes: NodeComponent.self)
+        let ownNodes = nodes.filter { $0.component(ofType: PlayerComponent.self) == player }
+        let ownNodesWithinRange = ownNodes.filter { node in
+            let nodeComponent = node.component(ofType: NodeComponent.self)
+
+        }
+
+    }
+
     private func handleGameActionsInQueue() {
         let actions = gameNetworking.gameActionQueue.dequeueAll()
         for action in actions {

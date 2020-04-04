@@ -58,6 +58,8 @@ struct Constants {
 
         static let resourceNodeHealth = CGFloat(500)
         static let resourceNodeHealthRecoveryRate = CGFloat(10)
+
+        static let nodeConnectRange = CGFloat(100)
     }
 
     struct GameAssets {

@@ -122,4 +122,49 @@ struct BuildNodeAction: GameAction {
             return nil
         }
     }
+
+    private func getNodesWithinRange(game: Game) -> [GKEntity] {
+        let nodes = game.query(includes: NodeComponent.self)
+        guard let player = game.getPlayer(id: playerNetId) else {
+            return []
+        }
+        let nodesWithinRange = nodes.filter { node in
+            guard node.component(ofType: PlayerComponent.self) == player else {
+                return false
+            }
+            guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
+                return false
+            }
+            let distanceSquared = pow(nodeComponent.position.x - position.x, 2) +
+                pow(nodeComponent.position.y - position.y, 2)
+            let rangeSquared = pow(Constants.GamePlay.nodeConnectRange, 2)
+            return distanceSquared < rangeSquared
+        }
+        return nodesWithinRange
+    }
+
+    private func connectNode(game: Game) {
+        let nodesWithinRange = getNodesWithinRange(game: game)
+        for node in nodesWithinRange {
+            guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
+                continue
+            }
+            let pathComponent = PathComponent(start: position, end: nodeComponent.position)
+
+            let path = CGMutablePath()
+            path.move(to: position)
+            path.addLine(to: nodeComponent.position)
+            let sprite = SKShapeNode(path: path)
+            guard let player = game.getPlayer(id: playerNetId) else {
+                continue
+            }
+            sprite.strokeColor = player.getColor().getColor()
+            let spriteComponent = SpriteComponent(spriteNode: sprite)
+
+            let playerComponent = PlayerComponent(player: player)
+
+            let edge = Edge(sprite: spriteComponent, path: pathComponent, player: playerComponent)
+            game.add(entity: edge)
+        }
+    }
 }
