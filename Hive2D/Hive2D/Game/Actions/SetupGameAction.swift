@@ -19,9 +19,6 @@ struct SetupGameAction: GameAction {
 
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
-            print(gamePlayer)
-            print(game.config.me.id)
-            print(playerNetworkingIds)
             // Construct player info component
             let playerInfoComponent = PlayerInfoComponent(id: gamePlayer.id,
                                                           name: gamePlayer.name,
