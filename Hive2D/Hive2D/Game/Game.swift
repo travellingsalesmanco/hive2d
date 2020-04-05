@@ -181,7 +181,6 @@ class Game {
         entities.remove(entity)
     }
 
-    // TODO: Fix query not able to accept multiple component types as input
     func query(includes types: GKComponent.Type...) -> [GKEntity] {
         entities.filter { entity in
             for type in types {

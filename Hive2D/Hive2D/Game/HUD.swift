@@ -7,9 +7,11 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 class HUD: SKNode {
     let resourceDisplay = ResourceCountDisplay(size: CGSize(width: 100, height: 100))
+    var minimapDisplay: MinimapDisplay?
 
     func createHudNodes(size: CGSize, resources: [ResourceType: CGFloat]?) {
         let text = SKLabelNode(text: "Hive2D")
@@ -40,6 +42,26 @@ class HUD: SKNode {
         quitGameButton.position = CGPoint(x: -size.width / 2 + quitGameButton.size.width,
                                           y: size.height / 2 - quitGameButton.size.height)
         self.addChild(quitGameButton)
+    }
+
+    func createMinimap(size: CGSize, sprites: [SpriteComponent], mapSize: CGFloat) {
+        minimapDisplay = MinimapDisplay(size: CGSize(width: 250, height: 250), mapSize: mapSize)
+        guard let minimapDisplay = minimapDisplay else {
+            return
+        }
+        // Position minimap at bottom left corner
+        let minimapX = minimapDisplay.size.width / 2 - size.width / 2
+        let minimapY = minimapDisplay.size.height / 2 - size.height / 2
+        minimapDisplay.position = CGPoint(x: minimapX, y: minimapY)
+        updateMinimapDisplay(sprites)
+        self.addChild(minimapDisplay)
+    }
+
+    func updateMinimapDisplay(_ spriteComponents: [SpriteComponent]) {
+        guard let minimapDisplay = minimapDisplay else {
+            return
+        }
+        minimapDisplay.updateSpritePositions(spriteComponents.map { $0.spriteNode })
     }
 
     func updateResourceDisplay(resources: [ResourceType: CGFloat]?) {
