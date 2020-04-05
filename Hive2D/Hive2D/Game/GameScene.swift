@@ -137,8 +137,8 @@ class GameScene: SKScene {
         }
 
         let translationInView = sender.translation(in: view)
-        let xSceneTranslation = -0.5 * translationInView.x / view!.frame.width
-        let ySceneTranslation = 0.5 * translationInView.y / view!.frame.height
+        let xSceneTranslation = -0.5 * translationInView.x * frame.width / view!.frame.width
+        let ySceneTranslation = 0.5 * translationInView.y * frame.height / view!.frame.height
         let newPosition = CGPoint(x: camera.position.x + xSceneTranslation,
                                   y: camera.position.y + ySceneTranslation)
         sender.setTranslation(.zero, in: view)
