@@ -34,10 +34,10 @@ struct Constants {
         static let smallMapSize = CGSize.zero
         static let mediumMapSize = CGSize.zero
         static let largeMapSize = CGSize.zero
-        static let normalResourceCollectionRate = CGFloat(Float(100) / 60)
-        static let normalResourceConsumptionRate = CGFloat(Float(20) / 60)
-        static let fastResourceCollectionRate = CGFloat.zero
-        static let fastResourceConsumptionRate = CGFloat.zero
+        static let normalResourceCollectionRate = CGFloat(100 / 60)
+        static let normalResourceConsumptionRate = CGFloat(20 / 60)
+        static let fastResourceCollectionRate = CGFloat(500 / 60)
+        static let fastResourceConsumptionRate = CGFloat(100 / 60)
     }
 
     struct GameBounds {
