@@ -11,7 +11,9 @@ import SpriteKit
 class HiveSprite: CompositeSprite {
     init(playerColor: PlayerColor) {
         let texture = SKTexture(imageNamed: Constants.GameAssets.hive)
-        super.init(texture: texture, color: playerColor.getColor(), size: texture.size())
+        let size = CGSize(width: Constants.GamePlay.hiveRadius,
+                          height: Constants.GamePlay.hiveRadius)
+        super.init(texture: texture, color: playerColor.getColor(), size: size)
         self.colorBlendFactor = 1
     }
 

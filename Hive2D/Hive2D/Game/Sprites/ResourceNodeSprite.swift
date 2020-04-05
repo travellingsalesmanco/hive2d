@@ -15,7 +15,9 @@ class ResourceNodeSprite: CompositeSprite {
             return nil
         }
         let texture = SKTexture(imageNamed: image)
-        super.init(texture: texture, color: playerColor.getColor(), size: texture.size())
+        let size = CGSize(width: Constants.GamePlay.nodeRadius,
+        height: Constants.GamePlay.nodeRadius)
+        super.init(texture: texture, color: playerColor.getColor(), size: size)
         self.colorBlendFactor = 1
     }
 
