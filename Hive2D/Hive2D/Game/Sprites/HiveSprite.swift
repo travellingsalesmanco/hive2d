@@ -15,6 +15,7 @@ class HiveSprite: CompositeSprite {
                           height: Constants.GamePlay.hiveRadius)
         super.init(texture: texture, color: playerColor.getColor(), size: size)
         self.colorBlendFactor = 1
+        self.zPosition = 10
     }
 
     required init?(coder aDecoder: NSCoder) {

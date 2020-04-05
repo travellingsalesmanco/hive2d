@@ -22,6 +22,7 @@ class EdgeSprite: SKSpriteNode {
         super.init(texture: texture, color: shapeNode.strokeColor, size: texture!.size())
         self.position = CGPoint(x: (from.x + to.x) / 2,
                                 y: (from.y + to.y) / 2)
+        self.zPosition = 1
     }
 
     required init?(coder aDecoder: NSCoder) {
