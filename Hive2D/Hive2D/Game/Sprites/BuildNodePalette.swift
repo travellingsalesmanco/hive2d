@@ -20,7 +20,7 @@ class BuildNodePalette: SKSpriteNode {
 
         var position = CGPoint(x: leftmostX + nodeSize.height * 0 * nodeSpacing,
                                y: -Constants.BuildNodePalette.nodePadding)
-        let resourceAlpha = createNode(image: Constants.GameAssets.resourceNode,
+        let resourceAlpha = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Alpha]!,
                                        position: position,
                                        size: nodeSize,
                                        name: Constants.BuildNodePalette.resourceAlpha)
@@ -28,14 +28,14 @@ class BuildNodePalette: SKSpriteNode {
         resourceAlpha.setSelected()
 
         position.x += nodeSize.height * nodeSpacing
-        let resourceBeta = createNode(image: Constants.GameAssets.resourceNode,
+        let resourceBeta = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Beta]!,
                                       position: position,
                                       size: nodeSize,
                                       name: Constants.BuildNodePalette.resourceBeta)
         self.addChild(resourceBeta)
 
         position.x += nodeSize.height * nodeSpacing
-        let resourceZeta = createNode(image: Constants.GameAssets.resourceNode,
+        let resourceZeta = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Zeta]!,
                                       position: position,
                                       size: nodeSize,
                                       name: Constants.BuildNodePalette.resourceZeta)

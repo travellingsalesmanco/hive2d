@@ -66,12 +66,12 @@ struct Constants {
         static let maxTier = CGFloat(3)
 
         static let resourceTypeToAsset = [
-            ResourceType.Alpha: "peg-grey",
-            ResourceType.Beta: "peg-grey",
-            ResourceType.Delta: "peg-grey",
-            ResourceType.Epsilon: "peg-grey",
-            ResourceType.Gamma: "peg-grey",
-            ResourceType.Zeta: "peg-grey"
+            ResourceType.Alpha: "resource-alpha",
+            ResourceType.Beta: "resource-beta",
+            ResourceType.Delta: "resource-delta",
+            ResourceType.Epsilon: "resource-epsilon",
+            ResourceType.Gamma: "resource-gamma",
+            ResourceType.Zeta: "resource-zeta"
         ]
     }
 
