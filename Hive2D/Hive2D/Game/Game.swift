@@ -219,7 +219,7 @@ class Game {
                 let distanceSquared = pow(attackerNode.position.x - defenderNode.position.x, 2) +
                     pow(attackerNode.position.y - defenderNode.position.y, 2)
                 let rangeSquared = pow(attackerWeapon.range + defenderNode.radius, 2)
-                return distanceSquared > rangeSquared
+                return distanceSquared <= rangeSquared
             }
 
             for defender in defendersInRange {
