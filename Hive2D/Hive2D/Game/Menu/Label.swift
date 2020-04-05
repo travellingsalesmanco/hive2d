@@ -19,14 +19,21 @@ class Label: SKLabelNode {
          name: String,
          color: UIColor = .white,
          fontName: String = "Avenir-Heavy",
-         fontSize: CGFloat = 20) {
+         size: CGSize) {
         super.init(fontNamed: fontName)
         self.position = position
         self.zPosition = 10
         self.text = text
         self.name = name
         self.color = color
-        self.fontSize = fontSize
+        adjustFontSizeToFit(rect: CGRect(origin: CGPoint.zero, size: size))
+    }
+
+    func adjustFontSizeToFit(rect: CGRect) {
+        let padding = CGFloat(20)
+        let scalingFactor = min(rect.width / (frame.width + padding), rect.height / (frame.height + padding))
+        fontSize *= scalingFactor
+
     }
 
     @available(*, unavailable)

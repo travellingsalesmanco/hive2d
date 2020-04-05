@@ -109,7 +109,10 @@ class GameScene: SKScene {
             && gameNode.component(ofType: PlayerComponent.self)?.player == game.player
         }
         if let gameNode = filteredNodes.first {
-            let menuSize = CGSize(width: node.frame.size.width * 3, height: node.frame.size.height * 2)
+            guard let nodeRadius = gameNode.component(ofType: NodeComponent.self)?.radius else {
+                return
+            }
+            let menuSize = CGSize(width: nodeRadius * 3, height: nodeRadius * 2)
             let xOffset = CGFloat.zero
             let yOffset = -1 * menuSize.height
             let nodeMenu = NodeMenu(position: CGPoint(x: node.position.x + xOffset, y: node.position.y + yOffset),

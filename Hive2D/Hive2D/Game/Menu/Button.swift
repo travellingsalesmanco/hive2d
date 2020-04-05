@@ -15,10 +15,9 @@ class Button: SKSpriteNode {
          label: String,
          name: String,
          color: UIColor = #colorLiteral(red: 0.2354771495, green: 0.7054982781, blue: 0.3705690503, alpha: 1),
-         fontName: String = "Avenir-Medium",
-         fontSize: CGFloat = 20) {
+         fontName: String = "Avenir-Heavy") {
         let rect = CGRect(origin: CGPoint.zero, size: size)
-        let shape = SKShapeNode(rect: rect, cornerRadius: 10)
+        let shape = SKShapeNode(rect: rect, cornerRadius: 4)
         shape.fillColor = color
         let texture = SKView().texture(from: shape)
         super.init(texture: texture, color: color, size: size)
@@ -26,12 +25,13 @@ class Button: SKSpriteNode {
         self.name = name
         setUserInteraction(true)
 
-        let labelNode = SKLabelNode(text: label)
-        labelNode.name = "\(name)Label"
+        let labelNode = Label(position: CGPoint.zero,
+                              text: label,
+                              name: "\(name)Label",
+                              fontName: fontName,
+                              size: size)
         labelNode.verticalAlignmentMode = .center
         labelNode.horizontalAlignmentMode = .center
-        labelNode.fontName = fontName
-        labelNode.fontSize = fontSize
         labelNode.zPosition = 1
         self.addChild(labelNode)
     }

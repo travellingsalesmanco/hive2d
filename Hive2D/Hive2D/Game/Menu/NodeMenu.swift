@@ -30,11 +30,13 @@ class NodeMenu: SKNode {
         let height = size.height
         self.upgradeButton = Button(position: CGPoint(x: width / 2, y: height / 4),
                                     size: CGSize(width: width, height: height / 2),
-                                    label: "Upgrade", name: "UpgradeButton")
+                                    label: "Upgrade",
+                                    name: "UpgradeButton")
 
         self.upgradeCostLabel = Label(position: CGPoint(x: 0, y: height / 2),
                                       text: "Cost: \(upgradeCost)",
-                                      name: "UpgradeCostLabel")
+                                      name: "UpgradeCostLabel",
+                                      size: CGSize(width: width, height: height / 2))
         self.node = node
         self.tierUpgradeCost = tierUpgradeCost
         self.maxTier = maxTier
