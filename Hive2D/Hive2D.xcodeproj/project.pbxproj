@@ -54,6 +54,7 @@
 		BED12FF7243596140030D58D /* GameTickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED12FF6243596140030D58D /* GameTickAction.swift */; };
 		BEE561562438C8BB003630DE /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE561552438C8BB003630DE /* HUD.swift */; };
 		BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617B2438E581003630DE /* BuildNodePalette.swift */; };
+		BEE5617E2439811A003630DE /* BuildNodePaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */; };
 		BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EB24346DFB00A0928D /* ResourceType.swift */; };
 		BEF8B8F02434C07000A0928D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EF2434C07000A0928D /* Node.swift */; };
 		BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8F12434C26000A0928D /* NodeType.swift */; };
@@ -158,6 +159,7 @@
 		BED12FF6243596140030D58D /* GameTickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTickAction.swift; sourceTree = "<group>"; };
 		BEE561552438C8BB003630DE /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		BEE5617B2438E581003630DE /* BuildNodePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodePalette.swift; sourceTree = "<group>"; };
+		BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodePaletteButton.swift; sourceTree = "<group>"; };
 		BEF8B8EB24346DFB00A0928D /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 		BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		BEF8B8EF2434C07000A0928D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				A9A544012438C90700189159 /* CompositeSprite.swift */,
 				A9A544032438D23900189159 /* ResourceBarSprite.swift */,
 				BEE5617B2438E581003630DE /* BuildNodePalette.swift */,
+				BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				A9A544002435F00100189159 /* ResourceNodeSprite.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
 				A9A544022438C90700189159 /* CompositeSprite.swift in Sources */,
+				BEE5617E2439811A003630DE /* BuildNodePaletteButton.swift in Sources */,
 				F969C2EE24205018002C004F /* NodeComponent.swift in Sources */,
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,
 				BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */,

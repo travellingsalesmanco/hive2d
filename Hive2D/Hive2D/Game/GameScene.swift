@@ -77,7 +77,7 @@ class GameScene: SKScene {
 
         switch nodeLabel {
         case "Alpha", "Beta", "Zeta", "Combat":
-            selectedNodeType = convertLabelToNodeType(label: nodeLabel)
+            selectNodeType(node: node, label: nodeLabel)
         default:
             return
         }
@@ -113,6 +113,14 @@ class GameScene: SKScene {
         }
 
         camera.setScale(newScale)
+    }
+
+    private func selectNodeType(node: SKNode, label: String) {
+        guard let button = node as? BuildNodePaletteButton else {
+            return
+        }
+        selectedNodeType = convertLabelToNodeType(label: label)
+        button.setSelected()
     }
 
     private func convertLabelToNodeType(label: String) -> NodeType {

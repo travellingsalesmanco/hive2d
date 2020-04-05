@@ -9,6 +9,8 @@
 import SpriteKit
 
 class BuildNodePalette: SKSpriteNode {
+    var buttons = [BuildNodePaletteButton]()
+
     override init(texture: SKTexture?, color: SKColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
 
@@ -23,6 +25,7 @@ class BuildNodePalette: SKSpriteNode {
                                        size: nodeSize,
                                        name: Constants.BuildNodePalette.resourceAlpha)
         self.addChild(resourceAlpha)
+        resourceAlpha.setSelected()
 
         position.x += nodeSize.height * nodeSpacing
         let resourceBeta = createNode(image: Constants.GameAssets.resourceNode,
@@ -44,14 +47,17 @@ class BuildNodePalette: SKSpriteNode {
                                     size: nodeSize,
                                     name: Constants.BuildNodePalette.combat)
         self.addChild(combatNode)
+
+        buttons.append(contentsOf: [resourceAlpha, resourceBeta, resourceZeta, combatNode])
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    private func createNode(image: String, position: CGPoint, size: CGSize, name: String) -> SKSpriteNode {
-        let node = SKSpriteNode(imageNamed: image)
+    private func createNode(image: String, position: CGPoint, size: CGSize, name: String) -> BuildNodePaletteButton {
+        let node = BuildNodePaletteButton(texture: SKTexture(imageNamed: image))
+        node.delegate = self
         node.size = size
         node.position = position
         node.name = name
@@ -62,5 +68,15 @@ class BuildNodePalette: SKSpriteNode {
         label.fontSize = 15
         node.addChild(label)
         return node
+    }
+}
+
+extension BuildNodePalette: BuildNodePaletteButtonDelegate {
+    func buttonDidSelect(selected: BuildNodePaletteButton) {
+        buttons.forEach {
+            if $0 !== selected {
+                $0.setUnselected()
+            }
+        }
     }
 }
