@@ -181,7 +181,8 @@ class Game {
         for attacker in attackers {
             guard let attackerId = attacker.component(ofType: NetworkComponent.self)?.id,
                 let attackerNode = attacker.component(ofType: NodeComponent.self),
-                let attackerWeapon = attacker.component(ofType: AttackComponent.self) else {
+                let attackerWeapon = attacker.component(ofType: AttackComponent.self),
+                let attackerPlayerId = attacker.component(ofType: PlayerComponent.self)?.player.getId() else {
                 continue
             }
 
@@ -197,12 +198,13 @@ class Game {
 
             for defender in defendersInRange {
                 guard let defenderId = defender.component(ofType: NetworkComponent.self)?.id,
-                    let defenderDefence = defender.component(ofType: DefenceComponent.self) else {
+                    let defenderDefence = defender.component(ofType: DefenceComponent.self),
+                    let defenderPlayerId = defender.component(ofType: PlayerComponent.self)?.player.getId() else {
                     continue
                 }
 
                 // Check that attacker is not defender
-                guard attackerId != defenderId else {
+                guard attackerId != defenderId, attackerPlayerId != defenderPlayerId else {
                     continue
                 }
 
