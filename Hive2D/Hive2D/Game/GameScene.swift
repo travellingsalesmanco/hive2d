@@ -15,17 +15,21 @@ class GameScene: SKScene {
     let hud = HUD()
     private var selectedNodeType: NodeType = .ResourceAlpha
     private var openedNodeMenu: NodeMenu?
+    let cameraNode = SKCameraNode()
+    let cameraScaleRange: ClosedRange<CGFloat>
 
     // Update time
     var lastUpdateTimeInterval: TimeInterval = 0
 
-    private var prevCameraPosition = CGPoint.zero
-    private var prevCameraScale = CGFloat.zero
-
-    init(gameConfig: GameConfig, gameNetworking: GameNetworking, viewSize: CGSize) {
+    init(gameConfig: GameConfig, gameNetworking: GameNetworking) {
         self.gameConfig = gameConfig
         self.gameNetworking = gameNetworking
+
+        let heightRange = Constants.GamePlay.viewableHeightRange
+        cameraScaleRange = (heightRange.lowerBound / gameConfig.mapSize)...(heightRange.upperBound / gameConfig.mapSize)
+
         super.init(size: CGSize(width: gameConfig.mapSize, height: gameConfig.mapSize))
+
     }
 
     @available(*, unavailable)
@@ -37,12 +41,16 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
-        let cameraNode = SKCameraNode()
-        prevCameraPosition = cameraNode.position
-        prevCameraScale = cameraNode.xScale
         self.addChild(cameraNode)
         self.camera = cameraNode
-        self.camera?.zPosition = 50
+        self.camera!.setScale(cameraScaleRange.lowerBound)
+        self.camera!.zPosition = 50
+        let boundsConstraint = SKConstraint.positionX(
+            SKRange(lowerLimit: 0, upperLimit: gameConfig.mapSize),
+            y: SKRange(lowerLimit: 0, upperLimit: gameConfig.mapSize)
+        )
+        boundsConstraint.enabled = true
+        self.camera!.constraints = [boundsConstraint]
 
         hud.createHudNodes(size: self.size, resources: game.player?.getResources())
         self.camera?.addChild(hud)
@@ -70,6 +78,11 @@ class GameScene: SKScene {
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
+
+        guard self.frame.contains(scenePoint) else {
+            return
+        }
+
         let node = atPoint(scenePoint)
         if let openedNodeMenu = openedNodeMenu {
             if node == openedNodeMenu.upgradeButton || node.parent == openedNodeMenu.upgradeButton {
@@ -123,13 +136,12 @@ class GameScene: SKScene {
             return
         }
 
-        if sender.state == .began {
-            self.prevCameraPosition = camera.position
-        }
-
-        let translation = sender.translation(in: self.view)
-        let newPosition = CGPoint(x: self.prevCameraPosition.x + translation.x * -1,
-                                  y: self.prevCameraPosition.y + translation.y)
+        let translationInView = sender.translation(in: view)
+        let xSceneTranslation = -0.5 * translationInView.x / view!.frame.width
+        let ySceneTranslation = 0.5 * translationInView.y / view!.frame.height
+        let newPosition = CGPoint(x: camera.position.x + xSceneTranslation,
+                                  y: camera.position.y + ySceneTranslation)
+        sender.setTranslation(.zero, in: view)
         camera.position = newPosition
     }
 
@@ -138,12 +150,9 @@ class GameScene: SKScene {
             return
         }
 
-        if sender.state == .began {
-            self.prevCameraScale = camera.xScale
-        }
+        let newScale = camera.xScale / sender.scale
 
-        let newScale = self.prevCameraScale * 1 / sender.scale
-        guard newScale <= Constants.GamePlay.maxCameraScale, newScale >= Constants.GamePlay.minCameraScale else {
+        guard cameraScaleRange.contains(newScale) else {
             return
         }
 

@@ -19,8 +19,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         let scene = GameScene(gameConfig: gameConfig,
-                              gameNetworking: gameNetworking,
-                              viewSize: view.bounds.size)
+                              gameNetworking: gameNetworking)
         guard let skView = self.gameArea else {
             return
         }

@@ -42,21 +42,12 @@ struct Constants {
         static let fastResourceConsumptionRate = CGFloat(100 / 60)
     }
 
-    struct GameBounds {
-        static let gameBoundHeight = CGFloat(768)
-        static let gameBoundWidth = CGFloat(1_024)
-    }
-    struct GameCamera {
+    struct GamePlay {
         // Size constrained by height only to accomodate different aspect ratios
         static let viewableHeightRange = CGFloat(0.1)...CGFloat(0.5)
-        static let defaultHeight = GameCamera.viewableHeightRange.lowerBound
-    }
-
-    struct GamePlay {
-        static let maxCameraScale = CGFloat(1.5)
-        static let minCameraScale = CGFloat(0.5)
         static let initialPlayerResource = CGFloat(100)
-        static let nodeRadius = CGFloat(30)
+        static let nodeRadius = CGFloat(0.01)
+        static let hiveRadius = CGFloat(0.015)
 
         static let combatNodeHealth = CGFloat(300)
         static let combatNodeHealthRecoveryRate = CGFloat(20)
