@@ -25,11 +25,21 @@ class HUD: SKNode {
                     y: -size.height / 2 + buildNodePalette.size.height / 2)
         self.addChild(buildNodePalette)
 
+        // Display resource count for player
         let resourceDisplayPositionY = -size.height / 2 + resourceDisplay.size.height / 2 + buildNodePalette.size.height
         let resourceDisplayPositionX = size.width / 2 - resourceDisplay.size.width / 2
         resourceDisplay.position = CGPoint(x: resourceDisplayPositionX, y: resourceDisplayPositionY)
         updateResourceDisplay(resources: resources)
         self.addChild(resourceDisplay)
+
+        let quitGameButton = Button(position: CGPoint(x: -size.width / 2, y: size.height / 2),
+                                    size: CGSize(width: 100, height: 30),
+                                    label: "Quit Game",
+                                    name: "QuitGame",
+                                    color: UIColor.red)
+        quitGameButton.position = CGPoint(x: -size.width / 2 + quitGameButton.size.width,
+                                          y: size.height / 2 - quitGameButton.size.height)
+        self.addChild(quitGameButton)
     }
 
     func updateResourceDisplay(resources: [ResourceType: CGFloat]?) {

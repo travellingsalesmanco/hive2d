@@ -9,6 +9,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    weak var gameDelegate: GameSceneDelegate?
     var game: Game!
     let gameConfig: GameConfig
     let gameNetworking: GameNetworking!
@@ -137,6 +138,8 @@ class GameScene: SKScene {
         switch nodeLabel {
         case "Alpha", "Beta", "Zeta", "Combat":
             selectNodeType(node: node, label: nodeLabel)
+        case "QuitGameLabel":
+            quitGame()
         default:
             return
         }
@@ -170,6 +173,12 @@ class GameScene: SKScene {
         camera.setScale(newScale)
     }
 
+    private func quitGame() {
+        game.quit()
+        view?.presentScene(nil)
+        gameDelegate?.gameEnded()
+    }
+
     private func selectNodeType(node: SKNode, label: String) {
         guard let button = node as? BuildNodePaletteButton else {
             return
@@ -189,4 +198,8 @@ class GameScene: SKScene {
             return .Combat
         }
     }
+}
+
+protocol GameSceneDelegate: AnyObject {
+    func gameEnded()
 }

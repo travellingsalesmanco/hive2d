@@ -278,4 +278,11 @@ class Game {
         }
         gameNetworking.sendGameAction(UpgradeNodeAction(nodeNetId: nodeId))
     }
+
+    func quit() {
+        guard let player = player else {
+            return
+        }
+        gameNetworking.sendGameAction(QuitGameAction(playerNetId: player.getId()))
+    }
 }

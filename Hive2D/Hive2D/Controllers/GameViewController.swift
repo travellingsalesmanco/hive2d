@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
 
         let scene = GameScene(gameConfig: gameConfig,
                               gameNetworking: gameNetworking)
+        scene.gameDelegate = self
         guard let skView = self.gameArea else {
             return
         }
@@ -27,12 +28,17 @@ class GameViewController: UIViewController {
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-//        scene.scaleMode = .aspectFill
         skView.presentScene(scene)
     }
 
     func setGameConfig(lobby: Lobby, me: GamePlayer, gameNetworking: GameNetworking) {
         self.gameConfig = GameConfig(lobby: lobby, me: me)
         self.gameNetworking = gameNetworking
+    }
+}
+
+extension GameViewController: GameSceneDelegate {
+    func gameEnded() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
