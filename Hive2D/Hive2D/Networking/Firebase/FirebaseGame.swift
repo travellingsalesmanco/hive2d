@@ -33,13 +33,16 @@ class FirebaseGame: GameNetworking {
     }
 
     func sendGameAction(_ action: GameAction) {
-
-        let newActionRef = gameRef.childByAutoId()
         guard let codableAction = CodableGameAction(action) else {
             return
         }
         let dataDict = FirebaseCodable<CodableGameAction>.toDict(codableAction)
-        newActionRef.setValue(dataDict)
+
+        gameRef.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+
+            currentData.childData(byAppendingPath: String(currentData.childrenCount)).value = dataDict
+            return .success(withValue: currentData)
+        })
     }
 
     private func handleAddAction(actionSnapshot: DataSnapshot) {
