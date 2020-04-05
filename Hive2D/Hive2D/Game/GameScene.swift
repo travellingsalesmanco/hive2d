@@ -14,6 +14,7 @@ class GameScene: SKScene {
     let gameNetworking: GameNetworking!
     let hud = HUD()
     private var selectedNodeType: NodeType = .ResourceAlpha
+    private var openedNodeMenu: NodeMenu?
 
     // Update time
     var lastUpdateTimeInterval: TimeInterval = 0
@@ -53,6 +54,7 @@ class GameScene: SKScene {
         lastUpdateTimeInterval = currentTime
         game.update(deltaTime)
         hud.updateResourceDisplay(resources: game.player?.getResources())
+        openedNodeMenu?.update()
     }
 
     private func setUpGestureRecognizers() {
@@ -69,13 +71,43 @@ class GameScene: SKScene {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
         let node = atPoint(scenePoint)
+        if let openedNodeMenu = openedNodeMenu {
+            if node == openedNodeMenu.upgradeButton || node.parent == openedNodeMenu.upgradeButton {
+                game.upgradeNode(node: openedNodeMenu.node)
+                return
+            }
+        }
 
+        openedNodeMenu?.removeFromParent()
+        openedNodeMenu = nil
+
+        // Check for open node menu
+        let gameNodes = game.query(includes: SpriteComponent.self, NodeComponent.self, PlayerComponent.self)
+        let filteredNodes = gameNodes.filter { gameNode in
+            gameNode.component(ofType: SpriteComponent.self)?.spriteNode == node
+            && gameNode.component(ofType: PlayerComponent.self)?.player == game.player
+        }
+        if let gameNode = filteredNodes.first {
+            let menuSize = CGSize(width: node.frame.size.width * 3, height: node.frame.size.height * 2)
+            let xOffset = CGFloat.zero
+            let yOffset = -1 * menuSize.height
+            let nodeMenu = NodeMenu(position: CGPoint(x: node.position.x + xOffset, y: node.position.y + yOffset),
+                                    node: gameNode,
+                                    size: menuSize)
+            nodeMenu.update()
+            openedNodeMenu = nodeMenu
+            self.addChild(nodeMenu)
+            return
+        }
+
+        // Check for build node action
         guard let nodeLabel = node.name else {
             // Touched empty space, emit a build node action
             game.buildNode(at: scenePoint, nodeType: selectedNodeType)
             return
         }
 
+        // Build node palette stuff
         switch nodeLabel {
         case "Alpha", "Beta", "Zeta", "Combat":
             selectNodeType(node: node, label: nodeLabel)

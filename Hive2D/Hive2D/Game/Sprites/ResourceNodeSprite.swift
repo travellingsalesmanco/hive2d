@@ -9,7 +9,8 @@
 import SpriteKit
 
 class ResourceNodeSprite: CompositeSprite {
-    init(playerColor: PlayerColor) {
+    init(playerColor: PlayerColor,
+         resourceType: ResourceType = Constants.GamePlay.initialResourceType) {
         let texture = SKTexture(imageNamed: Constants.GameAssets.resourceNode)
         super.init(texture: texture, color: playerColor.getColor(), size: texture.size())
         self.colorBlendFactor = 1

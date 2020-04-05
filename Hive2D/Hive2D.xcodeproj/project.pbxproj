@@ -89,6 +89,9 @@
 		F9F03D59243873E5006B93E1 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D58243873E5006B93E1 /* Edge.swift */; };
 		F9F03D5B24387400006B93E1 /* PathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D5A24387400006B93E1 /* PathComponent.swift */; };
 		F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */; };
+		F9F03D622439177A006B93E1 /* NodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D612439177A006B93E1 /* NodeMenu.swift */; };
+		F9F03D6724391F28006B93E1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6624391F28006B93E1 /* Button.swift */; };
+		F9F03D6924397141006B93E1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6824397141006B93E1 /* Label.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +202,9 @@
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
 		F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSprite.swift; sourceTree = "<group>"; };
+		F9F03D612439177A006B93E1 /* NodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeMenu.swift; sourceTree = "<group>"; };
+		F9F03D6624391F28006B93E1 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		F9F03D6824397141006B93E1 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +436,7 @@
 		F969C2E4241F9147002C004F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				F9F03D6324391C44006B93E1 /* Menu */,
 				A9A543F62435D9E900189159 /* Sprites */,
 				F969C2EB24204FC9002C004F /* Entities */,
 				F969C2EC24204FDA002C004F /* Components */,
@@ -473,6 +480,16 @@
 				F9F03D5A24387400006B93E1 /* PathComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F9F03D6324391C44006B93E1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F9F03D612439177A006B93E1 /* NodeMenu.swift */,
+				F9F03D6624391F28006B93E1 /* Button.swift */,
+				F9F03D6824397141006B93E1 /* Label.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -687,6 +704,7 @@
 				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
 				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
+				F9F03D622439177A006B93E1 /* NodeMenu.swift in Sources */,
 				BED12FF7243596140030D58D /* GameTickAction.swift in Sources */,
 				A97F48C22422206100BF5429 /* LobbyFinderDelegate.swift in Sources */,
 				BED0860A2420CAEA00AA9441 /* LobbySettings.swift in Sources */,
@@ -699,6 +717,7 @@
 				F9F03D5B24387400006B93E1 /* PathComponent.swift in Sources */,
 				F9F03D59243873E5006B93E1 /* Edge.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
+				F9F03D6924397141006B93E1 /* Label.swift in Sources */,
 				A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */,
 				F969C3002420D96F002C004F /* Player.swift in Sources */,
 				A9A543FA2435DAA200189159 /* HiveSprite.swift in Sources */,
@@ -710,6 +729,7 @@
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,
 				A97F48CD242322ED00BF5429 /* UserAuth.swift in Sources */,
 				BEE561562438C8BB003630DE /* HUD.swift in Sources */,
+				F9F03D6724391F28006B93E1 /* Button.swift in Sources */,
 				BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */,
 				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,

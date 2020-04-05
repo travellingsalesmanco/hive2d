@@ -61,6 +61,17 @@ struct Constants {
 
         static let nodeConnectRange = CGFloat(100)
         static let linkGlowWidth = CGFloat(2)
+
+        static let initialResourceType = ResourceType.Alpha
+
+        static let resourceTypeToAsset = [
+            ResourceType.Alpha: "peg-grey",
+            ResourceType.Beta: "peg-grey",
+            ResourceType.Delta: "peg-grey",
+            ResourceType.Epsilon: "peg-grey",
+            ResourceType.Gamma: "peg-grey",
+            ResourceType.Zeta: "peg-grey"
+        ]
     }
 
     struct GameAssets {

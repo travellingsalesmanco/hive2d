@@ -6,7 +6,7 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
 enum ResourceType: String, Codable {
     case Alpha
@@ -15,4 +15,38 @@ enum ResourceType: String, Codable {
     case Delta
     case Epsilon
     case Zeta
+
+    func getCost() -> CGFloat {
+        switch self {
+        case .Alpha:
+            return 50
+        case .Beta:
+            return 100
+        case .Delta:
+            return 150
+        case .Epsilon:
+            return 200
+        case .Gamma:
+            return 250
+        case .Zeta:
+            return CGFloat.infinity
+        }
+    }
+
+    func getNextTier() -> ResourceType? {
+        switch self {
+        case .Alpha:
+            return .Beta
+        case .Beta:
+            return .Delta
+        case .Delta:
+            return .Epsilon
+        case .Epsilon:
+            return .Gamma
+        case .Gamma:
+            return .Zeta
+        case .Zeta:
+            return nil
+        }
+    }
 }
