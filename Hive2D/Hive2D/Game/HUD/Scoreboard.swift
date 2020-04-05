@@ -26,7 +26,7 @@ class Scoreboard: SKNode {
 //            rankings.append(Ranking(player: player, position: <#T##CGPoint#>, size: <#T##CGSize#>))
         }
 
-        self.rankings = [RankingG]()
+        self.rankings = [Ranking]()
         super.init()
     }
 
