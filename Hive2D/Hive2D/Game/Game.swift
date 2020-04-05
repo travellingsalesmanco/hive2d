@@ -86,6 +86,10 @@ class Game {
 
     func sendGameTick() {
         let duration = timeElapsed - lastGameTick
+        // Send one game tick per second
+        guard duration >= 1 else {
+            return
+        }
         gameNetworking.sendGameAction(GameTickAction(duration: duration))
         lastGameTick += duration
     }
