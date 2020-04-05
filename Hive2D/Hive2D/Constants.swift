@@ -34,8 +34,8 @@ struct Constants {
         static let smallMapSize = CGSize.zero
         static let mediumMapSize = CGSize.zero
         static let largeMapSize = CGSize.zero
-        static let normalResourceCollectionRate = CGFloat(Float(2) / 60)
-        static let normalResourceConsumptionRate = CGFloat(Float(1) / 60)
+        static let normalResourceCollectionRate = CGFloat(Float(100) / 60)
+        static let normalResourceConsumptionRate = CGFloat(Float(20) / 60)
         static let fastResourceCollectionRate = CGFloat.zero
         static let fastResourceConsumptionRate = CGFloat.zero
     }

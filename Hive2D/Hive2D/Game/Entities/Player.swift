@@ -24,6 +24,10 @@ class Player: GKEntity {
         self.component(ofType: PlayerInfoComponent.self)!.color
     }
 
+    func getResources() -> [ResourceType: CGFloat] {
+        self.component(ofType: ResourceComponent.self)!.resources
+    }
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

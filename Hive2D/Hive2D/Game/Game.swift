@@ -98,7 +98,7 @@ class Game {
 
     func hasSufficientResources(for node: Node, nodeType: NodeType) -> Bool {
         let player = getPlayer(for: node)
-        guard var resources = player?.component(ofType: ResourceComponent.self)?.resources else {
+        guard let resources = player?.component(ofType: ResourceComponent.self)?.resources else {
             return false
         }
 
@@ -121,8 +121,10 @@ class Game {
             guard let amountAvailable = resources[resourceType] else {
                 return false
             }
-            resources[resourceType] = amountAvailable - amountRequired
+            player?.component(ofType: ResourceComponent.self)?.resources[resourceType] =
+                amountAvailable - amountRequired
         }
+
         return true
     }
 

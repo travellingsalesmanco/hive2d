@@ -43,7 +43,7 @@ class GameScene: SKScene {
         self.camera = cameraNode
         self.camera?.zPosition = 50
 
-        hud.createHudNodes(size: self.size)
+        hud.createHudNodes(size: self.size, resources: game.player?.getResources())
         self.camera?.addChild(hud)
         setUpGestureRecognizers()
     }
@@ -52,6 +52,7 @@ class GameScene: SKScene {
         let deltaTime = currentTime - lastUpdateTimeInterval
         lastUpdateTimeInterval = currentTime
         game.update(deltaTime)
+        hud.updateResourceDisplay(resources: game.player?.getResources())
     }
 
     private func setUpGestureRecognizers() {

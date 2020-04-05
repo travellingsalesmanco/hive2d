@@ -55,6 +55,7 @@
 		BEE561562438C8BB003630DE /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE561552438C8BB003630DE /* HUD.swift */; };
 		BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617B2438E581003630DE /* BuildNodePalette.swift */; };
 		BEE5617E2439811A003630DE /* BuildNodePaletteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */; };
+		BEE5618024398C65003630DE /* ResourceCountDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5617F24398C65003630DE /* ResourceCountDisplay.swift */; };
 		BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EB24346DFB00A0928D /* ResourceType.swift */; };
 		BEF8B8F02434C07000A0928D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8EF2434C07000A0928D /* Node.swift */; };
 		BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B8F12434C26000A0928D /* NodeType.swift */; };
@@ -160,6 +161,7 @@
 		BEE561552438C8BB003630DE /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		BEE5617B2438E581003630DE /* BuildNodePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodePalette.swift; sourceTree = "<group>"; };
 		BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNodePaletteButton.swift; sourceTree = "<group>"; };
+		BEE5617F24398C65003630DE /* ResourceCountDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCountDisplay.swift; sourceTree = "<group>"; };
 		BEF8B8EB24346DFB00A0928D /* ResourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 		BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildNodeAction.swift; sourceTree = "<group>"; };
 		BEF8B8EF2434C07000A0928D /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				A9A544032438D23900189159 /* ResourceBarSprite.swift */,
 				BEE5617B2438E581003630DE /* BuildNodePalette.swift */,
 				BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */,
+				BEE5617F24398C65003630DE /* ResourceCountDisplay.swift */,
 			);
 			path = Sprites;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */,
+				BEE5618024398C65003630DE /* ResourceCountDisplay.swift in Sources */,
 				F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */,
 				BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
