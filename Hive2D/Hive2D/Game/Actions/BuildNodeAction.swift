@@ -63,7 +63,7 @@ struct BuildNodeAction: GameAction {
                                     network: networkComponent,
                                     defence: defenceComponent,
                                     attack: attackComponent)
-        guard game.hasSufficientResources(for: combatNode, resourceType: .Zeta) else {
+        guard game.hasSufficientResources(for: combatNode, nodeType: .Combat) else {
               return
         }
 
@@ -115,7 +115,7 @@ struct BuildNodeAction: GameAction {
                                         resourceConsumer: resourceConsumerComponent,
                                         network: networkComponent,
                                         defence: defenceComponent)
-        guard game.hasSufficientResources(for: resourceNode, resourceType: resourceType) else {
+        guard game.hasSufficientResources(for: resourceNode, nodeType: resourceNodeType) else {
               return
         }
 

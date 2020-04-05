@@ -96,14 +96,34 @@ class Game {
         spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
     }
 
-    func hasSufficientResources(for node: Node, resourceType: ResourceType) -> Bool {
+    func hasSufficientResources(for node: Node, nodeType: NodeType) -> Bool {
         let player = getPlayer(for: node)
-        guard let resourceCount = player?.component(ofType: ResourceComponent.self)?.resources[resourceType] else {
+        guard var resources = player?.component(ofType: ResourceComponent.self)?.resources else {
             return false
         }
-        // TODO: Consumption rate != cost lol
-        let cost = node.component(ofType: ResourceConsumerComponent.self)!.resourceConsumptionRate
-        return resourceCount > cost
+
+        guard let nodeCosts = config.nodeCostMap.getResourceCosts(for: nodeType) else {
+            return false
+        }
+
+        // Check that all resources required to build node are available in player's resources
+        for (resourceType, amountRequired) in nodeCosts {
+            guard let amountAvailable = resources[resourceType] else {
+                return false
+            }
+            if amountAvailable < amountRequired {
+                return false
+            }
+        }
+
+        // Deduct resources used
+        for (resourceType, amountRequired) in nodeCosts {
+            guard let amountAvailable = resources[resourceType] else {
+                return false
+            }
+            resources[resourceType] = amountAvailable - amountRequired
+        }
+        return true
     }
 
     func checkOverlapping(node toCheck: NodeComponent) -> Bool {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NodeType: String, Codable {
+enum NodeType: String, Codable, CaseIterable {
     case ResourceAlpha
     case ResourceBeta
     case ResourceGamma
