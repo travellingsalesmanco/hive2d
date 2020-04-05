@@ -53,13 +53,13 @@ struct Constants {
         static let combatNodeHealth = CGFloat(300)
         static let combatNodeHealthRecoveryRate = CGFloat(20)
         static let combatNodeAttack = CGFloat(50)
-        static let combatNodeRange = CGFloat(100)
+        static let combatNodeRange = CGFloat(50)
 
         static let resourceNodeHealth = CGFloat(500)
         static let resourceNodeHealthRecoveryRate = CGFloat(10)
 
-        static let nodeConnectRange = CGFloat(100)
-        static let linkGlowWidth = CGFloat(2)
+        static let nodeConnectRange = CGFloat(50)
+        static let linkGlowWidth = CGFloat(0.5)
 
         static let initialResourceTier = CGFloat(1)
         static let tierUpgradeCost = CGFloat(50)
