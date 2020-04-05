@@ -18,7 +18,7 @@ class Label: SKLabelNode {
          text: String,
          name: String,
          color: UIColor = .white,
-         fontName: String = "Avenir-Medium",
+         fontName: String = "Avenir-Heavy",
          fontSize: CGFloat = 20) {
         super.init(fontNamed: fontName)
         self.position = position

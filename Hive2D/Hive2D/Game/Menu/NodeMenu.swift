@@ -51,11 +51,21 @@ class NodeMenu: SKNode {
             let resourceStore = player.component(ofType: ResourceComponent.self)?.resources else {
             return
         }
+
         let resourceTier = resourceCollectorComponent.tier
-        let resourceType = resourceCollectorComponent.resourceType
-        guard let resources = resourceStore[resourceType] else {
+        guard resourceTier < maxTier else {
+            upgradeCostLabel.text = "Max tier reached"
+            upgradeButton.setUserInteraction(false)
             return
         }
+
+        let resourceType = resourceCollectorComponent.resourceType
+        guard let resources = resourceStore[resourceType] else {
+            upgradeCostLabel.text = "Resource type \(resourceType.rawValue) not available"
+            upgradeButton.setUserInteraction(false)
+            return
+        }
+
         upgradeCost = resourceTier * tierUpgradeCost
         upgradeButton.setUserInteraction(resourceTier < maxTier && resources >= upgradeCost)
     }
