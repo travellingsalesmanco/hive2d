@@ -44,7 +44,7 @@ struct BuildNodeAction: GameAction {
 
         let spriteNode = CombatNodeSprite(playerColor: player.getColor())
         let healthBar = ResourceBarSprite(color: UIColor.green)
-        spriteNode.addSprite(sprite: healthBar, xOffset: 0, yOffset: 0.2, xRatio: 0.5)
+        spriteNode.addSprite(sprite: healthBar, xOffset: -0.25, yOffset: 0.2, xRatio: 0.5)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)

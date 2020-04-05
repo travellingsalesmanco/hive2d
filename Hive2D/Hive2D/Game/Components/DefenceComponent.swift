@@ -13,7 +13,7 @@ class DefenceComponent: GKComponent {
     var maxHealth: CGFloat
     var healthRecoveryRate: CGFloat
     var shield: CGFloat
-    var healthBarSprite: ResourceBarSprite?
+    weak var healthBarSprite: ResourceBarSprite?
 
     init(health: CGFloat, healthRecoveryRate: CGFloat, shield: CGFloat = 0) {
         self.health = health
@@ -32,6 +32,13 @@ class DefenceComponent: GKComponent {
         if health < maxHealth {
             health += healthRecoveryRate * CGFloat(seconds)
         }
-        healthBarSprite?.progress = health / maxHealth
+
+        let healthPercentage = health / maxHealth
+        if healthPercentage < 1 {
+            healthBarSprite?.isHidden = false
+            healthBarSprite?.progress = health / maxHealth
+        } else {
+            healthBarSprite?.isHidden = true
+        }
     }
 }
