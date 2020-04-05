@@ -48,8 +48,7 @@ struct BuildNodeAction: GameAction {
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
-        let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta, resourceConsumptionRate:
-                game.config.resourceConsumptionRate)
+        let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta)
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)
         defenceComponent.healthBarSprite = healthBar
@@ -93,7 +92,10 @@ struct BuildNodeAction: GameAction {
             return
         }
 
-        let spriteNode = ResourceNodeSprite(playerColor: player.getColor())
+        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(),
+                                                  resourceType: resourceType) else {
+            return
+        }
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let healthBar = ResourceBarSprite(color: UIColor.green)
         spriteNode.addSprite(sprite: healthBar, xOffset: -0.25, yOffset: 0.2, xRatio: 0.5)

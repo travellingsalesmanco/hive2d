@@ -93,6 +93,8 @@ class GameScene: SKScene {
             let yOffset = -1 * menuSize.height
             let nodeMenu = NodeMenu(position: CGPoint(x: node.position.x + xOffset, y: node.position.y + yOffset),
                                     node: gameNode,
+                                    tierUpgradeCost: gameConfig.tierUpgradeCost,
+                                    maxTier: gameConfig.maxTier,
                                     size: menuSize)
             nodeMenu.update()
             openedNodeMenu = nodeMenu

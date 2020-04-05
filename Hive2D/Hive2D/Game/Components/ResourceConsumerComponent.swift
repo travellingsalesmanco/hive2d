@@ -10,11 +10,15 @@ import GameplayKit
 
 class ResourceConsumerComponent: GKComponent {
     var resourceType: ResourceType
-    var resourceConsumptionRate: CGFloat
+    let resourceConsumptionRate: CGFloat
+    var tier: CGFloat
 
-    init(resourceType: ResourceType, resourceConsumptionRate: CGFloat) {
+    init(resourceType: ResourceType,
+         resourceConsumptionRate: CGFloat = Constants.GameConfig.normalResourceConsumptionRate,
+         tier: CGFloat = Constants.GamePlay.initialResourceTier) {
         self.resourceType = resourceType
         self.resourceConsumptionRate = resourceConsumptionRate
+        self.tier = tier
         super.init()
     }
 
@@ -32,6 +36,6 @@ class ResourceConsumerComponent: GKComponent {
             return
         }
 
-        resourceStore.resources[resourceType] = oldResourceCount - resourceConsumptionRate * CGFloat(seconds)
+        resourceStore.resources[resourceType] = oldResourceCount - tier * resourceConsumptionRate * CGFloat(seconds)
     }
 }

@@ -10,6 +10,8 @@ import GameplayKit
 
 class NodeMenu: SKNode {
     let node: GKEntity
+    let tierUpgradeCost: CGFloat
+    let maxTier: CGFloat
     var upgradeButton: Button
     var upgradeCostLabel: Label
     let upgradeCostBoilerplate = "Upgrade cost: %d"
@@ -21,6 +23,8 @@ class NodeMenu: SKNode {
 
     init(position: CGPoint,
          node: GKEntity,
+         tierUpgradeCost: CGFloat,
+         maxTier: CGFloat,
          size: CGSize) {
         let width = size.width
         let height = size.height
@@ -32,6 +36,8 @@ class NodeMenu: SKNode {
                                       text: "Cost: \(upgradeCost)",
                                       name: "UpgradeCostLabel")
         self.node = node
+        self.tierUpgradeCost = tierUpgradeCost
+        self.maxTier = maxTier
         super.init()
         self.position = position
 
@@ -40,13 +46,18 @@ class NodeMenu: SKNode {
     }
 
     func update() {
-        guard let resourceType = node.component(ofType: ResourceCollectorComponent.self)?.resourceType,
-            let player = node.component(ofType: PlayerComponent.self)?.player,
-            let resources = player.component(ofType: ResourceComponent.self)?.resources[resourceType] else {
+        guard let resourceCollectorComponent = node.component(ofType: ResourceCollectorComponent.self),
+            let player = node.component(ofType: PlayerComponent.self)?.player ,
+            let resourceStore = player.component(ofType: ResourceComponent.self)?.resources else {
             return
         }
-        upgradeCost = resourceType.getCost()
-        upgradeButton.setUserInteraction(resources >= upgradeCost)
+        let resourceTier = resourceCollectorComponent.tier
+        let resourceType = resourceCollectorComponent.resourceType
+        guard let resources = resourceStore[resourceType] else {
+            return
+        }
+        upgradeCost = resourceTier * tierUpgradeCost
+        upgradeButton.setUserInteraction(resourceTier < maxTier && resources >= upgradeCost)
     }
 
     @available(*, unavailable)

@@ -10,11 +10,15 @@ import GameplayKit
 
 class ResourceCollectorComponent: GKComponent {
     var resourceType: ResourceType
-    var resourceCollectionRate: CGFloat
+    let resourceCollectionRate: CGFloat
+    var tier: CGFloat
 
-    init(resourceType: ResourceType, resourceCollectionRate: CGFloat) {
+    init(resourceType: ResourceType,
+         resourceCollectionRate: CGFloat = Constants.GameConfig.normalResourceCollectionRate,
+         tier: CGFloat = Constants.GamePlay.initialResourceTier) {
         self.resourceType = resourceType
         self.resourceCollectionRate = resourceCollectionRate
+        self.tier = tier
         super.init()
     }
 
@@ -33,6 +37,6 @@ class ResourceCollectorComponent: GKComponent {
             return
         }
 
-        resourceStore.resources[resourceType] = oldResourceCount + resourceCollectionRate * CGFloat(seconds)
+        resourceStore.resources[resourceType] = oldResourceCount + tier * resourceCollectionRate * CGFloat(seconds)
     }
 }

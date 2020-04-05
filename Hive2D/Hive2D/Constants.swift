@@ -62,7 +62,9 @@ struct Constants {
         static let nodeConnectRange = CGFloat(100)
         static let linkGlowWidth = CGFloat(2)
 
-        static let initialResourceType = ResourceType.Alpha
+        static let initialResourceTier = CGFloat(1)
+        static let tierUpgradeCost = CGFloat(50)
+        static let maxTier = CGFloat(3)
 
         static let resourceTypeToAsset = [
             ResourceType.Alpha: "peg-grey",

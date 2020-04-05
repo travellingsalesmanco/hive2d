@@ -92,6 +92,7 @@
 		F9F03D622439177A006B93E1 /* NodeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D612439177A006B93E1 /* NodeMenu.swift */; };
 		F9F03D6724391F28006B93E1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6624391F28006B93E1 /* Button.swift */; };
 		F9F03D6924397141006B93E1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6824397141006B93E1 /* Label.swift */; };
+		F9F03D6D2439E9C6006B93E1 /* UpgradeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +206,7 @@
 		F9F03D612439177A006B93E1 /* NodeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeMenu.swift; sourceTree = "<group>"; };
 		F9F03D6624391F28006B93E1 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F9F03D6824397141006B93E1 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeNodeAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 				A9D80B90242B3C7500951824 /* CodableGameAction.swift */,
 				BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */,
 				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
+				F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */,
 				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
 				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
@@ -735,6 +738,7 @@
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
 				BED086082420CAC700AA9441 /* Lobby.swift in Sources */,
 				BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */,
+				F9F03D6D2439E9C6006B93E1 /* UpgradeNodeAction.swift in Sources */,
 				A9A544002435F00100189159 /* ResourceNodeSprite.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
 				A9A544022438C90700189159 /* CompositeSprite.swift in Sources */,

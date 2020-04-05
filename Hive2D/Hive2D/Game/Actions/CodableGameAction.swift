@@ -16,6 +16,7 @@ enum CodableGameAction {
     case StartGame(StartGameAction)
     case SetupGame(SetupGameAction)
     case GameTick(GameTickAction)
+    case UpgradeNode(UpgradeNodeAction)
 
     var gameAction: GameAction {
         switch self {
@@ -31,6 +32,8 @@ enum CodableGameAction {
             return action
         case let .SetupGame(action):
             return action
+        case let .UpgradeNode(action):
+            return action
         case let .GameTick(action):
             return action
         }
@@ -39,7 +42,7 @@ enum CodableGameAction {
 
 extension CodableGameAction: Codable {
     private enum CodingKeys: String, CodingKey {
-        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame, GameTick
+        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame, UpgradeNode, GameTick
     }
 
     init?(_ action: GameAction) {
@@ -56,6 +59,8 @@ extension CodableGameAction: Codable {
             self = .StartGame(action)
         case let action as SetupGameAction:
             self = .SetupGame(action)
+        case let action as UpgradeNodeAction:
+            self = .UpgradeNode(action)
         case let action as GameTickAction:
             self = .GameTick(action)
         default:
@@ -71,13 +76,14 @@ extension CodableGameAction: Codable {
             self = .DestroyNode(destroyNode)
         } else if let changeNode = try container.decodeIfPresent(ChangeNodeAction.self, forKey: .ChangeNode) {
             self = .ChangeNode(changeNode)
-
         } else if let quitGame = try container.decodeIfPresent(QuitGameAction.self, forKey: .QuitGame) {
             self = .QuitGame(quitGame)
         } else if let startGame = try container.decodeIfPresent(StartGameAction.self, forKey: .StartGame) {
             self = .StartGame(startGame)
         } else if let setupGame = try container.decodeIfPresent(SetupGameAction.self, forKey: .SetupGame) {
             self = .SetupGame(setupGame)
+        } else if let upgradeNode = try container.decodeIfPresent(UpgradeNodeAction.self, forKey: .UpgradeNode) {
+            self = .UpgradeNode(upgradeNode)
         } else {
             self = .GameTick(try container.decode(GameTickAction.self, forKey: .GameTick))
         }
@@ -98,6 +104,8 @@ extension CodableGameAction: Codable {
             try container.encode(action, forKey: .StartGame)
         case let .SetupGame(action):
             try container.encode(action, forKey: .SetupGame)
+        case let .UpgradeNode(action):
+            try container.encode(action, forKey: .UpgradeNode)
         case let.GameTick(action):
             try container.encode(action, forKey: .GameTick)
         }

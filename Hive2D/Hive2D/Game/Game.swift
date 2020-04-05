@@ -102,7 +102,7 @@ class Game {
 
     func hasSufficientResources(for node: Node, nodeType: NodeType) -> Bool {
         let player = getPlayer(for: node)
-        guard let resources = player?.component(ofType: ResourceComponent.self)?.resources else {
+        guard let resourceComponent = player?.component(ofType: ResourceComponent.self) else {
             return false
         }
 
@@ -111,6 +111,7 @@ class Game {
         }
 
         // Check that all resources required to build node are available in player's resources
+        let resources = resourceComponent.resources
         for (resourceType, amountRequired) in nodeCosts {
             guard let amountAvailable = resources[resourceType] else {
                 return false
@@ -125,8 +126,7 @@ class Game {
             guard let amountAvailable = resources[resourceType] else {
                 return false
             }
-            player?.component(ofType: ResourceComponent.self)?.resources[resourceType] =
-                amountAvailable - amountRequired
+            resourceComponent.resources[resourceType] = amountAvailable - amountRequired
         }
 
         return true
@@ -276,6 +276,6 @@ class Game {
         guard let nodeId = node.component(ofType: NetworkComponent.self)?.id else {
             return
         }
-        gameNetworking.sendGameAction(ChangeNodeAction(nodeNetId: nodeId))
+        gameNetworking.sendGameAction(UpgradeNodeAction(nodeNetId: nodeId))
     }
 }

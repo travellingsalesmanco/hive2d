@@ -42,6 +42,8 @@ struct GameConfig {
     let resourceCollectionRate: CGFloat
     let resourceConsumptionRate: CGFloat
     let nodeCostMap = NodeCostMap()
+    let tierUpgradeCost: CGFloat
+    let maxTier: CGFloat
 
     init(lobby: Lobby, me: GamePlayer) {
         self.id = lobby.id
@@ -66,5 +68,7 @@ struct GameConfig {
             self.resourceCollectionRate = Constants.GameConfig.fastResourceCollectionRate
             self.resourceConsumptionRate = Constants.GameConfig.fastResourceConsumptionRate
         }
+        self.tierUpgradeCost = Constants.GamePlay.tierUpgradeCost
+        self.maxTier = Constants.GamePlay.maxTier
     }
 }
