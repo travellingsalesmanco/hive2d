@@ -19,6 +19,7 @@ struct Constants {
     struct UI {
         static let buttonEnabledAlpha = CGFloat(1.0)
         static let buttonDisabledAlpha = CGFloat(0.5)
+        static let sceneSize = CGSize(width: 1_024, height: 768)
     }
 
     struct LobbyMessages {
@@ -32,9 +33,9 @@ struct Constants {
         static let minPlayers = 2
         // Map is an N*N square, where N is the map size
         // TODO: Review map size increments
-        static let smallMapSize = CGFloat(1)
-        static let mediumMapSize = CGFloat(2) // Map size quadruples
-        static let largeMapSize = CGFloat(3) // Map size * 9/4
+        static let smallMapSize = CGFloat(1_000)
+        static let mediumMapSize = CGFloat(2_000) // Map size quadruples
+        static let largeMapSize = CGFloat(3_000) // Map size * 9/4
 
         static let normalResourceCollectionRate = CGFloat(100 / 60)
         static let normalResourceConsumptionRate = CGFloat(20 / 60)
@@ -44,10 +45,10 @@ struct Constants {
 
     struct GamePlay {
         // Size constrained by height only to accomodate different aspect ratios
-        static let viewableHeightRange = CGFloat(0.1)...CGFloat(0.5)
+        static let viewableHeightRange = CGFloat(100)...CGFloat(500)
         static let initialPlayerResource = CGFloat(100)
-        static let nodeRadius = CGFloat(0.01)
-        static let hiveRadius = CGFloat(0.015)
+        static let nodeRadius = CGFloat(10)
+        static let hiveRadius = CGFloat(15)
 
         static let combatNodeHealth = CGFloat(300)
         static let combatNodeHealthRecoveryRate = CGFloat(20)

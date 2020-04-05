@@ -18,6 +18,8 @@ class GameScene: SKScene {
     let cameraNode = SKCameraNode()
     let cameraScaleRange: ClosedRange<CGFloat>
 
+    // The actual game boundary
+    private let gameRect: CGRect
     // Update time
     var lastUpdateTimeInterval: TimeInterval = 0
 
@@ -25,10 +27,16 @@ class GameScene: SKScene {
         self.gameConfig = gameConfig
         self.gameNetworking = gameNetworking
 
-        let heightRange = Constants.GamePlay.viewableHeightRange
-        cameraScaleRange = (heightRange.lowerBound / gameConfig.mapSize)...(heightRange.upperBound / gameConfig.mapSize)
+        gameRect = CGRect(x: 0, y: 0, width: gameConfig.mapSize, height: gameConfig.mapSize)
+        // Viewable height range (in game units)
+        let hRange = Constants.GamePlay.viewableHeightRange
+        // Display height (in display units)
+        let sceneHeight = Constants.UI.sceneSize.height
 
-        super.init(size: CGSize(width: gameConfig.mapSize, height: gameConfig.mapSize))
+        // Scaling required to map game units to display units
+        cameraScaleRange = (hRange.lowerBound / sceneHeight)...(hRange.upperBound / sceneHeight)
+
+        super.init(size: Constants.UI.sceneSize)
 
     }
 
@@ -79,7 +87,7 @@ class GameScene: SKScene {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
 
-        guard self.frame.contains(scenePoint) else {
+        guard gameRect.contains(scenePoint) else {
             return
         }
 
