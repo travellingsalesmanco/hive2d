@@ -29,7 +29,7 @@ struct NodeCostMap {
     }
 
     func getResourceCosts(for nodeType: NodeType) -> [ResourceType: CGFloat]? {
-        return mapping[nodeType]
+        mapping[nodeType]
     }
 }
 

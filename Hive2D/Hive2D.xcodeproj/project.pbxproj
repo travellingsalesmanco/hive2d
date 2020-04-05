@@ -10,6 +10,7 @@
 		03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03225D582423AEB6002C022F /* NetworkComponent.swift */; };
 		03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0F39F24275A8B0091F95E /* SetupGameAction.swift */; };
 		4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */; };
+		A930FD50243A064200B555E5 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD4F243A064200B555E5 /* Heap.swift */; };
 		A979834F2435D1B6008A5332 /* PlayerInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979834E2435D1B6008A5332 /* PlayerInfoComponent.swift */; };
 		A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */; };
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
@@ -119,6 +120,7 @@
 		2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
+		A930FD4F243A064200B555E5 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		A979834E2435D1B6008A5332 /* PlayerInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoComponent.swift; sourceTree = "<group>"; };
 		A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworking.swift; sourceTree = "<group>"; };
 		A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworkingDelegate.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				A97F48BB2420F3B600BF5429 /* Queue.swift */,
+				A930FD4F243A064200B555E5 /* Heap.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */,
 				BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
+				A930FD50243A064200B555E5 /* Heap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

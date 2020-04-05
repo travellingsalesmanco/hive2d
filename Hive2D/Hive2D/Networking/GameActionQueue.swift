@@ -11,43 +11,43 @@ import Foundation
 class GameActionQueue {
     private let queue = DispatchQueue(label: "tsco.Hive2D.gameActionQueue", attributes: .concurrent)
     private(set) var gameId: String
-    private var actions: Queue<GameAction>
+    private var bufferQueue: Heap<GameAction>
 
     init(gameId: String) {
         self.gameId = gameId
-        actions = Queue<GameAction>()
+        bufferQueue = Heap<GameAction>()
     }
 
-    func enqueue(action: GameAction) {
+    func enqueue(action: GameAction, priority: String) {
         queue.async(flags: .barrier) { [weak self] in
             guard let self = self else {
                 return
             }
-            self.actions.enqueue(action)
+            self.bufferQueue.insert(action, priority: priority)
         }
     }
 
     func dequeue() -> GameAction? {
         queue.sync {
-            self.actions.dequeue()
+            self.bufferQueue.remove()
         }
     }
 
     func dequeue(upTo num: Int) -> [GameAction] {
         queue.sync {
-            self.actions.dequeue(upTo: num)
+            self.bufferQueue.remove(upTo: num)
         }
     }
 
     func dequeueAll() -> [GameAction] {
         queue.sync {
-            actions.dequeue(upTo: actions.count)
+            bufferQueue.remove(upTo: bufferQueue.count)
         }
     }
 
     var count: Int {
         queue.sync {
-            self.actions.count
+            self.bufferQueue.count
         }
     }
 
