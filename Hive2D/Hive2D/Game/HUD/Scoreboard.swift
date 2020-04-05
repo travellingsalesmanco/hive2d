@@ -15,7 +15,6 @@ class Scoreboard: SKNode {
     init(game: Game,
          position: CGPoint,
          size: CGSize) {
-        super.init()
 
         let titlePosition = CGPoint(x: position.x, y: position.y + size.height)
         let titleSize = CGSize(width: size.width, height: size.height * 0.2)
@@ -24,8 +23,11 @@ class Scoreboard: SKNode {
         let players = game.query(includes: PlayerInfoComponent.self)
         for (idx, player) in players.enumerated() {
 
-            rankings.append(Ranking(player: player, position: <#T##CGPoint#>, size: <#T##CGSize#>))
+//            rankings.append(Ranking(player: player, position: <#T##CGPoint#>, size: <#T##CGSize#>))
         }
+
+        self.rankings = [RankingG]()
+        super.init()
     }
 
     required init?(coder aDecoder: NSCoder) {
