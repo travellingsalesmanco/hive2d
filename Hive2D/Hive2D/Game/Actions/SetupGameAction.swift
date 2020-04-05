@@ -49,6 +49,9 @@ struct SetupGameAction: GameAction {
                             network: hiveNetworkComponent)
             game.add(entity: hive)
             // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
+            if gamePlayer.id == game.config.me.id {
+                game.scene.camera?.position = hiveSpriteNode.position
+            }
         }
         // Broadcast acknowledgement
         game.gameNetworking.sendGameAction(StartGameAction())
