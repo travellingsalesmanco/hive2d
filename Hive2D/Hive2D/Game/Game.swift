@@ -12,7 +12,7 @@ import NotificationCenter
 
 class Game {
     var entities = Set<GKEntity>()
-    var networkedEntities = [UUID: GKEntity]()
+    // TODO: Remove this once actions are using Player entities
     var playerEntities = [UUID: Player]()
     var player: Player?
     let scene: SKScene
@@ -50,14 +50,14 @@ class Game {
 
     func setupGame() {
         let playerNetworkingIds = config.players.map { _ in
-            UUID()
+            NetworkComponent.generateIdentifier()
         }
         let hiveStartingLocations = config.players.map { _ in
             CGPoint(x: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4),
                     y: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4))
         }
         let hiveNetworkingIds = hiveStartingLocations.map { _ in
-            UUID()
+            NetworkComponent.generateIdentifier()
         }
         let playerColors = PlayerColor.pickColors(count: config.players.count)
         gameNetworking.sendGameAction(
@@ -79,7 +79,7 @@ class Game {
         gameNetworking.sendGameAction(
             BuildNodeAction(playerNetId: player.getId(),
                             position: point,
-                            netId: UUID(),
+                            netId: NetworkComponent.generateIdentifier(),
                             nodeType: nodeType)
         )
     }
@@ -146,10 +146,12 @@ class Game {
         return true
     }
 
+    // TODO: Remove this once actions are using Player entities
     func addPlayer(id: UUID, player: Player) {
         playerEntities[id] = player
     }
 
+    // TODO: Remove this once actions are using Player entities
     func getPlayer(id: UUID) -> Player? {
         playerEntities[id]
     }
@@ -166,17 +168,11 @@ class Game {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
             scene.addChild(spriteNode)
         }
-        if let netId = entity.component(ofType: NetworkComponent.self)?.id {
-            networkedEntities[netId] = entity
-        }
     }
 
     func remove(entity: GKEntity) {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
             spriteNode.removeFromParent()
-        }
-        if let netId = entity.component(ofType: NetworkComponent.self)?.id {
-            networkedEntities.removeValue(forKey: netId)
         }
         entities.remove(entity)
     }

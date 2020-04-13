@@ -12,9 +12,9 @@ import GameplayKit
 import SpriteKit
 
 struct BuildNodeAction: GameAction {
-    let playerNetId: UUID
+    let playerNetId: UUID // TODO: Change to Player Entity
     let position: CGPoint
-    let netId: UUID
+    let netId: NetworkComponent.Identifier
     let nodeType: NodeType
 
     func handle(game: Game) {

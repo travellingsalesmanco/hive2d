@@ -9,10 +9,11 @@
 import SpriteKit
 
 struct ChangeNodeAction: GameAction {
-    let nodeNetId: UUID
+    // TODO: Change to node entity
+    let nodeNetId: NetworkComponent.Identifier
 
     func handle(game: Game) {
-        guard let node = game.networkedEntities[nodeNetId] else {
+        guard let node = NetworkComponent.getEntity(for: nodeNetId) else {
             return
         }
         guard let resourceCollectorComponent = node.component(ofType: ResourceCollectorComponent.self),
