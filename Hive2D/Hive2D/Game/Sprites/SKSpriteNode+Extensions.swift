@@ -10,21 +10,25 @@ import SpriteKit
 
 extension SKSpriteNode {
 
-    func addSprite(sprite: SKNode, xOffset: CGFloat, yOffset: CGFloat) {
-        self.addChild(sprite)
-        sprite.position = CGPoint(x: self.size.width * xOffset, y: self.size.height * yOffset)
+    /// Adds `node` as child with its position offset from anchor point by the
+    /// given multiples of this node's width/height
+    func addChild(_ node: SKNode,
+                  xOffsetByWidths: CGFloat, yOffsetByHeights: CGFloat) {
+        self.addChild(node)
+        node.position = CGPoint(x: self.size.width * xOffsetByWidths, y: self.size.height * yOffsetByHeights)
     }
 
-    func addSprite(sprite: SKNode, xOffset: CGFloat, yOffset: CGFloat, xRatio: CGFloat? = nil, yRatio: CGFloat? = nil) {
-        let currSize = sprite.calculateAccumulatedFrame().size
+    /// Adds `node` as child with its position offset from anchor point by the
+    /// given multiples of this node's width/height; and its size set to the given ratio of
+    /// this node's width and height
+    func addChild(_ node: SKNode,
+                  xOffsetByWidths: CGFloat, yOffsetByHeights: CGFloat,
+                  widthRatio: CGFloat, heightRatio: CGFloat) {
+        let currSize = node.calculateAccumulatedFrame().size
+        addChild(node, xOffsetByWidths: xOffsetByWidths, yOffsetByHeights: yOffsetByHeights)
         let xScale = self.size.width / currSize.width
         let yScale = self.size.height / currSize.height
-        addSprite(sprite: sprite, xOffset: xOffset, yOffset: yOffset)
-        if let xRatio = xRatio {
-            sprite.xScale = xRatio * xScale
-        }
-        if let yRatio = yRatio {
-            sprite.yScale = yRatio * yScale
-        }
+        node.xScale = widthRatio * xScale
+        node.yScale = heightRatio * yScale
     }
 }
