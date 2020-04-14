@@ -157,10 +157,7 @@ class Game {
     }
 
     func getPlayer(for entity: GKEntity) -> Player? {
-        guard let player = entity.component(ofType: PlayerComponent.self)?.player else {
-            return nil
-        }
-        return player
+        return entity.component(ofType: PlayerComponent.self)?.player
     }
 
     func add(entity: GKEntity) {
