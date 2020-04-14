@@ -38,7 +38,7 @@
 		A9A543FC2435DB1F00189159 /* PlayerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A543FB2435DB1F00189159 /* PlayerColor.swift */; };
 		A9A543FE2435EFF600189159 /* CombatNodeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */; };
 		A9A544002435F00100189159 /* ResourceNodeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */; };
-		A9A544022438C90700189159 /* CompositeSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A544012438C90700189159 /* CompositeSprite.swift */; };
+		A9A544022438C90700189159 /* SKSpriteNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A544012438C90700189159 /* SKSpriteNode+Extensions.swift */; };
 		A9A544042438D23900189159 /* ResourceBarSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A544032438D23900189159 /* ResourceBarSprite.swift */; };
 		A9D80B8D242790BA00951824 /* GameActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */; };
 		A9D80B91242B3C7500951824 /* CodableGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B90242B3C7500951824 /* CodableGameAction.swift */; };
@@ -150,7 +150,7 @@
 		A9A543FB2435DB1F00189159 /* PlayerColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerColor.swift; sourceTree = "<group>"; };
 		A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatNodeSprite.swift; sourceTree = "<group>"; };
 		A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceNodeSprite.swift; sourceTree = "<group>"; };
-		A9A544012438C90700189159 /* CompositeSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositeSprite.swift; sourceTree = "<group>"; };
+		A9A544012438C90700189159 /* SKSpriteNode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Extensions.swift"; sourceTree = "<group>"; };
 		A9A544032438D23900189159 /* ResourceBarSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceBarSprite.swift; sourceTree = "<group>"; };
 		A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionQueueTests.swift; sourceTree = "<group>"; };
 		A9D80B90242B3C7500951824 /* CodableGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableGameAction.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 				A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */,
 				A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */,
 				F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */,
-				A9A544012438C90700189159 /* CompositeSprite.swift */,
+				A9A544012438C90700189159 /* SKSpriteNode+Extensions.swift */,
 				A9A544032438D23900189159 /* ResourceBarSprite.swift */,
 				BEE5617B2438E581003630DE /* BuildNodePalette.swift */,
 				BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */,
@@ -748,7 +748,7 @@
 				F9F03D6D2439E9C6006B93E1 /* UpgradeNodeAction.swift in Sources */,
 				A9A544002435F00100189159 /* ResourceNodeSprite.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
-				A9A544022438C90700189159 /* CompositeSprite.swift in Sources */,
+				A9A544022438C90700189159 /* SKSpriteNode+Extensions.swift in Sources */,
 				BEE5617E2439811A003630DE /* BuildNodePaletteButton.swift in Sources */,
 				F969C2EE24205018002C004F /* NodeComponent.swift in Sources */,
 				F969C2B9241CB048002C004F /* ViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CompositeSprite.swift
+//  SKSpriteNode+Extensions.swift
 //  Hive2D
 //
 //  Created by John Phua on 04/04/2020.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class CompositeSprite: SKSpriteNode {
+extension SKSpriteNode {
 
     func addSprite(sprite: SKNode, xOffset: CGFloat, yOffset: CGFloat) {
         self.addChild(sprite)

@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class ResourceNodeSprite: CompositeSprite {
+class ResourceNodeSprite: SKSpriteNode {
     init?(playerColor: PlayerColor,
           resourceType: ResourceType) {
         guard let image = Constants.GamePlay.resourceTypeToAsset[resourceType] else {

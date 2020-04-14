@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class HiveSprite: CompositeSprite {
+class HiveSprite: SKSpriteNode {
     init(playerColor: PlayerColor) {
         let texture = SKTexture(imageNamed: Constants.GameAssets.hive)
         let size = CGSize(width: Constants.GamePlay.hiveRadius,
