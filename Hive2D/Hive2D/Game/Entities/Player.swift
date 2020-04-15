@@ -16,16 +16,16 @@ class Player: GKEntity {
         addComponent(network)
     }
 
-    func getId() -> UUID {
-        self.component(ofType: NetworkComponent.self)!.id
+    func getNetId() -> NetworkComponent.Identifier {
+        component(ofType: NetworkComponent.self)!.id
     }
 
     func getColor() -> PlayerColor {
-        self.component(ofType: PlayerInfoComponent.self)!.color
+        component(ofType: PlayerInfoComponent.self)!.color
     }
 
     func getResources() -> [ResourceType: CGFloat] {
-        self.component(ofType: ResourceComponent.self)!.resources
+        component(ofType: ResourceComponent.self)!.resources
     }
 
     @available(*, unavailable)

@@ -77,7 +77,7 @@ class Game {
             return
         }
         gameNetworking.sendGameAction(
-            BuildNodeAction(playerNetId: player.getId(),
+            BuildNodeAction(playerNetId: player.getNetId(),
                             position: point,
                             netId: NetworkComponent.generateIdentifier(),
                             nodeType: nodeType)
@@ -200,7 +200,7 @@ class Game {
             guard let attackerId = attacker.component(ofType: NetworkComponent.self)?.id,
                 let attackerNode = attacker.component(ofType: NodeComponent.self),
                 let attackerWeapon = attacker.component(ofType: AttackComponent.self),
-                let attackerPlayerId = attacker.component(ofType: PlayerComponent.self)?.player.getId() else {
+                let attackerPlayerId = attacker.component(ofType: PlayerComponent.self)?.player.getNetId() else {
                 continue
             }
 
@@ -217,7 +217,7 @@ class Game {
             for defender in defendersInRange {
                 guard let defenderId = defender.component(ofType: NetworkComponent.self)?.id,
                     let defenderDefence = defender.component(ofType: DefenceComponent.self),
-                    let defenderPlayerId = defender.component(ofType: PlayerComponent.self)?.player.getId() else {
+                    let defenderPlayerId = defender.component(ofType: PlayerComponent.self)?.player.getNetId() else {
                     continue
                 }
 
@@ -275,6 +275,6 @@ class Game {
         guard let player = player else {
             return
         }
-        gameNetworking.sendGameAction(QuitGameAction(playerNetId: player.getId()))
+        gameNetworking.sendGameAction(QuitGameAction(playerNetId: player.getNetId()))
     }
 }
