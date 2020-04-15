@@ -12,16 +12,15 @@ import GameplayKit
 import SpriteKit
 
 struct SetupGameAction: GameAction {
-    let playerNetworkingIds: [UUID]
+    let playerNetworkingIds: [NetworkComponent.Identifier]
     let playerColors: [PlayerColor]
     let hiveStartingLocations: [CGPoint]
-    let hiveNetworkingIds: [UUID]
+    let hiveNetworkingIds: [NetworkComponent.Identifier]
 
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
             // Construct player info component
-            let playerInfoComponent = PlayerInfoComponent(id: gamePlayer.id,
-                                                          name: gamePlayer.name,
+            let playerInfoComponent = PlayerInfoComponent(gamePlayer,
                                                           color: playerColors[idx])
             // Add player entities
             let resourceComponent = ResourceComponent(alpha: Constants.GamePlay.initialPlayerResource)
@@ -45,7 +44,6 @@ struct SetupGameAction: GameAction {
                             player: playerComponent,
                             network: hiveNetworkComponent)
             game.add(entity: hive)
-            // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
             if game.config.me == gamePlayer {
                 game.player = playerEntity
                 game.scene.camera?.position = hiveSpriteNode.position

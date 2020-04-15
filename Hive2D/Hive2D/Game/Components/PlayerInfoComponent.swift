@@ -13,9 +13,9 @@ class PlayerInfoComponent: GKComponent {
     let name: String
     let color: PlayerColor
 
-    init(id: String, name: String, color: PlayerColor) {
-        self.id = id
-        self.name = name
+    init(_ gamePlayer: GamePlayer, color: PlayerColor) {
+        self.id = gamePlayer.id
+        self.name = gamePlayer.name
         self.color = color
         super.init()
     }
