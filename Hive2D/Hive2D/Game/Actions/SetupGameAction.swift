@@ -31,9 +31,6 @@ struct SetupGameAction: GameAction {
                                       network: playerNetworkingComponent)
 
             game.addPlayer(id: playerNetworkingIds[idx], player: playerEntity)
-            if game.config.me.id == gamePlayer.id {
-                game.player = playerEntity
-            }
 
             // Create player component from player entity
             let playerComponent = PlayerComponent(player: playerEntity)
@@ -49,7 +46,8 @@ struct SetupGameAction: GameAction {
                             network: hiveNetworkComponent)
             game.add(entity: hive)
             // TODO: Does Hive need a playerComponent? Maybe add PlayerUnit(hive) component to playerEntity
-            if gamePlayer.id == game.config.me.id {
+            if game.config.me == gamePlayer {
+                game.player = playerEntity
                 game.scene.camera?.position = hiveSpriteNode.position
             }
         }
@@ -59,6 +57,6 @@ struct SetupGameAction: GameAction {
         guard let player = game.player else {
             return
         }
-        game.gameNetworking.onDisconnectSend(QuitGameAction(playerNetId: player.getId(), disconnected: true))
+        game.gameNetworking.onDisconnectSend(QuitGameAction(playerNetId: player.getNetId(), disconnected: true))
     }
 }

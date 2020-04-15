@@ -20,3 +20,9 @@ struct GamePlayer: Codable {
         self.joinTime = Date()
     }
 }
+
+extension GamePlayer: Equatable {
+    static func == (lhs: GamePlayer, rhs: GamePlayer) -> Bool {
+        lhs.id == rhs.id
+    }
+}
