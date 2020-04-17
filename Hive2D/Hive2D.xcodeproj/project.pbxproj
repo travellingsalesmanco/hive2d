@@ -12,6 +12,10 @@
 		03F9D2B8243A08ED00BCAADC /* MinimapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9D2B7243A08ED00BCAADC /* MinimapDisplay.swift */; };
 		4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */; };
 		A930FD50243A064200B555E5 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD4F243A064200B555E5 /* Heap.swift */; };
+		A930FD5324496C2600B555E5 /* RabbitMQGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD5224496C2600B555E5 /* RabbitMQGame.swift */; };
+		A930FD5524496CB100B555E5 /* RabbitMQConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD5424496CB100B555E5 /* RabbitMQConstants.swift */; };
+		A930FD5724497ED800B555E5 /* RabbitMQDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD5624497ED800B555E5 /* RabbitMQDebug.swift */; };
+		A930FD5B24499B8B00B555E5 /* RabbitMQConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD5A24499B8B00B555E5 /* RabbitMQConnection.swift */; };
 		A979834F2435D1B6008A5332 /* PlayerInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979834E2435D1B6008A5332 /* PlayerInfoComponent.swift */; };
 		A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */; };
 		A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */; };
@@ -123,6 +127,10 @@
 		84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B10ABA47111A0AB9D95191 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		A930FD4F243A064200B555E5 /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		A930FD5224496C2600B555E5 /* RabbitMQGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQGame.swift; sourceTree = "<group>"; };
+		A930FD5424496CB100B555E5 /* RabbitMQConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQConstants.swift; sourceTree = "<group>"; };
+		A930FD5624497ED800B555E5 /* RabbitMQDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQDebug.swift; sourceTree = "<group>"; };
+		A930FD5A24499B8B00B555E5 /* RabbitMQConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbitMQConnection.swift; sourceTree = "<group>"; };
 		A979834E2435D1B6008A5332 /* PlayerInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoComponent.swift; sourceTree = "<group>"; };
 		A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworking.swift; sourceTree = "<group>"; };
 		A97F489B241CE23800BF5429 /* LobbyNetworkingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyNetworkingDelegate.swift; sourceTree = "<group>"; };
@@ -258,9 +266,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A930FD5124496C0E00B555E5 /* RabbitMQ */ = {
+			isa = PBXGroup;
+			children = (
+				A930FD5224496C2600B555E5 /* RabbitMQGame.swift */,
+				A930FD5424496CB100B555E5 /* RabbitMQConstants.swift */,
+				A930FD5624497ED800B555E5 /* RabbitMQDebug.swift */,
+				A930FD5A24499B8B00B555E5 /* RabbitMQConnection.swift */,
+			);
+			path = RabbitMQ;
+			sourceTree = "<group>";
+		};
 		A97F4898241CE07400BF5429 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				A930FD5124496C0E00B555E5 /* RabbitMQ */,
 				A97F48C3242220F700BF5429 /* Firebase */,
 				A97F4899241CE0AE00BF5429 /* LobbyNetworking.swift */,
 				A97F48BF2422200000BF5429 /* LobbyFinder.swift */,
@@ -725,6 +745,7 @@
 				BEF8B8F72434EF2F00A0928D /* AttackComponent.swift in Sources */,
 				F9F03D5B24387400006B93E1 /* PathComponent.swift in Sources */,
 				F9F03D59243873E5006B93E1 /* Edge.swift in Sources */,
+				A930FD5724497ED800B555E5 /* RabbitMQDebug.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
 				F9F03D6924397141006B93E1 /* Label.swift in Sources */,
 				A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */,
@@ -743,11 +764,14 @@
 				BED08610242118D900AA9441 /* Constants.swift in Sources */,
 				A97F48BE2420F46C00BF5429 /* FirebaseGame.swift in Sources */,
 				BED086082420CAC700AA9441 /* Lobby.swift in Sources */,
+				A930FD5524496CB100B555E5 /* RabbitMQConstants.swift in Sources */,
+				A930FD5324496C2600B555E5 /* RabbitMQGame.swift in Sources */,
 				BED0860C2420CB2B00AA9441 /* GamePlayer.swift in Sources */,
 				03F9D2B8243A08ED00BCAADC /* MinimapDisplay.swift in Sources */,
 				F9F03D6D2439E9C6006B93E1 /* UpgradeNodeAction.swift in Sources */,
 				A9A544002435F00100189159 /* ResourceNodeSprite.swift in Sources */,
 				F969C2F024205022002C004F /* ResourceConsumerComponent.swift in Sources */,
+				A930FD5B24499B8B00B555E5 /* RabbitMQConnection.swift in Sources */,
 				A9A544022438C90700189159 /* SKSpriteNode+Extensions.swift in Sources */,
 				BEE5617E2439811A003630DE /* BuildNodePaletteButton.swift in Sources */,
 				F969C2EE24205018002C004F /* NodeComponent.swift in Sources */,

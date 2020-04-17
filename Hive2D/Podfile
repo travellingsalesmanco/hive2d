@@ -1,7 +1,9 @@
 use_frameworks!
+inhibit_all_warnings!
 
 target 'Hive2D' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'RMQClient'
   pod 'NVActivityIndicatorView'
 end

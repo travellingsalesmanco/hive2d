@@ -16,9 +16,12 @@ class FirebaseLobby: LobbyNetworking {
     private var playerLobbyRef: DatabaseReference
     // Game started should only be sent once
     private var starting = false
+    // Needs to be setup early for queues and exchanges to be created
+    private var gameNetworking: RabbitMQGame
 
     init(lobbyRef: DatabaseReference, playerId: String) {
         self.lobbyRef = lobbyRef
+        self.gameNetworking = RabbitMQGame(gameId: lobbyRef.key!)
         playerLobbyRef = FirebaseConstants.playerLobbyRef(ofLobby: lobbyRef, for: playerId)
         playerLobbyRef.onDisconnectRemoveValue()
         lobbyHandle = lobbyRef.observe(.value, with: { [weak self] snapshot in
@@ -57,6 +60,7 @@ class FirebaseLobby: LobbyNetworking {
     }
 
     func start() {
+        // TODO: Fix issue with RMQ not set up when start is called
         FirebaseConstants.startRef(ofLobby: lobbyRef).setValue(true)
     }
 
@@ -68,7 +72,6 @@ class FirebaseLobby: LobbyNetworking {
 
         if lobby.started && !starting {
             starting = true
-            let gameNetworking = FirebaseGame(gameId: lobby.id)
             delegate?.gameStarted(lobby: lobby, networking: gameNetworking)
         } else {
             delegate?.lobbyDidUpdate(lobby: lobby)
