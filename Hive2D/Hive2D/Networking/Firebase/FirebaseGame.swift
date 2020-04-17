@@ -20,7 +20,7 @@ class FirebaseGame: GameNetworking {
             guard let self = self else {
                 return
             }
-            self.handleAddAction(actionSnapshot: snapshot, id: snapshot.key)
+            self.handleAddAction(actionSnapshot: snapshot)
         })
     }
 
@@ -42,14 +42,14 @@ class FirebaseGame: GameNetworking {
         newActionRef.setValue(dataDict)
     }
 
-    private func handleAddAction(actionSnapshot: DataSnapshot, id: String) {
+    private func handleAddAction(actionSnapshot: DataSnapshot) {
         let actionDict = actionSnapshot.value as Any
 
         // Add to queue if action is successfully decoded
         guard let action = FirebaseCodable<CodableGameAction>.fromDict(actionDict) else {
             return
         }
-        self.gameActionQueue.enqueue(action: action.gameAction, priority: id)
+        self.gameActionQueue.enqueue(action: action.gameAction)
     }
 
     func onDisconnectSend(_ action: GameAction) {
