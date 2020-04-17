@@ -15,7 +15,7 @@ class Game {
     // TODO: Remove this once actions are using Player entities
     var playerEntities = [UUID: Player]()
     var player: Player?
-    let scene: SKScene
+    unowned let scene: SKScene
     let config: GameConfig
     let gameNetworking: GameNetworking
     var connectedPlayersCount: Int = 0

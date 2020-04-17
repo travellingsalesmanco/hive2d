@@ -12,7 +12,7 @@ class GameScene: SKScene {
     weak var gameDelegate: GameSceneDelegate?
     var game: Game!
     let gameConfig: GameConfig
-    let gameNetworking: GameNetworking!
+    let gameNetworking: GameNetworking
     let hud = HUD()
     private var selectedNodeType: NodeType = .ResourceAlpha
     private var openedNodeMenu: NodeMenu?
