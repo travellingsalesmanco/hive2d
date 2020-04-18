@@ -10,6 +10,8 @@
 		03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03225D582423AEB6002C022F /* NetworkComponent.swift */; };
 		03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0F39F24275A8B0091F95E /* SetupGameAction.swift */; };
 		03F9D2B8243A08ED00BCAADC /* MinimapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9D2B7243A08ED00BCAADC /* MinimapDisplay.swift */; };
+		03F9D2BA24471AEF00BCAADC /* TransformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9D2B924471AEF00BCAADC /* TransformComponent.swift */; };
+		03F9D2BE2448D2B400BCAADC /* CGPoint+MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F9D2BD2448D2B400BCAADC /* CGPoint+MathExtensions.swift */; };
 		4232207B92D614812E700AE2 /* Pods_Hive2D.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */; };
 		A930FD50243A064200B555E5 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD4F243A064200B555E5 /* Heap.swift */; };
 		A930FD5324496C2600B555E5 /* RabbitMQGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A930FD5224496C2600B555E5 /* RabbitMQGame.swift */; };
@@ -122,6 +124,8 @@
 		03225D582423AEB6002C022F /* NetworkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkComponent.swift; sourceTree = "<group>"; };
 		03A0F39F24275A8B0091F95E /* SetupGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupGameAction.swift; sourceTree = "<group>"; };
 		03F9D2B7243A08ED00BCAADC /* MinimapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimapDisplay.swift; sourceTree = "<group>"; };
+		03F9D2B924471AEF00BCAADC /* TransformComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformComponent.swift; sourceTree = "<group>"; };
+		03F9D2BD2448D2B400BCAADC /* CGPoint+MathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+MathExtensions.swift"; sourceTree = "<group>"; };
 		17AB66D2A4E7C3B17AF91815 /* Pods-Hive2D.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.debug.xcconfig"; sourceTree = "<group>"; };
 		2BB95A6D29C3D921123843A0 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
 		84E0997E163C5167C00B24B4 /* Pods_Hive2D.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hive2D.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,6 +318,7 @@
 			children = (
 				A97F48BB2420F3B600BF5429 /* Queue.swift */,
 				A930FD4F243A064200B555E5 /* Heap.swift */,
+				03F9D2BD2448D2B400BCAADC /* CGPoint+MathExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				BEF8B8F62434EF2F00A0928D /* AttackComponent.swift */,
 				A979834E2435D1B6008A5332 /* PlayerInfoComponent.swift */,
 				F9F03D5A24387400006B93E1 /* PathComponent.swift */,
+				03F9D2B924471AEF00BCAADC /* TransformComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -714,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F9D2BE2448D2B400BCAADC /* CGPoint+MathExtensions.swift in Sources */,
 				A9D80B91242B3C7500951824 /* CodableGameAction.swift in Sources */,
 				A97F48C52422213D00BF5429 /* FirebaseLobbyFinder.swift in Sources */,
 				A9A544042438D23900189159 /* ResourceBarSprite.swift in Sources */,
@@ -781,6 +788,7 @@
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
 				A9A543FC2435DB1F00189159 /* PlayerColor.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
+				03F9D2BA24471AEF00BCAADC /* TransformComponent.swift in Sources */,
 				A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */,
 				F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */,
 				A97F48B92420ECA900BF5429 /* GameActionQueue.swift in Sources */,

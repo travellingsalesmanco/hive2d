@@ -12,12 +12,14 @@ class CombatNode: Node {
 
     init(sprite: SpriteComponent,
          node: NodeComponent,
+         transform: TransformComponent,
          player: PlayerComponent,
          resourceConsumer: ResourceConsumerComponent,
          network: NetworkComponent,
          defence: DefenceComponent,
          attack: AttackComponent) {
-        super.init(sprite: sprite, node: node, player: player, network: network)
+        super.init(sprite: sprite, node: node, transform: transform,
+                   player: player, network: network)
         addComponent(resourceConsumer)
         addComponent(defence)
         addComponent(attack)

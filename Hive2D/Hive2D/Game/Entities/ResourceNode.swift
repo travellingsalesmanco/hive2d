@@ -11,12 +11,14 @@ class ResourceNode: Node {
 
     init(sprite: SpriteComponent,
          node: NodeComponent,
+         transform: TransformComponent,
          player: PlayerComponent,
          resourceCollector: ResourceCollectorComponent,
          resourceConsumer: ResourceConsumerComponent,
          network: NetworkComponent,
          defence: DefenceComponent) {
-        super.init(sprite: sprite, node: node, player: player, network: network)
+        super.init(sprite: sprite, node: node, transform: transform,
+                   player: player, network: network)
         addComponent(resourceCollector)
         addComponent(resourceConsumer)
         addComponent(defence)

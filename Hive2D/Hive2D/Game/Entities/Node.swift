@@ -11,9 +11,11 @@ import GameplayKit
 class Node: GKEntity {
     init(sprite: SpriteComponent,
          node: NodeComponent,
+         transform: TransformComponent,
          player: PlayerComponent,
          network: NetworkComponent) {
         super.init()
+        addComponent(transform)
         addComponent(sprite)
         addComponent(node)
         addComponent(player)

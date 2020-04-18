@@ -10,8 +10,11 @@ import GameplayKit
 
 class Hive: GKEntity {
 
-    init(sprite: SpriteComponent, node: NodeComponent, player: PlayerComponent, network: NetworkComponent) {
+    init(sprite: SpriteComponent, node: NodeComponent,
+         transform: TransformComponent,
+         player: PlayerComponent, network: NetworkComponent) {
         super.init()
+        addComponent(transform)
         addComponent(sprite)
         addComponent(node)
         addComponent(player)

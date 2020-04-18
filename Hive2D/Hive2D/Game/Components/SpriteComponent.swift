@@ -22,4 +22,21 @@ class SpriteComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func syncTransform() {
+        guard let transform = entity?.component(ofType: TransformComponent.self) else {
+            fatalError("No TransformComponent on an entity with SpriteComponent.")
+        }
+        spriteNode.position = transform.position
+        spriteNode.xScale = transform.scale.x
+        spriteNode.yScale = transform.scale.y
+        spriteNode.zRotation = transform.rotation
+    }
+    override func didAddToEntity() {
+        syncTransform()
+    }
+
+    override func update(deltaTime seconds: TimeInterval) {
+        syncTransform()
+    }
+
 }

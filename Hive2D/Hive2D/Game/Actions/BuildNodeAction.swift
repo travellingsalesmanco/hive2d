@@ -33,8 +33,8 @@ struct BuildNodeAction: GameAction {
             return
         }
 
-        let nodeComponent = NodeComponent(position: position)
-        guard game.checkOverlapping(node: nodeComponent) else {
+        let testNode = NodeComponent.Node(position: position, radius: Constants.GamePlay.nodeRadius)
+        guard !game.hasOverlappingNodes(node: testNode) else {
               return
         }
 
@@ -48,6 +48,8 @@ struct BuildNodeAction: GameAction {
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
+        let nodeComponent = NodeComponent(radius: testNode.radius)
+        let transformComponent = TransformComponent(position: position)
         let playerComponent = PlayerComponent(player: player)
         let networkComponent = NetworkComponent(id: netId)
         let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta)
@@ -59,6 +61,7 @@ struct BuildNodeAction: GameAction {
 
         let combatNode = CombatNode(sprite: spriteComponent,
                                     node: nodeComponent,
+                                    transform: transformComponent,
                                     player: playerComponent,
                                     resourceConsumer: resourceConsumerComponent,
                                     network: networkComponent,
@@ -68,10 +71,9 @@ struct BuildNodeAction: GameAction {
               return
         }
 
-        game.syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
         game.add(entity: combatNode)
 
-        let edges = getEdges(to: nodesWithinRange)
+        let edges = buildEdges(from: combatNode, to: nodesWithinRange)
         edges.forEach { game.add(entity: $0) }
     }
 
@@ -86,9 +88,9 @@ struct BuildNodeAction: GameAction {
             return
         }
 
-        let nodeComponent = NodeComponent(position: position)
-        guard game.checkOverlapping(node: nodeComponent) else {
-              return
+        let testNode = NodeComponent.Node(position: position, radius: Constants.GamePlay.nodeRadius)
+        guard !game.hasOverlappingNodes(node: testNode) else {
+            return
         }
         guard let player = game.getPlayer(id: playerNetId) else {
             return
@@ -98,6 +100,8 @@ struct BuildNodeAction: GameAction {
                                                   resourceType: resourceType) else {
             return
         }
+        let nodeComponent = NodeComponent(radius: testNode.radius)
+        let transformComponent = TransformComponent(position: position)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let healthBar = ResourceBarSprite(color: UIColor.green)
         spriteNode.addChild(healthBar,
@@ -116,6 +120,7 @@ struct BuildNodeAction: GameAction {
 
         let resourceNode = ResourceNode(sprite: spriteComponent,
                                         node: nodeComponent,
+                                        transform: transformComponent,
                                         player: playerComponent,
                                         resourceCollector: resourceCollectorComponent,
                                         resourceConsumer: resourceConsumerComponent,
@@ -125,10 +130,9 @@ struct BuildNodeAction: GameAction {
               return
         }
 
-        game.syncSpriteWithNode(spriteComponent: spriteComponent, nodeComponent: nodeComponent)
         game.add(entity: resourceNode)
 
-        let edges = getEdges(to: nodesWithinRange)
+        let edges = buildEdges(from: resourceNode, to: nodesWithinRange)
         edges.forEach { game.add(entity: $0) }
     }
 
@@ -162,11 +166,11 @@ struct BuildNodeAction: GameAction {
             guard node.component(ofType: PlayerComponent.self)?.player == player else {
                 return false
             }
-            guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
+            guard let node = node.component(ofType: NodeComponent.self)?.getTransformedNode() else {
                 return false
             }
-            let distanceSquared = pow(nodeComponent.position.x - position.x, 2) +
-                pow(nodeComponent.position.y - position.y, 2)
+            let distanceSquared = pow(node.position.x - position.x, 2) +
+                pow(node.position.y - position.y, 2)
             // If distance squared is 0, it means its the same node, which we don't want
             guard distanceSquared != 0 else {
                 return false
@@ -178,23 +182,20 @@ struct BuildNodeAction: GameAction {
     }
 
     /// Returns edges that connect the node to be added to the other nodes that are within range
-    private func getEdges(to nodesWithinRange: [GKEntity]) -> [GKEntity] {
-        let edges = nodesWithinRange.compactMap { node -> GKEntity? in
-            guard let nodeComponent = node.component(ofType: NodeComponent.self) else {
+    private func buildEdges(from node: Node, to nodes: [GKEntity]) -> [GKEntity] {
+        let edges = nodes.compactMap { targetNode -> GKEntity? in
+            guard let player = targetNode.component(ofType: PlayerComponent.self)?.player else {
                 return nil
             }
-            let pathComponent = PathComponent(start: position, end: nodeComponent.position)
+            let pathComponent = PathComponent(start: node, end: targetNode)
 
-            guard let player = node.component(ofType: PlayerComponent.self)?.player else {
-                return nil
-            }
-            let spriteNode = EdgeSprite(from: position, to: nodeComponent.position, playerColor: player.getColor())
+            let spriteNode = EdgeSprite(playerColor: player.getColor())
+            let transformComponent = TransformComponent()
             let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-
             let playerComponent = PlayerComponent(player: player)
 
-            let edge = Edge(sprite: spriteComponent, path: pathComponent, player: playerComponent)
-            return edge
+            return Edge(sprite: spriteComponent, path: pathComponent,
+                        transform: transformComponent, player: playerComponent)
         }
         return edges
     }

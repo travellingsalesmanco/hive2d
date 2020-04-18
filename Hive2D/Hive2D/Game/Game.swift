@@ -94,12 +94,6 @@ class Game {
         lastGameTick += duration
     }
 
-    /// Ensures sprite position is same as node position
-    func syncSpriteWithNode(spriteComponent: SpriteComponent, nodeComponent: NodeComponent) {
-        spriteComponent.spriteNode.position = nodeComponent.position
-        spriteComponent.spriteNode.size = CGSize(width: nodeComponent.radius, height: nodeComponent.radius)
-    }
-
     func hasSufficientResources(for node: Node, nodeType: NodeType) -> Bool {
         let player = getPlayer(for: node)
         guard let resourceComponent = player?.component(ofType: ResourceComponent.self) else {
@@ -132,18 +126,11 @@ class Game {
         return true
     }
 
-    func checkOverlapping(node toCheck: NodeComponent) -> Bool {
+    func hasOverlappingNodes(node toCheck: NodeComponent.Node) -> Bool {
         let nodes = query(includes: NodeComponent.self)
-        for node in nodes {
-            let nodeComponent = node.component(ofType: NodeComponent.self)!
-            let distanceX = pow(nodeComponent.position.x - toCheck.position.x, 2)
-            let distanceY = pow(nodeComponent.position.y - toCheck.position.y, 2)
-            let distance = sqrt(distanceX + distanceY)
-            if distance <= nodeComponent.radius + toCheck.radius {
-                return false
-            }
+        return nodes.contains {
+            $0.component(ofType: NodeComponent.self)!.getTransformedNode().intersects(other: toCheck)
         }
-        return true
     }
 
     // TODO: Remove this once actions are using Player entities
@@ -198,14 +185,14 @@ class Game {
 
         for attacker in attackers {
             guard let attackerId = attacker.component(ofType: NetworkComponent.self)?.id,
-                let attackerNode = attacker.component(ofType: NodeComponent.self),
+                let attackerNode = attacker.component(ofType: NodeComponent.self)?.getTransformedNode(),
                 let attackerWeapon = attacker.component(ofType: AttackComponent.self),
                 let attackerPlayerId = attacker.component(ofType: PlayerComponent.self)?.player.getNetId() else {
                 continue
             }
 
             let defendersInRange = defenders.filter { defender in
-                guard let defenderNode = defender.component(ofType: NodeComponent.self) else {
+                guard let defenderNode = defender.component(ofType: NodeComponent.self)?.getTransformedNode() else {
                     return true
                 }
                 let distanceSquared = pow(attackerNode.position.x - defenderNode.position.x, 2) +

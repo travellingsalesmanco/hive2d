@@ -60,6 +60,7 @@ struct Constants {
 
         static let nodeConnectRange = CGFloat(50)
         static let linkGlowWidth = CGFloat(0.5)
+        static let linkWidth = CGFloat(2)
 
         static let initialResourceTier = CGFloat(1)
         static let tierUpgradeCost = CGFloat(50)

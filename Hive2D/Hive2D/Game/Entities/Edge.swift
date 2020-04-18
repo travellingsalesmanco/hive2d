@@ -11,8 +11,10 @@ import GameplayKit
 class Edge: GKEntity {
     init(sprite: SpriteComponent,
          path: PathComponent,
+         transform: TransformComponent,
          player: PlayerComponent) {
         super.init()
+        addComponent(transform)
         addComponent(sprite)
         addComponent(path)
         addComponent(player)
