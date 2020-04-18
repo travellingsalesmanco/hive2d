@@ -36,10 +36,13 @@ struct SetupGameAction: GameAction {
             // Create hive node
             let hiveSpriteNode = HiveSprite(playerColor: playerEntity.getColor())
             let hiveSpriteComponent = SpriteComponent(spriteNode: hiveSpriteNode)
+            let hiveMinimapSprite = HiveSprite(playerColor: playerEntity.getColor())
+            let hiveMinimapComponent = MinimapComponent(spriteNode: hiveMinimapSprite)
             let hiveNodeComponent = NodeComponent(radius: Constants.GamePlay.hiveRadius)
             let hiveTransformComponent = TransformComponent(position: hiveStartingLocations[idx])
             let hiveNetworkComponent = NetworkComponent(id: hiveNetworkingIds[idx])
             let hive = Hive(sprite: hiveSpriteComponent,
+                            minimapDisplay: hiveMinimapComponent,
                             node: hiveNodeComponent,
                             transform: hiveTransformComponent,
                             player: playerComponent,

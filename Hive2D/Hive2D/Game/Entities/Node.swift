@@ -10,6 +10,7 @@ import GameplayKit
 
 class Node: GKEntity {
     init(sprite: SpriteComponent,
+         minimapDisplay: MinimapComponent,
          node: NodeComponent,
          transform: TransformComponent,
          player: PlayerComponent,
@@ -17,6 +18,7 @@ class Node: GKEntity {
         super.init()
         addComponent(transform)
         addComponent(sprite)
+        addComponent(minimapDisplay)
         addComponent(node)
         addComponent(player)
         addComponent(network)

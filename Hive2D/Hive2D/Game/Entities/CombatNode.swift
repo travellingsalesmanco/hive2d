@@ -11,6 +11,7 @@ import GameplayKit
 class CombatNode: Node {
 
     init(sprite: SpriteComponent,
+         minimapDisplay: MinimapComponent,
          node: NodeComponent,
          transform: TransformComponent,
          player: PlayerComponent,
@@ -18,8 +19,12 @@ class CombatNode: Node {
          network: NetworkComponent,
          defence: DefenceComponent,
          attack: AttackComponent) {
-        super.init(sprite: sprite, node: node, transform: transform,
-                   player: player, network: network)
+        super.init(sprite: sprite,
+                   minimapDisplay: minimapDisplay,
+                   node: node,
+                   transform: transform,
+                   player: player,
+                   network: network)
         addComponent(resourceConsumer)
         addComponent(defence)
         addComponent(attack)

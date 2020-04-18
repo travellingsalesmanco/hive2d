@@ -9,12 +9,15 @@
 import SpriteKit
 
 class MinimapDisplay: SKSpriteNode {
-    let scaleFactor: CGFloat
-    private var currentSprites = [SKSpriteNode: SKSpriteNode]()
+    /// Placeholder node to act as parent of all game elements on minimap.
+    /// This allows us to scale them separately from other minimap elements (e.g. text)
+    var gameElementsRoot: SKNode
 
     init(size: CGSize, mapSize: CGFloat) {
-        scaleFactor = size.height / mapSize
+        gameElementsRoot = SKNode()
         super.init(texture: nil, color: SKColor.darkGray, size: size)
+        gameElementsRoot.setScale(size.height / mapSize)
+        addChild(gameElementsRoot, xOffsetByWidths: -0.5, yOffsetByHeights: -0.5)
 
         let title = SKLabelNode(text: "Minimap")
         title.fontName = "AvenirNext-Regular"
@@ -25,29 +28,12 @@ class MinimapDisplay: SKSpriteNode {
         self.addChild(title)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        scaleFactor = CGFloat(1)
-        super.init(coder: aDecoder)
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    func updateSpritePositions(_ sprites: [SKSpriteNode]) {
-        let spriteSet = Set(sprites)
-        let currentSpriteSet = Set(currentSprites.keys)
-        let newSprites = spriteSet.subtracting(currentSpriteSet)
-        let staleSprites = currentSpriteSet.subtracting(spriteSet)
-        newSprites.forEach {
-            let minimapSprite = SKSpriteNode(texture: $0.texture, color: $0.color, size: $0.size)
-            minimapSprite.setScale(scaleFactor)
-            minimapSprite.position = CGPoint(
-                x: $0.position.x * scaleFactor - size.width / 2,
-                y: $0.position.y * scaleFactor - size.height / 2
-            )
-            currentSprites[$0] = minimapSprite
-            addChild(minimapSprite)
-        }
-        staleSprites.forEach {
-            currentSprites[$0]?.removeFromParent()
-            currentSprites.removeValue(forKey: $0)
-        }
+    func addGameElement(_ sprite: SKSpriteNode) {
+        gameElementsRoot.addChild(sprite)
     }
 }

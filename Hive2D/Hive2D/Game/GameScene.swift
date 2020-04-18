@@ -62,9 +62,9 @@ class GameScene: SKScene {
         self.camera!.constraints = [boundsConstraint]
 
         hud.createHudNodes(size: self.size, resources: game.player?.getResources())
-        hud.createMinimap(size: self.size, sprites: game.entities.compactMap {
-            $0.component(ofType: SpriteComponent.self)
-        }, mapSize: gameConfig.mapSize)
+        hud.createMinimap(size: self.size, mapSize: gameConfig.mapSize)
+        // Hook minimap node up to minimap system
+        MinimapComponent.minimap = hud.minimapDisplay
         self.camera?.addChild(hud)
         setUpGestureRecognizers()
     }
@@ -74,9 +74,6 @@ class GameScene: SKScene {
         lastUpdateTimeInterval = currentTime
         game.update(deltaTime)
         hud.updateResourceDisplay(resources: game.player?.getResources())
-        hud.updateMinimapDisplay(game.entities.compactMap {
-            $0.component(ofType: SpriteComponent.self)
-        })
         openedNodeMenu?.update()
     }
 

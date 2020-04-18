@@ -48,6 +48,8 @@ struct BuildNodeAction: GameAction {
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
+        let minimapSprite = CombatNodeSprite(playerColor: player.getColor())
+        let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
         let nodeComponent = NodeComponent(radius: testNode.radius)
         let transformComponent = TransformComponent(position: position)
         let playerComponent = PlayerComponent(player: player)
@@ -60,6 +62,7 @@ struct BuildNodeAction: GameAction {
                                               range: Constants.GamePlay.combatNodeRange)
 
         let combatNode = CombatNode(sprite: spriteComponent,
+                                    minimapDisplay: minimapComponent,
                                     node: nodeComponent,
                                     transform: transformComponent,
                                     player: playerComponent,
@@ -100,9 +103,14 @@ struct BuildNodeAction: GameAction {
                                                   resourceType: resourceType) else {
             return
         }
+        guard let minimapSprite = ResourceNodeSprite(playerColor: player.getColor(),
+                                                     resourceType: resourceType) else {
+                                                    return
+        }
         let nodeComponent = NodeComponent(radius: testNode.radius)
         let transformComponent = TransformComponent(position: position)
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
+        let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
         let healthBar = ResourceBarSprite(color: UIColor.green)
         spriteNode.addChild(healthBar,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
@@ -119,6 +127,7 @@ struct BuildNodeAction: GameAction {
         defenceComponent.healthBarSprite = healthBar
 
         let resourceNode = ResourceNode(sprite: spriteComponent,
+                                        minimapDisplay: minimapComponent,
                                         node: nodeComponent,
                                         transform: transformComponent,
                                         player: playerComponent,
@@ -190,12 +199,17 @@ struct BuildNodeAction: GameAction {
             let pathComponent = PathComponent(start: node, end: targetNode)
 
             let spriteNode = EdgeSprite(playerColor: player.getColor())
+            let minimapSprite = EdgeSprite(playerColor: player.getColor())
+            let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
             let transformComponent = TransformComponent()
             let spriteComponent = SpriteComponent(spriteNode: spriteNode)
             let playerComponent = PlayerComponent(player: player)
 
-            return Edge(sprite: spriteComponent, path: pathComponent,
-                        transform: transformComponent, player: playerComponent)
+            return Edge(sprite: spriteComponent,
+                        minimapDisplay: minimapComponent,
+                        path: pathComponent,
+                        transform: transformComponent,
+                        player: playerComponent)
         }
         return edges
     }
