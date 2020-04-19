@@ -17,5 +17,8 @@ class MinimapComponent: SpriteComponent {
     override func willRemoveFromEntity() {
         spriteNode.removeFromParent()
     }
+    deinit {
+        spriteNode.removeFromParent()
+    }
 
 }
