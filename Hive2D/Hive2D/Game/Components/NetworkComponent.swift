@@ -10,7 +10,7 @@ import GameplayKit
 
 class NetworkComponent: GKComponent {
     typealias Identifier = UUID
-    private static var entityMapping = [Identifier: NetworkComponent]()
+    private static var entityMapping = [Identifier: GKEntity]()
     let id: Identifier
 
     init(id: Identifier = NetworkComponent.generateIdentifier()) {
@@ -19,7 +19,6 @@ class NetworkComponent: GKComponent {
         }
         self.id = id
         super.init()
-        NetworkComponent.entityMapping[id] = self
     }
 
     @available(*, unavailable)
@@ -27,12 +26,26 @@ class NetworkComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func didAddToEntity() {
+        guard NetworkComponent.entityMapping[id] == nil else {
+            fatalError("Initializing NetworkComponent with duplicate identifier")
+        }
+        guard let entity = entity else {
+            fatalError("Entity not found")
+        }
+        NetworkComponent.entityMapping[id] = entity
+    }
+
+    override func willRemoveFromEntity() {
+        NetworkComponent.entityMapping.removeValue(forKey: id)
+    }
+
     deinit {
         NetworkComponent.entityMapping.removeValue(forKey: id)
     }
 
     static func getEntity(for id: Identifier) -> GKEntity? {
-        entityMapping[id]?.entity
+        entityMapping[id]
     }
 
     static func generateIdentifier() -> Identifier {
