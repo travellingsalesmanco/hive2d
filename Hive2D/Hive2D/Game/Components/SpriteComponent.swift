@@ -21,7 +21,11 @@ class SpriteComponent: GKComponent {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
+/// RenderingSystem
+/// Acts on SpriteComponent and TransformComponent to ensure rendered view is synchronized to logical properties
+extension SpriteComponent {
     private func syncTransform() {
         guard let transform = entity?.component(ofType: TransformComponent.self) else {
             fatalError("No TransformComponent on an entity with SpriteComponent.")
@@ -31,6 +35,7 @@ class SpriteComponent: GKComponent {
         spriteNode.yScale = transform.scale.y
         spriteNode.zRotation = transform.rotation
     }
+
     override func didAddToEntity() {
         syncTransform()
     }
@@ -38,5 +43,4 @@ class SpriteComponent: GKComponent {
     override func update(deltaTime seconds: TimeInterval) {
         syncTransform()
     }
-
 }
