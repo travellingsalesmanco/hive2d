@@ -104,6 +104,8 @@
 		F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FD2420D935002C004F /* ResourceComponent.swift */; };
 		F969C3002420D96F002C004F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FF2420D96F002C004F /* Player.swift */; };
 		F96C8E55244ED53300ABA3B1 /* TerrainTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */; };
+		F96C8E59244F0BBE00ABA3B1 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */; };
+		F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -243,6 +245,8 @@
 		F969C2FD2420D935002C004F /* ResourceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceComponent.swift; sourceTree = "<group>"; };
 		F969C2FF2420D96F002C004F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TerrainTileSet.sks; sourceTree = "<group>"; };
+		F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
+		F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFactory.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -483,6 +487,7 @@
 		F969C2B3241CB048002C004F /* Hive2D */ = {
 			isa = PBXGroup;
 			children = (
+				F96C8E57244F0BAA00ABA3B1 /* Terrain */,
 				A97F48BA2420F3A900BF5429 /* Utilities */,
 				F969C2E4241F9147002C004F /* Game */,
 				BED086062420CAAF00AA9441 /* Models */,
@@ -534,7 +539,6 @@
 				BE5DFF8F245186F400F4901B /* Factories */,
 				F969C2E5241F9153002C004F /* Game.swift */,
 				F969C2FB2420D4FA002C004F /* GameConfig.swift */,
-				F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */,
 				F969C2F92420D0EB002C004F /* GameScene.swift */,
 				BE5DFF9024518A4A00F4901B /* NodeCostMap.swift */,
 				BEF8B8EB24346DFB00A0928D /* ResourceType.swift */,
@@ -574,6 +578,16 @@
 				03F9D2B924471AEF00BCAADC /* TransformComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F96C8E57244F0BAA00ABA3B1 /* Terrain */ = {
+			isa = PBXGroup;
+			children = (
+				F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */,
+				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
+				F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */,
+			);
+			path = Terrain;
 			sourceTree = "<group>";
 		};
 		F9F03D6324391C44006B93E1 /* Menu */ = {
@@ -813,6 +827,8 @@
 				03F9D2C0244B6BB200BCAADC /* MinimapComponent.swift in Sources */,
 				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
+				F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */,
+				F96C8E59244F0BBE00ABA3B1 /* Terrain.swift in Sources */,
 				F969C2F224205032002C004F /* ResourceCollectorComponent.swift in Sources */,
 				F9F03D622439177A006B93E1 /* NodeMenu.swift in Sources */,
 				BED12FF7243596140030D58D /* GameTickAction.swift in Sources */,
