@@ -50,6 +50,8 @@
 		A9D80B8D242790BA00951824 /* GameActionQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B8C242790BA00951824 /* GameActionQueueTests.swift */; };
 		A9D80B91242B3C7500951824 /* CodableGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B90242B3C7500951824 /* CodableGameAction.swift */; };
 		A9D80B97242B6E6C00951824 /* FirebaseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D80B96242B6E6B00951824 /* FirebaseCodable.swift */; };
+		BE5DFF7924503FAD00F4901B /* BuildResourceNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF7824503FAD00F4901B /* BuildResourceNodeAction.swift */; };
+		BE5DFF7B245041ED00F4901B /* BuildCombatNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF7A245041ED00F4901B /* BuildCombatNodeAction.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -170,6 +172,8 @@
 		A9D80B90242B3C7500951824 /* CodableGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableGameAction.swift; sourceTree = "<group>"; };
 		A9D80B96242B6E6B00951824 /* FirebaseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseCodable.swift; sourceTree = "<group>"; };
 		AEC71E151511AF7DFA049812 /* Pods-Hive2D.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hive2D.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hive2D/Pods-Hive2D.release.xcconfig"; sourceTree = "<group>"; };
+		BE5DFF7824503FAD00F4901B /* BuildResourceNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildResourceNodeAction.swift; sourceTree = "<group>"; };
+		BE5DFF7A245041ED00F4901B /* BuildCombatNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCombatNodeAction.swift; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
 		BEB648F8241E5783002814D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				A97F48A2241E172500BF5429 /* GameAction.swift */,
 				A9D80B90242B3C7500951824 /* CodableGameAction.swift */,
 				BEF8B8ED24347C8F00A0928D /* BuildNodeAction.swift */,
+				BE5DFF7A245041ED00F4901B /* BuildCombatNodeAction.swift */,
+				BE5DFF7824503FAD00F4901B /* BuildResourceNodeAction.swift */,
 				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
 				F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */,
 				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
@@ -730,6 +736,7 @@
 				A97F48D4242328AA00BF5429 /* UserAuthState.swift in Sources */,
 				A9D80B97242B6E6C00951824 /* FirebaseCodable.swift in Sources */,
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
+				BE5DFF7B245041ED00F4901B /* BuildCombatNodeAction.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
 				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
 				F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */,
@@ -751,6 +758,7 @@
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
 				BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */,
 				BEF8B8F32434C2C700A0928D /* BuildNodeAction.swift in Sources */,
+				BE5DFF7924503FAD00F4901B /* BuildResourceNodeAction.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				BEF8B8F02434C07000A0928D /* Node.swift in Sources */,
 				BEF8B8F72434EF2F00A0928D /* AttackComponent.swift in Sources */,

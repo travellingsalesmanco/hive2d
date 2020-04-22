@@ -55,6 +55,11 @@ extension CGPoint {
         atan2(y, x)
     }
 
+    /// Calculates distance between two CGPoints.
+    func distanceTo(_ point: CGPoint) -> CGFloat {
+        return (self - point).magnitude
+    }
+
     // MARK: Operators
 
     /// CGPoint and CGPoint vector addition

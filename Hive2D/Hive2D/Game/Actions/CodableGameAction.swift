@@ -9,7 +9,8 @@
 import Foundation
 
 enum CodableGameAction {
-    case BuildNode(BuildNodeAction)
+    case BuildResourceNode(BuildResourceNodeAction)
+    case BuildCombatNode(BuildCombatNodeAction)
     case DestroyNode(DestroyNodeAction)
     case ChangeNode(ChangeNodeAction)
     case QuitGame(QuitGameAction)
@@ -20,7 +21,9 @@ enum CodableGameAction {
 
     var gameAction: GameAction {
         switch self {
-        case let .BuildNode(action):
+        case let .BuildCombatNode(action):
+            return action
+        case let .BuildResourceNode(action):
             return action
         case let .DestroyNode(action):
             return action
@@ -42,13 +45,23 @@ enum CodableGameAction {
 
 extension CodableGameAction: Codable {
     private enum CodingKeys: String, CodingKey {
-        case BuildNode, DestroyNode, ChangeNode, QuitGame, StartGame, SetupGame, UpgradeNode, GameTick
+        case BuildResourceNode
+        case BuildCombatNode
+        case DestroyNode
+        case ChangeNode
+        case QuitGame
+        case StartGame
+        case SetupGame
+        case UpgradeNode
+        case GameTick
     }
 
     init?(_ action: GameAction) {
         switch action {
-        case let action as BuildNodeAction:
-            self = .BuildNode(action)
+        case let action as BuildResourceNodeAction:
+            self = .BuildResourceNode(action)
+        case let action as BuildCombatNodeAction:
+            self = .BuildCombatNode(action)
         case let action as DestroyNodeAction:
             self = .DestroyNode(action)
         case let action as ChangeNodeAction:
@@ -69,9 +82,13 @@ extension CodableGameAction: Codable {
     }
 
     init(from decoder: Decoder) throws {
-      let container = try decoder.container(keyedBy: CodingKeys.self)
-        if let buildNode = try container.decodeIfPresent(BuildNodeAction.self, forKey: .BuildNode) {
-            self = .BuildNode(buildNode)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let buildResourceNode =
+            try container.decodeIfPresent(BuildResourceNodeAction.self, forKey: .BuildResourceNode) {
+            self = .BuildResourceNode(buildResourceNode)
+        } else if let buildCombatNode =
+            try container.decodeIfPresent(BuildCombatNodeAction.self, forKey: .BuildCombatNode) {
+            self = .BuildCombatNode(buildCombatNode)
         } else if let destroyNode = try container.decodeIfPresent(DestroyNodeAction.self, forKey: .DestroyNode) {
             self = .DestroyNode(destroyNode)
         } else if let changeNode = try container.decodeIfPresent(ChangeNodeAction.self, forKey: .ChangeNode) {
@@ -92,8 +109,10 @@ extension CodableGameAction: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
-        case let .BuildNode(action):
-            try container.encode(action, forKey: .BuildNode)
+        case let .BuildResourceNode(action):
+            try container.encode(action, forKey: .BuildResourceNode)
+        case let .BuildCombatNode(action):
+            try container.encode(action, forKey: .BuildCombatNode)
         case let .DestroyNode(action):
             try container.encode(action, forKey: .DestroyNode)
         case let .ChangeNode(action):

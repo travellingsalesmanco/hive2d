@@ -76,12 +76,23 @@ class Game {
         guard let player = player else {
             return
         }
-        gameNetworking.sendGameAction(
-            BuildNodeAction(playerNetId: player.getNetId(),
-                            position: point,
-                            netId: NetworkComponent.generateIdentifier(),
-                            nodeType: nodeType)
-        )
+
+        // TOOD: REFACTOR
+        if nodeType == .Combat {
+            gameNetworking.sendGameAction(
+                BuildCombatNodeAction(playerNetId: player.getNetId(),
+                                position: point,
+                                netId: NetworkComponent.generateIdentifier(),
+                                nodeType: nodeType)
+            )
+        } else {
+            gameNetworking.sendGameAction(
+                BuildResourceNodeAction(playerNetId: player.getNetId(),
+                                position: point,
+                                netId: NetworkComponent.generateIdentifier(),
+                                nodeType: nodeType)
+            )
+        }
     }
 
     func sendGameTick() {
