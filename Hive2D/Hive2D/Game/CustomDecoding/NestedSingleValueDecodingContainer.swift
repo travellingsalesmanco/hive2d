@@ -14,7 +14,7 @@ class NestedSingleValueDecodingContainer<Key: CodingKey>: SingleValueDecodingCon
     let key: Key
 
     var codingPath: [CodingKey] {
-        return container.codingPath
+        container.codingPath
     }
 
     init(container: KeyedDecodingContainer<Key>, key: Key) {
@@ -23,10 +23,10 @@ class NestedSingleValueDecodingContainer<Key: CodingKey>: SingleValueDecodingCon
     }
 
     func decode<T>(_ type: T.Type) throws -> T where T: Decodable {
-        return try container.decode(type, forKey: key)
+        try container.decode(type, forKey: key)
     }
 
     func decodeNil() -> Bool {
-        return (try? container.decodeNil(forKey: key)) ?? false
+        (try? container.decodeNil(forKey: key)) ?? false
     }
 }

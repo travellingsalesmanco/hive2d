@@ -14,11 +14,11 @@ protocol DecodingFormat {
 
 extension DecodingFormat {
     func decode<T: Decodable>(_ type: T.Type, from data: Data) throws -> T {
-        return try T.init(from: decoder(for: data))
+        try T.init(from: decoder(for: data))
     }
 
     func decode<Factory: DecodingFactory>(using factory: Factory, from data: Data) throws -> Factory.Model {
-        return try factory.create(from: decoder(for: data))
+        try factory.create(from: decoder(for: data))
     }
 }
 

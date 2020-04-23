@@ -26,14 +26,14 @@ class NestedDecoder<Key: CodingKey>: Decoder {
     }
 
     func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key: CodingKey {
-        return try container.nestedContainer(keyedBy: type, forKey: key)
+        try container.nestedContainer(keyedBy: type, forKey: key)
     }
 
     func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-        return try container.nestedUnkeyedContainer(forKey: key)
+        try container.nestedUnkeyedContainer(forKey: key)
     }
 
     func singleValueContainer() throws -> SingleValueDecodingContainer {
-        return NestedSingleValueDecodingContainer(container: container, key: key)
+        NestedSingleValueDecodingContainer(container: container, key: key)
     }
 }

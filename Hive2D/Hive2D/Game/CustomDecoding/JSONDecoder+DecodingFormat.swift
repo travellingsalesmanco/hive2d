@@ -10,6 +10,6 @@ import Foundation
 
 extension JSONDecoder: DecodingFormat {
     func decoder(for data: Data) -> Decoder {
-        return try! decode(DecoderExtractor.self, from: data).decoder
+        try! decode(DecoderExtractor.self, from: data).decoder
     }
 }

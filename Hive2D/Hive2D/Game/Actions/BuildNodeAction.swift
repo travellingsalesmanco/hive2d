@@ -61,13 +61,13 @@ extension BuildNodeAction {
     }
 
     func isBuildable(game: Game) -> Bool {
-        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game)
+        hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game)
             && hasSufficientResources() && isTerrainBuildable(game: game)
     }
 
     /// Check that node is within range of some other node that player owns
     func hasNearbyNodes(game: Game) -> Bool {
-        return !getOwnNodesWithinRange(game: game).isEmpty
+        !getOwnNodesWithinRange(game: game).isEmpty
     }
 
     func hasSufficientResources() -> Bool {
@@ -88,7 +88,7 @@ extension BuildNodeAction {
 
     /// Get the terrain tile at position
     func getTerrainTile(game: Game) -> Tile? {
-        return game.terrain?.getTile(at: position)
+        game.terrain?.getTile(at: position)
     }
 
     /// Check if terrain tile at position allows building of nodes

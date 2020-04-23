@@ -57,7 +57,7 @@ extension CGPoint {
 
     /// Calculates distance between two CGPoints.
     func distanceTo(_ point: CGPoint) -> CGFloat {
-        return (self - point).magnitude
+        (self - point).magnitude
     }
 
     // MARK: Operators

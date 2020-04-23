@@ -10,6 +10,6 @@ import Foundation
 
 extension PropertyListDecoder: DecodingFormat {
     func decoder(for data: Data) -> Decoder {
-        return try! decode(DecoderExtractor.self, from: data).decoder
+        try! decode(DecoderExtractor.self, from: data).decoder
     }
 }

@@ -49,7 +49,7 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getConsumedResourceType() -> ResourceType {
-        return .Zeta
+        .Zeta
     }
 
     func getDefenceComponent(healthBar: ResourceBarSprite) -> DefenceComponent {
@@ -60,8 +60,8 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getAttackComponent() -> AttackComponent {
-        return AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
-                               range: Constants.GamePlay.combatNodeRange)
+        AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
+                        range: Constants.GamePlay.combatNodeRange)
     }
 
     func createNode(game: Game) -> Node? {
