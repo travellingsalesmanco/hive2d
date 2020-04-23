@@ -24,6 +24,18 @@ class Node: GKEntity, Codable {
         addComponent(network)
     }
 
+    func getNode() -> NodeComponent.Node {
+        component(ofType: NodeComponent.self)!.getTransformedNode()
+    }
+
+    func getPosition() -> CGPoint {
+        getNode().position
+    }
+
+    func getPlayer() -> Player {
+        component(ofType: PlayerComponent.self)!.player
+    }
+
     func getNetId() -> NetworkComponent.Identifier {
         component(ofType: NetworkComponent.self)!.id
     }

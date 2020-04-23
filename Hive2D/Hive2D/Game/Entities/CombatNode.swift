@@ -30,6 +30,14 @@ class CombatNode: Node {
         addComponent(attack)
     }
 
+    func getRange() -> CGFloat {
+        component(ofType: AttackComponent.self)!.range
+    }
+
+    func getAttack() -> CGFloat {
+        component(ofType: AttackComponent.self)!.attack
+    }
+
     @available(*, unavailable)
     required init(from decoder: Decoder) throws {
         fatalError("init(from:) has not been implemented")

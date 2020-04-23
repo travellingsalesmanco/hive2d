@@ -138,50 +138,6 @@ class Game {
         }
     }
 
-    func resolveCombat(duration: TimeInterval) {
-        let attackers = query(includes: AttackComponent.self)
-        let defenders = query(includes: DefenceComponent.self)
-
-        for attacker in attackers {
-            guard let attackerId = attacker.component(ofType: NetworkComponent.self)?.id,
-                let attackerNode = attacker.component(ofType: NodeComponent.self)?.getTransformedNode(),
-                let attackerWeapon = attacker.component(ofType: AttackComponent.self),
-                let attackerPlayerId = attacker.component(ofType: PlayerComponent.self)?.player.getNetId() else {
-                continue
-            }
-
-            let defendersInRange = defenders.filter { defender in
-                guard let defenderNode = defender.component(ofType: NodeComponent.self)?.getTransformedNode() else {
-                    return true
-                }
-                let distanceSquared = pow(attackerNode.position.x - defenderNode.position.x, 2) +
-                    pow(attackerNode.position.y - defenderNode.position.y, 2)
-                let rangeSquared = pow(attackerWeapon.range + defenderNode.radius, 2)
-                return distanceSquared <= rangeSquared
-            }
-
-            for defender in defendersInRange {
-                guard let defenderId = defender.component(ofType: NetworkComponent.self)?.id,
-                    let defenderDefence = defender.component(ofType: DefenceComponent.self),
-                    let defenderPlayerId = defender.component(ofType: PlayerComponent.self)?.player.getNetId() else {
-                    continue
-                }
-
-                // Check that attacker is not defender
-                guard attackerId != defenderId, attackerPlayerId != defenderPlayerId else {
-                    continue
-                }
-
-                let defenceMultiplier = defenderDefence.shield == 0 ? 1 : 1 / defenderDefence.shield
-                defenderDefence.health -= attackerWeapon.attack * defenceMultiplier * CGFloat(duration)
-            }
-        }
-
-        if isHost {
-            clearDestroyedNodes()
-        }
-    }
-
     /// Sends DestroyNodeAction for all nodes with health <= 0
     func clearDestroyedNodes() {
         let nodes = query(includes: DefenceComponent.self)
