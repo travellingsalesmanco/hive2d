@@ -12,8 +12,6 @@ import NotificationCenter
 
 class Game {
     var entities = Set<GKEntity>()
-    // TODO: Remove this once actions are using Player entities
-    var playerEntities = [UUID: Player]()
     var player: Player?
     unowned let scene: SKScene
     let config: GameConfig
@@ -110,16 +108,6 @@ class Game {
         return nodes.contains {
             $0.component(ofType: NodeComponent.self)!.getTransformedNode().intersects(other: toCheck)
         }
-    }
-
-    // TODO: Remove this once actions are using Player entities
-    func addPlayer(id: UUID, player: Player) {
-        playerEntities[id] = player
-    }
-
-    // TODO: Remove this once actions are using Player entities
-    func getPlayer(id: UUID) -> Player? {
-        playerEntities[id]
     }
 
     func getPlayer(for entity: GKEntity) -> Player? {

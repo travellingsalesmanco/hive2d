@@ -29,8 +29,6 @@ struct SetupGameAction: GameAction {
                                       resource: resourceComponent,
                                       network: playerNetworkingComponent)
 
-            game.addPlayer(id: playerNetworkingIds[idx], player: playerEntity)
-
             // Create player component from player entity
             let playerComponent = PlayerComponent(player: playerEntity)
             // Create hive node
