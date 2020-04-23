@@ -57,6 +57,6 @@ struct SetupGameAction: GameAction {
         guard let player = game.player else {
             return
         }
-        game.gameNetworking.onDisconnectSend(QuitGameAction(playerNetId: player.getNetId(), disconnected: true))
+        game.gameNetworking.onDisconnectSend(QuitGameAction(player: player, disconnected: true))
     }
 }

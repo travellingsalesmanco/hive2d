@@ -58,9 +58,9 @@
 		BE5DFF8624517D3200F4901B /* NestedDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8524517D3200F4901B /* NestedDecoder.swift */; };
 		BE5DFF8824517EB200F4901B /* KeyedDecodingContainer+DecodingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8724517EB200F4901B /* KeyedDecodingContainer+DecodingFactory.swift */; };
 		BE5DFF8A24517F3800F4901B /* DecodingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8924517F3800F4901B /* DecodingFactory.swift */; };
-		BE5DFF8C24517F4B00F4901B /* PlayerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8B24517F4B00F4901B /* PlayerFactory.swift */; };
 		BE5DFF8E2451801D00F4901B /* NestedSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8D2451801D00F4901B /* NestedSingleValueDecodingContainer.swift */; };
 		BE5DFF9124518A4A00F4901B /* NodeCostMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF9024518A4A00F4901B /* NodeCostMap.swift */; };
+		BE5DFF932451985200F4901B /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF922451985200F4901B /* EntityFactory.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -189,9 +189,9 @@
 		BE5DFF8524517D3200F4901B /* NestedDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedDecoder.swift; sourceTree = "<group>"; };
 		BE5DFF8724517EB200F4901B /* KeyedDecodingContainer+DecodingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+DecodingFactory.swift"; sourceTree = "<group>"; };
 		BE5DFF8924517F3800F4901B /* DecodingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingFactory.swift; sourceTree = "<group>"; };
-		BE5DFF8B24517F4B00F4901B /* PlayerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFactory.swift; sourceTree = "<group>"; };
 		BE5DFF8D2451801D00F4901B /* NestedSingleValueDecodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedSingleValueDecodingContainer.swift; sourceTree = "<group>"; };
 		BE5DFF9024518A4A00F4901B /* NodeCostMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCostMap.swift; sourceTree = "<group>"; };
+		BE5DFF922451985200F4901B /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
 		BEB648F8241E5783002814D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 		BE5DFF8F245186F400F4901B /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				BE5DFF8B24517F4B00F4901B /* PlayerFactory.swift */,
+				BE5DFF922451985200F4901B /* EntityFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -811,13 +811,13 @@
 				F9F03D5B24387400006B93E1 /* PathComponent.swift in Sources */,
 				F9F03D59243873E5006B93E1 /* Edge.swift in Sources */,
 				A930FD5724497ED800B555E5 /* RabbitMQDebug.swift in Sources */,
+				BE5DFF932451985200F4901B /* EntityFactory.swift in Sources */,
 				A97F48A3241E172500BF5429 /* GameAction.swift in Sources */,
 				F9F03D6924397141006B93E1 /* Label.swift in Sources */,
 				A97F48C9242299B700BF5429 /* FirebaseHelper.swift in Sources */,
 				F969C3002420D96F002C004F /* Player.swift in Sources */,
 				BE5DFF8A24517F3800F4901B /* DecodingFactory.swift in Sources */,
 				A9A543FA2435DAA200189159 /* HiveSprite.swift in Sources */,
-				BE5DFF8C24517F4B00F4901B /* PlayerFactory.swift in Sources */,
 				BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */,
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BE5DFF8224517C7200F4901B /* JSONDecoder+DecodingFormat.swift in Sources */,

@@ -75,7 +75,6 @@ class Game {
             return
         }
 
-        // TOOD: REFACTOR
         if nodeType == .Combat {
             gameNetworking.sendGameAction(
                 BuildCombatNodeAction(player: player,
@@ -195,12 +194,12 @@ class Game {
         let nodes = query(includes: DefenceComponent.self)
         for node in nodes {
             guard let health = node.component(ofType: DefenceComponent.self)?.health,
-                let nodeId = node.component(ofType: NetworkComponent.self)?.id else {
+                let node = node as? Node else {
                 continue
             }
 
             if health <= 0 {
-                gameNetworking.sendGameAction(DestroyNodeAction(nodeNetId: nodeId))
+                gameNetworking.sendGameAction(DestroyNodeAction(node: node))
             }
         }
     }
@@ -219,16 +218,16 @@ class Game {
     }
 
     func upgradeNode(node: GKEntity) {
-        guard let nodeId = node.component(ofType: NetworkComponent.self)?.id else {
+        guard let node = node as? Node else {
             return
         }
-        gameNetworking.sendGameAction(UpgradeNodeAction(nodeNetId: nodeId))
+        gameNetworking.sendGameAction(UpgradeNodeAction(node: node))
     }
 
     func quit() {
         guard let player = player else {
             return
         }
-        gameNetworking.sendGameAction(QuitGameAction(playerNetId: player.getNetId()))
+        gameNetworking.sendGameAction(QuitGameAction(player: player))
     }
 }

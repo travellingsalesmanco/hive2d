@@ -9,13 +9,24 @@
 import SpriteKit
 
 struct UpgradeNodeAction: GameAction {
-    // TODO: Change to node entity
-    let nodeNetId: NetworkComponent.Identifier
+    let node: Node
+
+    init(node: Node) {
+        self.node = node
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard let node = try container.decode(using: EntityFactory(), forKey: .node) as? Node else {
+            throw DecodingError.valueNotFound(
+                Node.Type.self,
+                DecodingError.Context(codingPath: decoder.codingPath,
+                                      debugDescription: "Entity cannot be casted as Node."))
+        }
+        self.node = node
+    }
 
     func handle(game: Game) {
-        guard let node = NetworkComponent.getEntity(for: nodeNetId) else {
-            return
-        }
         guard let resourceCollectorComponent = node.component(ofType: ResourceCollectorComponent.self),
             let player = node.component(ofType: PlayerComponent.self)?.player ,
             let resourceComponent = player.component(ofType: ResourceComponent.self) else {

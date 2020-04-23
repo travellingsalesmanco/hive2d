@@ -9,8 +9,25 @@
 import Foundation
 
 struct QuitGameAction: GameAction {
-    let playerNetId: UUID
-    var disconnected: Bool = false
+    let player: Player
+    var disconnected: Bool
+
+    init(player: Player, disconnected: Bool = false) {
+        self.player = player
+        self.disconnected = disconnected
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard let player = try container.decode(using: EntityFactory(), forKey: .player) as? Player else {
+            throw DecodingError.valueNotFound(
+                Player.Type.self,
+                DecodingError.Context(codingPath: decoder.codingPath,
+                                      debugDescription: "Entity cannot be casted as Player."))
+        }
+        self.player = player
+        self.disconnected = try container.decode(Bool.self, forKey: .disconnected)
+    }
 
     func handle(game: Game) {
         print("QUITTING")

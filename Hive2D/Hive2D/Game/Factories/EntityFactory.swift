@@ -1,27 +1,27 @@
 //
-//  PlayerFactory.swift
+//  EntityFactory.swift
 //  Hive2D
 //
 //  Created by Yu Jia Tay on 23/4/20.
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-import Foundation
+import GameplayKit
 
-struct PlayerFactory: DecodingFactory {
+struct EntityFactory: DecodingFactory {
     enum CodingKeys: CodingKey {
         case netId
     }
 
-    func create(from decoder: Decoder) throws -> Player {
+    func create(from decoder: Decoder) throws -> GKEntity {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let netId = try container.decode(NetworkComponent.Identifier.self, forKey: .netId)
-        guard let player = NetworkComponent.getEntity(for: netId) as? Player else {
+        guard let entity = NetworkComponent.getEntity(for: netId) else {
             throw DecodingError.valueNotFound(
-                Player.Type.self,
+                GKEntity.Type.self,
                 DecodingError.Context(codingPath: decoder.codingPath,
-                                      debugDescription: "Decoded player is not found in game."))
+                                      debugDescription: "Entity does not exist in game."))
         }
-        return player
+        return entity
     }
 }

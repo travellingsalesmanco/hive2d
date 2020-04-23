@@ -29,4 +29,9 @@ class CombatNode: Node {
         addComponent(defence)
         addComponent(attack)
     }
+
+    @available(*, unavailable)
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }

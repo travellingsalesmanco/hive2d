@@ -27,10 +27,16 @@ struct BuildResourceNodeAction: BuildNodeAction {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        player = try container.decode(using: PlayerFactory(), forKey: .player)
-        position = try container.decode(CGPoint.self, forKey: .position)
-        netId = try container.decode(NetworkComponent.Identifier.self, forKey: .netId)
-        nodeType = try container.decode(NodeType.self, forKey: .nodeType)
+        guard let player = try container.decode(using: EntityFactory(), forKey: .player) as? Player else {
+            throw DecodingError.valueNotFound(
+                Player.Type.self,
+                DecodingError.Context(codingPath: decoder.codingPath,
+                                      debugDescription: "Entity cannot be casted as Player."))
+        }
+        self.player = player
+        self.position = try container.decode(CGPoint.self, forKey: .position)
+        self.netId = try container.decode(NetworkComponent.Identifier.self, forKey: .netId)
+        self.nodeType = try container.decode(NodeType.self, forKey: .nodeType)
     }
 
     func getSprite() -> SKSpriteNode? {
@@ -50,7 +56,7 @@ struct BuildResourceNodeAction: BuildNodeAction {
 
     func getConsumedResourceType() -> ResourceType {
         // TODO: What should this be?
-        .Alpha
+        resourceType
     }
 
     func getDefenceComponent() -> DefenceComponent {

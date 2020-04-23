@@ -9,13 +9,24 @@
 import Foundation
 
 struct DestroyNodeAction: GameAction {
-    // TODO: Change to node entity
-    let nodeNetId: NetworkComponent.Identifier
+    let node: Node
+
+    init(node: Node) {
+        self.node = node
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard let node = try container.decode(using: EntityFactory(), forKey: .node) as? Node else {
+            throw DecodingError.valueNotFound(
+                Node.Type.self,
+                DecodingError.Context(codingPath: decoder.codingPath,
+                                      debugDescription: "Entity cannot be casted as Node."))
+        }
+        self.node = node
+    }
 
     func handle(game: Game) {
-        guard let node = NetworkComponent.getEntity(for: nodeNetId) else {
-            return
-        }
         let edges = game.query(includes: PathComponent.self)
         let connectedEdges = edges.filter { edge in
             guard let path = edge.component(ofType: PathComponent.self) else {
