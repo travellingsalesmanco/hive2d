@@ -61,7 +61,8 @@ extension BuildNodeAction {
     }
 
     func isBuildable(game: Game) -> Bool {
-        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game) && hasSufficientResources() && isTerrainBuildable(game: game)
+        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game)
+            && hasSufficientResources() && isTerrainBuildable(game: game)
     }
 
     /// Check that node is within range of some other node that player owns

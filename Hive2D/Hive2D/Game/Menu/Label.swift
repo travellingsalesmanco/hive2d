@@ -17,9 +17,9 @@ class Label: SKLabelNode {
     init(position: CGPoint,
          text: String,
          name: String,
+         size: CGSize,
          color: UIColor = .white,
-         fontName: String = "Avenir-Heavy",
-         size: CGSize) {
+         fontName: String = "Avenir-Heavy") {
         super.init(fontNamed: fontName)
         self.position = position
         self.zPosition = 10

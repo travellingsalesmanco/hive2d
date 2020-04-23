@@ -28,8 +28,8 @@ class Button: SKSpriteNode {
         let labelNode = Label(position: CGPoint.zero,
                               text: label,
                               name: "\(name)Label",
-                              fontName: fontName,
-                              size: size)
+                              size: size,
+                              fontName: fontName)
         labelNode.verticalAlignmentMode = .center
         labelNode.horizontalAlignmentMode = .center
         labelNode.zPosition = 1

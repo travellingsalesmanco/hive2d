@@ -108,7 +108,6 @@ class GameScene: SKScene {
                 return
             }
         }
-
         openedNodeMenu?.removeFromParent()
         openedNodeMenu = nil
 
@@ -136,13 +135,8 @@ class GameScene: SKScene {
             return
         }
 
-        // Check for build node action
-        guard let terrainNode = self.terrainNode else {
-            return
-        }
-
         // Touched space on terrain, emit a build node action
-        if node == terrainNode {
+        if node == self.terrainNode {
             game.buildNode(at: scenePoint, nodeType: selectedNodeType)
             return
         }
@@ -150,7 +144,6 @@ class GameScene: SKScene {
         guard let nodeLabel = node.name else {
             return
         }
-
         // Build node palette stuff
         switch nodeLabel {
         case "Alpha", "Beta", "Zeta", "Combat":

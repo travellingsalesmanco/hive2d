@@ -37,19 +37,20 @@ class Ranking: SKNode, Comparable {
         self.nodesLabel = Label(position: nodesLabelPosition, text: "0", name: "nodesLabel", size: nodesLabelSize)
 
         let resourcesLabelPosition = CGPoint(x: nodesLabelPosition.x + nodesLabelSize.width, y: 0)
-        let resourcesLabelSize =  CGSize(width: size.width / 4, height: size.height)
+        let resourcesLabelSize = CGSize(width: size.width / 4, height: size.height)
         self.resourcesLabel = Label(position: resourcesLabelPosition,
-                                        text: "0",
-                                        name: "resourcesLabel",
-                                        size: resourcesLabelSize)
+                                    text: "0",
+                                    name: "resourcesLabel",
+                                    size: resourcesLabelSize)
         super.init()
         self.position = position
     }
-    
+
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func update(game: Game) {
         guard let playerInfo = player.component(ofType: PlayerInfoComponent.self),
             let resources = player.component(ofType: ResourceComponent.self)?.resources else {
@@ -58,7 +59,7 @@ class Ranking: SKNode, Comparable {
         self.playerName.text = playerInfo.name
 
         let allNodes = game.query(includes: NodeComponent.self)
-        let ownedNodes = allNodes.filter { game.getPlayer(for: $0) == player}
+        let ownedNodes = allNodes.filter { game.getPlayer(for: $0) == player }
         self.nodes = CGFloat(ownedNodes.count)
         self.nodesLabel.text = "\(self.nodes)"
 
