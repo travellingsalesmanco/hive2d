@@ -13,13 +13,13 @@ class BuildNodePaletteButton: SKSpriteNode {
 
     func setSelected() {
         self.color = SKColor.yellow
-        self.colorBlendFactor = 1
+        self.colorBlendFactor = 0.6
         delegate?.buttonDidSelect(selected: self)
     }
 
     func setUnselected() {
         self.color = SKColor.white
-        self.colorBlendFactor = 1
+        self.colorBlendFactor = 0.6
     }
 }
 

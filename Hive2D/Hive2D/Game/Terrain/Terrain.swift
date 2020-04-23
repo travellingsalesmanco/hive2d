@@ -11,6 +11,7 @@ import SpriteKit
 /// Terrain protocol for which all custom terrains must conform to
 protocol Terrain {
     var tileMap: SKTileMapNode { get }
+    var resourceTypeToTileAsset: [ResourceType: String] { get }
 }
 
 /// Provide standard implementations for methods accross all terrains

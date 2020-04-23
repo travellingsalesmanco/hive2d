@@ -87,6 +87,8 @@ class GameScene: SKScene {
         // Hook minimap node up to minimap system
         MinimapComponent.minimap = hud.minimapDisplay
         self.camera?.addChild(hud)
+        // Update the HUD with terrain tiles
+        hud.buildNodePalette?.updateButtonsWithTerrain(terrain: terrain)
 
         // Set the gesture recognizers
         setUpGestureRecognizers()

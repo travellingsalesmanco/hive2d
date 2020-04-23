@@ -12,6 +12,7 @@ import GameplayKit
 class HUD: SKNode {
     let resourceDisplay = ResourceCountDisplay(size: CGSize(width: 100, height: 100))
     var minimapDisplay: MinimapDisplay?
+    var buildNodePalette: BuildNodePalette?
 
     func createHudNodes(size: CGSize, resources: [ResourceType: CGFloat]?) {
         let text = SKLabelNode(text: "Hive2D")
@@ -26,6 +27,7 @@ class HUD: SKNode {
             CGPoint(x: size.width / 2 - buildNodePalette.size.width / 2,
                     y: -size.height / 2 + buildNodePalette.size.height / 2)
         self.addChild(buildNodePalette)
+        self.buildNodePalette = buildNodePalette
 
         // Display resource count for player
         let resourceDisplayPositionY = -size.height / 2 + resourceDisplay.size.height / 2 + buildNodePalette.size.height

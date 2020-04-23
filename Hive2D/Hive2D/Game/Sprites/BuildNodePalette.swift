@@ -67,7 +67,38 @@ class BuildNodePalette: SKSpriteNode {
         label.fontColor = SKColor.white
         label.fontSize = 15
         node.addChild(label)
+        node.zPosition = 10
         return node
+    }
+
+    func updateButtonsWithTerrain(terrain: Terrain) {
+        for button in buttons {
+            let tileAsset: String?
+            switch button.name {
+            case Constants.BuildNodePalette.resourceAlpha:
+                tileAsset = terrain.resourceTypeToTileAsset[.Alpha]
+            case Constants.BuildNodePalette.resourceBeta:
+                tileAsset = terrain.resourceTypeToTileAsset[.Beta]
+            case Constants.BuildNodePalette.resourceZeta:
+                tileAsset = terrain.resourceTypeToTileAsset[.Zeta]
+            default:
+                tileAsset = nil
+            }
+            guard let tileAssetName = tileAsset else {
+                continue
+            }
+            let tileNode = SKSpriteNode(imageNamed: tileAssetName)
+
+            let shapeNode = SKShapeNode(circleOfRadius: button.size.width / 2 + 10)
+            shapeNode.strokeColor = .black
+            shapeNode.fillColor = .white
+
+            let cropNode = SKCropNode()
+            cropNode.maskNode = shapeNode
+            cropNode.addChild(tileNode)
+            button.addChild(cropNode)
+            cropNode.zPosition = -1
+        }
     }
 }
 
