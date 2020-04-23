@@ -49,8 +49,8 @@ class RabbitMQGame: GameNetworking {
         var done = false
 
         while !done {
-            queue.pop({ _ in done = true })
             wExchange.publish("test".data(using: .utf8))
+            queue.pop({ _ in done = true })
             sleep(1)
         }
     }
@@ -59,7 +59,7 @@ class RabbitMQGame: GameNetworking {
         if let disconnectAction = disconnectAction {
             sendGameAction(disconnectAction)
         }
-        
+
         subscription?.cancel()
         writeChannel.close()
         readChannel.close()

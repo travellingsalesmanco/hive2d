@@ -47,6 +47,7 @@ class FirebaseLobbyFinder: LobbyFinder {
             }
             let dataDict = FirebaseCodable<Lobby>.toDict(joinedLobby)
             let lobbyRef = FirebaseConstants.lobbyRef.child(joinedLobby.id)
+            let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: me.id)
             lobbyRef.setValue(dataDict, withCompletionBlock: { [weak self] error, _ in
                 guard let self = self else {
                     return
@@ -54,7 +55,6 @@ class FirebaseLobbyFinder: LobbyFinder {
                 if error != nil {
                     self.delegate?.lobbyJoinFailed()
                 } else {
-                    let lobbyNetworking = FirebaseLobby(lobbyRef: lobbyRef, playerId: me.id)
                     self.delegate?.lobbyJoined(lobby: joinedLobby, networking: lobbyNetworking)
                 }
             })
