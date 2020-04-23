@@ -79,6 +79,7 @@ struct Constants {
     struct Terrain {
         static let numRows = 20
         static let numCols = 20
+        static let seedRange = Int32(0)..<Int32(10)
     }
 
     struct GameAssets {

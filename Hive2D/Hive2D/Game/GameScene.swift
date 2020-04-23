@@ -18,7 +18,6 @@ class GameScene: SKScene {
     private var openedNodeMenu: NodeMenu?
     let cameraNode = SKCameraNode()
     let cameraScaleRange: ClosedRange<CGFloat>
-    let terrainFactory: TerrainFactory
     private var terrainNode: SKTileMapNode?
 
     // The actual game boundary
@@ -39,14 +38,6 @@ class GameScene: SKScene {
         // Scaling required to map game units to display units
         cameraScaleRange = (hRange.lowerBound / sceneHeight)...(hRange.upperBound / sceneHeight)
 
-        let terrainCols = Constants.Terrain.numCols
-        let terrainRows = Constants.Terrain.numRows
-        let terrainTileSize = CGSize(width: gameRect.width / CGFloat(terrainRows),
-                                     height: gameRect.height / CGFloat(terrainCols))
-        self.terrainFactory = TerrainFactory(cols: terrainCols,
-                                             rows: terrainRows,
-                                             tileSize: terrainTileSize)
-
         super.init(size: Constants.UI.sceneSize)
 
     }
@@ -58,16 +49,8 @@ class GameScene: SKScene {
 
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
-        // Set the terrain
-        let terrain = terrainFactory.createRandomTerrain(for: MineralTerrain.self)
-        terrain.tileMap.zPosition = -1
-        terrain.tileMap.position = CGPoint(x: 0, y: 0)
-        terrain.tileMap.anchorPoint = CGPoint(x: 0, y: 0)
-        self.terrainNode = terrain.tileMap
-        self.addChild(terrain.tileMap)
-
         // Set the game
-        self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking, terrain: terrain)
+        self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
         // Set the camera
         self.addChild(cameraNode)
@@ -87,8 +70,6 @@ class GameScene: SKScene {
         // Hook minimap node up to minimap system
         MinimapComponent.minimap = hud.minimapDisplay
         self.camera?.addChild(hud)
-        // Update the HUD with terrain tiles
-        hud.buildNodePalette?.updateButtonsWithTerrain(terrain: terrain)
 
         // Set the gesture recognizers
         setUpGestureRecognizers()
@@ -238,4 +219,18 @@ class GameScene: SKScene {
 
 protocol GameSceneDelegate: AnyObject {
     func gameEnded()
+}
+
+extension GameScene: GameDelegate {
+    func setTerrain(terrain: Terrain) {
+        // Set the terrain
+        terrain.tileMap.zPosition = -1
+        terrain.tileMap.position = CGPoint(x: 0, y: 0)
+        terrain.tileMap.anchorPoint = CGPoint(x: 0, y: 0)
+        self.terrainNode = terrain.tileMap
+        self.addChild(terrain.tileMap)
+
+        // Update the HUD with terrain tiles
+        hud.buildNodePalette?.updateButtonsWithTerrain(terrain: terrain)
+    }
 }

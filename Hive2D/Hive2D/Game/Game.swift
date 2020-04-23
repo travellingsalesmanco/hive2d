@@ -13,7 +13,7 @@ import NotificationCenter
 class Game {
     var entities = Set<GKEntity>()
     var player: Player?
-    unowned let scene: SKScene
+    unowned let scene: GameDelegate
     let config: GameConfig
     let gameNetworking: GameNetworking
     var connectedPlayersCount: Int = 0
@@ -23,14 +23,25 @@ class Game {
     var lastGameTick: TimeInterval = 0
     // Time elapsed since game started
     var timeElapsed: TimeInterval = 0
-    let terrain: Terrain
+    let terrainFactory: TerrainFactory
+    var terrain: Terrain? {
+        didSet {
+            scene.setTerrain(terrain: terrain!)
+        }
+    }
 
-    init(scene: SKScene, config: GameConfig, gameNetworking: GameNetworking, terrain: Terrain) {
+    init(scene: GameDelegate, config: GameConfig, gameNetworking: GameNetworking) {
         self.scene = scene
         self.config = config
         self.gameNetworking = gameNetworking
         self.isHost = config.host.id == config.me.id
-        self.terrain = terrain
+        let terrainCols = Constants.Terrain.numCols
+        let terrainRows = Constants.Terrain.numRows
+        let terrainTileSize = CGSize(width: config.mapSize / CGFloat(terrainRows),
+                                     height: config.mapSize / CGFloat(terrainCols))
+        self.terrainFactory = TerrainFactory(cols: terrainCols,
+                                             rows: terrainRows,
+                                             tileSize: terrainTileSize)
         if self.isHost {
             setupGame()
         }
@@ -60,11 +71,13 @@ class Game {
             NetworkComponent.generateIdentifier()
         }
         let playerColors = PlayerColor.pickColors(count: config.players.count)
+        let terrainSeed = Int32.random(in: Constants.Terrain.seedRange)
         gameNetworking.sendGameAction(
             SetupGameAction(playerNetworkingIds: playerNetworkingIds,
                             playerColors: playerColors,
                             hiveStartingLocations: hiveStartingLocations,
-                            hiveNetworkingIds: hiveNetworkingIds)
+                            hiveNetworkingIds: hiveNetworkingIds,
+                            terrainSeed: terrainSeed)
         )
     }
 
@@ -181,4 +194,8 @@ class Game {
         }
         gameNetworking.sendGameAction(QuitGameAction(player: player))
     }
+}
+
+protocol GameDelegate: SKScene {
+    func setTerrain(terrain: Terrain)
 }

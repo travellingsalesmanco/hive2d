@@ -21,12 +21,22 @@ struct MineralTerrain: Terrain {
     ]
 
     init(columns: Int, rows: Int, tileSize: CGSize) {
+        // Order resourceTypes so that tileGroups passed into tileMapNode is deterministic
+        let resourceTypes: [ResourceType] = [.Alpha, .Beta, .Delta, .Epsilon, .Gamma, .Zeta]
 
-        var tileGroups = resourceTypeToTileAsset.map { (resourceType: ResourceType, tileAsset: String) in
-            return Tile(imageName: tileAsset, size: tileSize, isBuildable: true, resourceType: resourceType)
+        // Add tiles
+        var tileGroups = [Tile]()
+        for resourceType in resourceTypes {
+            guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
+                fatalError("No tile asset mapped to resource type: \(resourceType)")
+            }
+            let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true, resourceType: resourceType)
+            tileGroups.append(tile)
         }
         let lava = Tile(imageName: "lava", size: tileSize, isBuildable: false, resourceType: nil)
         tileGroups.append(lava)
+
+        // Setup tile map
         let tileSet = SKTileSet(tileGroups: tileGroups)
         self.tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
     }

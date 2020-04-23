@@ -30,12 +30,12 @@ struct TerrainFactory {
         }
     }
 
-    func createRandomTerrain(for terrainType: Terrain.Type) -> Terrain {
+    func createRandomTerrain(for terrainType: Terrain.Type, seed: Int32) -> Terrain {
         let terrain = createEmptyTerrain(for: terrainType)
         let tileMap = terrain.tileMap
         tileMap.enableAutomapping = true
         let tileGroups = tileMap.tileSet.tileGroups
-        let noiseMap = createNoiseMap(columns: cols, rows: rows)
+        let noiseMap = createNoiseMap(columns: cols, rows: rows, seed: seed)
         for col in 0..<cols {
             for row in 0..<rows {
                 let location = vector2(Int32(row), Int32(col))
@@ -53,13 +53,16 @@ struct TerrainFactory {
     }
 
     /// Generate a noise map from a given noise source and for a grid with given number of tiles in columns and rows
-    private func createNoiseMap(columns: Int, rows: Int) -> GKNoiseMap {
+    private func createNoiseMap(columns: Int, rows: Int, seed: Int32) -> GKNoiseMap {
         let componentNoiseSources = [GKBillowNoiseSource(), GKPerlinNoiseSource()]
+        let componentNoises = componentNoiseSources.map { source -> GKNoise in
+            source.seed = seed
+            return GKNoise(source)
+        }
         let selectionNoiseSource = GKPerlinNoiseSource()
-        let componentNoises = componentNoiseSources.map { GKNoise($0) }
+        selectionNoiseSource.seed = seed
         let selectionNoise = GKNoise(selectionNoiseSource)
         let noise = GKNoise(componentNoises: componentNoises, selectionNoise: selectionNoise)
-//        let noise = GKNoise(GKVoronoiNoiseSource())
         let size = vector2(1.0, 1.0)
         let origin = vector2(0.0, 0.0)
         let sampleCount = vector2(Int32(columns), Int32(rows))
