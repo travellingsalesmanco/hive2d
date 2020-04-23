@@ -12,7 +12,7 @@ import GameplayKit
 import SpriteKit
 
 protocol BuildNodeAction: GameAction {
-    var playerNetId: UUID { get } // TODO: Change to Player Entity
+    var player: Player { get }
     var position: CGPoint { get }
     var netId: NetworkComponent.Identifier { get }
     var nodeType: NodeType { get }
@@ -21,14 +21,13 @@ protocol BuildNodeAction: GameAction {
 }
 
 extension BuildNodeAction {
-
     var nodeComponent: NodeComponent {
         NodeComponent(radius: Constants.GamePlay.nodeRadius)
     }
 
-//    var playerComponent: PlayerComponent {
-//        PlayerComponent(player: player)
-//    }
+    var playerComponent: PlayerComponent {
+        PlayerComponent(player: player)
+    }
 
     var networkComponent: NetworkComponent {
         NetworkComponent(id: netId)
@@ -55,9 +54,6 @@ extension BuildNodeAction {
     /// Returns an array of nodes within range of node to be built excluding itself
     func getOwnNodesWithinRange(game: Game, range: CGFloat = Constants.GamePlay.nodeConnectRange) -> [GKEntity] {
         let nodes = game.query(includes: NodeComponent.self)
-        guard let player = game.getPlayer(id: playerNetId) else {
-            return []
-        }
         let nodesWithinRange = nodes.filter { node in
             guard node.component(ofType: PlayerComponent.self)?.player == player else {
                 return false

@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class Player: GKEntity {
+class Player: GKEntity, Codable {
     init(player: PlayerInfoComponent, resource: ResourceComponent, network: NetworkComponent) {
         super.init()
         addComponent(resource)
@@ -26,6 +26,19 @@ class Player: GKEntity {
 
     func getResources() -> [ResourceType: CGFloat] {
         component(ofType: ResourceComponent.self)!.resources
+    }
+
+    enum CodingKeys: CodingKey {
+        case netId
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(getNetId(), forKey: .netId)
+    }
+
+    required init(from decoder: Decoder) throws {
+        super.init()
     }
 
     @available(*, unavailable)

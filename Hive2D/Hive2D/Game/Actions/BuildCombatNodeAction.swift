@@ -9,20 +9,28 @@
 import GameplayKit
 
 struct BuildCombatNodeAction: BuildNodeAction {
-    var playerNetId: UUID
-
+    var player: Player
     var position: CGPoint
-
     var netId: NetworkComponent.Identifier
-
     var nodeType: NodeType
+
+    init(player: Player, position: CGPoint, netId: NetworkComponent.Identifier, nodeType: NodeType) {
+        self.player = player
+        self.position = position
+        self.netId = netId
+        self.nodeType = nodeType
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        player = try container.decode(using: PlayerFactory(), forKey: .player)
+        position = try container.decode(CGPoint.self, forKey: .position)
+        netId = try container.decode(NetworkComponent.Identifier.self, forKey: .netId)
+        nodeType = try container.decode(NodeType.self, forKey: .nodeType)
+    }
 
     func handle(game: Game) {
         guard isBuildable(game: game) else {
-            return
-        }
-
-        guard let player = game.getPlayer(id: playerNetId) else {
             return
         }
 
@@ -34,7 +42,6 @@ struct BuildCombatNodeAction: BuildNodeAction {
         let spriteComponent = SpriteComponent(spriteNode: spriteNode)
         let minimapSprite = CombatNodeSprite(playerColor: player.getColor())
         let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
-        let playerComponent = PlayerComponent(player: player)
         let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta)
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)

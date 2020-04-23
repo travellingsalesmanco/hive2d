@@ -77,6 +77,8 @@ disabled_rules:
   - multiple_closures_with_trailing_closure # for e.g. SwiftUI buttons
   - todo
   - type_name
+  - force_try
+  - explicit_init
 
 line_length:
   warning: 120

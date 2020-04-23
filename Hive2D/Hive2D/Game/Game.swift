@@ -80,17 +80,17 @@ class Game {
         // TOOD: REFACTOR
         if nodeType == .Combat {
             gameNetworking.sendGameAction(
-                BuildCombatNodeAction(playerNetId: player.getNetId(),
-                                position: point,
-                                netId: NetworkComponent.generateIdentifier(),
-                                nodeType: nodeType)
+                BuildCombatNodeAction(player: player,
+                                      position: point,
+                                      netId: NetworkComponent.generateIdentifier(),
+                                      nodeType: nodeType)
             )
         } else {
             gameNetworking.sendGameAction(
-                BuildResourceNodeAction(playerNetId: player.getNetId(),
-                                position: point,
-                                netId: NetworkComponent.generateIdentifier(),
-                                nodeType: nodeType)
+                BuildResourceNodeAction(player: player,
+                                        position: point,
+                                        netId: NetworkComponent.generateIdentifier(),
+                                        nodeType: nodeType)
             )
         }
     }
