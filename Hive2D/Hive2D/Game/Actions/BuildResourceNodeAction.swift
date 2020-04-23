@@ -68,8 +68,14 @@ struct BuildResourceNodeAction: BuildNodeAction {
         return defenceComponent
     }
 
-    func getResourceCollectorComponent(rate: CGFloat) -> ResourceCollectorComponent {
-        return ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate: rate)
+    func getResourceCollectorComponent(rate: CGFloat, game: Game) -> ResourceCollectorComponent {
+        var resourceCollectionRate = rate
+        if let terrainTile = getTerrainTile(game: game) {
+            resourceCollectionRate =
+                terrainTile.boostResourceCollectionRate(resourceType: resourceType,
+                                                        resourceCollectionRate: game.config.resourceCollectionRate)
+        }
+        return ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate: resourceCollectionRate)
     }
 
     func createNode(game: Game) -> Node? {
@@ -79,7 +85,8 @@ struct BuildResourceNodeAction: BuildNodeAction {
                             node: nodeComponent,
                             transform: transformComponent,
                             player: playerComponent,
-                            resourceCollector: getResourceCollectorComponent(rate: game.config.resourceCollectionRate),
+                            resourceCollector: getResourceCollectorComponent(rate: game.config.resourceCollectionRate,
+                                                                             game: game),
                             resourceConsumer: getResourceConsumerComponent(rate: game.config.resourceConsumptionRate),
                             network: networkComponent,
                             defence: getDefenceComponent(healthBar: healthBar))

@@ -61,7 +61,7 @@ extension BuildNodeAction {
     }
 
     func isBuildable(game: Game) -> Bool {
-        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game) && hasSufficientResources()
+        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game) && hasSufficientResources() && isTerrainBuildable(game: game)
     }
 
     /// Check that node is within range of some other node that player owns
@@ -83,6 +83,20 @@ extension BuildNodeAction {
         }
 
         return resourceComponent.consumeResourcesToBuild(nodeType: nodeType)
+    }
+
+    /// Get the terrain tile at position
+    func getTerrainTile(game: Game) -> Tile? {
+        return game.terrain?.getTile(at: position)
+    }
+
+    /// Check if terrain tile at position allows building of nodes
+    func isTerrainBuildable(game: Game) -> Bool {
+        // If terrain tile doesn't exist or is not buildable, do nothing.
+        guard let terrainTile = getTerrainTile(game: game) else {
+            return false
+        }
+        return terrainTile.isBuildable
     }
 
     /// Check that node does not overlap with other nodes
