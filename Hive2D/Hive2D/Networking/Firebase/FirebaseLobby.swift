@@ -60,7 +60,6 @@ class FirebaseLobby: LobbyNetworking {
     }
 
     func start() {
-        // TODO: Fix issue with RMQ not set up when start is called
         FirebaseConstants.startRef(ofLobby: lobbyRef).setValue(true)
     }
 

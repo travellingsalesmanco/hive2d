@@ -15,7 +15,7 @@ class RabbitMQGame: GameNetworking {
     private var readChannel: RMQChannel
 
     // Used to send messages
-    private var exchange: RMQExchange
+    private var wExchange: RMQExchange
     // Used to receive messages
     private var queue: RMQQueue
     private var subscription: RMQConsumer?
@@ -29,10 +29,13 @@ class RabbitMQGame: GameNetworking {
         writeChannel = conn.createChannel()
 
         let rExchange = readChannel.fanout(gameId, options: .autoDelete)
+        wExchange = writeChannel.fanout(gameId, options: .autoDelete)
+
         queue = readChannel.queue("", options: .exclusive)
         queue.bind(rExchange)
-        exchange = writeChannel.fanout(gameId, options: .autoDelete)
+
         gameActionQueue = GameActionQueue(gameId: gameId)
+        checkSetup()
 
         subscription = queue.subscribe({ [weak self] message in
             guard let self = self else {
@@ -42,10 +45,21 @@ class RabbitMQGame: GameNetworking {
         })
     }
 
+    private func checkSetup() {
+        var done = false
+
+        while !done {
+            queue.pop({ _ in done = true })
+            wExchange.publish("test".data(using: .utf8))
+            sleep(1)
+        }
+    }
+
     deinit {
         if let disconnectAction = disconnectAction {
             sendGameAction(disconnectAction)
         }
+        
         subscription?.cancel()
         writeChannel.close()
         readChannel.close()
@@ -57,7 +71,7 @@ class RabbitMQGame: GameNetworking {
         }
 
         let codedAction = try? JSONEncoder().encode(codableAction)
-        exchange.publish(codedAction)
+        wExchange.publish(codedAction)
     }
 
     func onDisconnectSend(_ action: GameAction) {
