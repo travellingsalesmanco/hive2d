@@ -18,6 +18,8 @@ class GameScene: SKScene {
     private var openedNodeMenu: NodeMenu?
     let cameraNode = SKCameraNode()
     let cameraScaleRange: ClosedRange<CGFloat>
+    let terrainFactory: TerrainFactory
+    private var terrainNode: SKTileMapNode?
 
     // The actual game boundary
     private let gameRect: CGRect
@@ -37,6 +39,14 @@ class GameScene: SKScene {
         // Scaling required to map game units to display units
         cameraScaleRange = (hRange.lowerBound / sceneHeight)...(hRange.upperBound / sceneHeight)
 
+        let terrainCols = Constants.Terrain.numCols
+        let terrainRows = Constants.Terrain.numRows
+        let terrainTileSize = CGSize(width: gameRect.width / CGFloat(terrainRows),
+                                     height: gameRect.height / CGFloat(terrainCols))
+        self.terrainFactory = TerrainFactory(cols: terrainCols,
+                                             rows: terrainRows,
+                                             tileSize: terrainTileSize)
+
         super.init(size: Constants.UI.sceneSize)
 
     }
@@ -48,8 +58,18 @@ class GameScene: SKScene {
 
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
-        self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
+        // Set the terrain
+        let terrain = terrainFactory.createRandomTerrain(for: .mineral)
+        terrain.tileMap.zPosition = -1
+        terrain.tileMap.position = CGPoint(x: 0, y: 0)
+        terrain.tileMap.anchorPoint = CGPoint(x: 0, y: 0)
+        self.terrainNode = terrain.tileMap
+        self.addChild(terrain.tileMap)
 
+        // Set the game
+        self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking, terrain: terrain)
+
+        // Set the camera
         self.addChild(cameraNode)
         self.camera = cameraNode
         self.camera!.setScale(cameraScaleRange.lowerBound)
@@ -61,11 +81,14 @@ class GameScene: SKScene {
         boundsConstraint.enabled = true
         self.camera!.constraints = [boundsConstraint]
 
+        // Set the HUD
         hud.createHudNodes(size: self.size, resources: game.player?.getResources())
         hud.createMinimap(size: self.size, mapSize: gameConfig.mapSize)
         // Hook minimap node up to minimap system
         MinimapComponent.minimap = hud.minimapDisplay
         self.camera?.addChild(hud)
+
+        // Set the gesture recognizers
         setUpGestureRecognizers()
     }
 
@@ -90,6 +113,7 @@ class GameScene: SKScene {
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
+        print(scenePoint)
 
         guard gameRect.contains(scenePoint) else {
             return
@@ -131,9 +155,17 @@ class GameScene: SKScene {
         }
 
         // Check for build node action
-        guard let nodeLabel = node.name else {
-            // Touched empty space, emit a build node action
+        guard let terrainNode = self.terrainNode else {
+            return
+        }
+
+        // Touched space on terrain, emit a build node action
+        if node == terrainNode {
             game.buildNode(at: scenePoint, nodeType: selectedNodeType)
+            return
+        }
+
+        guard let nodeLabel = node.name else {
             return
         }
 

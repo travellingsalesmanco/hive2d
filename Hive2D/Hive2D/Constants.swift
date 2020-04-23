@@ -76,6 +76,11 @@ struct Constants {
         ]
     }
 
+    struct Terrain {
+        static let numRows = 10
+        static let numCols = 10
+    }
+
     struct GameAssets {
         static let resourceNode = "peg-grey"
         static let combatNode = "peg-grey-triangle"

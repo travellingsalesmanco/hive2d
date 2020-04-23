@@ -23,12 +23,14 @@ class Game {
     var lastGameTick: TimeInterval = 0
     // Time elapsed since game started
     var timeElapsed: TimeInterval = 0
+    let terrain: Terrain
 
-    init(scene: SKScene, config: GameConfig, gameNetworking: GameNetworking) {
+    init(scene: SKScene, config: GameConfig, gameNetworking: GameNetworking, terrain: Terrain) {
         self.scene = scene
         self.config = config
         self.gameNetworking = gameNetworking
         self.isHost = config.host.id == config.me.id
+        self.terrain = terrain
         if self.isHost {
             setupGame()
         }
