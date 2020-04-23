@@ -73,18 +73,12 @@ extension BuildNodeAction {
     }
 
     func isBuildable(game: Game) -> Bool {
-        return hasNearbyNodes(game: game) && isNotColliding(game: game) && hasSufficientResources()
+        return hasNearbyNodes(game: game) && !hasOverlappingNodes(game: game) && hasSufficientResources()
     }
 
     /// Check that node is within range of some other node that player owns
     func hasNearbyNodes(game: Game) -> Bool {
         return !getOwnNodesWithinRange(game: game).isEmpty
-    }
-
-    /// Check that node does not overlap with other nodes
-    func isNotColliding(game: Game) -> Bool {
-        let testNode = NodeComponent.Node(position: position, radius: Constants.GamePlay.nodeRadius)
-        return !game.hasOverlappingNodes(node: testNode)
     }
 
     func hasSufficientResources() -> Bool {
@@ -101,6 +95,15 @@ extension BuildNodeAction {
         }
 
         return resourceComponent.consumeResourcesToBuild(nodeType: nodeType)
+    }
+
+    /// Check that node does not overlap with other nodes
+    func hasOverlappingNodes(game: Game) -> Bool {
+        let toCheck = NodeComponent.Node(position: position, radius: Constants.GamePlay.nodeRadius)
+        let nodes = game.query(includes: NodeComponent.self)
+        return nodes.contains {
+            $0.component(ofType: NodeComponent.self)!.getTransformedNode().intersects(other: toCheck)
+        }
     }
 
     /// Returns an array of nodes within range of node to be built excluding itself

@@ -102,13 +102,6 @@ class Game {
         lastGameTick += duration
     }
 
-    func hasOverlappingNodes(node toCheck: NodeComponent.Node) -> Bool {
-        let nodes = query(includes: NodeComponent.self)
-        return nodes.contains {
-            $0.component(ofType: NodeComponent.self)!.getTransformedNode().intersects(other: toCheck)
-        }
-    }
-
     func getPlayer(for entity: GKEntity) -> Player? {
         entity.component(ofType: PlayerComponent.self)?.player
     }
