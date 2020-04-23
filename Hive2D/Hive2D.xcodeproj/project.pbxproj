@@ -107,6 +107,7 @@
 		F96C8E59244F0BBE00ABA3B1 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */; };
 		F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */; };
 		F96C8E63245178F600ABA3B1 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E62245178F600ABA3B1 /* Tile.swift */; };
+		F96C8E65245191BE00ABA3B1 /* MineralTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -249,6 +250,7 @@
 		F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFactory.swift; sourceTree = "<group>"; };
 		F96C8E62245178F600ABA3B1 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralTerrain.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */,
 				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E62245178F600ABA3B1 /* Tile.swift */,
+				F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */,
 				F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */,
 			);
 			path = Terrain;
@@ -857,6 +860,7 @@
 				BE5DFF8A24517F3800F4901B /* DecodingFactory.swift in Sources */,
 				A9A543FA2435DAA200189159 /* HiveSprite.swift in Sources */,
 				BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */,
+				F96C8E65245191BE00ABA3B1 /* MineralTerrain.swift in Sources */,
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BE5DFF8224517C7200F4901B /* JSONDecoder+DecodingFormat.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,

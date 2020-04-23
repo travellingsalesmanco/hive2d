@@ -24,6 +24,15 @@ class Tile: SKTileGroup {
         super.init(tileDefinition: definition)
     }
 
+    func boostResourceCollectionRate(resourceType: ResourceType,
+                                     resourceCollectionRate: CGFloat) -> CGFloat {
+        if resourceType == self.resourceType {
+            return resourceCollectionRate * 2
+        }
+        return resourceCollectionRate
+    }
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

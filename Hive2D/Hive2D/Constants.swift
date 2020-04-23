@@ -77,8 +77,8 @@ struct Constants {
     }
 
     struct Terrain {
-        static let numRows = 10
-        static let numCols = 10
+        static let numRows = 20
+        static let numCols = 20
     }
 
     struct GameAssets {

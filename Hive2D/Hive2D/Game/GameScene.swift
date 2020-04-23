@@ -59,7 +59,7 @@ class GameScene: SKScene {
     /// Called once when the scene is presented to the view
     override func didMove(to view: SKView) {
         // Set the terrain
-        let terrain = terrainFactory.createRandomTerrain(for: .mineral)
+        let terrain = terrainFactory.createRandomTerrain(for: MineralTerrain.self)
         terrain.tileMap.zPosition = -1
         terrain.tileMap.position = CGPoint(x: 0, y: 0)
         terrain.tileMap.anchorPoint = CGPoint(x: 0, y: 0)
@@ -113,7 +113,6 @@ class GameScene: SKScene {
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         let viewPoint = sender.location(in: self.view)
         let scenePoint = convertPoint(fromView: viewPoint)
-        print(scenePoint)
 
         guard gameRect.contains(scenePoint) else {
             return
