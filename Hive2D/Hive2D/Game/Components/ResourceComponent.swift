@@ -9,6 +9,7 @@
 import GameplayKit
 
 class ResourceComponent: GKComponent {
+    private static var nodeCostMap = NodeCostMap()
     var resources = [ResourceType: CGFloat]()
 
     init(alpha: CGFloat = 0,
@@ -30,5 +31,39 @@ class ResourceComponent: GKComponent {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func hasSufficientResources(nodeType: NodeType) -> Bool {
+        guard let nodeCosts = ResourceComponent.nodeCostMap.getResourceCosts(for: nodeType) else {
+            return false
+        }
+
+        // Check that all resources required to build node are available in player's resources
+        for (resourceType, amountRequired) in nodeCosts {
+            guard let amountAvailable = resources[resourceType] else {
+                return false
+            }
+            if amountAvailable < amountRequired {
+                return false
+            }
+        }
+        return true
+    }
+
+    func consumeResourcesToBuild(nodeType: NodeType) {
+        guard let nodeCosts = ResourceComponent.nodeCostMap.getResourceCosts(for: nodeType) else {
+            return
+        }
+
+        guard hasSufficientResources(nodeType: nodeType) else {
+            return
+        }
+
+        for (resourceType, amountRequired) in nodeCosts {
+            guard let amountAvailable = resources[resourceType] else {
+                return
+            }
+            resources[resourceType] = amountAvailable - amountRequired
+        }
     }
 }

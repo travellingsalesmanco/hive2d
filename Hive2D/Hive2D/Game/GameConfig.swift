@@ -8,31 +8,6 @@
 
 import CoreGraphics
 
-struct NodeCostMap {
-    var mapping = [NodeType: [ResourceType: CGFloat]]()
-
-    init() {
-        for nodeType in NodeType.allCases {
-            switch nodeType {
-            case .ResourceAlpha:
-                mapping[nodeType] = [.Alpha: 30]
-            case .ResourceBeta:
-                mapping[nodeType] = [.Alpha: 50]
-            case .ResourceZeta:
-                mapping[nodeType] = [.Alpha: 30, .Beta: 30]
-            case .Combat:
-                mapping[nodeType] = [.Zeta: 50]
-            default:
-                continue
-            }
-        }
-    }
-
-    func getResourceCosts(for nodeType: NodeType) -> [ResourceType: CGFloat]? {
-        mapping[nodeType]
-    }
-}
-
 struct GameConfig {
     let id: String
     let host: GamePlayer
@@ -41,7 +16,6 @@ struct GameConfig {
     let mapSize: CGFloat
     let resourceCollectionRate: CGFloat
     let resourceConsumptionRate: CGFloat
-    let nodeCostMap = NodeCostMap()
     let tierUpgradeCost: CGFloat
     let maxTier: CGFloat
 
