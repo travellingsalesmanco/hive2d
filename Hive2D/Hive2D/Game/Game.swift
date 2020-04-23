@@ -105,38 +105,6 @@ class Game {
         lastGameTick += duration
     }
 
-    func hasSufficientResources(for node: Node, nodeType: NodeType) -> Bool {
-        let player = getPlayer(for: node)
-        guard let resourceComponent = player?.component(ofType: ResourceComponent.self) else {
-            return false
-        }
-
-        guard let nodeCosts = config.nodeCostMap.getResourceCosts(for: nodeType) else {
-            return false
-        }
-
-        // Check that all resources required to build node are available in player's resources
-        let resources = resourceComponent.resources
-        for (resourceType, amountRequired) in nodeCosts {
-            guard let amountAvailable = resources[resourceType] else {
-                return false
-            }
-            if amountAvailable < amountRequired {
-                return false
-            }
-        }
-
-        // Deduct resources used
-        for (resourceType, amountRequired) in nodeCosts {
-            guard let amountAvailable = resources[resourceType] else {
-                return false
-            }
-            resourceComponent.resources[resourceType] = amountAvailable - amountRequired
-        }
-
-        return true
-    }
-
     func hasOverlappingNodes(node toCheck: NodeComponent.Node) -> Bool {
         let nodes = query(includes: NodeComponent.self)
         return nodes.contains {

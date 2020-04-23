@@ -29,42 +29,43 @@ struct BuildCombatNodeAction: BuildNodeAction {
         nodeType = try container.decode(NodeType.self, forKey: .nodeType)
     }
 
-    func handle(game: Game) {
-        guard isBuildable(game: game) else {
-            return
-        }
-
+    func getSprite() -> SKSpriteNode? {
         let spriteNode = CombatNodeSprite(playerColor: player.getColor())
-        let healthBar = ResourceBarSprite(color: UIColor.green)
-        spriteNode.addChild(healthBar,
+        spriteNode.addChild(healthBarSprite,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let minimapSprite = CombatNodeSprite(playerColor: player.getColor())
-        let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
-        let resourceConsumerComponent = ResourceConsumerComponent(resourceType: .Zeta)
+        return spriteNode
+    }
+
+    func getMinimapSprite() -> SKSpriteNode? {
+        return CombatNodeSprite(playerColor: player.getColor())
+    }
+
+    func getConsumedResourceType() -> ResourceType {
+        return .Zeta
+    }
+
+    func getDefenceComponent() -> DefenceComponent {
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)
-        defenceComponent.healthBarSprite = healthBar
-        let attackComponent = AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
-                                              range: Constants.GamePlay.combatNodeRange)
+        defenceComponent.healthBarSprite = healthBarSprite
+        return defenceComponent
+    }
 
-        let combatNode = CombatNode(sprite: spriteComponent,
-                                    minimapDisplay: minimapComponent,
-                                    node: nodeComponent,
-                                    transform: transformComponent,
-                                    player: playerComponent,
-                                    resourceConsumer: resourceConsumerComponent,
-                                    network: networkComponent,
-                                    defence: defenceComponent,
-                                    attack: attackComponent)
-        guard game.hasSufficientResources(for: combatNode, nodeType: .Combat) else {
-              return
-        }
+    func getAttackComponent() -> AttackComponent {
+        return AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
+                               range: Constants.GamePlay.combatNodeRange)
+    }
 
-        game.add(entity: combatNode)
-
-        let edges = buildEdges(from: combatNode, to: getOwnNodesWithinRange(game: game))
-        edges.forEach { game.add(entity: $0) }
+    func createNode(game: Game) -> Node? {
+        return CombatNode(sprite: spriteComponent,
+                          minimapDisplay: minimapComponent,
+                          node: nodeComponent,
+                          transform: transformComponent,
+                          player: playerComponent,
+                          resourceConsumer: resourceConsumerComponent,
+                          network: networkComponent,
+                          defence: getDefenceComponent(),
+                          attack: getAttackComponent())
     }
 }

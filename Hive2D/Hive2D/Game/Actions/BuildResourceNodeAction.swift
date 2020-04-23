@@ -14,6 +14,10 @@ struct BuildResourceNodeAction: BuildNodeAction {
     var netId: NetworkComponent.Identifier
     var nodeType: NodeType
 
+    var resourceType: ResourceType {
+        convertToResourceType(from: nodeType)
+    }
+
     init(player: Player, position: CGPoint, netId: NetworkComponent.Identifier, nodeType: NodeType) {
         self.player = player
         self.position = position
@@ -29,72 +33,62 @@ struct BuildResourceNodeAction: BuildNodeAction {
         nodeType = try container.decode(NodeType.self, forKey: .nodeType)
     }
 
-    func handle(game: Game) {
-        guard isBuildable(game: game) else {
-            return
-        }
-
-        guard let resourceType = convertToResourceType(from: nodeType) else {
-            return
-        }
-
+    func getSprite() -> SKSpriteNode? {
         guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(),
                                                   resourceType: resourceType) else {
-            return
+            return nil
         }
-        guard let minimapSprite = ResourceNodeSprite(playerColor: player.getColor(),
-                                                     resourceType: resourceType) else {
-                                                    return
-        }
-        let spriteComponent = SpriteComponent(spriteNode: spriteNode)
-        let minimapComponent = MinimapComponent(spriteNode: minimapSprite)
-        let healthBar = ResourceBarSprite(color: UIColor.green)
-        spriteNode.addChild(healthBar,
+        spriteNode.addChild(healthBarSprite,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
-        let resourceCollectorComponent =
-            ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate:
-                game.config.resourceCollectionRate)
-        let resourceConsumerComponent = ResourceConsumerComponent(resourceType: resourceType, resourceConsumptionRate:
-                game.config.resourceConsumptionRate)
-        let defenceComponent = DefenceComponent(health: Constants.GamePlay.resourceNodeHealth,
-                                                healthRecoveryRate: Constants.GamePlay.resourceNodeHealthRecoveryRate)
-        defenceComponent.healthBarSprite = healthBar
-        let resourceNode = ResourceNode(sprite: spriteComponent,
-                                        minimapDisplay: minimapComponent,
-                                        node: nodeComponent,
-                                        transform: transformComponent,
-                                        player: playerComponent,
-                                        resourceCollector: resourceCollectorComponent,
-                                        resourceConsumer: resourceConsumerComponent,
-                                        network: networkComponent,
-                                        defence: defenceComponent)
-        guard game.hasSufficientResources(for: resourceNode, nodeType: nodeType) else {
-              return
-        }
-
-        game.add(entity: resourceNode)
-
-        let edges = buildEdges(from: resourceNode, to: getOwnNodesWithinRange(game: game))
-        edges.forEach { game.add(entity: $0) }
+        return spriteNode
     }
 
-    private func convertToResourceType(from resourceNodeType: NodeType) -> ResourceType? {
-        switch resourceNodeType {
-        case .ResourceAlpha:
+    func getMinimapSprite() -> SKSpriteNode? {
+        return ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType)
+    }
+
+    func getConsumedResourceType() -> ResourceType {
+        // TODO: What should this be?
+        .Alpha
+    }
+
+    func getDefenceComponent() -> DefenceComponent {
+        let defenceComponent = DefenceComponent(health: Constants.GamePlay.resourceNodeHealth,
+                                                healthRecoveryRate: Constants.GamePlay.resourceNodeHealthRecoveryRate)
+        defenceComponent.healthBarSprite = healthBarSprite
+        return defenceComponent
+    }
+
+    func getResourceCollectorComponent() -> ResourceCollectorComponent {
+        return ResourceCollectorComponent(resourceType: resourceType)
+    }
+
+    func createNode(game: Game) -> Node? {
+        return ResourceNode(sprite: spriteComponent,
+                            minimapDisplay: minimapComponent,
+                            node: nodeComponent,
+                            transform: transformComponent,
+                            player: playerComponent,
+                            resourceCollector: getResourceCollectorComponent(),
+                            resourceConsumer: resourceConsumerComponent,
+                            network: networkComponent,
+                            defence: getDefenceComponent())
+    }
+
+    private func convertToResourceType(from nodeType: NodeType) -> ResourceType {
+        if nodeType == .ResourceAlpha {
             return .Alpha
-        case .ResourceBeta:
+        } else if nodeType == .ResourceBeta {
             return .Beta
-        case .ResourceGamma:
+        } else if nodeType == .ResourceGamma {
             return .Gamma
-        case .ResourceDelta:
+        } else if nodeType == .ResourceDelta {
             return .Delta
-        case .ResourceEpsilon:
+        } else if nodeType == .ResourceEpsilon {
             return .Epsilon
-        case .ResourceZeta:
+        } else {
             return .Zeta
-        default:
-            return nil
         }
     }
 }

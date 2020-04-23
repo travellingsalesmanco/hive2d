@@ -17,10 +17,29 @@ protocol BuildNodeAction: GameAction {
     var netId: NetworkComponent.Identifier { get }
     var nodeType: NodeType { get }
 
-    func handle(game: Game)
+    func getSprite() -> SKSpriteNode?
+    func getMinimapSprite() -> SKSpriteNode?
+    func getConsumedResourceType() -> ResourceType
+    func getDefenceComponent() -> DefenceComponent
+    func createNode(game: Game) -> Node?
 }
 
 extension BuildNodeAction {
+    func handle(game: Game) {
+        guard isBuildable(game: game) else {
+            return
+        }
+
+        guard let node = createNode(game: game) else {
+            return
+        }
+        consumeResourcesForBuilding()
+        game.add(entity: node)
+
+        let edges = buildEdges(from: node, to: getOwnNodesWithinRange(game: game))
+        edges.forEach { game.add(entity: $0) }
+    }
+
     var nodeComponent: NodeComponent {
         NodeComponent(radius: Constants.GamePlay.nodeRadius)
     }
@@ -37,8 +56,24 @@ extension BuildNodeAction {
         TransformComponent(position: position)
     }
 
+    var spriteComponent: SpriteComponent {
+        SpriteComponent(spriteNode: getSprite() ?? SKSpriteNode())
+    }
+
+    var minimapComponent: MinimapComponent {
+        MinimapComponent(spriteNode: getMinimapSprite() ?? SKSpriteNode())
+    }
+
+    var resourceConsumerComponent: ResourceConsumerComponent {
+        ResourceConsumerComponent(resourceType: getConsumedResourceType())
+    }
+
+    var healthBarSprite: ResourceBarSprite {
+        ResourceBarSprite(color: UIColor.green)
+    }
+
     func isBuildable(game: Game) -> Bool {
-        return hasNearbyNodes(game: game) && isNotColliding(game: game)
+        return hasNearbyNodes(game: game) && isNotColliding(game: game) && hasSufficientResources()
     }
 
     /// Check that node is within range of some other node that player owns
@@ -46,9 +81,26 @@ extension BuildNodeAction {
         return !getOwnNodesWithinRange(game: game).isEmpty
     }
 
+    /// Check that node does not overlap with other nodes
     func isNotColliding(game: Game) -> Bool {
         let testNode = NodeComponent.Node(position: position, radius: Constants.GamePlay.nodeRadius)
         return !game.hasOverlappingNodes(node: testNode)
+    }
+
+    func hasSufficientResources() -> Bool {
+        guard let resourceComponent = player.component(ofType: ResourceComponent.self) else {
+            return false
+        }
+
+        return resourceComponent.hasSufficientResources(nodeType: nodeType)
+    }
+
+    func consumeResourcesForBuilding() {
+        guard let resourceComponent = player.component(ofType: ResourceComponent.self) else {
+            return
+        }
+
+        return resourceComponent.consumeResourcesToBuild(nodeType: nodeType)
     }
 
     /// Returns an array of nodes within range of node to be built excluding itself
