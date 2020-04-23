@@ -17,10 +17,10 @@ protocol BuildNodeAction: GameAction {
     var netId: NetworkComponent.Identifier { get }
     var nodeType: NodeType { get }
 
-    func getSprite() -> SKSpriteNode?
-    func getMinimapSprite() -> SKSpriteNode?
+    func getSpriteComponent(healthBar: ResourceBarSprite) -> SpriteComponent
+    func getMinimapComponent() -> MinimapComponent
     func getConsumedResourceType() -> ResourceType
-    func getDefenceComponent() -> DefenceComponent
+    func getDefenceComponent(healthBar: ResourceBarSprite) -> DefenceComponent
     func createNode(game: Game) -> Node?
 }
 
@@ -56,20 +56,8 @@ extension BuildNodeAction {
         TransformComponent(position: position)
     }
 
-    var spriteComponent: SpriteComponent {
-        SpriteComponent(spriteNode: getSprite() ?? SKSpriteNode())
-    }
-
-    var minimapComponent: MinimapComponent {
-        MinimapComponent(spriteNode: getMinimapSprite() ?? SKSpriteNode())
-    }
-
-    var resourceConsumerComponent: ResourceConsumerComponent {
-        ResourceConsumerComponent(resourceType: getConsumedResourceType())
-    }
-
-    var healthBarSprite: ResourceBarSprite {
-        ResourceBarSprite(color: UIColor.green)
+    func getResourceConsumerComponent(rate: CGFloat) -> ResourceConsumerComponent {
+        ResourceConsumerComponent(resourceType: getConsumedResourceType(), resourceConsumptionRate: rate)
     }
 
     func isBuildable(game: Game) -> Bool {

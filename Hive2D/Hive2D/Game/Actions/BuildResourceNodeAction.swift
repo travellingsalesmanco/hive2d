@@ -39,19 +39,21 @@ struct BuildResourceNodeAction: BuildNodeAction {
         self.nodeType = try container.decode(NodeType.self, forKey: .nodeType)
     }
 
-    func getSprite() -> SKSpriteNode? {
-        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(),
-                                                  resourceType: resourceType) else {
-            return nil
+    func getSpriteComponent(healthBar: ResourceBarSprite) -> SpriteComponent {
+        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType) else {
+            return SpriteComponent(spriteNode: SKSpriteNode())
         }
-        spriteNode.addChild(healthBarSprite,
+        spriteNode.addChild(healthBar,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
-        return spriteNode
+        return SpriteComponent(spriteNode: spriteNode)
     }
 
-    func getMinimapSprite() -> SKSpriteNode? {
-        return ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType)
+    func getMinimapComponent() -> MinimapComponent {
+        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType) else {
+            return MinimapComponent(spriteNode: SKSpriteNode())
+        }
+        return MinimapComponent(spriteNode: spriteNode)
     }
 
     func getConsumedResourceType() -> ResourceType {
@@ -59,27 +61,28 @@ struct BuildResourceNodeAction: BuildNodeAction {
         resourceType
     }
 
-    func getDefenceComponent() -> DefenceComponent {
+    func getDefenceComponent(healthBar: ResourceBarSprite) -> DefenceComponent {
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.resourceNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.resourceNodeHealthRecoveryRate)
-        defenceComponent.healthBarSprite = healthBarSprite
+        defenceComponent.healthBarSprite = healthBar
         return defenceComponent
     }
 
-    func getResourceCollectorComponent() -> ResourceCollectorComponent {
-        return ResourceCollectorComponent(resourceType: resourceType)
+    func getResourceCollectorComponent(rate: CGFloat) -> ResourceCollectorComponent {
+        return ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate: rate)
     }
 
     func createNode(game: Game) -> Node? {
-        return ResourceNode(sprite: spriteComponent,
-                            minimapDisplay: minimapComponent,
+        let healthBar = ResourceBarSprite(color: UIColor.green)
+        return ResourceNode(sprite: getSpriteComponent(healthBar: healthBar),
+                            minimapDisplay: getMinimapComponent(),
                             node: nodeComponent,
                             transform: transformComponent,
                             player: playerComponent,
-                            resourceCollector: getResourceCollectorComponent(),
-                            resourceConsumer: resourceConsumerComponent,
+                            resourceCollector: getResourceCollectorComponent(rate: game.config.resourceCollectionRate),
+                            resourceConsumer: getResourceConsumerComponent(rate: game.config.resourceConsumptionRate),
                             network: networkComponent,
-                            defence: getDefenceComponent())
+                            defence: getDefenceComponent(healthBar: healthBar))
     }
 
     private func convertToResourceType(from nodeType: NodeType) -> ResourceType {

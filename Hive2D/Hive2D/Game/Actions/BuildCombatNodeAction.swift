@@ -35,26 +35,27 @@ struct BuildCombatNodeAction: BuildNodeAction {
         self.nodeType = try container.decode(NodeType.self, forKey: .nodeType)
     }
 
-    func getSprite() -> SKSpriteNode? {
+    func getSpriteComponent(healthBar: ResourceBarSprite) -> SpriteComponent {
         let spriteNode = CombatNodeSprite(playerColor: player.getColor())
-        spriteNode.addChild(healthBarSprite,
+        spriteNode.addChild(healthBar,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
-        return spriteNode
+        return SpriteComponent(spriteNode: spriteNode)
     }
 
-    func getMinimapSprite() -> SKSpriteNode? {
-        return CombatNodeSprite(playerColor: player.getColor())
+    func getMinimapComponent() -> MinimapComponent {
+        let spriteNode = CombatNodeSprite(playerColor: player.getColor())
+        return MinimapComponent(spriteNode: spriteNode)
     }
 
     func getConsumedResourceType() -> ResourceType {
         return .Zeta
     }
 
-    func getDefenceComponent() -> DefenceComponent {
+    func getDefenceComponent(healthBar: ResourceBarSprite) -> DefenceComponent {
         let defenceComponent = DefenceComponent(health: Constants.GamePlay.combatNodeHealth,
                                                 healthRecoveryRate: Constants.GamePlay.combatNodeHealthRecoveryRate)
-        defenceComponent.healthBarSprite = healthBarSprite
+        defenceComponent.healthBarSprite = healthBar
         return defenceComponent
     }
 
@@ -64,14 +65,15 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func createNode(game: Game) -> Node? {
-        return CombatNode(sprite: spriteComponent,
-                          minimapDisplay: minimapComponent,
+        let healthBar = ResourceBarSprite(color: UIColor.green)
+        return CombatNode(sprite: getSpriteComponent(healthBar: healthBar),
+                          minimapDisplay: getMinimapComponent(),
                           node: nodeComponent,
                           transform: transformComponent,
                           player: playerComponent,
-                          resourceConsumer: resourceConsumerComponent,
+                          resourceConsumer: getResourceConsumerComponent(rate: game.config.resourceConsumptionRate),
                           network: networkComponent,
-                          defence: getDefenceComponent(),
+                          defence: getDefenceComponent(healthBar: healthBar),
                           attack: getAttackComponent())
     }
 }
