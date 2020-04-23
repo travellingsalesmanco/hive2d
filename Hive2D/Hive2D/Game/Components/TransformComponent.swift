@@ -12,6 +12,7 @@ class TransformComponent: GKComponent {
     var position: CGPoint
     var scale: (x: CGFloat, y: CGFloat)
     var rotation: CGFloat
+    var smoothed: Bool = false
 
     init(position: CGPoint = .zero, scale: (CGFloat, CGFloat) = (1, 1), rotation: CGFloat = 0) {
         self.position = position
