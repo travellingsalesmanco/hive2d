@@ -16,7 +16,6 @@ struct SetupGameAction: GameAction {
     let playerColors: [PlayerColor]
     let hiveStartingLocations: [CGPoint]
     let hiveNetworkingIds: [NetworkComponent.Identifier]
-    let terrainSeed: Int32
 
     func handle(game: Game) {
         for (idx, gamePlayer) in game.config.players.enumerated() {
@@ -53,8 +52,6 @@ struct SetupGameAction: GameAction {
             }
 
         }
-        // Create terrain
-        game.terrain = game.terrainFactory.createRandomTerrain(for: MineralTerrain.self, seed: terrainSeed)
 
         // Broadcast acknowledgement
         game.gameNetworking.sendGameAction(StartGameAction())

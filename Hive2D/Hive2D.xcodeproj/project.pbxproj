@@ -103,11 +103,11 @@
 		F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FB2420D4FA002C004F /* GameConfig.swift */; };
 		F969C2FE2420D935002C004F /* ResourceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FD2420D935002C004F /* ResourceComponent.swift */; };
 		F969C3002420D96F002C004F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F969C2FF2420D96F002C004F /* Player.swift */; };
-		F96C8E55244ED53300ABA3B1 /* TerrainTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */; };
 		F96C8E59244F0BBE00ABA3B1 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */; };
 		F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */; };
 		F96C8E63245178F600ABA3B1 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E62245178F600ABA3B1 /* Tile.swift */; };
 		F96C8E65245191BE00ABA3B1 /* MineralTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */; };
+		F96C8E692451FBB200ABA3B1 /* SetupTerrainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -246,11 +246,11 @@
 		F969C2FB2420D4FA002C004F /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		F969C2FD2420D935002C004F /* ResourceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceComponent.swift; sourceTree = "<group>"; };
 		F969C2FF2420D96F002C004F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TerrainTileSet.sks; sourceTree = "<group>"; };
 		F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFactory.swift; sourceTree = "<group>"; };
 		F96C8E62245178F600ABA3B1 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralTerrain.swift; sourceTree = "<group>"; };
+		F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTerrainAction.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -348,6 +348,7 @@
 				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
 				03A0F39F24275A8B0091F95E /* SetupGameAction.swift */,
+				F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */,
 				BED12FF6243596140030D58D /* GameTickAction.swift */,
 			);
 			path = Actions;
@@ -587,9 +588,8 @@
 		F96C8E57244F0BAA00ABA3B1 /* Terrain */ = {
 			isa = PBXGroup;
 			children = (
-				F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */,
-				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E62245178F600ABA3B1 /* Tile.swift */,
+				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */,
 				F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */,
 			);
@@ -726,7 +726,6 @@
 				F969C2C1241CB04A002C004F /* LaunchScreen.storyboard in Resources */,
 				F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */,
 				F969C2BE241CB04A002C004F /* Assets.xcassets in Resources */,
-				F96C8E55244ED53300ABA3B1 /* TerrainTileSet.sks in Resources */,
 				F969C2BC241CB048002C004F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -864,6 +863,7 @@
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BE5DFF8224517C7200F4901B /* JSONDecoder+DecodingFormat.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,
+				F96C8E692451FBB200ABA3B1 /* SetupTerrainAction.swift in Sources */,
 				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
 				A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */,
 				F969C2F6242073C6002C004F /* Hive.swift in Sources */,

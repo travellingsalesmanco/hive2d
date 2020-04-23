@@ -18,6 +18,7 @@ enum CodableGameAction {
     case SetupGame(SetupGameAction)
     case GameTick(GameTickAction)
     case UpgradeNode(UpgradeNodeAction)
+    case SetupTerrain(SetupTerrainAction)
 
     var gameAction: GameAction {
         switch self {
@@ -37,6 +38,8 @@ enum CodableGameAction {
             return action
         case let .UpgradeNode(action):
             return action
+        case let.SetupTerrain(action):
+            return action
         case let .GameTick(action):
             return action
         }
@@ -53,6 +56,7 @@ extension CodableGameAction: Codable {
         case StartGame
         case SetupGame
         case UpgradeNode
+        case SetupTerrain
         case GameTick
     }
 
@@ -74,6 +78,8 @@ extension CodableGameAction: Codable {
             self = .SetupGame(action)
         case let action as UpgradeNodeAction:
             self = .UpgradeNode(action)
+        case let action as SetupTerrainAction:
+            self = .SetupTerrain(action)
         case let action as GameTickAction:
             self = .GameTick(action)
         default:
@@ -101,6 +107,8 @@ extension CodableGameAction: Codable {
             self = .SetupGame(setupGame)
         } else if let upgradeNode = try container.decodeIfPresent(UpgradeNodeAction.self, forKey: .UpgradeNode) {
             self = .UpgradeNode(upgradeNode)
+        } else if let setupTerrain = try container.decodeIfPresent(SetupTerrainAction.self, forKey: .SetupTerrain) {
+            self = .SetupTerrain(setupTerrain)
         } else {
             self = .GameTick(try container.decode(GameTickAction.self, forKey: .GameTick))
         }
@@ -125,6 +133,8 @@ extension CodableGameAction: Codable {
             try container.encode(action, forKey: .SetupGame)
         case let .UpgradeNode(action):
             try container.encode(action, forKey: .UpgradeNode)
+        case let.SetupTerrain(action):
+            try container.encode(action, forKey: .SetupTerrain)
         case let.GameTick(action):
             try container.encode(action, forKey: .GameTick)
         }

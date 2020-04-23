@@ -43,7 +43,7 @@ class Game {
                                              rows: terrainRows,
                                              tileSize: terrainTileSize)
         if self.isHost {
-            setupGame()
+            setupTerrain()
         }
     }
 
@@ -59,25 +59,32 @@ class Game {
         }
     }
 
+    func setupTerrain() {
+        let terrainSeed = Int32.random(in: Constants.Terrain.seedRange)
+        gameNetworking.sendGameAction(SetupTerrainAction(terrainSeed: terrainSeed))
+    }
+
     func setupGame() {
         let playerNetworkingIds = config.players.map { _ in
             NetworkComponent.generateIdentifier()
         }
-        let hiveStartingLocations = config.players.map { _ in
-            CGPoint(x: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4),
-                    y: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4))
+        let hiveStartingLocations = config.players.map { _ -> CGPoint in
+            var position: CGPoint
+            repeat {
+                position = CGPoint(x: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4),
+                                       y: CGFloat.random(in: config.mapSize / 4 ... config.mapSize * 3 / 4))
+            } while(terrain != nil && !terrain!.getTile(at: position)!.isBuildable)
+            return position
         }
         let hiveNetworkingIds = hiveStartingLocations.map { _ in
             NetworkComponent.generateIdentifier()
         }
         let playerColors = PlayerColor.pickColors(count: config.players.count)
-        let terrainSeed = Int32.random(in: Constants.Terrain.seedRange)
         gameNetworking.sendGameAction(
             SetupGameAction(playerNetworkingIds: playerNetworkingIds,
                             playerColors: playerColors,
                             hiveStartingLocations: hiveStartingLocations,
-                            hiveNetworkingIds: hiveNetworkingIds,
-                            terrainSeed: terrainSeed)
+                            hiveNetworkingIds: hiveNetworkingIds)
         )
     }
 
