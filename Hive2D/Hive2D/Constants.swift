@@ -50,6 +50,9 @@ struct Constants {
         static let nodeRadius = CGFloat(10)
         static let hiveRadius = CGFloat(15)
 
+        static let projectileRadius = CGFloat(5)
+        static let projectileSpeed = CGFloat(0.99)
+
         static let combatNodeHealth = CGFloat(300)
         static let combatNodeHealthRecoveryRate = CGFloat(20)
         static let combatNodeAttack = CGFloat(50)
