@@ -106,6 +106,7 @@
 		F96C8E55244ED53300ABA3B1 /* TerrainTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */; };
 		F96C8E59244F0BBE00ABA3B1 /* Terrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */; };
 		F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */; };
+		F96C8E63245178F600ABA3B1 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E62245178F600ABA3B1 /* Tile.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -247,6 +248,7 @@
 		F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TerrainTileSet.sks; sourceTree = "<group>"; };
 		F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terrain.swift; sourceTree = "<group>"; };
 		F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainFactory.swift; sourceTree = "<group>"; };
+		F96C8E62245178F600ABA3B1 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 			children = (
 				F96C8E53244ED53300ABA3B1 /* TerrainTileSet.sks */,
 				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
+				F96C8E62245178F600ABA3B1 /* Tile.swift */,
 				F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */,
 			);
 			path = Terrain;
@@ -902,6 +905,7 @@
 				BEE5618024398C65003630DE /* ResourceCountDisplay.swift in Sources */,
 				F9F03D5D2438B2B4006B93E1 /* EdgeSprite.swift in Sources */,
 				BEF8B8F22434C26000A0928D /* NodeType.swift in Sources */,
+				F96C8E63245178F600ABA3B1 /* Tile.swift in Sources */,
 				F969C2B7241CB048002C004F /* SceneDelegate.swift in Sources */,
 				A930FD50243A064200B555E5 /* Heap.swift in Sources */,
 			);

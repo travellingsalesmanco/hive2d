@@ -11,23 +11,13 @@ import SpriteKit
 /// Terrain protocol for which all custom terrains must conform to
 protocol Terrain {
     var tileMap: SKTileMapNode { get }
-    var tileToResource: [SKTileGroup:ResourceType] { get }
 }
 
 /// Provide standard implementations for methods accross all terrains
 extension Terrain {
-    func getTile(at point: CGPoint) -> SKTileGroup? {
+    func getTile(at point: CGPoint) -> Tile? {
         let row = tileMap.tileRowIndex(fromPosition: point)
         let col = tileMap.tileColumnIndex(fromPosition: point)
-        return tileMap.tileGroup(atColumn: col, row: row)
-    }
-
-    /// Retrieve the resource corresponding to the tile at the given point in the scene
-    /// - Returns: resource type corresponding to tile, or nil if there is no such mapping
-    func getResource(at point: CGPoint) -> ResourceType? {
-        guard let tile = getTile(at: point) else {
-            return nil
-        }
-        return tileToResource[tile]
+        return tileMap.tileGroup(atColumn: col, row: row) as? Tile
     }
 }

@@ -72,30 +72,45 @@ enum TerrainType {
 /// Basic Terrain
 fileprivate class MineralTerrain: Terrain {
     let tileMap: SKTileMapNode
-    private(set) var tileToResource = [SKTileGroup: ResourceType]()
+//    private(set) var tileToResource = [SKTileGroup: ResourceType]()
 //    let tileSetName = "terrain-mineral"
 
     init(columns: Int, rows: Int, tileSize: CGSize) {
+        let copper = Tile(imageName: "stone_copper", size: tileSize,
+                          isBuildable: true, resourceType: ResourceType.Alpha)
+        let iron = Tile(imageName: "stone_iron", size: tileSize,
+                        isBuildable: true, resourceType: ResourceType.Beta)
+        let ruby = Tile(imageName: "stone_ruby", size: tileSize,
+                        isBuildable: true, resourceType: ResourceType.Delta)
+        let silver = Tile(imageName: "stone_silver", size: tileSize,
+                          isBuildable: true, resourceType: ResourceType.Epsilon)
+        let gold = Tile(imageName: "stone_gold", size: tileSize,
+                        isBuildable: true, resourceType: ResourceType.Gamma)
+        let diamond = Tile(imageName: "stone_diamond", size: tileSize,
+                           isBuildable: true, resourceType: ResourceType.Zeta)
+        let lava = Tile(imageName: "lava", size: tileSize,
+                        isBuildable: false, resourceType: nil)
+        let tileGroups = [copper, iron, ruby, silver, gold, diamond, lava]
         // Only tiles with resource type mappings are buildable
-        let tileNameToResource = ["stone_copper": ResourceType.Alpha,
-                                  "stone_iron": ResourceType.Beta,
-                                  "stone_ruby": ResourceType.Delta,
-                                  "stone_silver": ResourceType.Epsilon,
-                                  "stone_gold": ResourceType.Gamma,
-                                  "stone_diamond": ResourceType.Zeta]
-        var tileNames = Array(tileNameToResource.keys)
-        tileNames.append("lava")
-
-        var tileGroups = [SKTileGroup]()
-        for name in tileNames {
-            let texture = SKTexture(imageNamed: name)
-            let definition = SKTileDefinition(texture: texture, size: tileSize)
-            let group = SKTileGroup(tileDefinition: definition)
-            if let resourceType = tileNameToResource[name] {
-                self.tileToResource[group] = resourceType
-            }
-            tileGroups.append(group)
-        }
+//        let tileNameToResource = ["stone_copper": ResourceType.Alpha,
+//                                  "stone_iron": ResourceType.Beta,
+//                                  "stone_ruby": ResourceType.Delta,
+//                                  "stone_silver": ResourceType.Epsilon,
+//                                  "stone_gold": ResourceType.Gamma,
+//                                  "stone_diamond": ResourceType.Zeta]
+//        var tileNames = Array(tileNameToResource.keys)
+//        tileNames.append("lava")
+//
+//        var tileGroups = [SKTileGroup]()
+//        for name in tileNames {
+//            let texture = SKTexture(imageNamed: name)
+//            let definition = SKTileDefinition(texture: texture, size: tileSize)
+//            let group = SKTileGroup(tileDefinition: definition)
+//            if let resourceType = tileNameToResource[name] {
+//                self.tileToResource[group] = resourceType
+//            }
+//            tileGroups.append(group)
+//        }
         let tileSet = SKTileSet(tileGroups: tileGroups)
         self.tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
         print(tileMap.tileSize)
