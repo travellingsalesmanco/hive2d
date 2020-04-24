@@ -25,7 +25,6 @@
 		A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F489F241CE9AB00BF5429 /* GameNetworking.swift */; };
 		A97F48A3241E172500BF5429 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A2241E172500BF5429 /* GameAction.swift */; };
 		A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */; };
-		A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */; };
 		A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AC241E310D00BF5429 /* QuitGameAction.swift */; };
 		A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48AE241E316900BF5429 /* StartGameAction.swift */; };
 		A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */; };
@@ -165,7 +164,6 @@
 		A97F489F241CE9AB00BF5429 /* GameNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetworking.swift; sourceTree = "<group>"; };
 		A97F48A2241E172500BF5429 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
 		A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyNodeAction.swift; sourceTree = "<group>"; };
-		A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNodeAction.swift; sourceTree = "<group>"; };
 		A97F48AC241E310D00BF5429 /* QuitGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitGameAction.swift; sourceTree = "<group>"; };
 		A97F48AE241E316900BF5429 /* StartGameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameAction.swift; sourceTree = "<group>"; };
 		A97F48B6241E8B6D00BF5429 /* FirebaseLobby.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLobby.swift; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 				BE5DFF7824503FAD00F4901B /* BuildResourceNodeAction.swift */,
 				A97F48A8241E30E900BF5429 /* DestroyNodeAction.swift */,
 				F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */,
-				A97F48AA241E310000BF5429 /* ChangeNodeAction.swift */,
 				A97F48AC241E310D00BF5429 /* QuitGameAction.swift */,
 				A97F48AE241E316900BF5429 /* StartGameAction.swift */,
 				03A0F39F24275A8B0091F95E /* SetupGameAction.swift */,
@@ -835,7 +832,6 @@
 				F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */,
 				F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */,
 				A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */,
-				A97F48AB241E310000BF5429 /* ChangeNodeAction.swift in Sources */,
 				A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */,
 				BEF8B8F52434EF2500A0928D /* DefenceComponent.swift in Sources */,
 				03F9D2C0244B6BB200BCAADC /* MinimapComponent.swift in Sources */,
