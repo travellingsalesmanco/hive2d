@@ -9,10 +9,10 @@
 import GameplayKit
 
 struct BuildCombatNodeAction: BuildNodeAction {
-    var player: Player
-    var position: CGPoint
-    var netId: NetworkComponent.Identifier
-    var nodeType: NodeType
+    let player: Player
+    let position: CGPoint
+    let netId: NetworkComponent.Identifier
+    let nodeType: NodeType
 
     init(player: Player, position: CGPoint, netId: NetworkComponent.Identifier, nodeType: NodeType) {
         self.player = player
