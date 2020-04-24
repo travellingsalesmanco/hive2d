@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var game: Game!
     let gameConfig: GameConfig
     let gameNetworking: GameNetworking
-    let hud = HUD()
+    var hud: HUD!
     private var selectedNodeType: NodeType = .ResourceAlpha
     private var openedNodeMenu: NodeMenu?
     let cameraNode = SKCameraNode()
@@ -37,9 +37,7 @@ class GameScene: SKScene {
 
         // Scaling required to map game units to display units
         cameraScaleRange = (hRange.lowerBound / sceneHeight)...(hRange.upperBound / sceneHeight)
-
         super.init(size: Constants.UI.sceneSize)
-
     }
 
     @available(*, unavailable)
@@ -65,8 +63,9 @@ class GameScene: SKScene {
         self.camera!.constraints = [boundsConstraint]
 
         // Set the HUD
-        hud.createHudNodes(size: self.size, resources: game.player?.getResources())
-        hud.createMinimap(size: self.size, mapSize: gameConfig.mapSize)
+        hud = HUD(size: self.size)
+        hud.createHudNodes(resources: game.player?.getResources())
+        hud.createMinimap(mapSize: gameConfig.mapSize)
         // Hook minimap node up to minimap system
         MinimapComponent.minimap = hud.minimapDisplay
         self.camera?.addChild(hud)
