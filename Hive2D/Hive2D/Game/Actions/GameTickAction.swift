@@ -78,7 +78,9 @@ struct GameTickAction: GameAction {
         let projectileSprite = CombatProjectileSprite(playerColor: player.getColor())
         let spriteComponent = SpriteComponent(spriteNode: projectileSprite)
         let transformComponent = TransformComponent(position: source.getPosition(), scale: (1, 1), rotation: 0)
-        let movementComponent = MovementComponent(start: source, end: target)
+        let movementComponent = MovementComponent(start: source,
+                                                  end: target,
+                                                  progressPerTick: Constants.GamePlay.projectileSpeed)
         let playerComponent = PlayerComponent(player: player)
         return CombatProjectile(sprite: spriteComponent,
                                 transform: transformComponent,

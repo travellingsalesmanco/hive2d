@@ -12,15 +12,17 @@ class MovementComponent: GKComponent {
     var start: GKEntity
     var end: GKEntity
     private var progress: CGFloat = 0
+    var progressPerTick: CGFloat = 0
     var completed: Bool = false
 
-    init(start: GKEntity, end: GKEntity) {
+    init(start: GKEntity, end: GKEntity, progressPerTick: CGFloat) {
         guard start.component(ofType: NodeComponent.self) != nil,
             end.component(ofType: NodeComponent.self) != nil else {
                 fatalError("PathComponent endpoints must be entities with NodeComponents")
         }
         self.start = start
         self.end = end
+        self.progressPerTick = progressPerTick
         super.init()
     }
 
@@ -30,7 +32,7 @@ class MovementComponent: GKComponent {
     }
 
     override func update(deltaTime seconds: TimeInterval) {
-        progress += Constants.GamePlay.projectileSpeed
+        progress += progressPerTick
 
         // Set completion when reached destination
         if progress > 1 {
