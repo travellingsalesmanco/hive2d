@@ -17,48 +17,47 @@ class GameActionQueueTests: XCTestCase {
         XCTAssertTrue(queue.dequeue() == nil, "Queue not empty at start")
     }
 
-//    func testInputSerial() {
-//        let queue = GameActionQueue(gameId: "dummy")
-//        let firstId = UUID()
-//        queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: firstId)))
-//        queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: UUID())))
-//        XCTAssertEqual(queue.count, 2, "Items not added")
-//        guard case let .DestroyNode(action) = queue.dequeue() else {
-//            XCTFail("Did not get back action")
-//            return
-//        }
-//        XCTAssertEqual(action.nodeNetId, firstId, "Queue not empty at start")
-//    }
+    func testInputSerial() {
+        let queue = GameActionQueue(gameId: "dummy")
+        queue.enqueue(action: GameTickAction(duration: 0))
+        queue.enqueue(action: GameTickAction(duration: 10))
+        XCTAssertEqual(queue.count, 2, "Items not added")
+        guard let action = queue.dequeue() as? GameTickAction else {
+            XCTFail("Did not get back action")
+            return
+        }
+        XCTAssertEqual(action.duration, 0, "Actions not in FIFO Order")
+    }
 
-//    func testInputParallel() {
-//        let queue = GameActionQueue(gameId: "dummy")
-//        let group = DispatchGroup()
-//        var ids: Set<UUID> = Set()
-//        for _ in 0..<100 {
-//            ids.insert(UUID())
-//        }
-//
-//        for id in ids {
-//            group.enter()
-//            DispatchQueue.global().async {
-//                queue.enqueue(action: .DestroyNode(DestroyNodeAction(nodeNetId: id)))
-//                group.leave()
-//            }
-//        }
-//        group.wait()
-//        XCTAssertEqual(queue.count, 100, "Some items were dropped not added")
-//
-//        let actions = queue.dequeue(upTo: 100)
-//
-//        var deqIds: Set<UUID> = Set()
-//
-//        for gameAction in actions {
-//            guard case let .DestroyNode(action) = gameAction else {
-//                XCTFail("Did not get back action")
-//                return
-//            }
-//            deqIds.insert(action.nodeNetId)
-//        }
-//        XCTAssertEqual(deqIds, ids, "Items not equal")
-//    }
+    func testInputParallel() {
+        let queue = GameActionQueue(gameId: "dummy")
+        let group = DispatchGroup()
+        var durations: Set<TimeInterval> = Set()
+        for i in 0..<100 {
+            durations.insert(TimeInterval(i))
+        }
+
+        for duration in durations {
+            group.enter()
+            DispatchQueue.global().async {
+                queue.enqueue(action: GameTickAction(duration: duration))
+                group.leave()
+            }
+        }
+        group.wait()
+        XCTAssertEqual(queue.count, 100, "Some items were dropped not added")
+
+        let actions = queue.dequeue(upTo: 100)
+
+        var deqDurations: Set<TimeInterval> = Set()
+
+        for gameAction in actions {
+            guard let action = gameAction as? GameTickAction else {
+                XCTFail("Did not get back action")
+                return
+            }
+            deqDurations.insert(action.duration)
+        }
+        XCTAssertEqual(deqDurations, durations, "Items not equal")
+    }
 }
