@@ -33,8 +33,8 @@ class Tile: SKTileGroup {
     }
 
     /// Add tile effect
-    func addEffect(_ effect: TileEffect) {
-        effects.append(effect)
+    func addEffect(_ toAdd: TileEffect...) {
+        effects.append(contentsOf: toAdd)
     }
 
     @available(*, unavailable)

@@ -44,10 +44,12 @@ struct LetterTerrain: Terrain {
             switch tile.resourceType {
             case .Alpha, .Beta, .Zeta:
                 tile.addEffect(boostResourceEffect)
-            case .Delta:
+            case .Epsilon:
                 tile.addEffect(boostHealthRecoveryEffect)
+            case .Gamma:
+                tile.addEffect(boostResourceEffect, boostHealthRecoveryEffect)
             default:
-                break;
+                break
             }
         }
 
