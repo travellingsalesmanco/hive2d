@@ -12,31 +12,29 @@ import SpriteKit
 class Tile: SKTileGroup {
     let isBuildable: Bool
     let resourceType: ResourceType?
-    let effect: TileEffect?
+    var effects: [TileEffect]
 
     init(imageName: String,
          size: CGSize,
          isBuildable: Bool,
-         effect: TileEffect?,
-         resourceType: ResourceType?) {
+         effects: TileEffect...,
+         resourceType: ResourceType? = nil) {
         self.isBuildable = isBuildable
         self.resourceType = resourceType
-        self.effect = effect
+        self.effects = effects
         let texture = SKTexture(imageNamed: imageName)
         let definition = SKTileDefinition(texture: texture, size: size)
         super.init(tileDefinition: definition)
     }
 
-    convenience init(imageName: String, size: CGSize, isBuildable: Bool) {
-        self.init(imageName: imageName, size: size, isBuildable: isBuildable, effect: nil, resourceType: nil)
+    /// Run the tile effects on the node
+    func handle(node: Node) {
+        effects.forEach { $0.run(node: node, tile: self) }
     }
 
-    /// Tile Effect
-    func handle(node: Node) {
-        guard let effect = self.effect else {
-            return
-        }
-        effect.run(node: node, tile: self)
+    /// Add tile effect
+    func addEffect(_ effect: TileEffect) {
+        effects.append(effect)
     }
 
     @available(*, unavailable)

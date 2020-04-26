@@ -30,13 +30,24 @@ struct LetterTerrain: Terrain {
             guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
                 fatalError("No tile asset mapped to resource type: \(resourceType)")
             }
-            let tileEffect = BoostResourceEffect(boost: 2)
             let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
-                            effect: tileEffect, resourceType: resourceType)
+                            resourceType: resourceType)
             tileGroups.append(tile)
         }
         let lava = Tile(imageName: "glass", size: tileSize, isBuildable: false)
         tileGroups.append(lava)
+
+        // Add tile effects
+        let boostResourceEffect = BoostResourceEffect(boost: 2)
+        let boostHealthRecoveryEffect = BoostHealthRecoveryEffect(boost: 2)
+        for tile in tileGroups {
+            switch tile.resourceType {
+            case .Alpha, .Beta, .Zeta:
+                tile.addEffect(boostResourceEffect)
+            default:
+                tile.addEffect(boostHealthRecoveryEffect)
+            }
+        }
 
         // Setup tile map
         let tileSet = SKTileSet(tileGroups: tileGroups)

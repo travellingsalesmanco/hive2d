@@ -119,6 +119,7 @@
 		F96C8E6D24549F6500ABA3B1 /* BoostResourceEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */; };
 		F96C8E73245591EA00ABA3B1 /* TerrainType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E72245591EA00ABA3B1 /* TerrainType.swift */; };
 		F96C8E752455A0D200ABA3B1 /* LetterTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */; };
+		F96C8E772455A9CB00ABA3B1 /* BoostHealthRecoveryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E762455A9CB00ABA3B1 /* BoostHealthRecoveryEffect.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -271,6 +272,7 @@
 		F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostResourceEffect.swift; sourceTree = "<group>"; };
 		F96C8E72245591EA00ABA3B1 /* TerrainType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainType.swift; sourceTree = "<group>"; };
 		F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTerrain.swift; sourceTree = "<group>"; };
+		F96C8E762455A9CB00ABA3B1 /* BoostHealthRecoveryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostHealthRecoveryEffect.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				F96C8E62245178F600ABA3B1 /* Tile.swift */,
 				F96C8E6A24549E9500ABA3B1 /* TileEffect.swift */,
 				F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */,
+				F96C8E762455A9CB00ABA3B1 /* BoostHealthRecoveryEffect.swift */,
 				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */,
 				F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */,
@@ -946,6 +949,7 @@
 				A979834F2435D1B6008A5332 /* PlayerInfoComponent.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */,
+				F96C8E772455A9CB00ABA3B1 /* BoostHealthRecoveryEffect.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */,
