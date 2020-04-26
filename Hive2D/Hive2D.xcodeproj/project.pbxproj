@@ -377,6 +377,7 @@
 			children = (
 				A97F48BB2420F3B600BF5429 /* Queue.swift */,
 				A930FD4F243A064200B555E5 /* Heap.swift */,
+				A9A544012438C90700189159 /* SKSpriteNode+Extensions.swift */,
 				03F9D2BD2448D2B400BCAADC /* CGPoint+MathExtensions.swift */,
 			);
 			path = Utilities;
@@ -422,7 +423,6 @@
 				A9A543FD2435EFF600189159 /* CombatNodeSprite.swift */,
 				A9A543FF2435F00100189159 /* ResourceNodeSprite.swift */,
 				F9F03D5C2438B2B4006B93E1 /* EdgeSprite.swift */,
-				A9A544012438C90700189159 /* SKSpriteNode+Extensions.swift */,
 				A9A544032438D23900189159 /* ResourceBarSprite.swift */,
 				BEE5617B2438E581003630DE /* BuildNodePalette.swift */,
 				BEE5617D2439811A003630DE /* BuildNodePaletteButton.swift */,
