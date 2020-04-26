@@ -9,6 +9,10 @@
 import SpriteKit
 
 extension SKSpriteNode {
+    static func copyOfRendering(node: SKNode) -> SKSpriteNode {
+        let texture = SKView().texture(from: node)
+        return SKSpriteNode(texture: texture)
+    }
 
     /// Adds `node` as child with its position offset from anchor point by the
     /// given multiples of this node's width/height
