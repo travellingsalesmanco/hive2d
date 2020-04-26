@@ -55,7 +55,7 @@ class Game {
         let cols = Constants.Terrain.numCols
         let rows = Constants.Terrain.numRows
         let tileSize = CGSize(width: config.mapSize / CGFloat(rows),
-                                     height: config.mapSize / CGFloat(cols))
+                              height: config.mapSize / CGFloat(cols))
         let seed = Int32.random(in: Constants.Terrain.seedRange)
         gameNetworking.sendGameAction(SetupTerrainAction(cols: cols, rows: rows,
                                                          tileSize: tileSize, seed: seed,

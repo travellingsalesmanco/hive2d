@@ -30,9 +30,9 @@ struct LetterTerrain: Terrain {
             guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
                 fatalError("No tile asset mapped to resource type: \(resourceType)")
             }
-            let tileBehavior = BoostResourceBehavior(boost: 2)
+            let tileEffect = BoostResourceEffect(boost: 2)
             let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
-                            behavior: tileBehavior, resourceType: resourceType)
+                            effect: tileEffect, resourceType: resourceType)
             tileGroups.append(tile)
         }
         let lava = Tile(imageName: "glass", size: tileSize, isBuildable: false)

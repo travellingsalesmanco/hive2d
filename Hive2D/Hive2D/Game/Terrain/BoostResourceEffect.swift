@@ -9,7 +9,7 @@
 import GameplayKit
 
 /// Boost the resource collection rate of a node if its resource type matches the tile's resource type
-struct BoostResourceBehavior: TileBehavior {
+struct BoostResourceEffect: TileEffect {
     let boost: CGFloat
 
     init(boost: CGFloat) {

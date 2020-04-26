@@ -11,7 +11,7 @@ import UIKit
 class LobbyViewController: UIViewController {
     @IBOutlet private var mapSizeSelector: UISegmentedControl!
     @IBOutlet private var resourceRateSelector: UISegmentedControl!
-    @IBOutlet weak var terrainSelector: UISegmentedControl!
+    @IBOutlet private var terrainSelector: UISegmentedControl!
     @IBOutlet private var roomCode: UILabel!
     @IBOutlet private var playerList: [UILabel]!
     @IBOutlet private var startGameButton: UIButton!

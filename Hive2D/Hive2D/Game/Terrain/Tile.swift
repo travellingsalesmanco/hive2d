@@ -8,35 +8,35 @@
 
 import SpriteKit
 
-/// Terrain tile with properties and an optional behavior
+/// Terrain tile with properties and an optional effect
 class Tile: SKTileGroup {
     let isBuildable: Bool
     let resourceType: ResourceType?
-    let behavior: TileBehavior?
+    let effect: TileEffect?
 
     init(imageName: String,
          size: CGSize,
          isBuildable: Bool,
-         behavior: TileBehavior?,
+         effect: TileEffect?,
          resourceType: ResourceType?) {
         self.isBuildable = isBuildable
         self.resourceType = resourceType
-        self.behavior = behavior
+        self.effect = effect
         let texture = SKTexture(imageNamed: imageName)
         let definition = SKTileDefinition(texture: texture, size: size)
         super.init(tileDefinition: definition)
     }
 
     convenience init(imageName: String, size: CGSize, isBuildable: Bool) {
-        self.init(imageName: imageName, size: size, isBuildable: isBuildable, behavior: nil, resourceType: nil)
+        self.init(imageName: imageName, size: size, isBuildable: isBuildable, effect: nil, resourceType: nil)
     }
 
     /// Tile Effect
     func handle(node: Node) {
-        guard let behavior = self.behavior else {
+        guard let effect = self.effect else {
             return
         }
-        behavior.run(node: node, tile: self)
+        effect.run(node: node, tile: self)
     }
 
     @available(*, unavailable)

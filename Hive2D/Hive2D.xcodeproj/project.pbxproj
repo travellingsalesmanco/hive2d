@@ -115,8 +115,8 @@
 		F96C8E63245178F600ABA3B1 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E62245178F600ABA3B1 /* Tile.swift */; };
 		F96C8E65245191BE00ABA3B1 /* MineralTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */; };
 		F96C8E692451FBB200ABA3B1 /* SetupTerrainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */; };
-		F96C8E6B24549E9500ABA3B1 /* TileBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6A24549E9500ABA3B1 /* TileBehavior.swift */; };
-		F96C8E6D24549F6500ABA3B1 /* BoostResourceBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */; };
+		F96C8E6B24549E9500ABA3B1 /* TileEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6A24549E9500ABA3B1 /* TileEffect.swift */; };
+		F96C8E6D24549F6500ABA3B1 /* BoostResourceEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */; };
 		F96C8E73245591EA00ABA3B1 /* TerrainType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E72245591EA00ABA3B1 /* TerrainType.swift */; };
 		F96C8E752455A0D200ABA3B1 /* LetterTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -267,8 +267,8 @@
 		F96C8E62245178F600ABA3B1 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineralTerrain.swift; sourceTree = "<group>"; };
 		F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTerrainAction.swift; sourceTree = "<group>"; };
-		F96C8E6A24549E9500ABA3B1 /* TileBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileBehavior.swift; sourceTree = "<group>"; };
-		F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostResourceBehavior.swift; sourceTree = "<group>"; };
+		F96C8E6A24549E9500ABA3B1 /* TileEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileEffect.swift; sourceTree = "<group>"; };
+		F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostResourceEffect.swift; sourceTree = "<group>"; };
 		F96C8E72245591EA00ABA3B1 /* TerrainType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainType.swift; sourceTree = "<group>"; };
 		F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTerrain.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -622,8 +622,8 @@
 			isa = PBXGroup;
 			children = (
 				F96C8E62245178F600ABA3B1 /* Tile.swift */,
-				F96C8E6A24549E9500ABA3B1 /* TileBehavior.swift */,
-				F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */,
+				F96C8E6A24549E9500ABA3B1 /* TileEffect.swift */,
+				F96C8E6C24549F6500ABA3B1 /* BoostResourceEffect.swift */,
 				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */,
 				F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */,
@@ -865,7 +865,7 @@
 				BEF8B8F52434EF2500A0928D /* DefenceComponent.swift in Sources */,
 				F96C8E73245591EA00ABA3B1 /* TerrainType.swift in Sources */,
 				03F9D2C0244B6BB200BCAADC /* MinimapComponent.swift in Sources */,
-				F96C8E6D24549F6500ABA3B1 /* BoostResourceBehavior.swift in Sources */,
+				F96C8E6D24549F6500ABA3B1 /* BoostResourceEffect.swift in Sources */,
 				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
 				03A0F3A024275A8B0091F95E /* SetupGameAction.swift in Sources */,
 				F96C8E5B244FF8A800ABA3B1 /* TerrainFactory.swift in Sources */,
@@ -936,7 +936,7 @@
 				A97F48B7241E8B6D00BF5429 /* FirebaseLobby.swift in Sources */,
 				A9A543FC2435DB1F00189159 /* PlayerColor.swift in Sources */,
 				A9BA5D732452142100077D00 /* MovementComponent.swift in Sources */,
-				F96C8E6B24549E9500ABA3B1 /* TileBehavior.swift in Sources */,
+				F96C8E6B24549E9500ABA3B1 /* TileEffect.swift in Sources */,
 				F969C2FC2420D4FA002C004F /* GameConfig.swift in Sources */,
 				03F9D2BA24471AEF00BCAADC /* TransformComponent.swift in Sources */,
 				A97F48D2242323FF00BF5429 /* FirebaseUserAuth.swift in Sources */,
