@@ -214,6 +214,13 @@ extension GameScene: GameDelegate {
         self.terrainNode = terrain.tileMap
         self.addChild(terrain.tileMap)
 
+        let terrainTexture = SKView().texture(from: terrain.tileMap)
+        let minimapTerrain = SKSpriteNode(texture: terrainTexture)
+        minimapTerrain.position = CGPoint(x: 0, y: 0)
+        minimapTerrain.anchorPoint = CGPoint(x: 0, y: 0)
+        minimapTerrain.alpha = 0.5
+        hud.minimapDisplay?.addMinimapElement(minimapTerrain)
+
         // Update the HUD with terrain tiles
         hud.buildNodePalette?.updateButtonsWithTerrain(terrain: terrain)
     }
