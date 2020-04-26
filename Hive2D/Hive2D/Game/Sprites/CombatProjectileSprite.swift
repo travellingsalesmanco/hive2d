@@ -10,7 +10,7 @@ import SpriteKit
 
 class CombatProjectileSprite: SKSpriteNode {
     init(playerColor: PlayerColor) {
-        let texture = SKTexture(imageNamed: Constants.GameAssets.combatNode)
+        let texture = SKTexture(imageNamed: Constants.GameAssets.projectile)
         let size = CGSize(width: Constants.GamePlay.projectileRadius,
                           height: Constants.GamePlay.projectileRadius)
         super.init(texture: texture, color: playerColor.getColor(), size: size)

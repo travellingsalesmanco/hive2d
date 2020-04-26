@@ -87,8 +87,10 @@ struct Constants {
 
     struct GameAssets {
         static let resourceNode = "peg-grey"
-        static let combatNode = "peg-grey-triangle"
+        static let projectile = "peg-grey-triangle"
         static let hive = "peg-grey-glow"
+        static let singleCombat = "single"
+        static let multiCombat = "multi"
     }
 
     struct BuildNodePalette {

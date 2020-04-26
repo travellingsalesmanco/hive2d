@@ -42,7 +42,7 @@ class BuildNodePalette: SKSpriteNode {
         self.addChild(resourceZeta)
 
         position.x += nodeSize.height * nodeSpacing
-        let combatNode = createNode(image: Constants.GameAssets.combatNode,
+        let combatNode = createNode(image: Constants.GameAssets.singleCombat,
                                     position: position,
                                     size: nodeSize,
                                     name: Constants.BuildNodePalette.combat)
