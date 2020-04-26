@@ -50,6 +50,11 @@ class GameScene: SKScene {
         // Set the game
         self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
+        // Hook up the main sprite display system
+        let gameSpritesRoot = SKNode()
+        self.addChild(gameSpritesRoot)
+        SpriteComponent.sceneRoot = gameSpritesRoot
+
         // Set the camera
         self.addChild(cameraNode)
         self.camera = cameraNode

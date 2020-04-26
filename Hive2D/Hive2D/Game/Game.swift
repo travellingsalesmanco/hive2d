@@ -132,15 +132,9 @@ class Game {
         entities.insert(entity)
         entity.game = self
         entity.didAddToGame()
-        if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
-            scene.addChild(spriteNode)
-        }
     }
 
     func remove(entity: GameEntity) {
-        if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
-            spriteNode.removeFromParent()
-        }
         entity.willRemoveFromGame()
         entities.remove(entity)
     }

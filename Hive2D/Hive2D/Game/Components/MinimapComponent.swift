@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class MinimapComponent: SpriteComponent {
+class MinimapComponent: RenderComponent {
     static var minimap: MinimapDisplay?
 
     override func didAddToGame() {
@@ -17,8 +17,4 @@ class MinimapComponent: SpriteComponent {
     override func willRemoveFromGame() {
         spriteNode.removeFromParent()
     }
-    deinit {
-        spriteNode.removeFromParent()
-    }
-
 }
