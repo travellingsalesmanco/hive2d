@@ -172,19 +172,6 @@ class Game {
         }
     }
 
-    func updateSprite(spriteComponent: SpriteComponent, with newSprite: SKSpriteNode) {
-        let oldSprite = spriteComponent.spriteNode
-        newSprite.position = oldSprite.position
-        newSprite.size = oldSprite.size
-        oldSprite.children.forEach { childSprite in
-            childSprite.removeFromParent()
-            newSprite.addChild(childSprite)
-        }
-        oldSprite.removeFromParent()
-        spriteComponent.spriteNode = newSprite
-        scene.addChild(newSprite)
-    }
-
     func upgradeNode(node: GameEntity) {
         guard let node = node as? Node else {
             return
