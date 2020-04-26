@@ -129,7 +129,6 @@ extension BuildNodeAction {
                 return false
             }
             let distance = node.position.distanceTo(position)
-            // If distance squared is 0, it means its the same node, which we don't want
             guard distance != 0 else {
                 return false
             }
