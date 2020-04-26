@@ -63,6 +63,9 @@
 		BE5DFF8E2451801D00F4901B /* NestedSingleValueDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF8D2451801D00F4901B /* NestedSingleValueDecodingContainer.swift */; };
 		BE5DFF9124518A4A00F4901B /* NodeCostMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF9024518A4A00F4901B /* NodeCostMap.swift */; };
 		BE5DFF932451985200F4901B /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF922451985200F4901B /* EntityFactory.swift */; };
+		BE5DFF96245532D400F4901B /* Attacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF95245532D400F4901B /* Attacker.swift */; };
+		BE5DFF982455337500F4901B /* SingleTargetAttacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF972455337500F4901B /* SingleTargetAttacker.swift */; };
+		BE5DFF9A2455480500F4901B /* MultiTargetAttacker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DFF992455480500F4901B /* MultiTargetAttacker.swift */; };
 		BE70684F241F79050060CC59 /* JoinGameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */; };
 		BE706853241F7D390060CC59 /* SettingsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE706852241F7D390060CC59 /* SettingsModalViewController.swift */; };
 		BEB648F9241E5783002814D4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB648F8241E5783002814D4 /* MainViewController.swift */; };
@@ -203,6 +206,9 @@
 		BE5DFF8D2451801D00F4901B /* NestedSingleValueDecodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NestedSingleValueDecodingContainer.swift; sourceTree = "<group>"; };
 		BE5DFF9024518A4A00F4901B /* NodeCostMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCostMap.swift; sourceTree = "<group>"; };
 		BE5DFF922451985200F4901B /* EntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityFactory.swift; sourceTree = "<group>"; };
+		BE5DFF95245532D400F4901B /* Attacker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attacker.swift; sourceTree = "<group>"; };
+		BE5DFF972455337500F4901B /* SingleTargetAttacker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTargetAttacker.swift; sourceTree = "<group>"; };
+		BE5DFF992455480500F4901B /* MultiTargetAttacker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiTargetAttacker.swift; sourceTree = "<group>"; };
 		BE70684E241F79050060CC59 /* JoinGameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGameModalViewController.swift; sourceTree = "<group>"; };
 		BE706852241F7D390060CC59 /* SettingsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalViewController.swift; sourceTree = "<group>"; };
 		BEB648F8241E5783002814D4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +446,16 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		BE5DFF94245532B900F4901B /* Combat */ = {
+			isa = PBXGroup;
+			children = (
+				BE5DFF95245532D400F4901B /* Attacker.swift */,
+				BE5DFF972455337500F4901B /* SingleTargetAttacker.swift */,
+				BE5DFF992455480500F4901B /* MultiTargetAttacker.swift */,
+			);
+			path = Combat;
+			sourceTree = "<group>";
+		};
 		BEB648FA241E5B5C002814D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +562,7 @@
 				BE5DFF7E24517BE300F4901B /* CustomDecoding */,
 				BE5DFF8F245186F400F4901B /* Factories */,
 				F96C8E57244F0BAA00ABA3B1 /* Terrain */,
+				BE5DFF94245532B900F4901B /* Combat */,
 				F969C2E5241F9153002C004F /* Game.swift */,
 				F969C2FB2420D4FA002C004F /* GameConfig.swift */,
 				F969C2F92420D0EB002C004F /* GameScene.swift */,
@@ -824,6 +841,7 @@
 				A9D80B97242B6E6C00951824 /* FirebaseCodable.swift in Sources */,
 				A97F489A241CE0AF00BF5429 /* LobbyNetworking.swift in Sources */,
 				BE5DFF7B245041ED00F4901B /* BuildCombatNodeAction.swift in Sources */,
+				BE5DFF9A2455480500F4901B /* MultiTargetAttacker.swift in Sources */,
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
 				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
 				F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */,
@@ -847,8 +865,10 @@
 				BE5DFF8024517C0500F4901B /* DecodingFormat.swift in Sources */,
 				BE5DFF8424517CA000F4901B /* PropertyListDecoder+DecodingFormat.swift in Sources */,
 				BEB648FE241E8221002814D4 /* GameViewController.swift in Sources */,
+				BE5DFF982455337500F4901B /* SingleTargetAttacker.swift in Sources */,
 				BEE5617C2438E581003630DE /* BuildNodePalette.swift in Sources */,
 				BEF8B8F32434C2C700A0928D /* BuildNodeAction.swift in Sources */,
+				BE5DFF96245532D400F4901B /* Attacker.swift in Sources */,
 				BE5DFF7924503FAD00F4901B /* BuildResourceNodeAction.swift in Sources */,
 				A97F48A9241E30E900BF5429 /* DestroyNodeAction.swift in Sources */,
 				BEF8B8F02434C07000A0928D /* Node.swift in Sources */,

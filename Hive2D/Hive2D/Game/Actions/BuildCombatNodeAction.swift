@@ -60,8 +60,10 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getAttackComponent() -> AttackComponent {
-        AttackComponent(attack: Constants.GamePlay.combatNodeAttack,
-                        range: Constants.GamePlay.combatNodeRange)
+        AttackComponent(attacker: SingleTargetAttacker(
+                            damagePerSecond: Constants.GamePlay.combatNodeAttack,
+                            range: Constants.GamePlay.combatNodeRange,
+                            position: position))
     }
 
     func createNode(game: Game) -> Node? {

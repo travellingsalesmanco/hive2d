@@ -25,47 +25,22 @@ struct GameTickAction: GameAction {
     private func resolveCombat(duration: TimeInterval, game: Game) {
         let attackers = game.query(includes: AttackComponent.self)
         let defenders = game.query(includes: DefenceComponent.self)
+        var defenderNodes: [Node] = []
+        defenders.forEach { defender in
+            if let defenderNode = defender as? Node {
+                defenderNodes.append(defenderNode)
+            }
+        }
 
         for attacker in attackers {
-            guard let attacker = attacker as? CombatNode else {
+            guard let attackComponent = attacker.component(ofType: AttackComponent.self) else {
                 continue
             }
 
-            var nearestTarget: Node?
-            var minDistance = CGFloat.greatestFiniteMagnitude
-            defenders.forEach { defender in
-                guard let defender = defender as? Node else {
-                    return
-                }
-
-                // Check that attacker is not defender
-                guard attacker.getPlayer() != defender.getPlayer() else {
-                    return
-                }
-
-                let distance = attacker.getPosition().distanceTo(defender.getPosition())
-                let range = attacker.getRange() + defender.getNode().radius
-
-                guard distance <= range else {
-                    return
-                }
-
-                if distance < minDistance {
-                    minDistance = distance
-                    nearestTarget = defender
-                }
+            let combatProjectiles = attackComponent.handle(defenderNodes: defenderNodes, duration: duration)
+            combatProjectiles.forEach { projectile in
+                game.add(entity: projectile)
             }
-
-            guard let defender = nearestTarget,
-                let defenderDefence = defender.component(ofType: DefenceComponent.self) else {
-                continue
-            }
-
-            let defenceMultiplier = defenderDefence.shield == 0 ? 1 : 1 / defenderDefence.shield
-            defenderDefence.health -= attacker.getAttack() * defenceMultiplier * CGFloat(duration)
-
-            // Add projectile
-            game.add(entity: createProjectile(from: attacker, to: defender))
         }
 
         if game.isHost {

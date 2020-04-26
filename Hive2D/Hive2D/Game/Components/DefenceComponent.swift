@@ -28,6 +28,10 @@ class DefenceComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func getShieldMultiplier() -> CGFloat {
+        shield == 0 ? 1 : 1 / shield
+    }
+
     override func update(deltaTime seconds: TimeInterval) {
         if health < maxHealth {
             health += healthRecoveryRate * CGFloat(seconds)
