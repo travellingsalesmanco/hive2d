@@ -20,55 +20,31 @@ class BuildNodePalette: SKSpriteNode {
 
         var position = CGPoint(x: leftmostX + nodeSize.height * 0 * nodeSpacing,
                                y: -Constants.BuildNodePalette.nodePadding)
-        let resourceAlpha = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Alpha]!,
-                                       position: position,
-                                       size: nodeSize,
-                                       name: Constants.BuildNodePalette.resourceAlpha)
-        self.addChild(resourceAlpha)
-        resourceAlpha.setSelected()
 
-        position.x += nodeSize.height * nodeSpacing
-        let resourceBeta = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Beta]!,
-                                      position: position,
-                                      size: nodeSize,
-                                      name: Constants.BuildNodePalette.resourceBeta)
-        self.addChild(resourceBeta)
+        func translateX(_ position: CGPoint) -> CGPoint {
+            return position + CGPoint(x: nodeSize.height * nodeSpacing, y: 0)
+        }
 
-        position.x += nodeSize.height * nodeSpacing
-        let resourceZeta = createNode(image: Constants.GamePlay.resourceTypeToAsset[.Zeta]!,
-                                      position: position,
-                                      size: nodeSize,
-                                      name: Constants.BuildNodePalette.resourceZeta)
-        self.addChild(resourceZeta)
+        let buttonTypes: [NodeType] = [.ResourceAlpha, .ResourceBeta, .ResourceZeta, .CombatSingle, .CombatMulti]
 
-        position.x += nodeSize.height * nodeSpacing
-        let combatNode = createNode(image: Constants.GameAssets.singleCombat,
-                                    position: position,
-                                    size: nodeSize,
-                                    name: Constants.BuildNodePalette.combat)
-        self.addChild(combatNode)
-
-        buttons.append(contentsOf: [resourceAlpha, resourceBeta, resourceZeta, combatNode])
+        for buttonType in buttonTypes {
+            let node = BuildNodePaletteButton.createNode(
+                image: Constants.GameAssets.nodeTypeToAsset[buttonType]!,
+                position: position,
+                size: nodeSize,
+                name: Constants.BuildNodePalette.nodeTypeToLabel[buttonType]!)
+            node.delegate = self
+            self.addChild(node)
+            buttons.append(node)
+            if buttonType == .ResourceAlpha {
+                node.setSelected()
+            }
+            position = translateX(position)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    private func createNode(image: String, position: CGPoint, size: CGSize, name: String) -> BuildNodePaletteButton {
-        let node = BuildNodePaletteButton(texture: SKTexture(imageNamed: image))
-        node.delegate = self
-        node.size = size
-        node.position = position
-        node.name = name
-        let label = SKLabelNode(text: name)
-        label.position = CGPoint(x: 0, y: node.size.height / 2 + Constants.BuildNodePalette.nodePadding)
-        label.fontName = "AvenirNext-Bold"
-        label.fontColor = SKColor.white
-        label.fontSize = 15
-        node.addChild(label)
-        node.zPosition = 10
-        return node
     }
 
     func updateButtonsWithTerrain(terrain: Terrain) {

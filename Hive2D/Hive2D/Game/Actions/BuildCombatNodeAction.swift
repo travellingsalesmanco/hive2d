@@ -36,7 +36,9 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getSpriteComponent(healthBar: ResourceBarSprite) -> SpriteComponent {
-        let spriteNode = CombatNodeSprite(playerColor: player.getColor())
+        guard let spriteNode = CombatNodeSprite(playerColor: player.getColor(), nodeType: nodeType) else {
+            return SpriteComponent(spriteNode: SKSpriteNode())
+        }
         spriteNode.addChild(healthBar,
                             xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
                             widthRatio: 1.2, heightRatio: 0.25)
@@ -44,7 +46,9 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getMinimapComponent() -> MinimapComponent {
-        let spriteNode = CombatNodeSprite(playerColor: player.getColor())
+        guard let spriteNode = CombatNodeSprite(playerColor: player.getColor(), nodeType: nodeType) else {
+            return MinimapComponent(spriteNode: SKSpriteNode())
+        }
         return MinimapComponent(spriteNode: spriteNode)
     }
 
@@ -60,10 +64,17 @@ struct BuildCombatNodeAction: BuildNodeAction {
     }
 
     func getAttackComponent() -> AttackComponent {
-        AttackComponent(attacker: SingleTargetAttacker(
-                            damagePerSecond: Constants.GamePlay.combatNodeAttack,
-                            range: Constants.GamePlay.combatNodeRange,
-                            position: position))
+        if nodeType == .CombatMulti {
+            return AttackComponent(attacker:
+                MultiTargetAttacker(damagePerSecond: Constants.GamePlay.combatNodeAttack,
+                                    range: Constants.GamePlay.combatNodeRange,
+                                    position: position))
+        } else {
+            return AttackComponent(attacker:
+                SingleTargetAttacker(damagePerSecond: Constants.GamePlay.combatNodeAttack,
+                                     range: Constants.GamePlay.combatNodeRange,
+                                     position: position))
+        }
     }
 
     func createNode(game: Game) -> Node? {

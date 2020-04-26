@@ -145,7 +145,7 @@ class GameScene: SKScene {
         }
         // Build node palette stuff
         switch nodeLabel {
-        case "Alpha", "Beta", "Zeta", "Combat":
+        case let nodeLabel where Constants.BuildNodePalette.nodeLabels.contains(nodeLabel):
             selectNodeType(node: node, label: nodeLabel)
         case "QuitGameLabel":
             quitGame()
@@ -197,15 +197,7 @@ class GameScene: SKScene {
     }
 
     private func convertLabelToNodeType(label: String) -> NodeType {
-        if label == Constants.BuildNodePalette.resourceAlpha {
-            return .ResourceAlpha
-        } else if label == Constants.BuildNodePalette.resourceBeta {
-            return .ResourceBeta
-        } else if label == Constants.BuildNodePalette.resourceZeta {
-            return .ResourceZeta
-        } else {
-            return .Combat
-        }
+        return Constants.BuildNodePalette.labelToNodeType[label]!
     }
 }
 

@@ -15,5 +15,14 @@ enum NodeType: String, Codable, CaseIterable {
     case ResourceDelta
     case ResourceEpsilon
     case ResourceZeta
-    case Combat
+    case CombatSingle
+    case CombatMulti
+
+    func isCombatNode() -> Bool {
+        return self == .CombatSingle || self == .CombatMulti
+    }
+
+    func isResourceNode() -> Bool {
+        return !isCombatNode()
+    }
 }

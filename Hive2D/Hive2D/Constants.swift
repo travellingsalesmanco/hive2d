@@ -94,10 +94,21 @@ struct Constants {
         static let hive = "peg-grey-glow"
         static let singleCombat = "single"
         static let multiCombat = "multi"
+
+        static let nodeTypeToAsset = [
+            NodeType.ResourceAlpha: "resource-alpha",
+            NodeType.ResourceBeta: "resource-beta",
+            NodeType.ResourceDelta: "resource-delta",
+            NodeType.ResourceEpsilon: "resource-epsilon",
+            NodeType.ResourceGamma: "resource-gamma",
+            NodeType.ResourceZeta: "resource-zeta",
+            NodeType.CombatSingle: "single",
+            NodeType.CombatMulti: "multi"
+        ]
     }
 
     struct BuildNodePalette {
-        static let size = CGSize(width: 300, height: 75)
+        static let size = CGSize(width: 370, height: 75)
         static let margin = CGFloat(20)
         static let padding = CGFloat(12.5)
 
@@ -105,10 +116,32 @@ struct Constants {
         static let nodeSpacing = CGFloat(1.5)
         static let nodePadding = CGFloat(5)
 
-        static let nodes = ["Alpha", "Beta", "Zeta", "Combat"]
         static let resourceAlpha = "Alpha"
         static let resourceBeta = "Beta"
         static let resourceZeta = "Zeta"
-        static let combat = "Combat"
+        static let combatSingle = "Single"
+        static let combatMulti = "Multi"
+
+        static let nodeLabels: Set = ["Alpha", "Beta", "Zeta", "Single", "Multi"]
+        static let nodeTypeToLabel = [
+            NodeType.ResourceAlpha: "Alpha",
+            NodeType.ResourceBeta: "Beta",
+            NodeType.ResourceDelta: "Delta",
+            NodeType.ResourceEpsilon: "Epsilon",
+            NodeType.ResourceGamma: "Gamma",
+            NodeType.ResourceZeta: "Zeta",
+            NodeType.CombatSingle: "Single",
+            NodeType.CombatMulti: "Multi"
+        ]
+        static let labelToNodeType = [
+            "Alpha": NodeType.ResourceAlpha,
+            "Beta": NodeType.ResourceBeta,
+            "Delta": NodeType.ResourceDelta,
+            "Epsilon": NodeType.ResourceEpsilon,
+            "Gamma": NodeType.ResourceGamma,
+            "Zeta": NodeType.ResourceZeta,
+            "Single": NodeType.CombatSingle,
+            "Multi": NodeType.CombatMulti
+        ]
     }
 }

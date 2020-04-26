@@ -9,8 +9,11 @@
 import SpriteKit
 
 class CombatNodeSprite: SKSpriteNode {
-    init(playerColor: PlayerColor) {
-        let texture = SKTexture(imageNamed: Constants.GameAssets.singleCombat)
+    init?(playerColor: PlayerColor, nodeType: NodeType) {
+        guard let image = Constants.GameAssets.nodeTypeToAsset[nodeType] else {
+            return nil
+        }
+        let texture = SKTexture(imageNamed: image)
         let size = CGSize(width: Constants.GamePlay.nodeRadius,
                           height: Constants.GamePlay.nodeRadius)
         super.init(texture: texture, color: playerColor.getColor(), size: size)

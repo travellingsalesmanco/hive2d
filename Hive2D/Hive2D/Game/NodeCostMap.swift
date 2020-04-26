@@ -20,8 +20,10 @@ struct NodeCostMap {
                 mapping[nodeType] = [.Alpha: 50]
             case .ResourceZeta:
                 mapping[nodeType] = [.Alpha: 30, .Beta: 30]
-            case .Combat:
+            case .CombatSingle:
                 mapping[nodeType] = [.Zeta: 50]
+            case .CombatMulti:
+                mapping[nodeType] = [.Alpha: 20, .Beta: 30, .Zeta: 40]
             default:
                 continue
             }

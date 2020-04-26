@@ -97,7 +97,7 @@ class Game {
             return
         }
 
-        if nodeType == .Combat {
+        if nodeType.isCombatNode() {
             gameNetworking.sendGameAction(
                 BuildCombatNodeAction(player: player,
                                       position: point,

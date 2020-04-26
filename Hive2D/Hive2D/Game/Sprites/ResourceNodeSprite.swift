@@ -9,9 +9,8 @@
 import SpriteKit
 
 class ResourceNodeSprite: SKSpriteNode {
-    init?(playerColor: PlayerColor,
-          resourceType: ResourceType) {
-        guard let image = Constants.GamePlay.resourceTypeToAsset[resourceType] else {
+    init?(playerColor: PlayerColor, nodeType: NodeType) {
+        guard let image = Constants.GameAssets.nodeTypeToAsset[nodeType] else {
             return nil
         }
         let texture = SKTexture(imageNamed: image)

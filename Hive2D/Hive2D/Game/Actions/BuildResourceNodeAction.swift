@@ -40,7 +40,7 @@ struct BuildResourceNodeAction: BuildNodeAction {
     }
 
     func getSpriteComponent(healthBar: ResourceBarSprite) -> SpriteComponent {
-        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType) else {
+        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), nodeType: nodeType) else {
             return SpriteComponent(spriteNode: SKSpriteNode())
         }
         spriteNode.addChild(healthBar,
@@ -50,7 +50,7 @@ struct BuildResourceNodeAction: BuildNodeAction {
     }
 
     func getMinimapComponent() -> MinimapComponent {
-        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), resourceType: resourceType) else {
+        guard let spriteNode = ResourceNodeSprite(playerColor: player.getColor(), nodeType: nodeType) else {
             return MinimapComponent(spriteNode: SKSpriteNode())
         }
         return MinimapComponent(spriteNode: spriteNode)
