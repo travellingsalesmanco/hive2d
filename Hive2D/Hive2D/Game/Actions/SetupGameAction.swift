@@ -46,11 +46,12 @@ struct SetupGameAction: GameAction {
                             transform: hiveTransformComponent,
                             player: playerComponent,
                             network: hiveNetworkComponent)
-            game.add(entity: hive)
             if game.config.me == gamePlayer {
                 game.player = playerEntity
                 game.scene.camera?.position = hiveSpriteNode.position
+                hive.addComponent(FogOfWarComponent())
             }
+            game.add(entity: hive)
 
         }
 

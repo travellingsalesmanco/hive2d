@@ -11,13 +11,16 @@ import SpriteKit
 class MinimapDisplay: SKSpriteNode {
     /// Placeholder node to act as parent of all game elements on minimap.
     /// This allows us to scale them separately from other minimap elements (e.g. text)
-    var gameElementsRoot: SKNode
+    var root: SKNode
+    var gameElementsRoot: SKCropNode
 
     init(size: CGSize, mapSize: CGFloat) {
-        gameElementsRoot = SKNode()
+        root = SKNode()
+        gameElementsRoot = SKCropNode()
         super.init(texture: nil, color: SKColor.darkGray, size: size)
-        gameElementsRoot.setScale(size.height / mapSize)
-        addChild(gameElementsRoot, xOffsetByWidths: -0.5, yOffsetByHeights: -0.5)
+        root.setScale(size.height / mapSize)
+        addChild(root, xOffsetByWidths: -0.5, yOffsetByHeights: -0.5)
+        root.addChild(gameElementsRoot)
 
         let title = SKLabelNode(text: "Minimap")
         title.fontName = "AvenirNext-Regular"

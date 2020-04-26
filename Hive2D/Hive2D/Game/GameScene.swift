@@ -19,6 +19,7 @@ class GameScene: SKScene {
     let cameraNode = SKCameraNode()
     let cameraScaleRange: ClosedRange<CGFloat>
     private var terrainNode: SKTileMapNode?
+    private var rootNode: SKCropNode!
 
     // The actual game boundary
     private let gameRect: CGRect
@@ -50,9 +51,18 @@ class GameScene: SKScene {
         // Set the game
         self.game = Game(scene: self, config: gameConfig, gameNetworking: gameNetworking)
 
+        // Crop node for fog of war masking
+        rootNode = SKCropNode()
+        self.addChild(rootNode)
+
+        // Hook up fog of war system
+        let maskRoot = SKNode()
+        rootNode.maskNode = maskRoot
+        FogOfWarComponent.maskRoot = maskRoot
+
         // Hook up the main sprite display system
         let gameSpritesRoot = SKNode()
-        self.addChild(gameSpritesRoot)
+        rootNode.addChild(gameSpritesRoot)
         SpriteComponent.sceneRoot = gameSpritesRoot
 
         // Set the camera
@@ -73,6 +83,9 @@ class GameScene: SKScene {
         hud.createMinimap(mapSize: gameConfig.mapSize)
         // Hook minimap node up to minimap system
         MinimapComponent.minimap = hud.minimapDisplay
+        let minimapMaskRoot = SKNode()
+        hud.minimapDisplay?.gameElementsRoot.maskNode = minimapMaskRoot
+        FogOfWarComponent.minimapMaskRoot = minimapMaskRoot
         self.camera?.addChild(hud)
 
         // Set the gesture recognizers
@@ -212,7 +225,7 @@ extension GameScene: GameDelegate {
         terrain.tileMap.position = CGPoint(x: 0, y: 0)
         terrain.tileMap.anchorPoint = CGPoint(x: 0, y: 0)
         self.terrainNode = terrain.tileMap
-        self.addChild(terrain.tileMap)
+        rootNode.addChild(terrain.tileMap)
 
         let minimapTerrain = SKSpriteNode.copyOfRendering(node: terrain.tileMap)
         minimapTerrain.position = terrain.tileMap.position

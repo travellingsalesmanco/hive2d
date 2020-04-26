@@ -33,6 +33,9 @@ extension BuildNodeAction {
         guard let node = createNode(game: game) else {
             return
         }
+        if game.player == player {
+            node.addComponent(FogOfWarComponent())
+        }
         consumeResourcesForBuilding()
         runTerrainEffect(game: game, node: node)
         game.add(entity: node)
