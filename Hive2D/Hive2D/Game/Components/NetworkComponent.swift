@@ -26,7 +26,7 @@ class NetworkComponent: GameComponent {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func didAddToEntity() {
+    override func didAddToGame() {
         guard NetworkComponent.entityMapping[id] == nil else {
             fatalError("Initializing NetworkComponent with duplicate identifier")
         }
@@ -36,7 +36,7 @@ class NetworkComponent: GameComponent {
         NetworkComponent.entityMapping[id] = entity
     }
 
-    override func willRemoveFromEntity() {
+    override func willRemoveFromGame() {
         NetworkComponent.entityMapping.removeValue(forKey: id)
     }
 

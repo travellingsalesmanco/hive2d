@@ -21,11 +21,7 @@ class SpriteComponent: GameComponent {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-/// RenderingSystem
-/// Acts on SpriteComponent and TransformComponent to ensure rendered view is synchronized to logical properties
-extension SpriteComponent {
     private func syncTransform(deltaTime seconds: TimeInterval) {
         guard let transform = entity?.component(ofType: TransformComponent.self) else {
             fatalError("No TransformComponent on an entity with SpriteComponent.")
@@ -49,7 +45,7 @@ extension SpriteComponent {
         }
     }
 
-    override func didAddToEntity() {
+    override func didAddToGame() {
         syncTransform(deltaTime: 0)
     }
 

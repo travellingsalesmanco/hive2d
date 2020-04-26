@@ -11,10 +11,10 @@ import GameplayKit
 class MinimapComponent: SpriteComponent {
     static var minimap: MinimapDisplay?
 
-    override func didAddToEntity() {
+    override func didAddToGame() {
         MinimapComponent.minimap?.addGameElement(spriteNode)
     }
-    override func willRemoveFromEntity() {
+    override func willRemoveFromGame() {
         spriteNode.removeFromParent()
     }
     deinit {

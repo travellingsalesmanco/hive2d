@@ -28,6 +28,7 @@ struct SetupGameAction: GameAction {
             let playerEntity = Player(player: playerInfoComponent,
                                       resource: resourceComponent,
                                       network: playerNetworkingComponent)
+            game.add(entity: playerEntity)
 
             // Create player component from player entity
             let playerComponent = PlayerComponent(player: playerEntity)
