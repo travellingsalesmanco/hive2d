@@ -128,8 +128,6 @@
 		F9F03D6724391F28006B93E1 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6624391F28006B93E1 /* Button.swift */; };
 		F9F03D6924397141006B93E1 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6824397141006B93E1 /* Label.swift */; };
 		F9F03D6D2439E9C6006B93E1 /* UpgradeNodeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */; };
-		F9F03D70243A0A9B006B93E1 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D6F243A0A9B006B93E1 /* Scoreboard.swift */; };
-		F9F03D72243A0C40006B93E1 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F03D71243A0C40006B93E1 /* Ranking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -279,8 +277,6 @@
 		F9F03D6624391F28006B93E1 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		F9F03D6824397141006B93E1 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		F9F03D6C2439E9C6006B93E1 /* UpgradeNodeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeNodeAction.swift; sourceTree = "<group>"; };
-		F9F03D6F243A0A9B006B93E1 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
-		F9F03D71243A0C40006B93E1 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -648,8 +644,6 @@
 			isa = PBXGroup;
 			children = (
 				BEE561552438C8BB003630DE /* HUD.swift */,
-				F9F03D6F243A0A9B006B93E1 /* Scoreboard.swift */,
-				F9F03D71243A0C40006B93E1 /* Ranking.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -860,7 +854,6 @@
 				A97F489C241CE23800BF5429 /* LobbyNetworkingDelegate.swift in Sources */,
 				A97F48BC2420F3B600BF5429 /* Queue.swift in Sources */,
 				F969C2E8241F915E002C004F /* ResourceNode.swift in Sources */,
-				F9F03D70243A0A9B006B93E1 /* Scoreboard.swift in Sources */,
 				A97F48C72422218700BF5429 /* FirebaseConstants.swift in Sources */,
 				F969C2FA2420D0EB002C004F /* GameScene.swift in Sources */,
 				F969C2F82420CEDC002C004F /* CombatNode.swift in Sources */,
@@ -949,7 +942,6 @@
 				A979834F2435D1B6008A5332 /* PlayerInfoComponent.swift in Sources */,
 				A97F48AD241E310D00BF5429 /* QuitGameAction.swift in Sources */,
 				BED0860E242106FB00AA9441 /* ChooseNameModalViewController.swift in Sources */,
-				F9F03D72243A0C40006B93E1 /* Ranking.swift in Sources */,
 				F969C2B5241CB048002C004F /* AppDelegate.swift in Sources */,
 				F969C2F42420503F002C004F /* PlayerComponent.swift in Sources */,
 				03225D592423AEB6002C022F /* NetworkComponent.swift in Sources */,
