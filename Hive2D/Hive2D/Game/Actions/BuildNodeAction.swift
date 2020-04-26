@@ -34,6 +34,7 @@ extension BuildNodeAction {
             return
         }
         consumeResourcesForBuilding()
+        runTerrainEffect(game: game, node: node)
         game.add(entity: node)
 
         let edges = buildEdges(from: node, to: getOwnNodesWithinRange(game: game))
@@ -98,6 +99,14 @@ extension BuildNodeAction {
             return false
         }
         return terrainTile.isBuildable
+    }
+
+    /// Runs the terrain effect on the node
+    func runTerrainEffect(game: Game, node: Node) {
+        guard let terrainTile = getTerrainTile(game: game) else {
+            return
+        }
+        terrainTile.handle(node: node)
     }
 
     /// Check that node does not overlap with other nodes

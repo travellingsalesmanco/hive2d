@@ -10,7 +10,7 @@ import GameplayKit
 
 class ResourceConsumerComponent: GKComponent {
     var resourceType: ResourceType
-    let resourceConsumptionRate: CGFloat
+    var resourceConsumptionRate: CGFloat
     var tier: CGFloat
 
     init(resourceType: ResourceType,

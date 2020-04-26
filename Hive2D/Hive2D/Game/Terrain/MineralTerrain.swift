@@ -30,10 +30,12 @@ struct MineralTerrain: Terrain {
             guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
                 fatalError("No tile asset mapped to resource type: \(resourceType)")
             }
-            let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true, resourceType: resourceType)
+            let tileBehavior = BoostResourceBehavior(boost: 2)
+            let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
+                            behavior: tileBehavior, resourceType: resourceType)
             tileGroups.append(tile)
         }
-        let lava = Tile(imageName: "lava", size: tileSize, isBuildable: false, resourceType: nil)
+        let lava = Tile(imageName: "lava", size: tileSize, isBuildable: false)
         tileGroups.append(lava)
 
         // Setup tile map

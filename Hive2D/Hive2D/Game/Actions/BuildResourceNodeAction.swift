@@ -69,13 +69,7 @@ struct BuildResourceNodeAction: BuildNodeAction {
     }
 
     func getResourceCollectorComponent(rate: CGFloat, game: Game) -> ResourceCollectorComponent {
-        var resourceCollectionRate = rate
-        if let terrainTile = getTerrainTile(game: game) {
-            resourceCollectionRate =
-                terrainTile.boostResourceCollectionRate(resourceType: resourceType,
-                                                        resourceCollectionRate: game.config.resourceCollectionRate)
-        }
-        return ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate: resourceCollectionRate)
+        ResourceCollectorComponent(resourceType: resourceType, resourceCollectionRate: rate)
     }
 
     func createNode(game: Game) -> Node? {

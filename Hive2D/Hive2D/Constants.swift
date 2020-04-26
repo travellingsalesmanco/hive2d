@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 struct Constants {
     struct StoryBoardIds {
@@ -83,6 +84,8 @@ struct Constants {
         static let numRows = 20
         static let numCols = 20
         static let seedRange = Int32(0)..<Int32(10)
+        static let componentNoises = [GKBillowNoiseSource(), GKPerlinNoiseSource()]
+        static let selectionNoise = GKPerlinNoiseSource()
     }
 
     struct GameAssets {

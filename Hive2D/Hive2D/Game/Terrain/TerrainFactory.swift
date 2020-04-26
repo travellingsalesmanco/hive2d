@@ -53,13 +53,15 @@ struct TerrainFactory {
     }
 
     /// Generate a noise map from a given noise source and for a grid with given number of tiles in columns and rows
-    private func createNoiseMap(columns: Int, rows: Int, seed: Int32) -> GKNoiseMap {
-        let componentNoiseSources = [GKBillowNoiseSource(), GKPerlinNoiseSource()]
+    private func createNoiseMap(columns: Int, rows: Int, seed: Int32,
+                                componentNoiseSources: [GKCoherentNoiseSource]
+                                    = Constants.Terrain.componentNoises,
+                                selectionNoiseSource: GKCoherentNoiseSource
+                                    = Constants.Terrain.selectionNoise) -> GKNoiseMap {
         let componentNoises = componentNoiseSources.map { source -> GKNoise in
             source.seed = seed
             return GKNoise(source)
         }
-        let selectionNoiseSource = GKPerlinNoiseSource()
         selectionNoiseSource.seed = seed
         let selectionNoise = GKNoise(selectionNoiseSource)
         let noise = GKNoise(componentNoises: componentNoises, selectionNoise: selectionNoise)
