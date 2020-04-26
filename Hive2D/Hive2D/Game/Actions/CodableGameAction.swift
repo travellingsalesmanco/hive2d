@@ -11,7 +11,6 @@ import Foundation
 enum CodableGameAction {
     case BuildResourceNode(BuildResourceNodeAction)
     case BuildCombatNode(BuildCombatNodeAction)
-    case DestroyNode(DestroyNodeAction)
     case QuitGame(QuitGameAction)
     case StartGame(StartGameAction)
     case SetupGame(SetupGameAction)
@@ -24,8 +23,6 @@ enum CodableGameAction {
         case let .BuildCombatNode(action):
             return action
         case let .BuildResourceNode(action):
-            return action
-        case let .DestroyNode(action):
             return action
         case let .QuitGame(action):
             return action
@@ -62,8 +59,6 @@ extension CodableGameAction: Codable {
             self = .BuildResourceNode(action)
         case let action as BuildCombatNodeAction:
             self = .BuildCombatNode(action)
-        case let action as DestroyNodeAction:
-            self = .DestroyNode(action)
         case let action as QuitGameAction:
             self = .QuitGame(action)
         case let action as StartGameAction:
@@ -89,8 +84,6 @@ extension CodableGameAction: Codable {
         } else if let buildCombatNode =
             try container.decodeIfPresent(BuildCombatNodeAction.self, forKey: .BuildCombatNode) {
             self = .BuildCombatNode(buildCombatNode)
-        } else if let destroyNode = try container.decodeIfPresent(DestroyNodeAction.self, forKey: .DestroyNode) {
-            self = .DestroyNode(destroyNode)
         } else if let quitGame = try container.decodeIfPresent(QuitGameAction.self, forKey: .QuitGame) {
             self = .QuitGame(quitGame)
         } else if let startGame = try container.decodeIfPresent(StartGameAction.self, forKey: .StartGame) {
@@ -113,8 +106,6 @@ extension CodableGameAction: Codable {
             try container.encode(action, forKey: .BuildResourceNode)
         case let .BuildCombatNode(action):
             try container.encode(action, forKey: .BuildCombatNode)
-        case let .DestroyNode(action):
-            try container.encode(action, forKey: .DestroyNode)
         case let .QuitGame(action):
             try container.encode(action, forKey: .QuitGame)
         case let .StartGame(action):

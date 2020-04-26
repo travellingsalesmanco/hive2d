@@ -153,21 +153,6 @@ class Game {
         }
     }
 
-    /// Sends DestroyNodeAction for all nodes with health <= 0
-    func clearDestroyedNodes() {
-        let nodes = query(includes: DefenceComponent.self)
-        for node in nodes {
-            guard let health = node.component(ofType: DefenceComponent.self)?.health,
-                let node = node as? Node else {
-                continue
-            }
-
-            if health <= 0 {
-                gameNetworking.sendGameAction(DestroyNodeAction(node: node))
-            }
-        }
-    }
-
     func upgradeNode(node: GameEntity) {
         guard let node = node as? Node else {
             return

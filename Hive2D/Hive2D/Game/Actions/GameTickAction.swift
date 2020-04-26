@@ -43,9 +43,7 @@ struct GameTickAction: GameAction {
             }
         }
 
-        if game.isHost {
-            game.clearDestroyedNodes()
-        }
+        destroyZeroHealthNodes(game: game)
     }
 
     private func createProjectile(from source: CombatNode, to target: Node) -> CombatProjectile {
@@ -76,5 +74,26 @@ struct GameTickAction: GameAction {
                 game.remove(entity: projectile)
             }
         }
+    }
+
+    private func destroyZeroHealthNodes(game: Game) {
+        let nodes = game.query(includes: DefenceComponent.self, NodeComponent.self)
+        nodes.filter {
+            $0.component(ofType: DefenceComponent.self)!.health <= 0
+        }.forEach {
+            destroyNode(game: game, node: $0)
+        }
+    }
+
+    private func destroyNode(game: Game, node: GameEntity) {
+        let edges = game.query(includes: PathComponent.self)
+        let connectedEdges = edges.filter { edge in
+            guard let path = edge.component(ofType: PathComponent.self) else {
+                return false
+            }
+            return path.start == node || path.end == node
+        }
+        connectedEdges.forEach { game.remove(entity: $0) }
+        game.remove(entity: node)
     }
 }
