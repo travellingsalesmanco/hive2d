@@ -56,8 +56,10 @@ struct Constants {
 
         static let combatNodeHealth = CGFloat(300)
         static let combatNodeHealthRecoveryRate = CGFloat(20)
-        static let combatNodeAttack = CGFloat(50)
-        static let combatNodeRange = CGFloat(50)
+        static let combatSingleAttack = CGFloat(50)
+        static let combatSingleRange = CGFloat(50)
+        static let combatMultiAttack = CGFloat(25)
+        static let combatMultiRange = CGFloat(40)
 
         static let resourceNodeHealth = CGFloat(500)
         static let resourceNodeHealthRecoveryRate = CGFloat(10)

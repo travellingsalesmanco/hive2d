@@ -66,13 +66,13 @@ struct BuildCombatNodeAction: BuildNodeAction {
     func getAttackComponent() -> AttackComponent {
         if nodeType == .CombatMulti {
             return AttackComponent(attacker:
-                MultiTargetAttacker(damagePerSecond: Constants.GamePlay.combatNodeAttack,
-                                    range: Constants.GamePlay.combatNodeRange,
+                MultiTargetAttacker(damagePerSecond: Constants.GamePlay.combatMultiAttack,
+                                    range: Constants.GamePlay.combatMultiRange,
                                     position: position))
         } else {
             return AttackComponent(attacker:
-                SingleTargetAttacker(damagePerSecond: Constants.GamePlay.combatNodeAttack,
-                                     range: Constants.GamePlay.combatNodeRange,
+                SingleTargetAttacker(damagePerSecond: Constants.GamePlay.combatSingleAttack,
+                                     range: Constants.GamePlay.combatSingleRange,
                                      position: position))
         }
     }
