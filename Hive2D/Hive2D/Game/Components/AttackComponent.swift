@@ -33,7 +33,20 @@ class AttackComponent: GKComponent {
         guard let combatNode = entity as? CombatNode else {
             return []
         }
-        return targets.map({ createProjectile(from: combatNode, to: $0) })
+
+        return targets.compactMap({ target in
+            guard let defence = target.component(ofType: DefenceComponent.self) else {
+                return nil
+            }
+
+            // Do not create projectile if target node already has health <= 0
+            // This is needed because our logic currently deals damage before firing projectile.
+            guard defence.health > 0 else {
+                return nil
+            }
+            return createProjectile(from: combatNode, to: target)
+
+        })
     }
 
     private func createProjectile(from source: CombatNode, to target: Node) -> CombatProjectile {
