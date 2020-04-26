@@ -202,7 +202,7 @@ class GameScene: SKScene {
     }
 
     private func convertLabelToNodeType(label: String) -> NodeType {
-        return Constants.BuildNodePalette.labelToNodeType[label]!
+        Constants.BuildNodePalette.labelToNodeType[label]!
     }
 }
 

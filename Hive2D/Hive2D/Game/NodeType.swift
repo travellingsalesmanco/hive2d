@@ -19,10 +19,10 @@ enum NodeType: String, Codable, CaseIterable {
     case CombatMulti
 
     func isCombatNode() -> Bool {
-        return self == .CombatSingle || self == .CombatMulti
+        self == .CombatSingle || self == .CombatMulti
     }
 
     func isResourceNode() -> Bool {
-        return !isCombatNode()
+        !isCombatNode()
     }
 }

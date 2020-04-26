@@ -22,7 +22,7 @@ class BuildNodePalette: SKSpriteNode {
                                y: -Constants.BuildNodePalette.nodePadding)
 
         func translateX(_ position: CGPoint) -> CGPoint {
-            return position + CGPoint(x: nodeSize.height * nodeSpacing, y: 0)
+            position + CGPoint(x: nodeSize.height * nodeSpacing, y: 0)
         }
 
         let buttonTypes: [NodeType] = [.ResourceAlpha, .ResourceBeta, .ResourceZeta, .CombatSingle, .CombatMulti]
