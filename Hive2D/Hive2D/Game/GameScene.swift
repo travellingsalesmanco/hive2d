@@ -106,37 +106,32 @@ class GameScene: SKScene {
         }
 
         let node = atPoint(scenePoint)
+
+        // Upgrade node if upgrade button was clicked
         if let openedNodeMenu = openedNodeMenu {
             if node == openedNodeMenu.upgradeButton || node.parent == openedNodeMenu.upgradeButton {
                 game.upgradeNode(node: openedNodeMenu.node)
                 return
             }
         }
+
+        // Close node menu
         openedNodeMenu?.removeFromParent()
         openedNodeMenu = nil
 
-        // Check for open node menu
-        let gameNodes = game.query(includes: SpriteComponent.self, NodeComponent.self, PlayerComponent.self)
-        let filteredNodes = gameNodes.filter { gameNode in
-            gameNode.component(ofType: SpriteComponent.self)?.spriteNode == node
-            && gameNode.component(ofType: PlayerComponent.self)?.player == game.player
-        }
-        if let gameNode = filteredNodes.first {
-            guard let nodeRadius = gameNode.component(ofType: NodeComponent.self)?.radius else {
+        // Open node menu if tapped on player's node
+        let tappedNode = game.query(includes: SpriteComponent.self, NodeComponent.self, PlayerComponent.self)
+            .first { $0.component(ofType: SpriteComponent.self)?.spriteNode == node
+                && $0.component(ofType: PlayerComponent.self)?.player == game.player
+            }
+
+        if let gameNode = tappedNode {
+            if let nodeMenu = NodeMenu(node: gameNode, tierUpgradeCost: game.config.tierUpgradeCost,
+                                       maxTier: game.config.maxTier) {
+                openedNodeMenu = nodeMenu
+                self.addChild(nodeMenu)
                 return
             }
-            let menuSize = CGSize(width: nodeRadius * 3, height: nodeRadius * 2)
-            let xOffset = CGFloat.zero
-            let yOffset = -1 * menuSize.height
-            let nodeMenu = NodeMenu(position: CGPoint(x: node.position.x + xOffset, y: node.position.y + yOffset),
-                                    node: gameNode,
-                                    tierUpgradeCost: gameConfig.tierUpgradeCost,
-                                    maxTier: gameConfig.maxTier,
-                                    size: menuSize)
-            nodeMenu.update()
-            openedNodeMenu = nodeMenu
-            self.addChild(nodeMenu)
-            return
         }
 
         // Touched space on terrain, emit a build node action
