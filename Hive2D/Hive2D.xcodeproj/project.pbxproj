@@ -117,6 +117,8 @@
 		F96C8E692451FBB200ABA3B1 /* SetupTerrainAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */; };
 		F96C8E6B24549E9500ABA3B1 /* TileBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6A24549E9500ABA3B1 /* TileBehavior.swift */; };
 		F96C8E6D24549F6500ABA3B1 /* BoostResourceBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */; };
+		F96C8E73245591EA00ABA3B1 /* TerrainType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E72245591EA00ABA3B1 /* TerrainType.swift */; };
+		F96C8E752455A0D200ABA3B1 /* LetterTerrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */; };
 		F9A2CE6C2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6D2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
 		F9A2CE6E2420EF2600E5AB9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */; };
@@ -267,6 +269,8 @@
 		F96C8E682451FBB200ABA3B1 /* SetupTerrainAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTerrainAction.swift; sourceTree = "<group>"; };
 		F96C8E6A24549E9500ABA3B1 /* TileBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileBehavior.swift; sourceTree = "<group>"; };
 		F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostResourceBehavior.swift; sourceTree = "<group>"; };
+		F96C8E72245591EA00ABA3B1 /* TerrainType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerrainType.swift; sourceTree = "<group>"; };
+		F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTerrain.swift; sourceTree = "<group>"; };
 		F9A2CE6B2420EF2600E5AB9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9F03D58243873E5006B93E1 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		F9F03D5A24387400006B93E1 /* PathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComponent.swift; sourceTree = "<group>"; };
@@ -622,7 +626,9 @@
 				F96C8E6C24549F6500ABA3B1 /* BoostResourceBehavior.swift */,
 				F96C8E58244F0BBE00ABA3B1 /* Terrain.swift */,
 				F96C8E64245191BE00ABA3B1 /* MineralTerrain.swift */,
+				F96C8E742455A0D200ABA3B1 /* LetterTerrain.swift */,
 				F96C8E5A244FF8A800ABA3B1 /* TerrainFactory.swift */,
+				F96C8E72245591EA00ABA3B1 /* TerrainType.swift */,
 			);
 			path = Terrain;
 			sourceTree = "<group>";
@@ -857,6 +863,7 @@
 				A97F48A0241CE9AB00BF5429 /* GameNetworking.swift in Sources */,
 				A97F48AF241E316900BF5429 /* StartGameAction.swift in Sources */,
 				BEF8B8F52434EF2500A0928D /* DefenceComponent.swift in Sources */,
+				F96C8E73245591EA00ABA3B1 /* TerrainType.swift in Sources */,
 				03F9D2C0244B6BB200BCAADC /* MinimapComponent.swift in Sources */,
 				F96C8E6D24549F6500ABA3B1 /* BoostResourceBehavior.swift in Sources */,
 				BEF8B8EC24346DFB00A0928D /* ResourceType.swift in Sources */,
@@ -893,6 +900,7 @@
 				F969C2E6241F9153002C004F /* Game.swift in Sources */,
 				BE5DFF8224517C7200F4901B /* JSONDecoder+DecodingFormat.swift in Sources */,
 				BEB648FC241E5BF3002814D4 /* LobbyViewController.swift in Sources */,
+				F96C8E752455A0D200ABA3B1 /* LetterTerrain.swift in Sources */,
 				F96C8E692451FBB200ABA3B1 /* SetupTerrainAction.swift in Sources */,
 				F969C2EA241F9163002C004F /* SpriteComponent.swift in Sources */,
 				A97F48CF2423236F00BF5429 /* UserAuthDelegate.swift in Sources */,

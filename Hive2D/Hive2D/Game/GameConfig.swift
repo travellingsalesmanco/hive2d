@@ -18,6 +18,7 @@ struct GameConfig {
     let resourceConsumptionRate: CGFloat
     let tierUpgradeCost: CGFloat
     let maxTier: CGFloat
+    let terrainType: TerrainType
 
     init(lobby: Lobby, me: GamePlayer) {
         self.id = lobby.id
@@ -44,5 +45,6 @@ struct GameConfig {
         }
         self.tierUpgradeCost = Constants.GamePlay.tierUpgradeCost
         self.maxTier = Constants.GamePlay.maxTier
+        self.terrainType = lobby.settings.terrainType
     }
 }

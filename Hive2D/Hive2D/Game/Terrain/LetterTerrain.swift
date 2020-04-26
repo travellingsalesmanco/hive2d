@@ -6,4 +6,40 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
+
+/// Letter terrain
+struct LetterTerrain: Terrain {
+    let tileMap: SKTileMapNode
+    let resourceTypeToTileAsset = [
+        ResourceType.Alpha: "letter-A",
+        ResourceType.Beta: "letter-B",
+        ResourceType.Delta: "letter-D",
+        ResourceType.Epsilon: "letter-E",
+        ResourceType.Gamma: "letter-G",
+        ResourceType.Zeta: "letter-Z"
+    ]
+
+    init(columns: Int, rows: Int, tileSize: CGSize) {
+        // Order resourceTypes so that tileGroups passed into tileMapNode is deterministic
+        let resourceTypes: [ResourceType] = [.Alpha, .Beta, .Delta, .Epsilon, .Gamma, .Zeta]
+
+        // Add tiles
+        var tileGroups = [Tile]()
+        for resourceType in resourceTypes {
+            guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
+                fatalError("No tile asset mapped to resource type: \(resourceType)")
+            }
+            let tileBehavior = BoostResourceBehavior(boost: 2)
+            let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
+                            behavior: tileBehavior, resourceType: resourceType)
+            tileGroups.append(tile)
+        }
+        let lava = Tile(imageName: "glass", size: tileSize, isBuildable: false)
+        tileGroups.append(lava)
+
+        // Setup tile map
+        let tileSet = SKTileSet(tileGroups: tileGroups)
+        self.tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
+    }
+}

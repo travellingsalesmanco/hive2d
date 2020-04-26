@@ -6,4 +6,7 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
-import Foundation
+enum TerrainType: String, Codable {
+    case mineral
+    case letter
+}

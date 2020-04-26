@@ -23,7 +23,6 @@ class Game {
     var lastGameTick: TimeInterval = 0
     // Time elapsed since game started
     var timeElapsed: TimeInterval = 0
-    let terrainFactory: TerrainFactory
     var terrain: Terrain? {
         didSet {
             scene.setTerrain(terrain: terrain!)
@@ -35,13 +34,6 @@ class Game {
         self.config = config
         self.gameNetworking = gameNetworking
         self.isHost = config.host.id == config.me.id
-        let terrainCols = Constants.Terrain.numCols
-        let terrainRows = Constants.Terrain.numRows
-        let terrainTileSize = CGSize(width: config.mapSize / CGFloat(terrainRows),
-                                     height: config.mapSize / CGFloat(terrainCols))
-        self.terrainFactory = TerrainFactory(cols: terrainCols,
-                                             rows: terrainRows,
-                                             tileSize: terrainTileSize)
         if self.isHost {
             setupTerrain()
         }
@@ -60,8 +52,14 @@ class Game {
     }
 
     func setupTerrain() {
-        let terrainSeed = Int32.random(in: Constants.Terrain.seedRange)
-        gameNetworking.sendGameAction(SetupTerrainAction(terrainSeed: terrainSeed))
+        let cols = Constants.Terrain.numCols
+        let rows = Constants.Terrain.numRows
+        let tileSize = CGSize(width: config.mapSize / CGFloat(rows),
+                                     height: config.mapSize / CGFloat(cols))
+        let seed = Int32.random(in: Constants.Terrain.seedRange)
+        gameNetworking.sendGameAction(SetupTerrainAction(cols: cols, rows: rows,
+                                                         tileSize: tileSize, seed: seed,
+                                                         type: config.terrainType))
     }
 
     func setupGame() {

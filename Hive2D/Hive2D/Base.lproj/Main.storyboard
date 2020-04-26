@@ -322,16 +322,57 @@
                                                                     <constraint firstItem="5z4-zw-P2i" firstAttribute="leading" secondItem="ONG-Of-wPq" secondAttribute="leading" id="of7-6F-YQE"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYV-OX-aPT" userLabel="Terrain">
+                                                                <rect key="frame" x="27.5" y="149.5" width="498" height="74.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uVb-IU-gUi">
+                                                                        <rect key="frame" x="0.0" y="19.5" width="249" height="36"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-L8-YLQ" userLabel="Flexible space">
+                                                                        <rect key="frame" x="249" y="0.0" width="50" height="74.5"/>
+                                                                    </view>
+                                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9sb-si-WbM" userLabel="Small, Medium, Large">
+                                                                        <rect key="frame" x="299" y="15" width="199" height="46"/>
+                                                                        <segments>
+                                                                            <segment title="MINERAL"/>
+                                                                            <segment title="LETTERS"/>
+                                                                        </segments>
+                                                                        <connections>
+                                                                            <action selector="selectTerrain:" destination="Doc-CK-fOP" eventType="valueChanged" id="r4P-fb-W6U"/>
+                                                                        </connections>
+                                                                    </segmentedControl>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="B3M-L8-YLQ" firstAttribute="trailing" secondItem="9sb-si-WbM" secondAttribute="leading" id="041-tV-A64"/>
+                                                                    <constraint firstItem="uVb-IU-gUi" firstAttribute="leading" secondItem="MYV-OX-aPT" secondAttribute="leading" id="0ZQ-tL-jEh"/>
+                                                                    <constraint firstItem="9sb-si-WbM" firstAttribute="centerY" secondItem="MYV-OX-aPT" secondAttribute="centerY" id="CBF-tr-Sn9"/>
+                                                                    <constraint firstItem="B3M-L8-YLQ" firstAttribute="leading" secondItem="uVb-IU-gUi" secondAttribute="trailing" id="S5f-Oh-lTZ"/>
+                                                                    <constraint firstItem="uVb-IU-gUi" firstAttribute="width" secondItem="MYV-OX-aPT" secondAttribute="width" multiplier="0.5" id="aGF-eM-boK"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="9sb-si-WbM" secondAttribute="trailing" id="c7r-x4-sfe"/>
+                                                                    <constraint firstItem="uVb-IU-gUi" firstAttribute="centerY" secondItem="MYV-OX-aPT" secondAttribute="centerY" id="dtz-nu-X0F"/>
+                                                                    <constraint firstItem="9sb-si-WbM" firstAttribute="height" secondItem="MYV-OX-aPT" secondAttribute="height" multiplier="0.6" id="gOF-Rb-rOp"/>
+                                                                    <constraint firstItem="9sb-si-WbM" firstAttribute="width" secondItem="MYV-OX-aPT" secondAttribute="width" multiplier="0.4" id="hje-9h-gS9"/>
+                                                                    <constraint firstItem="B3M-L8-YLQ" firstAttribute="centerY" secondItem="MYV-OX-aPT" secondAttribute="centerY" id="oqa-KL-a31"/>
+                                                                    <constraint firstItem="B3M-L8-YLQ" firstAttribute="height" secondItem="MYV-OX-aPT" secondAttribute="height" id="r1s-uW-ChF"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="ONG-Of-wPq" firstAttribute="top" secondItem="e9d-0g-0kg" secondAttribute="bottom" id="3aG-TV-Xgs"/>
+                                                            <constraint firstItem="MYV-OX-aPT" firstAttribute="top" secondItem="ONG-Of-wPq" secondAttribute="bottom" id="E3s-0G-7wd"/>
                                                             <constraint firstItem="ONG-Of-wPq" firstAttribute="width" secondItem="e9d-0g-0kg" secondAttribute="width" id="Fwa-Mt-28R"/>
+                                                            <constraint firstItem="MYV-OX-aPT" firstAttribute="centerX" secondItem="GGz-GB-wH0" secondAttribute="centerX" id="RCa-6T-nKE"/>
                                                             <constraint firstItem="ONG-Of-wPq" firstAttribute="height" secondItem="e9d-0g-0kg" secondAttribute="height" id="Yka-gR-VEH"/>
                                                             <constraint firstItem="e9d-0g-0kg" firstAttribute="width" secondItem="GGz-GB-wH0" secondAttribute="width" multiplier="0.9" id="ZLL-LX-rVM"/>
                                                             <constraint firstItem="e9d-0g-0kg" firstAttribute="top" secondItem="GGz-GB-wH0" secondAttribute="top" id="dai-wx-B7b"/>
                                                             <constraint firstItem="e9d-0g-0kg" firstAttribute="centerX" secondItem="GGz-GB-wH0" secondAttribute="centerX" id="eNt-0M-rpD"/>
                                                             <constraint firstItem="ONG-Of-wPq" firstAttribute="centerX" secondItem="GGz-GB-wH0" secondAttribute="centerX" id="es4-KE-m3k"/>
+                                                            <constraint firstItem="MYV-OX-aPT" firstAttribute="width" secondItem="ONG-Of-wPq" secondAttribute="width" id="gRB-99-hdi"/>
+                                                            <constraint firstItem="MYV-OX-aPT" firstAttribute="height" secondItem="ONG-Of-wPq" secondAttribute="height" id="jL0-9D-LhJ"/>
                                                             <constraint firstItem="e9d-0g-0kg" firstAttribute="height" secondItem="GGz-GB-wH0" secondAttribute="height" multiplier="0.3" id="lCa-7T-2Xv"/>
                                                         </constraints>
                                                     </view>
@@ -586,6 +627,7 @@
                         <outlet property="resourceRateSelector" destination="STk-tC-f0l" id="pbq-zS-hAI"/>
                         <outlet property="roomCode" destination="SUQ-0j-xn5" id="aC4-kb-6Pa"/>
                         <outlet property="startGameButton" destination="saD-Dc-Wdo" id="xNg-uq-AKQ"/>
+                        <outlet property="terrainSelector" destination="9sb-si-WbM" id="E9d-sP-szH"/>
                         <outletCollection property="playerList" destination="sPC-SH-TQG" collectionClass="NSMutableArray" id="6Jq-dx-I9K"/>
                         <outletCollection property="playerList" destination="YOR-Vc-ylN" collectionClass="NSMutableArray" id="wJN-o1-pdG"/>
                         <outletCollection property="playerList" destination="V8F-sI-7XZ" collectionClass="NSMutableArray" id="7Ii-3L-8pS"/>

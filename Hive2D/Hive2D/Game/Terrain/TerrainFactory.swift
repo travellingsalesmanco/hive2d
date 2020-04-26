@@ -21,17 +21,17 @@ struct TerrainFactory {
         self.tileSize = tileSize
     }
 
-    func createEmptyTerrain (for terrainType: Terrain.Type) -> Terrain {
+    func makeEmptyTerrain (for terrainType: TerrainType) -> Terrain {
         switch terrainType {
-        case is MineralTerrain.Type:
+        case .mineral:
             return MineralTerrain(columns: cols, rows: rows, tileSize: tileSize)
-        default:
-            fatalError("Terrain class does not exist")
+        case .letter:
+            return LetterTerrain(columns: cols, rows: rows, tileSize: tileSize)
         }
     }
 
-    func createRandomTerrain(for terrainType: Terrain.Type, seed: Int32) -> Terrain {
-        let terrain = createEmptyTerrain(for: terrainType)
+    func makeRandomTerrain(for terrainType: TerrainType, seed: Int32) -> Terrain {
+        let terrain = makeEmptyTerrain(for: terrainType)
         let tileMap = terrain.tileMap
         tileMap.enableAutomapping = true
         let tileGroups = tileMap.tileSet.tileGroups

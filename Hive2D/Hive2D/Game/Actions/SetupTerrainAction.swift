@@ -6,12 +6,19 @@
 //  Copyright © 2020 TSCO. All rights reserved.
 //
 
+import CoreGraphics
+
 struct SetupTerrainAction: GameAction {
-    let terrainSeed: Int32
+    let cols: Int
+    let rows: Int
+    let tileSize: CGSize
+    let seed: Int32
+    let type: TerrainType
 
     // Setup terrain, then host setups game
     func handle(game: Game) {
-        game.terrain = game.terrainFactory.createRandomTerrain(for: MineralTerrain.self, seed: terrainSeed)
+        let terrainFactory = TerrainFactory(cols: cols, rows: rows, tileSize: tileSize)
+        game.terrain = terrainFactory.makeRandomTerrain(for: type, seed: seed)
         if game.isHost {
             game.setupGame()
         }

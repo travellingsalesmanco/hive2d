@@ -11,6 +11,7 @@ import UIKit
 class LobbyViewController: UIViewController {
     @IBOutlet private var mapSizeSelector: UISegmentedControl!
     @IBOutlet private var resourceRateSelector: UISegmentedControl!
+    @IBOutlet weak var terrainSelector: UISegmentedControl!
     @IBOutlet private var roomCode: UILabel!
     @IBOutlet private var playerList: [UILabel]!
     @IBOutlet private var startGameButton: UIButton!
@@ -87,6 +88,23 @@ class LobbyViewController: UIViewController {
         lobbyNetworking?.updateLobby(lobby)
     }
 
+    @IBAction private func selectTerrain(_ sender: UISegmentedControl) {
+        guard var lobby = lobby else {
+            return
+        }
+
+        switch terrainSelector.selectedSegmentIndex {
+        case 0:
+            lobby.settings.terrainType = .mineral
+        case 1:
+            lobby.settings.terrainType = .letter
+        default:
+            break
+        }
+
+        lobbyNetworking?.updateLobby(lobby)
+    }
+
     private func refreshLobby() {
         guard let lobby = lobby else {
             return
@@ -103,6 +121,12 @@ class LobbyViewController: UIViewController {
         roomCode.text = lobby.code
         mapSizeSelector.selectedSegmentIndex = lobby.settings.mapSize.rawValue
         resourceRateSelector.selectedSegmentIndex = lobby.settings.resourceRate.rawValue
+        switch lobby.settings.terrainType {
+        case .mineral:
+            terrainSelector.selectedSegmentIndex = 0
+        case .letter:
+            terrainSelector.selectedSegmentIndex = 1
+        }
         refreshPlayerList()
     }
 

@@ -22,9 +22,11 @@ enum ResourceRate: Int, Codable {
 struct LobbySettings: Codable {
     var mapSize: MapSize
     var resourceRate: ResourceRate
+    var terrainType: TerrainType
 
     init() {
         self.mapSize = .small
         self.resourceRate = .normal
+        self.terrainType = .mineral
     }
 }
