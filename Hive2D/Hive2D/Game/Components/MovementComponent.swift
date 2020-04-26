@@ -8,14 +8,14 @@
 
 import GameplayKit
 
-class MovementComponent: GKComponent {
-    var start: GKEntity
-    var end: GKEntity
+class MovementComponent: GameComponent {
+    var start: GameEntity
+    var end: GameEntity
     private var progress: CGFloat = 0
     var progressPerTick: CGFloat = 0
     var completed: Bool = false
 
-    init(start: GKEntity, end: GKEntity, progressPerTick: CGFloat) {
+    init(start: GameEntity, end: GameEntity, progressPerTick: CGFloat) {
         guard start.component(ofType: NodeComponent.self) != nil,
             end.component(ofType: NodeComponent.self) != nil else {
                 fatalError("PathComponent endpoints must be entities with NodeComponents")

@@ -8,11 +8,11 @@
 
 import GameplayKit
 
-class PathComponent: GKComponent {
-    var start: GKEntity
-    var end: GKEntity
+class PathComponent: GameComponent {
+    var start: GameEntity
+    var end: GameEntity
 
-    init(start: GKEntity, end: GKEntity) {
+    init(start: GameEntity, end: GameEntity) {
         guard start.component(ofType: NodeComponent.self) != nil,
             end.component(ofType: NodeComponent.self) != nil else {
                 fatalError("PathComponent endpoints must be entities with NodeComponents")

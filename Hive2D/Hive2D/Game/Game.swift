@@ -11,7 +11,7 @@ import SpriteKit
 import NotificationCenter
 
 class Game {
-    var entities = Set<GKEntity>()
+    var entities = Set<GameEntity>()
     var player: Player?
     unowned let scene: GameDelegate
     let config: GameConfig
@@ -124,25 +124,28 @@ class Game {
         lastGameTick += duration
     }
 
-    func getPlayer(for entity: GKEntity) -> Player? {
+    func getPlayer(for entity: GameEntity) -> Player? {
         entity.component(ofType: PlayerComponent.self)?.player
     }
 
-    func add(entity: GKEntity) {
+    func add(entity: GameEntity) {
         entities.insert(entity)
+        entity.game = self
+        entity.didAddToGame()
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
             scene.addChild(spriteNode)
         }
     }
 
-    func remove(entity: GKEntity) {
+    func remove(entity: GameEntity) {
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.spriteNode {
             spriteNode.removeFromParent()
         }
+        entity.willRemoveFromGame()
         entities.remove(entity)
     }
 
-    func query(includes types: GKComponent.Type...) -> [GKEntity] {
+    func query(includes types: GameComponent.Type...) -> [GameEntity] {
         entities.filter { entity in
             for type in types {
                 if entity.component(ofType: type) == nil {
@@ -188,7 +191,7 @@ class Game {
         scene.addChild(newSprite)
     }
 
-    func upgradeNode(node: GKEntity) {
+    func upgradeNode(node: GameEntity) {
         guard let node = node as? Node else {
             return
         }

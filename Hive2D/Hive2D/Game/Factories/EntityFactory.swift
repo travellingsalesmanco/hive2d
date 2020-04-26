@@ -13,12 +13,12 @@ struct EntityFactory: DecodingFactory {
         case netId
     }
 
-    func create(from decoder: Decoder) throws -> GKEntity {
+    func create(from decoder: Decoder) throws -> GameEntity {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let netId = try container.decode(NetworkComponent.Identifier.self, forKey: .netId)
         guard let entity = NetworkComponent.getEntity(for: netId) else {
             throw DecodingError.valueNotFound(
-                GKEntity.Type.self,
+                GameEntity.Type.self,
                 DecodingError.Context(codingPath: decoder.codingPath,
                                       debugDescription: "Entity does not exist in game."))
         }

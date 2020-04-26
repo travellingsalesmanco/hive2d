@@ -8,9 +8,9 @@
 
 import GameplayKit
 
-class NetworkComponent: GKComponent {
+class NetworkComponent: GameComponent {
     typealias Identifier = UUID
-    private static var entityMapping = [Identifier: GKEntity]()
+    private static var entityMapping = [Identifier: GameEntity]()
     let id: Identifier
 
     init(id: Identifier = NetworkComponent.generateIdentifier()) {
@@ -30,7 +30,7 @@ class NetworkComponent: GKComponent {
         guard NetworkComponent.entityMapping[id] == nil else {
             fatalError("Initializing NetworkComponent with duplicate identifier")
         }
-        guard let entity = entity else {
+        guard let entity = entity as? GameEntity else {
             fatalError("Entity not found")
         }
         NetworkComponent.entityMapping[id] = entity
@@ -44,7 +44,7 @@ class NetworkComponent: GKComponent {
         NetworkComponent.entityMapping.removeValue(forKey: id)
     }
 
-    static func getEntity(for id: Identifier) -> GKEntity? {
+    static func getEntity(for id: Identifier) -> GameEntity? {
         entityMapping[id]
     }
 

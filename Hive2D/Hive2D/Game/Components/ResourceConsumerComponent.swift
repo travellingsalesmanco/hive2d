@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class ResourceConsumerComponent: GKComponent {
+class ResourceConsumerComponent: GameComponent {
     var resourceType: ResourceType
     var resourceConsumptionRate: CGFloat
     var tier: CGFloat

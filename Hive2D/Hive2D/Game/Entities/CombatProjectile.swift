@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class CombatProjectile: GKEntity {
+class CombatProjectile: GameEntity {
     init(sprite: SpriteComponent,
          transform: TransformComponent,
          movement: MovementComponent,

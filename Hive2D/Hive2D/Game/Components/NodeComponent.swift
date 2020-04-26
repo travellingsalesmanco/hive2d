@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class NodeComponent: GKComponent {
+class NodeComponent: GameComponent {
     struct Node {
         let position: CGPoint
         let radius: CGFloat

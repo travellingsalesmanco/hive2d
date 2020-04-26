@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class DefenceComponent: GKComponent {
+class DefenceComponent: GameComponent {
     var health: CGFloat
     var maxHealth: CGFloat
     var healthRecoveryRate: CGFloat

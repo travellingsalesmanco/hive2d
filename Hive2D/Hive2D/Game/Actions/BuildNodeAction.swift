@@ -119,7 +119,7 @@ extension BuildNodeAction {
     }
 
     /// Returns an array of nodes within range of node to be built excluding itself
-    func getOwnNodesWithinRange(game: Game, range: CGFloat = Constants.GamePlay.nodeConnectRange) -> [GKEntity] {
+    func getOwnNodesWithinRange(game: Game, range: CGFloat = Constants.GamePlay.nodeConnectRange) -> [GameEntity] {
         let nodes = game.query(includes: NodeComponent.self)
         let nodesWithinRange = nodes.filter { node in
             guard node.component(ofType: PlayerComponent.self)?.player == player else {
@@ -138,8 +138,8 @@ extension BuildNodeAction {
     }
 
     /// Returns edges that connect the node to be added to the other nodes that are within range
-    func buildEdges(from node: Node, to nodes: [GKEntity]) -> [GKEntity] {
-        let edges = nodes.compactMap { targetNode -> GKEntity? in
+    func buildEdges(from node: Node, to nodes: [GameEntity]) -> [GameEntity] {
+        let edges = nodes.compactMap { targetNode -> GameEntity? in
             guard let player = targetNode.component(ofType: PlayerComponent.self)?.player else {
                 return nil
             }

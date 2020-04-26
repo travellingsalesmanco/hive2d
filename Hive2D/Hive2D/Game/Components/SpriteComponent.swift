@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class SpriteComponent: GKComponent {
+class SpriteComponent: GameComponent {
     var spriteNode: SKSpriteNode
 
     init(spriteNode: SKSpriteNode) {

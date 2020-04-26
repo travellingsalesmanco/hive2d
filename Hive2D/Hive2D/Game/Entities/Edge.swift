@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class Edge: GKEntity {
+class Edge: GameEntity {
     init(sprite: SpriteComponent,
          minimapDisplay: MinimapComponent,
          path: PathComponent,

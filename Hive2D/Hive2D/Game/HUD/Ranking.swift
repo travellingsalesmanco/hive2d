@@ -16,14 +16,14 @@ class Ranking: SKNode, Comparable {
         return lhs.resources < rhs.resources
     }
 
-    let player: GKEntity
+    let player: GameEntity
     var nodes: CGFloat = 0
     var resources: CGFloat = 0
     let playerName: Label
     let nodesLabel: Label
     let resourcesLabel: Label
 
-    init(player: GKEntity,
+    init(player: GameEntity,
          position: CGPoint,
          size: CGSize) {
         self.player = player

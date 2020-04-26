@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class TransformComponent: GKComponent {
+class TransformComponent: GameComponent {
     var position: CGPoint
     var scale: (x: CGFloat, y: CGFloat)
     var rotation: CGFloat

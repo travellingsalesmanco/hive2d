@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class AttackComponent: GKComponent {
+class AttackComponent: GameComponent {
     var attacker: Attacker
 
     init(attacker: Attacker) {

@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class Node: GKEntity, Codable {
+class Node: GameEntity, Codable {
     init(sprite: SpriteComponent,
          minimapDisplay: MinimapComponent,
          node: NodeComponent,

@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class Hive: GKEntity {
+class Hive: GameEntity {
 
     init(sprite: SpriteComponent,
          minimapDisplay: MinimapComponent,

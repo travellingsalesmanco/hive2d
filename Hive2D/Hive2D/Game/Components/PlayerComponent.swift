@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class PlayerComponent: GKComponent {
+class PlayerComponent: GameComponent {
     unowned let player: Player
 
     init(player: Player) {

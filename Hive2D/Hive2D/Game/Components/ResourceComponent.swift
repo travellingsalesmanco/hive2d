@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class ResourceComponent: GKComponent {
+class ResourceComponent: GameComponent {
     private static var nodeCostMap = NodeCostMap()
     var resources = [ResourceType: CGFloat]()
 

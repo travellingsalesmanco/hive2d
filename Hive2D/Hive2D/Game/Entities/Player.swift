@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class Player: GKEntity, Codable {
+class Player: GameEntity, Codable {
     init(player: PlayerInfoComponent, resource: ResourceComponent, network: NetworkComponent) {
         super.init()
         addComponent(resource)

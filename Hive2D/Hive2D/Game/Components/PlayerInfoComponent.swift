@@ -8,7 +8,7 @@
 
 import GameplayKit
 
-class PlayerInfoComponent: GKComponent {
+class PlayerInfoComponent: GameComponent {
     let id: String
     let name: String
     let color: PlayerColor

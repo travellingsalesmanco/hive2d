@@ -9,7 +9,7 @@
 import GameplayKit
 
 class NodeMenu: SKNode {
-    let node: GKEntity
+    let node: GameEntity
     let tierUpgradeCost: CGFloat
     let maxTier: CGFloat
     var upgradeButton: Button
@@ -22,7 +22,7 @@ class NodeMenu: SKNode {
     }
 
     init(position: CGPoint,
-         node: GKEntity,
+         node: GameEntity,
          tierUpgradeCost: CGFloat,
          maxTier: CGFloat,
          size: CGSize) {
