@@ -33,7 +33,7 @@ class MinimapDisplay: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func addGameElement(_ sprite: SKSpriteNode) {
+    func addMinimapElement(_ sprite: SKNode) {
         gameElementsRoot.addChild(sprite)
     }
 }

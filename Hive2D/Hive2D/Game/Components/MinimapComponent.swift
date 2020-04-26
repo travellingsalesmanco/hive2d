@@ -12,7 +12,7 @@ class MinimapComponent: RenderComponent {
     static var minimap: MinimapDisplay?
 
     override func didAddToGame() {
-        MinimapComponent.minimap?.addGameElement(spriteNode)
+        MinimapComponent.minimap?.addMinimapElement(spriteNode)
     }
     override func willRemoveFromGame() {
         spriteNode.removeFromParent()
