@@ -59,7 +59,7 @@ class Ranking: SKNode, Comparable {
         self.playerName.text = playerInfo.name
 
         let allNodes = game.query(includes: NodeComponent.self)
-        let ownedNodes = allNodes.filter { game.getPlayer(for: $0) == player }
+        let ownedNodes = allNodes.filter { PlayerComponent.getPlayer(for: $0) == player }
         self.nodes = CGFloat(ownedNodes.count)
         self.nodesLabel.text = "\(self.nodes)"
 

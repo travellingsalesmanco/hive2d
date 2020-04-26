@@ -124,10 +124,6 @@ class Game {
         lastGameTick += duration
     }
 
-    func getPlayer(for entity: GameEntity) -> Player? {
-        entity.component(ofType: PlayerComponent.self)?.player
-    }
-
     func add(entity: GameEntity) {
         entities.insert(entity)
         entity.game = self

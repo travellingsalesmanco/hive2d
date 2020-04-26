@@ -9,6 +9,10 @@
 import GameplayKit
 
 class PlayerComponent: GameComponent {
+    static func getPlayer(for entity: GameEntity) -> Player? {
+        entity.component(ofType: PlayerComponent.self)?.player
+    }
+
     unowned let player: Player
 
     init(player: Player) {
