@@ -25,6 +25,7 @@ class Tile: SKTileGroup {
         let texture = SKTexture(imageNamed: imageName)
         let definition = SKTileDefinition(texture: texture, size: size)
         super.init(tileDefinition: definition)
+        super.name = name
     }
 
     /// Run the tile effects on the node
@@ -32,8 +33,13 @@ class Tile: SKTileGroup {
         effects.forEach { $0.run(node: node, tile: self) }
     }
 
-    /// Add tile effect
+    /// Add tile effect with variadic tile effects
     func addEffect(_ toAdd: TileEffect...) {
+        effects.append(contentsOf: toAdd)
+    }
+
+    /// Add all tile effects in array of tile effects
+    func addEffect(_ toAdd: [TileEffect]) {
         effects.append(contentsOf: toAdd)
     }
 

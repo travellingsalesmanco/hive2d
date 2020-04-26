@@ -11,50 +11,67 @@ import SpriteKit
 /// Letter terrain
 struct LetterTerrain: Terrain {
     let tileMap: SKTileMapNode
-    let resourceTypeToTileAsset = [
-        ResourceType.Alpha: "letter-A",
-        ResourceType.Beta: "letter-B",
-        ResourceType.Delta: "letter-D",
-        ResourceType.Epsilon: "letter-E",
-        ResourceType.Gamma: "letter-G",
-        ResourceType.Zeta: "letter-Z"
-    ]
+    let resourceTypeToTileAsset: [ResourceType: String]
 
     init(columns: Int, rows: Int, tileSize: CGSize) {
+        // Define tile asset names
+        let letterA = "letterA"
+        let letterB = "letterB"
+        let letterD = "letterD"
+        let letterE = "letterE"
+        let letterG = "letterG"
+        let letterZ = "letterZ"
+        let glass = "glass"
+
         // Order resourceTypes so that tileGroups passed into tileMapNode is deterministic
-        let resourceTypes: [ResourceType] = [.Alpha, .Beta, .Delta, .Epsilon, .Gamma, .Zeta]
+        let tileAssets: [String] = [letterA, letterB, letterD, letterE, letterG, letterZ, glass]
 
-        // Add tiles
-        var tileGroups = [Tile]()
-        for resourceType in resourceTypes {
-            guard let tileAsset = resourceTypeToTileAsset[resourceType] else {
-                fatalError("No tile asset mapped to resource type: \(resourceType)")
-            }
-            let tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
-                            resourceType: resourceType)
-            tileGroups.append(tile)
-        }
-        let lava = Tile(imageName: "glass", size: tileSize, isBuildable: false)
-        tileGroups.append(lava)
+        // Map tiles to resource type
+        let tileAssetToResourceType = [
+            letterA: ResourceType.Alpha,
+            letterB: ResourceType.Beta,
+            letterD: ResourceType.Delta,
+            letterE: ResourceType.Epsilon,
+            letterG: ResourceType.Gamma,
+            letterZ: ResourceType.Zeta
+        ]
 
-        // Add tile effects
+        // Map tiles to effects
         let boostResourceEffect = BoostResourceEffect(boost: 2)
         let boostHealthRecoveryEffect = BoostHealthRecoveryEffect(boost: 2)
-        for tile in tileGroups {
-            switch tile.resourceType {
-            case .Alpha, .Beta, .Zeta:
-                tile.addEffect(boostResourceEffect)
-            case .Epsilon:
-                tile.addEffect(boostHealthRecoveryEffect)
-            case .Gamma:
-                tile.addEffect(boostResourceEffect, boostHealthRecoveryEffect)
-            default:
-                break
+        let tileAssetToEffects: [String: [TileEffect]] = [
+            letterA: [boostResourceEffect],
+            letterB: [boostResourceEffect],
+            letterE: [boostResourceEffect, boostHealthRecoveryEffect],
+            letterG: [boostHealthRecoveryEffect],
+            letterZ: [boostResourceEffect]
+        ]
+
+        // Add reverse mapping from resource type to tile asset
+        var resourceTypeToTileAsset = [ResourceType: String]()
+
+        // Add tiles
+        var tiles = [Tile]()
+        tileAssets.forEach { tileAsset in
+            // Create tile
+            let tile: Tile
+            if let resourceType = tileAssetToResourceType[tileAsset] {
+                tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
+                            resourceType: resourceType)
+                resourceTypeToTileAsset[resourceType] = tileAsset
+            } else {
+                tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: false)
             }
+            // Add effects to tile
+            if let effects = tileAssetToEffects[tileAsset] {
+                tile.addEffect(effects)
+            }
+            tiles.append(tile)
         }
 
         // Setup tile map
-        let tileSet = SKTileSet(tileGroups: tileGroups)
+        let tileSet = SKTileSet(tileGroups: tiles)
         self.tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
+        self.resourceTypeToTileAsset = resourceTypeToTileAsset
     }
 }
