@@ -40,8 +40,10 @@ struct BuildCombatNodeAction: BuildNodeAction {
             return SpriteComponent(spriteNode: SKSpriteNode())
         }
         spriteNode.addChild(healthBar,
-                            xOffsetByWidths: -0.6, yOffsetByHeights: 0.75,
-                            widthRatio: 1.2, heightRatio: 0.25)
+                            xOffsetByWidths: Constants.GamePlay.nodeHealthBarXOffset,
+                            yOffsetByHeights: Constants.GamePlay.nodeHealthBarYOffset,
+                            widthRatio: Constants.GamePlay.nodeHealthBarWidthRatio,
+                            heightRatio: Constants.GamePlay.nodeHealthBarHeightRatio)
         return SpriteComponent(spriteNode: spriteNode)
     }
 

@@ -64,6 +64,11 @@ struct Constants {
         static let resourceNodeHealth = CGFloat(500)
         static let resourceNodeHealthRecoveryRate = CGFloat(10)
 
+        static let nodeHealthBarXOffset = CGFloat(-0.6)
+        static let nodeHealthBarYOffset = CGFloat(0.75)
+        static let nodeHealthBarWidthRatio = CGFloat(1.2)
+        static let nodeHealthBarHeightRatio = CGFloat(0.25)
+
         static let nodeConnectRange = CGFloat(50)
         static let linkGlowWidth = CGFloat(0.5)
         static let linkWidth = CGFloat(2)
