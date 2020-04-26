@@ -44,8 +44,10 @@ struct MineralTerrain: Terrain {
             switch tile.resourceType {
             case .Alpha, .Beta, .Zeta:
                 tile.addEffect(boostResourceEffect)
-            default:
+            case .Gamma:
                 tile.addEffect(boostHealthRecoveryEffect)
+            default:
+                break;
             }
         }
 
