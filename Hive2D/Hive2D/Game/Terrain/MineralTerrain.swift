@@ -9,10 +9,7 @@
 import SpriteKit
 
 /// Mineral terrain
-struct MineralTerrain: Terrain {
-    let tileMap: SKTileMapNode
-    let resourceTypeToTileAsset: [ResourceType: String]
-
+class MineralTerrain: BaseTerrain {
     init(columns: Int, rows: Int, tileSize: CGSize) {
         // Define tile asset names
         let copper = "copper"
@@ -47,31 +44,9 @@ struct MineralTerrain: Terrain {
             diamond: [boostResourceEffect]
         ]
 
-        // Add reverse mapping from resource type to tile asset
-        var resourceTypeToTileAsset = [ResourceType: String]()
-
-        // Add tiles
-        var tiles = [Tile]()
-        tileAssets.forEach { tileAsset in
-            // Create tile
-            let tile: Tile
-            if let resourceType = tileAssetToResourceType[tileAsset] {
-                tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: true,
-                            resourceType: resourceType)
-                resourceTypeToTileAsset[resourceType] = tileAsset
-            } else {
-                tile = Tile(imageName: tileAsset, size: tileSize, isBuildable: false)
-            }
-            // Add effects to tile
-            if let effects = tileAssetToEffects[tileAsset] {
-                tile.addEffect(effects)
-            }
-            tiles.append(tile)
-        }
-
-        // Setup tile map
-        let tileSet = SKTileSet(tileGroups: tiles)
-        self.tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
-        self.resourceTypeToTileAsset = resourceTypeToTileAsset
+        super.init(columns: columns, rows: rows, tileSize: tileSize,
+                   tileAssets: tileAssets,
+                   tileAssetToResourceType: tileAssetToResourceType,
+                   tileAssetToEffects: tileAssetToEffects)
     }
 }
